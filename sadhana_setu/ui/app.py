@@ -83,7 +83,10 @@ with st.sidebar:
     label = protected_label()
     if label:
         st.markdown(f"\U0001F549 _{label}_")
-    st.caption("v0.1.5")
+    st.caption("v0.1.6")
+
+    from sadhana_setu.ui import sync_sidebar
+    sync_sidebar.render()
 
 if view == "Pre-japa":
     from sadhana_setu.ui import prejapa_view

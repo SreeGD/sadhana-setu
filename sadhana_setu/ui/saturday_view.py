@@ -210,7 +210,20 @@ def render() -> None:
         )
         save_checkin(checkin)
         log_pattern(saturday, pattern)
-        st.success(f"Check-in saved for week ending {saturday.isoformat()}.")
+
+        from sadhana_setu import sync as _sync
+        if _sync.is_connected():
+            try:
+                _sync.push()
+                st.success(
+                    f"Check-in saved for week ending {saturday.isoformat()} · "
+                    "synced to Google Drive."
+                )
+            except Exception as e:  # noqa: BLE001
+                st.success(f"Check-in saved for week ending {saturday.isoformat()}.")
+                st.warning(f"Sync skipped: {e}")
+        else:
+            st.success(f"Check-in saved for week ending {saturday.isoformat()}.")
         st.rerun()
 
     if existing:
