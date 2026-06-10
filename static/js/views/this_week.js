@@ -8,36 +8,7 @@ import {
 import {
   mostRecentSaturday, addDays, el, formatDate
 } from "../util.js";
-import * as store from "../store.js";
-
-function weekDots(saturdayDate) {
-  const days = [];
-  for (let i = 6; i >= 0; i--) days.push(addDays(saturdayDate, -i));
-  const grid = el("div", { class: "week-dots" });
-  for (const d of days) {
-    const iso = d.toISOString().slice(0, 10);
-    const r = store.getRounds(iso);
-    const count = r?.count || 0;
-    const completion = r?.completion;
-    let cls = "empty";
-    let badge = "—";
-    if (completion) {
-      cls = "win-" + completion;
-      badge = "🪷";
-    } else if (count >= 16) {
-      cls = "complete";
-      badge = String(count);
-    } else if (count > 0) {
-      cls = "partial";
-      badge = String(count);
-    }
-    grid.appendChild(el("div", { class: `day ${cls}` },
-      el("div", { class: "label" }, d.toLocaleDateString(undefined, { weekday: "short" })),
-      el("div", { class: "count" }, badge),
-    ));
-  }
-  return grid;
-}
+import { weekDots } from "../week_summary.js";
 
 function verseCard(v) {
   return el("div", { class: "view-card weekly-verse-card" },
@@ -55,23 +26,55 @@ function verseCard(v) {
 }
 
 function bhajanCard(b) {
+  const verseEls = [];
+  if (b.refrain) {
+    verseEls.push(el("div", { class: "bhajan-refrain" },
+      el("div", { class: "bhajan-verse-label" }, "REFRAIN"),
+      el("div", { class: "verse-iast", html: b.refrain.replace(/\n/g, "<br>") }),
+    ));
+  }
+  if (Array.isArray(b.verses) && b.verses.length) {
+    for (const v of b.verses) {
+      verseEls.push(el("div", { class: "bhajan-verse" },
+        el("div", { class: "bhajan-verse-label" }, "Verse " + (v.label || "")),
+        v.iast ? el("div", { class: "verse-iast", html: v.iast.replace(/\n/g, "<br>") }) : null,
+        v.translation ? el("p", { class: "bhajan-translation" }, v.translation) : null,
+      ));
+    }
+  } else if (b.verse_iast) {
+    // Backwards-compat for the older single-verse shape.
+    verseEls.push(el("div", { class: "verse-iast", html: b.verse_iast.replace(/\n/g, "<br>") }));
+    if (b.verse_translation) verseEls.push(el("p", {}, b.verse_translation));
+  }
+
   return el("div", { class: "view-card weekly-bhajan-card" },
     el("div", { class: "card-label" }, "WEEKLY BHAJAN"),
     el("h3", {}, b.title),
     el("p", { style: "color:var(--muted); margin-top:-0.3rem;" }, "by " + (b.author || "")),
-    b.verse_iast ? el("div", { class: "verse-iast", html: b.verse_iast.replace(/\n/g, "<br>") }) : null,
-    b.verse_translation ? el("p", {}, b.verse_translation) : null,
+    b.chanting_mood ? el("p", { style: "font-style:italic; color:var(--ink-soft);" },
+      el("strong", {}, "Mood: "), b.chanting_mood) : null,
+    b.meditation_for_japa ? el("p", { class: "verse-connection" },
+      el("strong", {}, "For today's japa: "), b.meditation_for_japa) : null,
+    el("div", { class: "bhajan-verses" }, ...verseEls),
     el("p", { class: "card-cite" }, "— " + (b.source || "")),
   );
 }
 
 function lectureCard(l) {
-  const listenBtn = el("a", {
-    href: l.search_url || "https://audio.iskcondesiretree.com/",
+  const audioEl = l.mp3_url ? el("audio", {
+    controls: "",
+    preload: "none",
+    src: l.mp3_url,
+    style: "width: 100%; margin: 0.6rem 0;",
+  }) : null;
+
+  const browseUrl = l.folder_url || l.search_url || "https://audio.iskcondesiretree.com/";
+  const browseBtn = el("a", {
+    href: browseUrl,
     target: "_blank",
     rel: "noopener",
     class: "lecture-listen",
-  }, "Listen on audio.iskcondesiretree.com →");
+  }, l.mp3_url ? "Browse more from this speaker →" : "Browse archive →");
 
   return el("div", { class: "view-card weekly-lecture-card" },
     el("div", { class: "card-label" }, "WEEKLY LECTURE · audio.iskcondesiretree.com"),
@@ -82,7 +85,12 @@ function lectureCard(l) {
       l.duration ? "  ·  " + l.duration : "",
     ),
     l.why_it_helps_chanting ? el("p", { style: "white-space: pre-wrap;" }, l.why_it_helps_chanting) : null,
-    el("div", { style: "margin-top: 0.6rem;" }, listenBtn),
+    audioEl,
+    l.mp3_url ? el("p", { style: "color: var(--muted); font-size: 0.8rem; margin: 0.2rem 0 0.5rem;" },
+      "If the player doesn't appear, ",
+      el("a", { href: l.mp3_url, target: "_blank", rel: "noopener", style: "color: var(--ink-soft);" }, "open the MP3 directly →")
+    ) : null,
+    el("div", { style: "margin-top: 0.6rem;" }, browseBtn),
     el("p", { class: "card-cite" }, "— " + (l.source || "ISKCON Desire Tree Audio Archive")),
   );
 }

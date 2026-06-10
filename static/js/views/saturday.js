@@ -3,6 +3,7 @@
 
 import { weekQuestions, weeklyFormOptions } from "../content.js";
 import { mostRecentSaturday, addDays, el, formatDate, toast } from "../util.js";
+import { weekDots, summaryLine } from "../week_summary.js";
 import * as store from "../store.js";
 
 const OTHER = "__OTHER__";
@@ -109,6 +110,17 @@ export async function render(root) {
         `Today is ${today.toLocaleDateString(undefined, { weekday: "long" })}. The check-in is meant for Saturday. You can preview / edit any time.`),
     ));
   }
+
+  // Week japa review (above Half 1)
+  const sLine = summaryLine(sat);
+  root.appendChild(el("div", { class: "view-card week-review-card" },
+    el("h3", {}, "This week's japa review"),
+    weekDots(sat),
+    el("p", { style: "margin: 0.6rem 0 0.2rem; color: var(--ink-soft); font-weight: 600;" },
+      sLine.primary),
+    el("p", { style: "margin: 0; color: var(--muted); font-size: 0.88rem; font-style: italic;" },
+      sLine.distribution),
+  ));
 
   // Half 1 — Observe
   const qBlocks = questions.map((q, i) => el("div", { style: "margin-bottom:0.9rem;" },

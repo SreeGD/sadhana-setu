@@ -7,6 +7,33 @@ import * as saturday from "./views/saturday.js";
 import * as backup from "./views/backup.js";
 import { storageSummary } from "./store.js";
 
+// ---------- font size ----------
+const FONT_SIZE_KEY = "sadhana_setu_font_size";
+const SIZES = [13, 15, 17, 19, 21];
+
+function applyFontSize(px) {
+  document.documentElement.style.fontSize = px + "px";
+}
+function currentSize() {
+  const v = parseInt(localStorage.getItem(FONT_SIZE_KEY), 10);
+  return SIZES.includes(v) ? v : 17;
+}
+function nudgeFont(direction) {
+  const cur = currentSize();
+  let idx = SIZES.indexOf(cur);
+  if (idx === -1) idx = SIZES.indexOf(17);
+  const next = SIZES[Math.max(0, Math.min(SIZES.length - 1, idx + direction))];
+  localStorage.setItem(FONT_SIZE_KEY, String(next));
+  applyFontSize(next);
+}
+applyFontSize(currentSize());
+document.getElementById("font-smaller")?.addEventListener("click", () => nudgeFont(-1));
+document.getElementById("font-bigger")?.addEventListener("click", () => nudgeFont(+1));
+document.getElementById("font-reset")?.addEventListener("click", () => {
+  localStorage.setItem(FONT_SIZE_KEY, "17");
+  applyFontSize(17);
+});
+
 const views = {
   prejapa: prejapa.render,
   today: today.render,

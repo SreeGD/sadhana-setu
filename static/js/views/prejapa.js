@@ -85,12 +85,16 @@ export async function render(root) {
   let featuredEl;
   const featuredOrder = ["AFFIRMATION", "FAITH VERSE", "INSPIRATION", "TIP", "NĀMA-TATTVA"];
   if (dow === 6) {
-    // Saturday — bhajan
+    // Saturday — bhajan. Show the FIRST verse here (full bhajan lives in This Week).
+    const firstVerse = (bhajan.verses && bhajan.verses[0]) || null;
+    const iastSrc = firstVerse?.iast || bhajan.verse_iast || "";
+    const translation = firstVerse?.translation || bhajan.verse_translation || "";
     featuredEl = featured(
-      "TODAY'S BHAJAN", bhajan.title,
-      bhajan.verse_translation || "",
+      "TODAY'S BHAJAN — verse 1 (full text in This Week)",
+      bhajan.title,
+      translation,
       `${bhajan.author} — ${bhajan.source}`,
-      bhajan.verse_iast ? el("div", { class: "iast", style: "color:#B8860B; font-style:italic; margin: 0.5rem 0 0.7rem;", html: bhajan.verse_iast.replace(/\n/g, "<br>") }) : null
+      iastSrc ? el("div", { class: "iast", style: "color:#B8860B; font-style:italic; margin: 0.5rem 0 0.7rem;", html: iastSrc.replace(/\n/g, "<br>") }) : null
     );
   } else if (dow === 0) {
     // Sunday — story

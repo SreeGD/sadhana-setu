@@ -47,6 +47,21 @@ body {
 .topbar .title  { color: var(--ink-soft); font-size: 1.35rem; font-weight: 600; letter-spacing: 0.02em; }
 .topbar .devanagari { color: var(--gold); font-size: 1.05rem; }
 .topbar .tagline { color: var(--muted); font-style: italic; font-size: 0.92rem; }
+.font-controls { margin-left: auto; display: inline-flex; gap: 0.25rem; }
+.font-controls button {
+  background: transparent;
+  border: 1px solid var(--rule);
+  color: var(--muted);
+  padding: 0.2rem 0.55rem;
+  font-family: inherit;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  line-height: 1;
+}
+.font-controls button:hover { color: var(--ink-soft); border-color: var(--gold-soft); }
+.font-controls button:focus { outline: 2px solid var(--gold-soft); outline-offset: 1px; }
 
 /* ---------- tabs ---------- */
 
@@ -133,6 +148,34 @@ body {
 .weekly-bhajan-card { border-left-color: #C77800; background: #FFFAF0; }
 .weekly-lecture-card { border-left-color: #2E5C99; background: #F5F8FD; }
 .weekly-lecture-card .card-label { color: #2E5C99; }
+.week-review-card { border-left-color: #2E7D32; background: #F4FAF4; }
+.week-review-card h3 { color: #2E7D32; }
+
+/* ---------- bhajan multi-verse ---------- */
+.bhajan-verses { margin-top: 0.6rem; }
+.bhajan-verse, .bhajan-refrain {
+  padding: 0.5rem 0;
+  border-top: 1px dashed var(--rule);
+}
+.bhajan-verse:first-child, .bhajan-refrain:first-child { border-top: none; }
+.bhajan-verse-label {
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.bhajan-refrain { background: #FFFAEC; border-radius: 4px; padding: 0.6rem 0.8rem; margin-bottom: 0.4rem; }
+.bhajan-refrain .bhajan-verse-label { color: var(--gold); }
+.bhajan-translation {
+  margin: 0.3rem 0 0;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+audio { outline: none; }
+audio::-webkit-media-controls-panel { background-color: #FFFBF3; }
 
 .lecture-listen {
   display: inline-block;

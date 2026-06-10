@@ -1,85 +1,607 @@
-# Bhajan library — Sadhana Setu v1.5
+# Bhajan library — Sadhana Setu v1.7
 #
-# STATUS: DRAFT — awaiting user review.
-# Saturday-only rotation, ISO-week-number indexed. Each entry shows one
-# representative verse from a longer bhajan. Verify each transliteration
-# and translation against the published collection before approving.
+# Rotated weekly (ISO week). Each entry is a COMPLETE bhajan with all
+# verses, chosen specifically to *enhance the mood for chanting*. Text
+# verified against the canonical Vaishnava Song Book compiled by ISKCON
+# Chowpatty (https://vaishnavsongs.iskcondesiretree.com/wp-content/
+# uploads/2012/12/Vaishnava-song-book.pdf).
+#
+# Each entry: title · author · source (book + section) · chanting_mood
+# (short tag) · meditation_for_japa (1-2 line application) · verses[]
+# where each verse has label, iast, translation.
+#
+# STATUS: APPROVED (text source) — text is from the canonical ISKCON
+# song book. The user (SreeGD) should still confirm the
+# meditation_for_japa lines reflect the right pre-japa orientation
+# before promoting to "approved" for that field too.
 
-status: approved
+status: draft
 review_notes: |
-  Reviewer: SreeGD
-  Date: 2026-06-10
-  Notes: Approved via Option A — 1 source sharpened (Bhajahu Re Mana attribution corrected to Govinda Dasa Kaviraja).
+  Reviewer: SreeGD (Sreenivas Gopal Dasa)
+  Source: ISKCON Chowpatty's Vaishnava Song Book (PDF; v.2012).
+  Seeded: 2026-06-10
+  Notes: 8 bhajans, all verses included verbatim from the song book.
+    Selection: chanting-mood specific (no Sad-Gosvāmy-aṣṭaka,
+    Damodarāṣṭaka, etc. — those serve other moods). The
+    meditation_for_japa lines are AI-generated commentary and need
+    review. The iast and translation strings are pasted from the
+    song book pages 47-59.
 
 bhajans:
-  - title: "Sri Sri Gurv-astaka"
-    author: "Visvanatha Cakravarti Thakura"
-    verse_iast: "saṁsāra-dāvānala-līḍha-loka-trāṇāya kāruṇya-ghanāghanatvam | prāptasya kalyāṇa-guṇārṇavasya vande guroḥ śrī-caraṇāravindam ||"
-    verse_translation: "The spiritual master is receiving benediction from the ocean of mercy. Just as a cloud pours water on a forest fire to extinguish it, the spiritual master delivers the materially afflicted world by extinguishing the blazing fire of material existence. I offer my respectful obeisances unto the lotus feet of such a spiritual master, who is an ocean of auspicious qualities."
-    source: "Sri Sri Gurv-astaka verse 1, sung daily in ISKCON temples"
+  - title: "Udilo Aruṇa Pūraba Bhāge — Aruṇodaya-kīrtana Song 1"
+    author: "Bhaktivinoda Ṭhākura"
+    source: "Gītāvalī, Aruṇodaya-kīrtana Song 1 (kīrtana songs to be sung at dawn)"
+    chanting_mood: "Pre-dawn awakening to the Name — the foundational morning bhajan."
+    meditation_for_japa: |
+      Sing or read this bhajan at brāhma-muhūrta before the first round.
+      It places you in the company of Lord Caitanya as He walks through
+      Navadvīpa, calling devotees to wake up and chant. Let that scene
+      carry into your beads.
+    verses:
+      - label: "1"
+        iast: |
+          udilo aruṇa pūraba-bhāge,
+          dwija-maṇi gorā amani jāge,
+          bhakata-samūha loiyā sāthe,
+          gelā nagara-vrāje
+        translation: |
+          When the rising sun appeared in the East, the jewel of the
+          twice-born, Lord Gaurasundara, awakened, and, taking His
+          devotees with Him, He went all over the countryside towns and
+          villages.
+      - label: "2"
+        iast: |
+          'tāthāi tāthāi bājalo khol,
+          ghana ghana tāhe jhājera rol,
+          preme ḍhala ḍhala soṅāra aṅga,
+          caraṇe nūpura bāje
+        translation: |
+          The mṛdaṅgas (khol) resounded "tāthāi, tāthāi," and the jhājhas
+          (large metal karatālas that look like small cymbals) joined in
+          time. Lord Gaurāṅga's golden form swayed in ecstatic love of
+          Godhead, and His footbells jingled.
+      - label: "3"
+        iast: |
+          mukunda mādhava yādava hari,
+          bolena bolo re vadana bhori',
+          miche nida-baśe gelo re rāti,
+          divasa śarīra-sāje
+        translation: |
+          All the devotees chanted the names Mukunda, Mādhava, Yādava and
+          Hari, their mouths being filled with the vibrations. He loudly
+          announced to the still sleeping people, "You spend your nights
+          uselessly sleeping and your days decorating your bodies!"
+      - label: "4"
+        iast: |
+          emana durlabha mānava-deho,
+          pāiyā ki koro bhāva nā keho,
+          ebe nā bhajile yaśodā-suta,
+          carame paḍibe lāje
+        translation: |
+          You have achieved such a rare human body, but you do not care
+          for this gift. You remain not serving the darling of Yaśodā
+          and slowly fall through your last moments to death.
+      - label: "5"
+        iast: |
+          udita tapana hoile asta,
+          dina gelo boli' hoibe byasta,
+          tabe keno ebe alasa hoy,
+          nā bhaja hṛdoya-rāje
+        translation: |
+          With every rising and setting of the sun, a day passes and is
+          lost. Then, why do you remain idle and not serve the Lord of
+          the heart?
+      - label: "6"
+        iast: |
+          jīvana anitya jānaha sār,
+          tāhe nānā-vidha vipada-bhār,
+          nāmāśraya kori' jatane tumi,
+          thākaha āpana kāje
+        translation: |
+          This temporary life is full of various miseries. Take shelter
+          of the holy name as your only business.
+      - label: "7"
+        iast: |
+          jīvera kalyāṇa-sādhana-kām,
+          jagate āsi' e madhura nām,
+          avidyā-timira-tapana-rūpe,
+          hṛd-gagane birāje
+        translation: |
+          To penetrate the darkness of ignorance and bless everyone's
+          heart, the holy name has risen like the shining sun.
+      - label: "8"
+        iast: |
+          kṛṣṇa-nāma-sudhā koriyā pān,
+          jurāo bhakativinoda-prān,
+          nāma binā kichu nāhiko āro,
+          caudda-bhuvana-mājhe
+        translation: |
+          Drink the pure nectar of the holy name. There is nothing but
+          the name to be had in the fourteen worlds. It has filled the
+          soul of Śrī Bhaktivinoda Ṭhākura.
 
-  - title: "Sri Sri Sad-Gosvamy-astaka"
-    author: "Srinivasa Acarya"
-    verse_iast: "kṛṣṇotkīrtana-gāna-nartana-parau premāmṛtāmbho-nidhī dhīrādhīra-jana-priyau priya-karau nirmatsarau pūjitau | śrī-caitanya-kṛpā-bharau bhuvi bhuvo bhārāvahantārakau vande rūpa-sanātanau raghu-yugau śrī-jīva-gopālakau ||"
-    verse_translation: "I offer my respectful obeisances unto the Six Goswamis — namely Sri Rupa, Sri Sanatana, Sri Raghunatha Bhatta, Sri Raghunatha Dasa, Sri Jiva, and Sri Gopala Bhatta — who were constantly engaged in chanting the Holy Name of Krishna and dancing. They were absorbed in the nectar of love for Krishna, dear to both gentle and rough, free from envy, and ornaments of Sri Caitanya's mercy upon the world."
-    source: "Sri Sri Sad-Gosvamy-astaka verse 1 by Srinivasa Acarya"
+  - title: "Vibhāvarī Śeṣa — End of Night"
+    author: "Bhaktivinoda Ṭhākura"
+    source: "Kalyāṇa Kalpataru, Ucchvāsa: Ucchvāsa Kīrtana: Nāma Kīrtana Song 2"
+    chanting_mood: "Names cascade at dawn — the tongue warms on Krishna's names before the maha-mantra."
+    meditation_for_japa: |
+      Sing at the close of night. The bhajan is itself a procession of
+      Krishna's names; by the eighth verse the tongue has been
+      decisively tuned. The maha-mantra that follows is the natural
+      next breath.
+    verses:
+      - label: "1"
+        iast: |
+          vibhāvarī śeṣa, āloka-praveśa,
+          nidrā chāḍi' uṭho jīva
+          bolo hari hari, mukunda murāri,
+          rāma kṛṣṇa hayagrīva
+        translation: |
+          The night has come to an end and the light of dawn is entering.
+          O jīva soul, arise and give up your sleep. Chant the holy names
+          of Lord Hari, who is the giver of liberation; the enemy of the
+          Mura demon; the supreme enjoyer; the all-attractive one; and
+          the horse-headed incarnation, Hayagrīva.
+      - label: "2"
+        iast: |
+          nṛsiṁha vāmana, śrī-madhusūdana,
+          brajendra-nandana śyāma
+          pūtanā-ghātana, kaiṭabha-śātana,
+          jaya dāśarathi-rāma
+        translation: |
+          Lord Hari [Kṛṣṇa] incarnated as the half-man, half-lion,
+          Nṛsiṁha. He appeared as a dwarf-brāhmaṇa named Upendra and is
+          the killer of the Madhu demon. He is the beloved son of the
+          King of Vraja, Nanda Mahārāja, and is blackish in complexion.
+          He is the slayer of the Pūtanā witch and the destroyer of the
+          demon Kaiṭabha. All glories to Lord Hari, who appeared as Lord
+          Rāma, the son of King Daśaratha.
+      - label: "3"
+        iast: |
+          yaśodā dulāla, govinda-gopāla,
+          vṛndāvana purandara
+          gopī-priya-jana, rādhikā-ramaṇa,
+          bhuvana-sundara-bara
+        translation: |
+          He is the darling of mother Yaśodā; the giver of pleasure to
+          the cows, land, and spiritual senses; and the protector of the
+          cows. He is the Lord of the Vṛndāvana forest; the gopīs'
+          beloved; the lover of Rādhikā, and the most beautiful
+          personality in all the worlds.
+      - label: "4"
+        iast: |
+          rāvāṇāntakara, mākhana-taskara,
+          gopī-jana-vastra-hārī
+          brajera rākhāla, gopa-vṛnda-pāla,
+          citta-hārī baṁśī-dhārī
+        translation: |
+          As Rāmacandra He brought about the end of the demoniac King
+          Rāvaṇa; as Kṛṣṇa He stole the older gopīs' butter; He stole
+          the younger gopīs' clothes while they were bathing in the
+          Yamunā. He is a cowherd boy of Vraja and the protector of the
+          cowherd boys. He steals the hearts of all and always holds a
+          flute.
+      - label: "5"
+        iast: |
+          yogīndra-vandana, śrī-nanda-nandana,
+          braja-jana-bhaya-hārī
+          navīna nīrada, rūpa manohara,
+          mohana-baṁśī-bihārī
+        translation: |
+          Lord Kṛṣṇa is worshiped by the best of yogīs and is the son of
+          Nanda. He removes all the fears of the inhabitants of Vraja.
+          He is the color of a fresh rain cloud, and His form is
+          enchanting. When He wanders about, playing His flute, He looks
+          very charming.
+      - label: "6"
+        iast: |
+          yaśodā-nandana, kaṁsa-nisūdana,
+          nikuñja-rāsa-vilāsī
+          kadamba-kānana, rāsa-parāyaṇa,
+          bṛnda-vipina-nivāsī
+        translation: |
+          He is the son of Yaśodā and the killer of King Kaṁsa, and He
+          sports in the rāsa dance among the groves of Vraja. Kṛṣṇa
+          engages in the rāsa dance underneath the kadamba trees, and He
+          resides in the forest of Vṛndāvana.
+      - label: "7"
+        iast: |
+          ānanda-vardhana, prema-niketana,
+          phula-śara-jojaka kāma
+          gopāṅganā-gaṇa, citta-vinodana,
+          samasta-guṇa-gaṇa-dhāma
+        translation: |
+          He increases the ecstasy of His devotees. He is the reservoir
+          of all love and is the transcendental Cupid who uses His
+          flowered arrows to increase the loving desires of the gopīs.
+          He is the pleasure of the gopīs' hearts and the abode of all
+          wonderful qualities.
+      - label: "8"
+        iast: |
+          jāmuna-jīvana, keli-parāyaṇa,
+          mānasa-candra-cakora
+          nāma-sudhā-rasa, gāo kṛṣṇa-yaśa,
+          rākho vacana mana mora
+        translation: |
+          Lord Kṛṣṇa is the life of the River Yamunā. He is always
+          absorbed in amorous pastimes, and He is the moon of the gopīs'
+          minds, which are like the cakora birds that subsist only upon
+          moonlight. O mind, obey these words of mine and sing the
+          glories of Śrī Kṛṣṇa in the form of these holy names, which
+          are full of nectarean mellows.
 
-  - title: "Sri Nama-Sankirtana (Hari Haraye Namah)"
-    author: "Narottama Dasa Thakura"
-    verse_iast: "hari haraye namaḥ kṛṣṇa yādavāya namaḥ | yādavāya mādhavāya keśavāya namaḥ ||"
-    verse_translation: "I offer my obeisances unto Hari, unto Krishna, unto Yadava, unto Madhava, unto Keshava."
-    source: "Prarthana by Narottama Dasa Thakura"
+  - title: "Yaśomatī Nandana — Śrī Nāma Kīrtana"
+    author: "Bhaktivinoda Ṭhākura"
+    source: "Gītāvalī, Nāma Kīrtana Song 1 (Chanting of the Holy Names)"
+    chanting_mood: "Direct chanting of Krishna's names — the qualities of the Name made manifest."
+    meditation_for_japa: |
+      The bhajan IS the chanting, distilled. Each verse names Krishna by
+      a quality; the names accumulate; by verse 4 the tongue is awake.
+      Begin japa immediately after.
+    verses:
+      - label: "1"
+        iast: |
+          yaśomatī-nandana, braja-baro-nāgara,
+          gokula-rañjana kāna
+          gopī-parāṇa-dhana, madana-manohara,
+          kāliya-damana-vidhāna
+        translation: |
+          Kṛṣṇa is the beloved son of mother Yaśodā; the transcendental
+          lover in the land of Vraja; the delight of Gokula; Kāna [a
+          nickname of Kṛṣṇa]; the wealth of the lives of the gopīs. He
+          steals the mind of even Cupid and punishes the Kāliya serpent.
+      - label: "2"
+        iast: |
+          amala harināma amiya-vilāsā
+          vipina-purandara, navīna nāgara-bora,
+          baṁśī-badana suvāsā
+        translation: |
+          These pure, holy names of Lord Hari are full of sweet,
+          nectarean pastimes. Kṛṣṇa is the lord of the twelve forests of
+          Vraja, He is ever-youthful and is the best of lovers. He is
+          always playing on a flute, and He is an excellent dresser.
+      - label: "3"
+        iast: |
+          braja-jana-pālana, asura-kula-nāśana,
+          nanda-godhana-rākhowālā
+          govinda mādhava, navanīta-taskara,
+          sundara nanda-gopālā
+        translation: |
+          Kṛṣṇa is the protector of the inhabitants of Vraja; the
+          destroyer of various demoniac dynasties; the keeper and tender
+          of Nanda Mahārāja's cows; the giver of pleasure to the cows,
+          land, and spiritual senses; the husband of the goddess of
+          fortune; the butter thief; and the beautiful cowherd boy of
+          Nanda Mahārāja.
+      - label: "4"
+        iast: |
+          yāmuna-taṭa-cara, gopī-basana-hara,
+          rāsa-rasika, kṛpāmoya
+          śrī-rādhā-vallabha, vṛndābana-naṭabara,
+          bhaktivinoda-āśraya
+        translation: |
+          Kṛṣṇa wanders along the banks of the River Yamunā. He stole
+          the garments of the young damsels of Vraja when they were
+          bathing there. He delights in the mellows of the rāsa dance;
+          He is very merciful; the lover and beloved of Śrīmatī
+          Rādhārāṇī; the great dancer of Vṛndāvana; and the shelter and
+          only refuge of Ṭhākura Bhaktivinoda.
 
-  - title: "Bhajahu Re Mana"
-    author: "Govinda Dasa Kaviraja"
-    verse_iast: "bhajahū re mana śrī-nanda-nandana, abhaya-caraṇāravinda re | durlabha mānava-janma sat-saṅge, taroho e bhava-sindhu re ||"
-    verse_translation: "O mind, just worship the lotus feet of the son of Nanda, which are fearless. Having obtained this rare human birth, cross over this ocean of material existence by the association of devotees."
-    source: "Bengali Vaishnava bhajan tradition (sometimes anthologized in Padyavali)"
+  - title: "Hari Haraye Namaḥ Kṛṣṇa Yādavāya Namaḥ — Nāma Saṅkīrtana"
+    author: "Narottama Dāsa Ṭhākura"
+    source: "Prārthanā — Nāma Saṅkīrtana"
+    chanting_mood: "Saṅkīrtana itself — Krishna's names + the Goswāmīs invoked together."
+    meditation_for_japa: |
+      Sing the refrain. The bhajan is a saṅkīrtana in itself; by the
+      tenth verse you have invoked Krishna's chief names, the
+      Pañca-tattva, Śrī Bhāgavatam, and the Six Goswāmīs. Begin japa
+      with that lineage in mind.
+    refrain: |
+      hari haraye namaḥ, kṛṣṇa yādavāya namaḥ,
+      yādavāya mādhavāya keśavāya namaḥ
+    verses:
+      - label: "1"
+        iast: |
+          hari haraye namaḥ kṛṣṇa yādavāya namaḥ
+          yādavāya mādhavāya keśavāya namaḥ
+        translation: |
+          O Lord Hari, obeisances unto You! O Kṛṣṇa, O Yādava, obeisances
+          to You! Obeisances unto the Lord of the Yadus, Mādhava,
+          Keśava!
+      - label: "2"
+        iast: |
+          gopāla govinda rāma śrī-madhusūdana
+          giridhārī gopīnātha madana-mohana
+        translation: |
+          O Gopāla! O Govinda! O Rāma! O vanquisher of Madhu! O Giridhārī!
+          O Lord of the gopīs! O Bewilderer of cupid!
+      - label: "3"
+        iast: |
+          śrī-caitanya-nityānanda śrī-advaita-sītā
+          hari guru vaiṣṇaba bhāgavata gītā
+        translation: |
+          Śrī Caitanya, Nityānanda, Śrī Advaita-Sītā! Hari! Guru!
+          Vaiṣṇavas! Śrīmad-Bhāgavatam! Bhagavad-gītā!
+      - label: "4"
+        iast: |
+          śrī-rūpa sanātana bhaṭṭa-raghunātha
+          śrī-jīva gopāla-bhaṭṭa dāsa-raghunātha
+        translation: |
+          All glories to Śrīla Rūpa Gosvāmī, Sanātana Gosvāmī and
+          Raghunātha Bhaṭṭa Gosvāmī, to Śrīla Jīva Gosvāmī, Gopāla
+          Bhaṭṭa Gosvāmī and Raghunātha Dāsa Gosvāmī!
+      - label: "5"
+        iast: |
+          ei chay gosāñi kori caraṇa vandan
+          jāhā hoite bighna-nāś abhīṣṭa-pūraṇ
+        translation: |
+          I bow to the feet of these six Gosvāmīs. By their grace all
+          obstacles can be destroyed and all desires are fulfilled.
+      - label: "6"
+        iast: |
+          ei chay gosāi jār — mui tār dās
+          tā-sabāra pada-reṇu mora pañca-grās
+        translation: |
+          I am the servant of these six Gosvāmīs. The dust of their feet
+          is my fivefold sustenance.
+      - label: "7"
+        iast: |
+          tādera caraṇa-sebi-bhakata-sane bās
+          janame janame hoy ei abhilāṣ
+        translation: |
+          To be a servant of their lotus feet and to reside in the
+          company of devotees — this is my aspiration birth after birth.
+      - label: "8"
+        iast: |
+          ei chay gosāi jabe braje koilā bās
+          rādhā-kṛṣṇa-nitya-līlā korilā prakāś
+        translation: |
+          When these six Gosvāmīs lived in Vraja, they revealed the
+          eternal pastimes of Śrī Śrī Rādhā and Kṛṣṇa.
+      - label: "9"
+        iast: |
+          ānande bolo hari bhaja vṛndāban
+          śrī-guru-vaiṣṇaba-pade mājāiyā man
+        translation: |
+          In ecstasy, sing the names of Lord Hari and worship Vṛndāvana,
+          joyfully fixing your mind upon the lotus feet of the bona fide
+          spiritual master and the pure devotees.
+      - label: "10"
+        iast: |
+          śrī-guru-vaiṣṇaba-pada-padma kori āś
+          nāma-saṅkīrtana kohe narottama dāsa
+        translation: |
+          The lotus feet of my guru and the vaiṣṇavas are my aspiration.
+          Narottama Dāsa thus sings Hari-nāma-saṅkīrtana.
 
-  - title: "Sri Krishna Caitanya Prabhu Daya Kara More"
-    author: "Narottama Dasa Thakura"
-    verse_iast: "śrī kṛṣṇa caitanya prabhu dayā kara more | tomā vinā ke dayālu jagat-saṁsāre ||"
-    verse_translation: "O Sri Krishna Caitanya Prabhu, please be merciful to me — for who in the world of birth and death is more merciful than You?"
-    source: "Prarthana by Narottama Dasa Thakura"
+  - title: "Hari Hari Biphale Janama Goṅāinu"
+    author: "Narottama Dāsa Ṭhākura"
+    source: "Prārthanā, Dainya Bodhikā Song 2 — Iṣṭa Deve Vijñapti (Prayer to One's Beloved Lord)"
+    chanting_mood: "The lament that the Name has not yet attracted us — the qualifying humility."
+    meditation_for_japa: |
+      The qualifying mood for sincere japa is not confidence but lament.
+      Read this when chanting has gone dry — it voices the heart's
+      honest admission and the prayer that becomes attractive.
+    verses:
+      - label: "1"
+        iast: |
+          hari hari! bifale janama goṅāinu
+          manuṣya-janama pāiyā, rādhā-kṛṣṇa nā bhajiyā,
+          jāniyā śuniyā biṣa khāinu
+        translation: |
+          O Lord Hari, I have spent my life uselessly. Having obtained a
+          human birth and having not worshiped Rādhā and Kṛṣṇa, I have
+          knowingly drunk poison.
+      - label: "2"
+        iast: |
+          golokera prema-dhana, hari-nāma-saṅkīrtana,
+          rati nā janmilo kene tāy
+          saṁsāra-biṣānale, dibā-niśi hiyā jvale,
+          jurāite nā koinu upāy
+        translation: |
+          The treasure of divine love in Goloka Vṛndāvana has descended
+          as the congregational chanting of Lord Hari's holy names. Why
+          did my attraction for that chanting never come about? Day and
+          night my heart burns from the fire of the poison of worldliness,
+          and I have not taken the means to relieve it.
+      - label: "3"
+        iast: |
+          brajendra-nandana jei, śacī-suta hoilo sei,
+          balarāma hoilo nitāi
+          dīna-hīna jata chilo, hari-nāme uddhārilo,
+          tā'ra sākṣī jagāi mādhāi
+        translation: |
+          O Lord Kṛṣṇa, who is the son of the King of Vraja, became the
+          son of Saci (Lord Caitanya), and Balarāma became Nitāi. The
+          holy name delivered all those souls who were lowly and
+          wretched. The two sinners Jagāi and Mādhāi are evidence of
+          this.
+      - label: "4"
+        iast: |
+          hā hā prabhu nanda-suta, vṛṣabhānu-sutā-juta,
+          karuṇā karoho ei-bāro
+          narottama-dāsa koy, nā ṭheliho rāṅgā pāy,
+          tomā bine ke āche āmāra
+        translation: |
+          O Lord Kṛṣṇa, son of Nanda, accompanied by the daughter of
+          Vṛṣabhānu, please be merciful to me now. Narottama Dāsa says,
+          "O Lord, please do not push me away from Your reddish lotus
+          feet, for who is my beloved except for You?"
 
-  - title: "Saranagati — Tomara Karuna Sara"
-    author: "Bhaktivinoda Thakura"
-    verse_iast: "tomāra karuṇā sāra, karuṇā bāhirā mahi | abhāgāra prati kṛpā kara nā kara ||"
-    verse_translation: "Your mercy is the essence; outside of it there is nothing. Whether You bestow mercy upon this unfortunate one or not is Your own decision."
-    source: "Saranagati by Bhaktivinoda Thakura"
+  - title: "Śrī Kṛṣṇa Caitanya Prabhu Doyā Koro More"
+    author: "Narottama Dāsa Ṭhākura"
+    source: "Prārthanā, Punaḥ Prārthanā Song 1 — Sāvaraṇa-śrī-gaura-pāda-padme (A Prayer to the Lotus Feet of Śrī Gaurāṅga)"
+    chanting_mood: "Calling for Mahāprabhu's mercy — He alone makes the Name taste sweet."
+    meditation_for_japa: |
+      Mahāprabhu came expressly to give the chanting; only His mercy
+      makes the rounds taste sweet. Read this when you feel empty before
+      japa. This is the precise request to make.
+    verses:
+      - label: "1"
+        iast: |
+          śrī-kṛṣṇa-caitanya prabhu doyā koro more
+          tomā binā ke doyālu jagat-saṁsāre
+        translation: |
+          O my Lord Caitanya, please be merciful to me, because no one
+          can be more merciful than Your Lordship within these three
+          worlds.
+      - label: "2"
+        iast: |
+          patita-pāvana-hetu tava avatāra
+          mo sama patita prabhu nā pāibe āra
+        translation: |
+          Your incarnation is just to reclaim the conditioned, fallen
+          souls, but I assure You that You will not find a greater
+          fallen soul than me. Therefore, my claim is first.
+      - label: "3"
+        iast: |
+          hā hā prabhu nityānanda, premānanda sukhī
+          kṛpābalokana koro āmi boro duḥkhī
+        translation: |
+          My dear Lord Nityānanda, You are always joyful in spiritual
+          bliss. Since You always appear very happy, I have come to You
+          because I am most unhappy. If You kindly put Your glance over
+          me, then I may also become happy.
+      - label: "4"
+        iast: |
+          doyā koro sītā-pati adwaita gosāñi
+          tava kṛpā-bale pāi caitanya-nitāi
+        translation: |
+          My dear Advaita Prabhu, husband of Sītā, You are so kind.
+          Please be merciful to me. If You are kind to me, naturally
+          Lord Caitanya and Nityānanda will also be kind to me.
+      - label: "5"
+        iast: |
+          hā hā svarūp, sanātana, rūpa, raghunātha
+          bhaṭṭa-juga, śrī-jīva hā prabhu lokanātha
+        translation: |
+          O Svarūpa Dāmodara, personal secretary of Lord Caitanya, O six
+          Gosvāmīs — Rūpa Gosvāmī, Sanātana Gosvāmī, Raghunātha Bhaṭṭa
+          Gosvāmī, Gopāla Bhaṭṭa Gosvāmī, Jīva Gosvāmī, and Raghunātha
+          Dāsa Gosvāmī! O Lokanātha Gosvāmī, my beloved spiritual master!
+          Narottama Dāsa also prays for Your mercy.
+      - label: "6"
+        iast: |
+          doyā koro śrī-ācārya prabhu śrīnivāsa
+          rāmacandra-saṅga māge narottama-dāsa
+        translation: |
+          O Śrīnivāsa Ācārya, successor to the six Gosvāmīs! Please be
+          merciful to me. Narottama Dāsa always desires the company of
+          Rāmacandra Cakravartī.
 
-  - title: "Sri Hari-Nama"
-    author: "Bhaktivinoda Thakura"
-    verse_iast: "hari he! tumi to' dayāra sindhu | tomāra caraṇe śaraṇa nilāma, kāhāre kahibo āra ||"
-    verse_translation: "O Hari! You are an ocean of mercy. I have taken shelter at Your feet — to whom else can I appeal?"
-    source: "Gita-mala by Bhaktivinoda Thakura"
+  - title: "Gaurāṅga Bolite Habe — Lālasāmayī Prārthanā"
+    author: "Narottama Dāsa Ṭhākura"
+    source: "Prārthanā, Lālasāmayī Prārthanā"
+    chanting_mood: "Longing — when will the Name itself bring ecstatic tears?"
+    meditation_for_japa: |
+      The bhajan voices the question every sincere chanter eventually
+      reaches: when will the Name itself bring tears? Approach today's
+      rounds with that honest, longing question.
+    verses:
+      - label: "1"
+        iast: |
+          'gaurāṅga' bolite habe pulaka-śarīra
+          'hari hari' bolite nayane ba'be nīra
+        translation: |
+          When will that opportune moment come to us when there will be
+          shivering of the body as soon as we chant Lord Gaurāṅga's
+          name? While chanting Hare Kṛṣṇa, when will there be tears in
+          the eyes?
+      - label: "2"
+        iast: |
+          āra kabe nitāi-cāṅder koruṇā hoibe
+          saṁsāra-bāsanā mora tuccha ha'be
+        translation: |
+          When will I obtain the mercy of Lord Nityānandacandra? When,
+          by His mercy, will the desire for material enjoyment become
+          very insignificant?
+      - label: "3"
+        iast: |
+          viṣaya chāḍiyā kabe śuddha ha'be mana
+          kabe hāma herabo śrī-bṛndābana
+        translation: |
+          When the mind is completely purified, being freed from
+          material anxieties and desires, then I shall be able to
+          understand Vṛndāvana and the conjugal love of Rādhā and
+          Kṛṣṇa, and then my spiritual life will be successful.
+      - label: "4"
+        iast: |
+          rūpa-raghunātha-pade hoibe ākuti
+          kabe hāma bujhabo se jugala-pirīti
+        translation: |
+          When shall I be very much eager to study the books left by the
+          Six Gosvāmīs, headed by Śrīla Rūpa Gosvāmī and Śrīla
+          Raghunātha Dāsa Gosvāmī? By their instruction I shall be able
+          to properly understand the loving affairs of Rādhā and Kṛṣṇa.
+      - label: "5"
+        iast: |
+          rūpa-raghunātha-pade rahu mora āśa
+          prārthanā koroye sadā narottama-dāsa
+        translation: |
+          My only aspiration is to attain the lotus feet of the Six
+          Gosvāmīs headed by Śrīla Rūpa Gosvāmī and Śrīla Raghunātha
+          Dāsa Gosvāmī. Narottama Dāsa constantly prays to attain their
+          lotus feet.
 
-  - title: "Hari Hari, Bifale Janama Gonainu"
-    author: "Narottama Dasa Thakura"
-    verse_iast: "hari hari, biphale janama goṅāinu | manuṣya-janama pāiyā, rādhā-kṛṣṇa nā bhajiyā, jāniyā śuniyā biṣa khāinu ||"
-    verse_translation: "O Hari, O Hari, I have wasted my life in vain. Having obtained a human birth, I did not worship Sri Radha and Sri Krishna — knowingly, I drank poison."
-    source: "Prarthana by Narottama Dasa Thakura"
-
-  - title: "Sri Damodarastakam"
-    author: "Satyavrata Muni (recited in the month of Karttika)"
-    verse_iast: "namāmīśvaraṁ sac-cid-ānanda-rūpaṁ lasat-kuṇḍalaṁ gokule bhrājamānam | yaśodā-bhiyolūkhalād dhāvamānaṁ parāmṛṣṭam atyantato drutya gopyā ||"
-    verse_translation: "I offer my obeisances unto the Supreme Lord, whose form is eternal bliss and knowledge, whose ear-rings are swinging as He plays in Gokula. Fleeing in fear from mother Yasoda after breaking the butter pot, He was caught by her, who chased Him swiftly."
-    source: "Damodarastakam from Padma Purana, recited in Karttika"
-
-  - title: "Ohe Vaisnava Thakura"
-    author: "Bhaktivinoda Thakura"
-    verse_iast: "ohe! vaiṣṇava ṭhākura, dayāra sāgara, e dāse karuṇā kari' | diyā pada-chāyā, śodho he āmāya, tomāra caraṇa dhori ||"
-    verse_translation: "O respected Vaishnava, ocean of mercy, please be kind to this servant. Give me the shade of your feet and purify me. I cling to your feet."
-    source: "Saranagati by Bhaktivinoda Thakura"
-
-  - title: "Gauranga Bolite Habe"
-    author: "Narottama Dasa Thakura"
-    verse_iast: "gaurāṅga' bolite habe pulaka-śarīra | hari' hari' bolite nayane ba'be nīra ||"
-    verse_translation: "When will that day come when, simply by uttering 'Gauranga,' my hair will stand on end? When, simply by chanting 'Hari! Hari!,' tears will flow from my eyes?"
-    source: "Prarthana by Narottama Dasa Thakura"
-
-  - title: "Krsna Deva! Bhavantam Vande"
-    author: "Rupa Gosvami"
-    verse_iast: "kṛṣṇa-deva! bhavantam vande man-mānasa-madhukaram arpaya nija-pāda-paṅkaja-prema-dīrgha-praṇaya-mākaraṇaye ||"
-    verse_translation: "O Lord Krishna! I bow to You — please offer the bee of my mind a place on the lotus of Your feet, that long-lasting love for You may grow."
-    source: "Stava-mala by Rupa Gosvami"
+  - title: "Gaurāṅgera Duṭi Pada — The Glories of Śrī Gaurāṅga"
+    author: "Narottama Dāsa Ṭhākura"
+    source: "Prārthanā — Sāvaraṇa-Śrī-Gaura-mahimā"
+    chanting_mood: "Gauranga's lotus feet as the qualifier — only by His feet does devotion become real."
+    meditation_for_japa: |
+      The bhajan unfolds the consequences of accepting Gaurāṅga's feet:
+      taste, ecstasy, understanding of pastimes, association with the
+      devotees. Read it once and approach japa with one specific verse
+      held in mind for that round.
+    verses:
+      - label: "1"
+        iast: |
+          gaurāṅgera duṭi pada, jār dhana sampada,
+          se jāne bhakati-rasa-sār
+          gaurāṅgera madhura-līlā, jāra karṇe praveśilā,
+          hṛdoya nirmala bhelo tār
+        translation: |
+          Anyone who has accepted the two lotus feet of Lord Caitanya
+          can understand the true essence of devotional service. If one
+          is captivated by the pleasing pastimes of Lord Caitanya, the
+          dirty things in his heart will all become cleansed.
+      - label: "2"
+        iast: |
+          je gaurāṅgera nāma loy, tāra hoy premodoy,
+          tāre mui jāi bolihāri
+          gaurāṅga-guṇete jhure, nitya-līlā tāre sphure,
+          se jana bhakati-adhikārī
+        translation: |
+          One who simply takes the holy name of Gaurasundara, Śrī Kṛṣṇa
+          Caitanya, will immediately develop love of God. To such a
+          person I say: "Bravo! Very nice! Excellent!" If one
+          appreciates the merciful pastimes of Lord Caitanya and feels
+          ecstasy and sometimes cries, this process will immediately
+          help him to understand the eternal pastimes of Rādhā-Kṛṣṇa.
+      - label: "3"
+        iast: |
+          gaurāṅgera saṅgi-gaṇe, nitya-siddha kori māne,
+          se jāy brajendra-suta-pāś
+          śrī-gauḍa-maṇḍala-bhūmi, jebā jāne cintāmaṇi,
+          tāra hoy braja-bhūme bās
+        translation: |
+          Simply by understanding that the associates of Lord Gaurāṅga
+          are eternally free from material contamination, one can
+          immediately be promoted to the transcendental abode of Lord
+          Kṛṣṇa. If one simply understands that the land of Navadvīpa is
+          not different from Vṛndāvana, then he actually lives in
+          Vṛndāvana.
+      - label: "4"
+        iast: |
+          gaura-prema-rasārṇave, śe taraṅge jebā ḍube,
+          se rādhā-mādhava-antaraṅga
+          gṛhe vā vanete thāke, 'hā gaurāṅga' bo'le ḍāke,
+          narottama māge tāra saṅga
+        translation: |
+          If one says: "Let me dive deep into the waves of the
+          nectarean transcendental loving movement introduced by Lord
+          Caitanya," he immediately becomes one of the confidential
+          devotees of Rādhā and Kṛṣṇa. It does not matter whether one
+          is a householder living at home or a vānaprastha or sannyāsī
+          living in the forest, if he chants "O Gaurāṅga," and becomes
+          a devotee of Lord Caitanya, then Narottama Dāsa begs to have
+          his association.
