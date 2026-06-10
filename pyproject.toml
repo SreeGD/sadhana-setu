@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sadhana-setu"
+version = "0.1.0"
+description = "A sastra-grounded sadhana companion (ISKCON, single-user, local-first)"
+requires-python = ">=3.11"
+readme = "README.md"
+dependencies = [
+    "streamlit>=1.40",
+    "mcp>=1.0",
+    "scipy>=1.13",
+    "pingouin>=0.5.5",
+    "python-dateutil>=2.9",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+]
+
+[project.scripts]
+sadhana-setu = "sadhana_setu.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["sadhana_setu*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

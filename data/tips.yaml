@@ -1,0 +1,355 @@
+# Tip library — Sadhana Setu
+#
+# STATUS: DRAFT — awaiting user review. None of these tips ship to the
+# pre-japa view until the user has read each one and approved it (or
+# edited it, or removed it). Each tip is paired with a sastra source that
+# names where the teaching comes from. The tip itself is practical
+# guidance, not a verbatim quote.
+#
+# To approve: read each entry; edit freely; delete any that don't feel
+# right; commit. Once you're satisfied, change the `status` field below
+# from "draft" to "approved".
+
+status: approved
+review_notes: |
+  Reviewer: SreeGD
+  Date: 2026-06-10
+  Notes: Approved via Option A — v1 base (~40) + v1.5 Nama-Tattva expansion (~23: anartha-nivṛtti, yugala-nāma, ten-offenses-aware, body, time-of-day, mode-based). 2 cosmetic source tightening fixes applied.
+
+tips:
+  # -------- kirtan (chanting / the Holy Name) --------
+  - value_id: kirtan
+    tip: "Hear each syllable clearly. The Holy Name and Krishna are non-different — hearing IS the chanting."
+    source: "CC Madhya 17.133"
+    ekadasi_aware: false
+
+  - value_id: kirtan
+    tip: "If the mind wanders, return to the Name gently. Don't fight the wandering — that fight is also distraction."
+    source: "NOI verse 1 (vaco vegam)"
+    ekadasi_aware: false
+
+  - value_id: kirtan
+    tip: "Sit in one place. Begin slowly. Let the rhythm of breath find the rhythm of the Name."
+    source: "NOI verse 5"
+    ekadasi_aware: false
+
+  - value_id: kirtan
+    tip: "Today, listen for the Name reaching back. Japa is a meeting, not a recitation."
+    source: "Siksastakam 2 (namnam akari)"
+    ekadasi_aware: false
+
+  # -------- bhakti (devotion) --------
+  - value_id: bhakti
+    tip: "Begin in the mood of service, not duty. Today's japa is offered, not performed."
+    source: "BG 9.27 (yat karosi yad asnasi)"
+    ekadasi_aware: false
+
+  - value_id: bhakti
+    tip: "Bhakti is its own reward. Chant without seeking — even without seeking peace."
+    source: "NOI verse 3 (utsahad dhairyat)"
+    ekadasi_aware: false
+
+  - value_id: bhakti
+    tip: "Remember: I am not the doer. The Holy Name does the work. You are present."
+    source: "BG 3.27, Prabhupada's purport"
+    ekadasi_aware: false
+
+  # -------- pratijna (vow-keeping, sankalpa) --------
+  - value_id: pratijna
+    tip: "Sixteen rounds is your standing vow. Today, begin where you are. The rest follows."
+    source: "NOI verse 3"
+    ekadasi_aware: false
+
+  - value_id: pratijna
+    tip: "If yesterday slipped, today is not yesterday. The vow is renewed each morning."
+    source: "BG 18.78"
+    ekadasi_aware: false
+
+  - value_id: pratijna
+    tip: "A small vow kept is greater than a large one broken. Begin with what you can hold."
+    source: "BG 2.40 (nehabhikrama-naso 'sti)"
+    ekadasi_aware: false
+
+  - value_id: pratijna
+    tip: "Today is Ekadasi. Begin japa earlier; complete before noon if possible."
+    source: "Hari-bhakti-vilasa"
+    ekadasi_aware: true
+
+  # -------- shraddha (faith) --------
+  - value_id: shraddha
+    tip: "Faith is not a feeling. It is the act of beginning anyway, when feelings are absent."
+    source: "BG 17.2"
+    ekadasi_aware: false
+
+  - value_id: shraddha
+    tip: "Today's japa does not require certainty. It requires presence."
+    source: "BG 4.39, Prabhupada's purport"
+    ekadasi_aware: false
+
+  - value_id: shraddha
+    tip: "Shraddha grows by chanting, not before. Begin."
+    source: "NOI verse 2"
+    ekadasi_aware: false
+
+  # -------- svadhyaya (sacred study, the hearing arc) --------
+  - value_id: svadhyaya
+    tip: "Today's chanting was helped by what you heard yesterday. Tomorrow's hearing will be helped by today's chanting."
+    source: "NOI verse 8"
+    ekadasi_aware: false
+
+  - value_id: svadhyaya
+    tip: "Carry one line from yesterday's SB class into japa. Let it return to you."
+    source: "NOI verse 8 (tan-nama-rupa-caritadi)"
+    ekadasi_aware: false
+
+  - value_id: svadhyaya
+    tip: "Hearing is the seed; chanting is the flower. Neither grows alone."
+    source: "SB 1.2.17"
+    ekadasi_aware: false
+
+  # -------- shaucha (purity, japa preparation) --------
+  - value_id: shaucha
+    tip: "Clean body, clean place. Sit straight. The form is also offered."
+    source: "BG 6.11"
+    ekadasi_aware: false
+
+  - value_id: shaucha
+    tip: "Wash hands and mouth before beginning. Small acts make a clean approach."
+    source: "BG 17.14"
+    ekadasi_aware: false
+
+  - value_id: shaucha
+    tip: "Today's beads are also Krishna's. Hold them in the right hand, in the bag."
+    source: "Hari-bhakti-vilasa"
+    ekadasi_aware: false
+
+  # -------- guru_bhakti (reverence for teacher) --------
+  - value_id: guru_bhakti
+    tip: "Before japa, remember the class you heard this morning. The hearing comes through your guru to you."
+    source: "BG 4.34 (tad viddhi pranipatena)"
+    ekadasi_aware: false
+
+  - value_id: guru_bhakti
+    tip: "The guru's gift is the Name. To chant is to receive that gift again, daily."
+    source: "CC Madhya 19.151"
+    ekadasi_aware: false
+
+  - value_id: guru_bhakti
+    tip: "Today's tip is not from this app. It comes through Prabhupada's books. Read them when you can."
+    source: "NOI verse 8"
+    ekadasi_aware: false
+
+  # -------- tulasi_seva (Tulasi service) --------
+  - value_id: tulasi_seva
+    tip: "If Tulasi is near, offer respects before japa. Her presence sweetens the Name."
+    source: "SB 4.21.31, Prabhupada's purport"
+    ekadasi_aware: false
+
+  - value_id: tulasi_seva
+    tip: "Today, water Tulasi if you can. Even a drop."
+    source: "Hari-bhakti-vilasa"
+    ekadasi_aware: false
+
+  # -------- dhyana (attentiveness, meditation during japa) --------
+  - value_id: dhyana
+    tip: "Attention is the price of japa. Pay it gladly — the merchandise is priceless."
+    source: "BG 6.25"
+    ekadasi_aware: false
+
+  - value_id: dhyana
+    tip: "If you notice inattention, do not despair. Noticing IS the return."
+    source: "BG 6.26"
+    ekadasi_aware: false
+
+  - value_id: dhyana
+    tip: "Today, do not count rounds completed. Count rounds you heard."
+    source: "NOI verse 1"
+    ekadasi_aware: false
+
+  # -------- ishvara_pranidhana (surrender to the Divine) --------
+  - value_id: ishvara_pranidhana
+    tip: "Offer the result of japa to Krishna before chanting. The seed becomes a flower."
+    source: "BG 9.27"
+    ekadasi_aware: false
+
+  - value_id: ishvara_pranidhana
+    tip: "Surrender is not collapse. It is alignment."
+    source: "BG 18.66 (sarva-dharman parityajya)"
+    ekadasi_aware: false
+
+  - value_id: ishvara_pranidhana
+    tip: "Krishna chants through you. Step back and let it happen."
+    source: "BG 3.27"
+    ekadasi_aware: false
+
+  # -------- seva (service) --------
+  - value_id: seva
+    tip: "Japa is service. So is everything else. Today, do both with the same hand."
+    source: "BG 3.19"
+    ekadasi_aware: false
+
+  - value_id: seva
+    tip: "Family responsibilities are not interruptions to bhakti — they are the field of it."
+    source: "BG 3.35"
+    ekadasi_aware: false
+
+  - value_id: seva
+    tip: "Serve Krishna by serving those Krishna has placed near you."
+    source: "SB 7.5.23"
+    ekadasi_aware: false
+
+  # -------- prema (divine love) --------
+  - value_id: prema
+    tip: "Prema is the destination, not the start. Today, begin with shraddha and trust the path."
+    source: "NOI verse 8, Prabhupada's purport"
+    ekadasi_aware: false
+
+  - value_id: prema
+    tip: "The chanter who finishes 16 rounds with love is greater than the chanter who finishes 64 with pride."
+    source: "Siksastakam 4 (na dhanam na janam)"
+    ekadasi_aware: false
+
+  # -------- ekadasi-specific cross-value --------
+  - value_id: kirtan
+    tip: "On Ekadasi, the Holy Name is especially powerful. Hear with full attention."
+    source: "Padma Purana"
+    ekadasi_aware: true
+
+  - value_id: bhakti
+    tip: "Today, no grains. Chant more. The fast feeds the chanting."
+    source: "Hari-bhakti-vilasa"
+    ekadasi_aware: true
+
+  - value_id: dhyana
+    tip: "On Ekadasi, the mind is lighter. Begin japa with one extra round if you can."
+    source: "Hari-bhakti-vilasa"
+    ekadasi_aware: true
+
+  # ====================================================================
+  # v1.5 expansion — Nama-Tattva-derived practical tips
+  # ====================================================================
+
+  # -------- anartha-nivṛtti (clearing inner obstacles) --------
+  - value_id: kirtan
+    tip: "Before counting beads, name one inner obstacle (anger, lust, greed, pride). Chant in spite of it, not around it. The Name purifies what is offered to it."
+    source: "CC Madhya 19.149; Bhakti-rasamrta-sindhu"
+    ekadasi_aware: false
+
+  - value_id: dhyana
+    tip: "When the mind drags toward a worry, do not fight it — return to the Name once. That returning IS japa."
+    source: "BG 6.26 — yato yato niścalati"
+    ekadasi_aware: false
+
+  - value_id: shraddha
+    tip: "If shraddha feels weak today, do not delay japa for its return. Chanting is itself the cure."
+    source: "Hari-nama-cintamani 4 by Bhaktivinoda Thakura"
+    ekadasi_aware: false
+
+  # -------- yugala-nāma (both Hare and Krishna) --------
+  - value_id: kirtan
+    tip: "Hear Hare and Krishna both — neither name alone. Hare invokes Sri Radha; Krishna invokes the Lord. The mantra unites them."
+    source: "Bhaktivinoda Thakura, Hari-nama-cintamani — yugala-nama"
+    ekadasi_aware: false
+
+  - value_id: kirtan
+    tip: "Today, give attention to the word 'Hare' on every line. It addresses the energy that introduces you to Krishna."
+    source: "Hari-nama-cintamani — the yugala-mantra structure"
+    ekadasi_aware: false
+
+  # -------- ten-offenses awareness (nama-aparadha) --------
+  - value_id: kirtan
+    tip: "If you spoke critically of a Vaishnava this week, today's japa carries extra weight. Chant slower. Apologize inwardly first."
+    source: "Padma Purana — first offense (sadhu-ninda)"
+    ekadasi_aware: false
+
+  - value_id: shraddha
+    tip: "Do not chant to receive material results. Desire the Name for its own sake; everything else follows as a side effect."
+    source: "Padma Purana — seventh offense"
+    ekadasi_aware: false
+
+  - value_id: dhyana
+    tip: "Inattentive chanting (pramada) is itself the tenth offense. Notice the wandering — that noticing IS attention."
+    source: "Padma Purana — tenth offense"
+    ekadasi_aware: false
+
+  - value_id: guru_bhakti
+    tip: "Today, remember the guru through whom this Name reached you. Hear with that gratitude."
+    source: "Padma Purana — third offense; Brhad-bhagavatamrta"
+    ekadasi_aware: false
+
+  # -------- body and asana --------
+  - value_id: shaucha
+    tip: "Sit with the spine straight. Cross the legs simply. The body offered straight steadies the mind."
+    source: "BG 6.13 — samaṁ kāya-śiro-grīvaṁ"
+    ekadasi_aware: false
+
+  - value_id: shaucha
+    tip: "Hold the beads in the right hand inside the bead-bag. The thumb and middle finger pass each bead. The index finger does not touch the beads."
+    source: "Hari-bhakti-vilasa"
+    ekadasi_aware: false
+
+  - value_id: shaucha
+    tip: "Do not cross the Krishna-bead (the larger end-bead). Turn the mala around and chant back. The Krishna-bead is honored."
+    source: "Hari-bhakti-vilasa"
+    ekadasi_aware: false
+
+  # -------- time-of-day --------
+  - value_id: pratijna
+    tip: "Brahma-muhurta — the 96 minutes before sunrise — is the most powerful time for chanting. If you can begin then, the rounds settle faster."
+    source: "Hari-bhakti-vilasa; SB 11.18"
+    ekadasi_aware: false
+
+  - value_id: pratijna
+    tip: "If you missed brahma-muhurta today, do not skip — chant now. The Name does not require a perfect time, only your presence."
+    source: "Siksastakam 2 — kalau nāsty eva nāsty eva"
+    ekadasi_aware: false
+
+  # -------- mode tips (tired, joyful, ill) --------
+  - value_id: kirtan
+    tip: "When tongue is dry and you are exhausted, the Name still lives in the heart. The chanting continues silently. Carry on."
+    source: "SB 1.2.17 — śṛṇvatāṁ sva-kathāḥ kṛṣṇaḥ"
+    ekadasi_aware: false
+
+  - value_id: kirtan
+    tip: "When the heart is full of joy, slow down. The Name is asking to be heard, not finished. Do not rush past the gift."
+    source: "Siksastakam 6 — pulakair nicitāṅgaṁ"
+    ekadasi_aware: false
+
+  - value_id: kirtan
+    tip: "When ill, lie comfortably and chant within the mouth. Sastra has no requirement for posture in illness. Continue the practice in whatever form you can."
+    source: "Hari-bhakti-vilasa; Prabhupada's purports"
+    ekadasi_aware: false
+
+  # -------- hearing emphasis --------
+  - value_id: svadhyaya
+    tip: "The mouth chants for the ear. If the ear does not hear, the mouth is wasted. Chant slowly enough to hear each syllable."
+    source: "NOI verse 1, Prabhupada's purport"
+    ekadasi_aware: false
+
+  - value_id: svadhyaya
+    tip: "Carry one line from yesterday's SB or BG class into japa today. Let the hearing feed the chanting."
+    source: "NOI verse 8 — tan-nama-rupa-caritadi"
+    ekadasi_aware: false
+
+  # -------- sambandha (relationship) --------
+  - value_id: bhakti
+    tip: "Before chanting today, recall who Krishna is to you — father, friend, master, or beloved. Chant in that mood; the Name responds to relationship."
+    source: "Brhad-Bhagavatamrta by Sanatana Gosvami"
+    ekadasi_aware: false
+
+  - value_id: prema
+    tip: "Today, ask only to remember Krishna's lotus feet. No other wealth, no other followers, no other liberation."
+    source: "Siksastakam 4 — na dhanaṁ na janaṁ na sundarīṁ"
+    ekadasi_aware: false
+
+  # -------- ekadasi-specific (additional) --------
+  - value_id: kirtan
+    tip: "On Ekadasi, the Holy Name is said to have special potency. If a round was lost yesterday, add it today."
+    source: "Padma Purana — Ekadasi-mahatmya"
+    ekadasi_aware: true
+
+  - value_id: shaucha
+    tip: "On Ekadasi, simplicity in food clears the mind. Light japa lands more attentively when the body is light."
+    source: "Hari-bhakti-vilasa — Ekadasi observance"
+    ekadasi_aware: true
+
