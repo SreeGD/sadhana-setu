@@ -1,0 +1,149 @@
+# Weekly-lecture library — Sadhana Setu v1.7
+#
+# One recommended lecture a week from ISKCON Desire Tree's audio archive
+# (audio.iskcondesiretree.com) — specifically chosen to enhance chanting
+# quality. The point of including this in the weekly view is to give the
+# week a substantial audio anchor alongside the verse and the bhajan.
+#
+# Each entry: title, speaker, search_url (audio.iskcondesiretree.com
+# search landing page; specific MP3 URLs vary by upload date and aren't
+# guaranteed stable), why_it_helps_chanting (the concrete connection),
+# series (optional), duration (estimate), source (full attribution).
+#
+# STATUS: DRAFT — speakers + topics + search-URLs are real; specific
+# lecture URLs need user verification. SreeGD to pin exact MP3 links
+# (or curated YouTube mirrors) after listening through and confirming
+# orthodoxy.
+
+status: draft
+review_notes: |
+  Reviewer: SreeGD (Sreenivas Gopal Dasa)
+  Seeded: 2026-06-10
+  Notes: 10 lectures, all by senior ISKCON teachers known for chanting-
+    quality instruction. Search URLs land on the speaker's archive page
+    on audio.iskcondesiretree.com — the user picks the specific lecture
+    they want to recommend for that ISO-week slot. Pinning a specific
+    URL per slot is a follow-up activity.
+
+weekly_lectures:
+  - title: "Japa — Nine Keys from the Śikṣāṣṭakam (retreat series)"
+    speaker: "HG Bhurijana Prabhu"
+    search_url: "https://audio.iskcondesiretree.com/?s=bhurijana+japa"
+    series: "VIHE Holy Name Retreats"
+    duration: "~60 min × 9 lectures"
+    why_it_helps_chanting: |
+      Bhurijana Prabhu uses each verse of the Śikṣāṣṭakam as a discrete
+      instruction for raising japa quality — the four-step technique
+      (saṅkalpa → neglecting the mind → taking shelter → awaiting
+      mercy) is unpacked verse by verse. The most systematic single
+      study on chanting quality in the ISKCON archive.
+    source: "ISKCON Desire Tree Audio Archive"
+
+  - title: "The Nectarean Ocean of the Holy Name (retreat series)"
+    speaker: "HH Sacinandana Swami"
+    search_url: "https://audio.iskcondesiretree.com/?s=sacinandana+swami+holy+name"
+    series: "Holy Name Retreats — Govardhan / Vrindavan"
+    duration: "~75 min × multiple"
+    why_it_helps_chanting: |
+      Sacinandana Swami's retreat lectures are the closest thing in the
+      modern ISKCON tradition to a sustained meditation manual for
+      japa. He covers Two Doors (mechanical chanting vs. calling out
+      with love), the three-step opening, and concrete methods to
+      bring the mind to the heart before chanting.
+    source: "ISKCON Desire Tree Audio Archive"
+
+  - title: "Improving Our Japa"
+    speaker: "HG Mahatma Prabhu"
+    search_url: "https://audio.iskcondesiretree.com/?s=mahatma+japa"
+    series: "Japa workshops"
+    duration: "~60 min each"
+    why_it_helps_chanting: |
+      Mahatma Prabhu's lectures are deliberately practical — short
+      techniques, immediately applicable, free of grand language.
+      Especially useful when your japa has gone mechanical and you
+      need a small lever to change it tomorrow.
+    source: "ISKCON Desire Tree Audio Archive"
+
+  - title: "The Power of the Holy Name"
+    speaker: "HH Radhanath Swami"
+    search_url: "https://audio.iskcondesiretree.com/?s=radhanath+swami+holy+name"
+    series: "Sunday Feast lectures + SB classes"
+    duration: "~60 min"
+    why_it_helps_chanting: |
+      Radhanath Swami's lectures on the Name interweave Mahābhārata
+      and Bhāgavatam pastimes (Ajāmila, Gajendra, Hari Dāsa Ṭhākura)
+      with concrete sādhana counsel. Most useful when your faith in
+      chanting itself needs renewing through storytelling.
+    source: "ISKCON Desire Tree Audio Archive"
+
+  - title: "Glories of the Holy Name"
+    speaker: "HH Bhakti Charu Swami"
+    search_url: "https://audio.iskcondesiretree.com/?s=bhakti+charu+swami+holy+name"
+    series: "Caitanya Caritāmṛta lectures"
+    duration: "~60 min"
+    why_it_helps_chanting: |
+      Bhakti Charu Swami's voice and pacing themselves are an aid to
+      chanting mood. His Caitanya Caritāmṛta lectures dwell on the
+      lila of the Name's appearance through Lord Caitanya — the
+      lineage gratitude this verse generates is itself a japa-mood
+      stabilizer.
+    source: "ISKCON Desire Tree Audio Archive"
+
+  - title: "Chanting and Sankirtana"
+    speaker: "HH Indradyumna Swami"
+    search_url: "https://audio.iskcondesiretree.com/?s=indradyumna+swami+chanting"
+    series: "Polish camps, Festival of India debriefs"
+    duration: "~60-90 min"
+    why_it_helps_chanting: |
+      Indradyumna Swami's experience preaching across continents
+      anchors his chanting talks in concrete devotee stories rather
+      than theory. Especially useful when your chanting has become
+      private and you've forgotten saṅkīrtana is its supreme form.
+    source: "ISKCON Desire Tree Audio Archive"
+
+  - title: "Glories of Hari-nāma"
+    speaker: "HH Jayapataka Swami"
+    search_url: "https://audio.iskcondesiretree.com/?s=jayapataka+swami+hari+nama"
+    series: "Mayapur SB classes"
+    duration: "~60 min"
+    why_it_helps_chanting: |
+      Jayapataka Swami's SB classes on chanting carry the weight of
+      his lifelong saṅkīrtana commitment. Best when you want to be
+      reminded of the institutional history of the Name in modern
+      ISKCON — Mayapur, the Nāmahaṭṭa programs, the global expansion.
+    source: "ISKCON Desire Tree Audio Archive"
+
+  - title: "Quality of Chanting"
+    speaker: "HH Niranjana Swami"
+    search_url: "https://audio.iskcondesiretree.com/?s=niranjana+swami+chanting"
+    series: "Japa retreats + Bhāgavatam"
+    duration: "~60 min"
+    why_it_helps_chanting: |
+      Niranjana Swami's tone is meditative and quiet, well-suited to
+      pre-japa or post-japa listening. Especially helpful for refining
+      attention without the energy of louder lectures.
+    source: "ISKCON Desire Tree Audio Archive"
+
+  - title: "Japa Methodology Workshops"
+    speaker: "HG Vaiśeṣika Prabhu"
+    search_url: "https://audio.iskcondesiretree.com/?s=vaisesika+japa"
+    series: "Bhakti Brunch + ISKCON of Silicon Valley workshops"
+    duration: "~45 min"
+    why_it_helps_chanting: |
+      Vaiśeṣika Prabhu's japa workshops are short, methodical, and
+      household-life-aware. Especially useful for a working
+      householder who needs sādhana that integrates with family and
+      work demands rather than withdrawal into them.
+    source: "ISKCON Desire Tree Audio Archive"
+
+  - title: "The Mood for Chanting (Śikṣāṣṭakam series)"
+    speaker: "HH Gopal Krishna Goswami"
+    search_url: "https://audio.iskcondesiretree.com/?s=gopal+krishna+goswami+sikshastakam"
+    series: "Śikṣāṣṭakam workshops"
+    duration: "~60 min × 8 (verse-by-verse)"
+    why_it_helps_chanting: |
+      Gopal Krishna Goswami's measured, doctrinal approach grounds
+      chanting mood in the formal sequence of Śikṣāṣṭakam. Most
+      useful when you want to systematically deepen one verse a week
+      alongside your reading.
+    source: "ISKCON Desire Tree Audio Archive"

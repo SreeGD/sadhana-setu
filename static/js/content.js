@@ -76,6 +76,16 @@ export async function weekStory() {
   return pick(items, isoWeek());
 }
 
+export async function weekVerse() {
+  const { items } = await load("weekly_verses");
+  return pick(items, isoWeek());
+}
+
+export async function weekLecture() {
+  const { items } = await load("weekly_lectures");
+  return pick(items, isoWeek());
+}
+
 export async function weekQuestions(n = 3) {
   const { items } = await load("weekly_questions");
   const week = isoWeek();

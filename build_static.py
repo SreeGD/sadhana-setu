@@ -29,6 +29,8 @@ LIBRARIES = {
     "japa_methods": ("methods", "items"),
     "weekly_questions": ("questions", "items"),
     "daily_verses": ("daily_verses", "items"),
+    "weekly_verses": ("weekly_verses", "items"),
+    "weekly_lectures": ("weekly_lectures", "items"),
 }
 
 # Files where we just pass the entire YAML through (no rotation; the

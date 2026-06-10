@@ -1,8 +1,12 @@
-// This Week view — weekly reading + japa method + story + week-at-a-glance.
+// This Week view — week-at-a-glance + verse + reading + bhajan + japa
+// method + lecture + story. Weekly rotation by ISO week.
 
-import { weekReading, weekJapaMethod, weekStory } from "../content.js";
 import {
-  mostRecentSaturday, addDays, todayISO, el, formatDate
+  weekReading, weekJapaMethod, weekStory,
+  weekVerse, weekBhajan, weekLecture,
+} from "../content.js";
+import {
+  mostRecentSaturday, addDays, el, formatDate
 } from "../util.js";
 import * as store from "../store.js";
 
@@ -35,9 +39,58 @@ function weekDots(saturdayDate) {
   return grid;
 }
 
+function verseCard(v) {
+  return el("div", { class: "view-card weekly-verse-card" },
+    el("div", { class: "card-label" }, `WEEKLY VERSE · ${v.source_label}`),
+    el("h3", {}, v.verse_ref),
+    v.iast ? el("div", { class: "verse-iast", html: v.iast.replace(/\n/g, "<br>") }) : null,
+    v.translation ? el("p", { class: "verse-translation" }, v.translation) : null,
+    v.essence ? el("p", { style: "font-style:italic; color:var(--ink-soft);" },
+      el("strong", {}, "Essence: "), v.essence) : null,
+    v.chanting_application ? el("p", { class: "verse-connection" },
+      el("strong", {}, "This week, carry into japa: "),
+      v.chanting_application) : null,
+    el("p", { class: "card-cite" }, "— " + (v.source || "")),
+  );
+}
+
+function bhajanCard(b) {
+  return el("div", { class: "view-card weekly-bhajan-card" },
+    el("div", { class: "card-label" }, "WEEKLY BHAJAN"),
+    el("h3", {}, b.title),
+    el("p", { style: "color:var(--muted); margin-top:-0.3rem;" }, "by " + (b.author || "")),
+    b.verse_iast ? el("div", { class: "verse-iast", html: b.verse_iast.replace(/\n/g, "<br>") }) : null,
+    b.verse_translation ? el("p", {}, b.verse_translation) : null,
+    el("p", { class: "card-cite" }, "— " + (b.source || "")),
+  );
+}
+
+function lectureCard(l) {
+  const listenBtn = el("a", {
+    href: l.search_url || "https://audio.iskcondesiretree.com/",
+    target: "_blank",
+    rel: "noopener",
+    class: "lecture-listen",
+  }, "Listen on audio.iskcondesiretree.com →");
+
+  return el("div", { class: "view-card weekly-lecture-card" },
+    el("div", { class: "card-label" }, "WEEKLY LECTURE · audio.iskcondesiretree.com"),
+    el("h3", {}, l.title),
+    el("p", { style: "color:var(--muted); margin-top:-0.3rem;" },
+      "by " + (l.speaker || ""),
+      l.series ? "  ·  " + l.series : "",
+      l.duration ? "  ·  " + l.duration : "",
+    ),
+    l.why_it_helps_chanting ? el("p", { style: "white-space: pre-wrap;" }, l.why_it_helps_chanting) : null,
+    el("div", { style: "margin-top: 0.6rem;" }, listenBtn),
+    el("p", { class: "card-cite" }, "— " + (l.source || "ISKCON Desire Tree Audio Archive")),
+  );
+}
+
 export async function render(root) {
-  const [reading, method, story] = await Promise.all([
+  const [reading, method, story, verse, bhajan, lecture] = await Promise.all([
     weekReading(), weekJapaMethod(), weekStory(),
+    weekVerse(), weekBhajan(), weekLecture(),
   ]);
 
   const sat = mostRecentSaturday();
@@ -48,13 +101,16 @@ export async function render(root) {
     "Week of ", formatDate(weekStart), " — ", formatDate(sat)
   ));
 
-  // Week at a glance
+  // 1. Week at a glance
   root.appendChild(el("div", { class: "view-card" },
     el("h3", {}, "Week at a glance"),
     weekDots(sat),
   ));
 
-  // Reading
+  // 2. Weekly verse
+  if (verse) root.appendChild(verseCard(verse));
+
+  // 3. Weekly reading (longer essay)
   root.appendChild(el("div", { class: "view-card" },
     el("div", { class: "card-label" }, "WEEKLY READING · " + (reading.reading_minutes || "?") + " min"),
     el("h3", {}, reading.title),
@@ -63,7 +119,10 @@ export async function render(root) {
     el("p", { class: "card-cite" }, "— " + reading.source),
   ));
 
-  // Japa method
+  // 4. Weekly bhajan
+  if (bhajan) root.appendChild(bhajanCard(bhajan));
+
+  // 5. Japa method
   root.appendChild(el("div", { class: "view-card" },
     el("div", { class: "card-label" }, "JAPA METHOD · " + (method.duration_minutes || "?") + " min"),
     el("h3", {}, method.name),
@@ -84,7 +143,10 @@ export async function render(root) {
     el("p", { class: "card-cite" }, "— " + method.source),
   ));
 
-  // Story
+  // 6. Weekly lecture
+  if (lecture) root.appendChild(lectureCard(lecture));
+
+  // 7. Weekly story
   root.appendChild(el("div", { class: "view-card" },
     el("div", { class: "card-label" }, "WEEKLY STORY"),
     el("h3", {}, story.title),

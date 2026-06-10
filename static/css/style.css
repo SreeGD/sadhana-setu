@@ -128,6 +128,40 @@ body {
   margin-bottom: 1rem;
   box-shadow: var(--shadow);
 }
+
+.weekly-verse-card { border-left-color: var(--gold); background: #FFFDF5; }
+.weekly-bhajan-card { border-left-color: #C77800; background: #FFFAF0; }
+.weekly-lecture-card { border-left-color: #2E5C99; background: #F5F8FD; }
+.weekly-lecture-card .card-label { color: #2E5C99; }
+
+.lecture-listen {
+  display: inline-block;
+  background: #2E5C99;
+  color: #FFFBF3;
+  padding: 0.55rem 1.1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: background 0.15s ease;
+}
+.lecture-listen:hover { background: #1E4880; }
+
+.weekly-verse-card .verse-iast,
+.weekly-bhajan-card .verse-iast {
+  color: var(--gold);
+  font-style: italic;
+  text-align: center;
+  line-height: 1.7;
+  margin: 0.7rem 0;
+}
+.weekly-verse-card .verse-translation { margin: 0.6rem 0; }
+.weekly-verse-card .verse-connection {
+  background: #FFF8E8;
+  border-left: 3px solid var(--gold);
+  padding: 0.5rem 0.8rem;
+  margin: 0.6rem 0;
+}
 .verse-card .verse-summary {
   padding: 0.7rem 1rem;
   cursor: pointer;
