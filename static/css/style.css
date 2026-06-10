@@ -1,0 +1,331 @@
+/* Sadhana Setu — cream + gold palette, serif typography, sastra-respectful. */
+
+:root {
+  --bg: #FFFBF3;
+  --surface: #FFFFFF;
+  --ink: #3D2C1E;
+  --ink-soft: #6B3410;
+  --muted: #8B7355;
+  --gold: #B8860B;
+  --gold-soft: #D4A86A;
+  --rule: #E8D9B5;
+  --card-bg: #FDFBF5;
+  --shadow: 0 1px 2px rgba(184, 134, 11, 0.07);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Garamond, Georgia, "Times New Roman", serif;
+  font-size: 16px;
+  line-height: 1.45;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.2rem 5rem;
+}
+
+/* ---------- topbar ---------- */
+
+.topbar {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 0.9rem 0 0.6rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 0.8rem;
+}
+.topbar .symbol { color: var(--gold); font-size: 1.15rem; }
+.topbar .title  { color: var(--ink-soft); font-size: 1.35rem; font-weight: 600; letter-spacing: 0.02em; }
+.topbar .devanagari { color: var(--gold); font-size: 1.05rem; }
+.topbar .tagline { color: var(--muted); font-style: italic; font-size: 0.92rem; }
+
+/* ---------- tabs ---------- */
+
+.tabs {
+  display: flex;
+  gap: 0.3rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+.tabs button {
+  background: transparent;
+  border: 1px solid var(--rule);
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 0.92rem;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.tabs button:hover { color: var(--ink-soft); border-color: var(--gold-soft); }
+.tabs button.active {
+  background: var(--ink-soft);
+  color: #FFFBF3;
+  border-color: var(--ink-soft);
+}
+.tabs button.tab-secondary { margin-left: auto; opacity: 0.75; }
+
+/* ---------- meta line ---------- */
+
+.meta-line {
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.92rem;
+  margin: 0.4rem 0 1rem;
+  font-style: italic;
+}
+.meta-line strong { color: var(--ink-soft); font-weight: 600; font-style: normal; }
+
+/* ---------- cards ---------- */
+
+.featured-card, .support-card, .book-card, .ekadasi-card, .view-card {
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--gold);
+  border-radius: 6px;
+  padding: 1rem 1.1rem;
+  box-shadow: var(--shadow);
+}
+
+.featured-card {
+  border-left-width: 4px;
+  padding: 1.2rem 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.support-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+}
+.support-grid .support-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 200px;
+}
+
+.book-card { border-left-color: var(--gold-soft); margin-bottom: 1rem; background: #FFF8E8; }
+
+.ekadasi-card { border-left-color: #8B0000; background: #FFF5F5; margin-bottom: 1rem; }
+.ekadasi-card .card-label { color: #8B0000; }
+
+.card-label {
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.72rem;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+.card-title {
+  color: var(--ink-soft);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+.featured-card .card-title { font-size: 1.3rem; }
+.card-body {
+  color: var(--ink);
+  font-size: 1rem;
+  margin-bottom: 0.6rem;
+  flex-grow: 1;
+}
+.featured-card .card-body { font-size: 1.05rem; }
+.support-card .card-body { font-size: 0.93rem; }
+.card-cite {
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-style: italic;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--rule);
+  margin-top: auto;
+}
+
+.view-card { margin-bottom: 1rem; }
+.view-card h3 { margin: 0 0 0.5rem; color: var(--ink-soft); }
+.view-card h4 { margin: 0.8rem 0 0.3rem; color: var(--ink-soft); }
+.view-card p  { margin: 0.4rem 0; }
+
+/* ---------- forms / inputs ---------- */
+
+label.field {
+  display: block;
+  margin: 0.8rem 0 0.3rem;
+  color: var(--ink-soft);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+input[type="number"], input[type="text"], textarea, select {
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--ink);
+  padding: 0.5rem 0.7rem;
+}
+textarea { min-height: 80px; resize: vertical; }
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--gold);
+  box-shadow: 0 0 0 2px rgba(184, 134, 11, 0.15);
+}
+
+button.primary, button.secondary {
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+button.primary {
+  background: var(--ink-soft);
+  color: #FFFBF3;
+  border: 1px solid var(--ink-soft);
+}
+button.primary:hover { background: var(--gold); border-color: var(--gold); }
+button.secondary {
+  background: transparent;
+  color: var(--ink-soft);
+  border: 1px solid var(--rule);
+}
+button.secondary:hover { border-color: var(--gold-soft); }
+
+/* ---------- rounds counter (Today view) ---------- */
+
+.rounds-counter {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+  margin: 1rem 0;
+}
+.rounds-counter button {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 1px solid var(--rule);
+  background: var(--card-bg);
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--ink-soft);
+}
+.rounds-counter .count {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  min-width: 4rem;
+  text-align: center;
+}
+.rounds-counter .label { color: var(--muted); font-size: 0.9rem; }
+
+/* ---------- week dots (Saturday/This Week) ---------- */
+
+.week-dots {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.4rem;
+  margin: 0.6rem 0;
+}
+.week-dots .day {
+  text-align: center;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 0.4rem 0.2rem;
+  font-size: 0.85rem;
+  background: var(--card-bg);
+}
+.week-dots .day .label { color: var(--muted); font-size: 0.7rem; }
+.week-dots .day .count {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+.week-dots .day.complete .count { color: #2E7D32; }
+.week-dots .day.partial  .count { color: #C77800; }
+.week-dots .day.empty    .count { color: var(--muted); }
+
+/* ---------- entry list ---------- */
+
+.entry-list { margin: 0.5rem 0; padding: 0; list-style: none; }
+.entry-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.6rem;
+}
+.entry-list li:last-child { border-bottom: none; }
+.entry-list .when { color: var(--muted); font-size: 0.85rem; flex-shrink: 0; }
+.entry-list .text { flex-grow: 1; }
+.entry-list .delete {
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0.2rem 0.4rem;
+}
+.entry-list .delete:hover { color: #8B0000; }
+
+/* ---------- footer ---------- */
+
+.footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-align: center;
+}
+.footer-sep { margin: 0 0.5rem; }
+
+/* ---------- mobile ---------- */
+
+@media (max-width: 768px) {
+  body { padding: 0 0.8rem 4rem; font-size: 15px; }
+  .topbar { padding: 0.7rem 0 0.5rem; gap: 0.4rem; }
+  .topbar .title { font-size: 1.2rem; }
+  .topbar .tagline { display: none; }
+  .tabs button { padding: 0.35rem 0.7rem; font-size: 0.88rem; }
+  .support-grid { grid-template-columns: 1fr; }
+  .support-grid .support-card { min-height: auto; }
+  .featured-card .card-title { font-size: 1.15rem; }
+  .week-dots .day { font-size: 0.75rem; }
+  .week-dots .day .count { font-size: 1.05rem; }
+  .rounds-counter button { width: 2.5rem; height: 2.5rem; font-size: 1.3rem; }
+  .rounds-counter .count { font-size: 2rem; }
+}
+
+/* ---------- toast ---------- */
+
+#toast {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ink-soft);
+  color: #FFFBF3;
+  padding: 0.6rem 1.2rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+#toast.show { opacity: 1; }

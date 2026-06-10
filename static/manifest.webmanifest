@@ -1,0 +1,10 @@
+{
+  "name": "Sadhana Setu",
+  "short_name": "Sadhana",
+  "description": "A bridge between aspiration and act.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#FFFBF3",
+  "theme_color": "#FFFBF3",
+  "icons": []
+}

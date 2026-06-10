@@ -2,6 +2,8 @@
 
 A sastra-grounded sadhana companion for one ISKCON practitioner. Built as the capstone for the seven-phase agentic development process demonstrated in the parent course.
 
+**Two runtimes in this repo:** a full Streamlit version (this README) and a no-server static version that deploys to GitHub Pages — see [`docs/STATIC_README.md`](docs/STATIC_README.md). The static version uses browser localStorage for the tracker + a Download/Restore JSON workflow for backup and multi-device transfer.
+
 ## Status — v0.1.5 (v1.5 code-complete, draft content awaiting review)
 
 v1 is feature-complete. v1.5 (Option α pre-japa) lands the five-dimension daily view + Saturday Bhajan. **16 tests passing.** Awaiting human review of 5 new content libraries before v1.5 ship.

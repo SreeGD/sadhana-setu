@@ -1,0 +1,160 @@
+{
+  "items": [
+    {
+      "question": "Which day this week did the Holy Name feel closest? Which day felt furthest?",
+      "routes_through": null
+    },
+    {
+      "question": "Was there a moment of attentive chanting you remember from this week?",
+      "routes_through": null
+    },
+    {
+      "question": "Did any of the ten offenses (nama-aparadha) surface that you want to name?",
+      "routes_through": null
+    },
+    {
+      "question": "What did you hear this week that you don't want to forget?",
+      "routes_through": null
+    },
+    {
+      "question": "Which value from last week's sankalpa is taking root, and which is still struggling?",
+      "routes_through": null
+    },
+    {
+      "question": "Read Siksastakam verse 1 (cetto-darpana-marjanam). Which dust is the Name washing off you this week?",
+      "routes_through": "Siksastakam 1"
+    },
+    {
+      "question": "Read Siksastakam verse 2 (namnam akari). Which of Krishna's names called to you most this week?",
+      "routes_through": "Siksastakam 2"
+    },
+    {
+      "question": "Read Siksastakam verse 3 (trnad api sunicena). Which line spoke to your week?",
+      "routes_through": "Siksastakam 3"
+    },
+    {
+      "question": "Read Siksastakam verse 4 (na dhanam na janam). What did you ask for in japa this week — and what did you really need?",
+      "routes_through": "Siksastakam 4"
+    },
+    {
+      "question": "Read Siksastakam verse 5 (ayi nanda-tanuja). Where did you feel separated from service this week?",
+      "routes_through": "Siksastakam 5"
+    },
+    {
+      "question": "Read Siksastakam verse 6 (nayanam galad-asru). Did even a moment of softness come during japa this week?",
+      "routes_through": "Siksastakam 6"
+    },
+    {
+      "question": "Read Siksastakam verse 7 (yugayitam). Did a single moment of japa feel like an age this week?",
+      "routes_through": "Siksastakam 7"
+    },
+    {
+      "question": "Read Siksastakam verse 8 (aslisya va pada-ratam). What did you offer this week with no expectation in return?",
+      "routes_through": "Siksastakam 8"
+    },
+    {
+      "question": "Read NOI verse 1 (vaco vegam). Which of the six urges (speech, mind, anger, tongue, belly, genitals) took the most from your sadhana this week?",
+      "routes_through": "NOI verse 1"
+    },
+    {
+      "question": "Read NOI verse 2 (atyaharah prayasas ca). Which of the six things that destroy bhakti hurt you most this week?",
+      "routes_through": "NOI verse 2"
+    },
+    {
+      "question": "Read NOI verse 3 (utsahad dhairyat). Of the six (enthusiasm, patience, conviction, following rules, association of devotees, dedicated service) — which was strongest this week? Which is your edge?",
+      "routes_through": "NOI verse 3"
+    },
+    {
+      "question": "Read NOI verse 4 (dadati pratigrhnati). With whom did you exchange bhakti this week — by giving, receiving, eating with, or revealing?",
+      "routes_through": "NOI verse 4"
+    },
+    {
+      "question": "Read NOI verse 5. Whose devotion did you witness this week?",
+      "routes_through": "NOI verse 5"
+    },
+    {
+      "question": "Read NOI verse 7. Did the Holy Name taste sweet this week, or was the tongue still diseased?",
+      "routes_through": "NOI verse 7"
+    },
+    {
+      "question": "Read NOI verse 8. What did you hear, chant, remember, and see this week?",
+      "routes_through": "NOI verse 8"
+    },
+    {
+      "question": "Read BG 18.66 (sarva-dharman parityajya). What did you surrender this week — and what are you still holding?",
+      "routes_through": "BG 18.66"
+    },
+    {
+      "question": "Read BG 9.27 (yat karosi yad asnasi). What did you offer this week without thinking?",
+      "routes_through": "BG 9.27"
+    },
+    {
+      "question": "Read BG 2.40 (nehabhikrama-naso 'sti). Where in sadhana did even a small effort save you this week?",
+      "routes_through": "BG 2.40"
+    },
+    {
+      "question": "Read BG 6.24-25 (sankalpa-prabhavan kaman). Which sankalpa held this week, and which dissolved?",
+      "routes_through": "BG 6.24"
+    },
+    {
+      "question": "Read BG 17.14 (deva-dvija-guru-prajna). Did the body's tapas (sleep, diet, posture) support japa or fight it this week?",
+      "routes_through": "BG 17.14"
+    },
+    {
+      "question": "Read BG 4.34 (tad viddhi pranipatena). Did you serve, ask, and hear from a guru this week?",
+      "routes_through": "BG 4.34"
+    },
+    {
+      "question": "Read SB 1.2.6 (sa vai pumsam paro dharmo). Was your bhakti this week motiveless and uninterrupted, or transactional?",
+      "routes_through": "SB 1.2.6"
+    },
+    {
+      "question": "Read CC Madhya 17.133 (nama cintamanih krsnah). Did you remember this week that the Name and Krishna are non-different — or did you treat the Name as a tool?",
+      "routes_through": "CC Madhya 17.133"
+    },
+    {
+      "question": "Which obstacle did you predict last Saturday — and did it actually happen?",
+      "routes_through": null
+    },
+    {
+      "question": "Was there a day this week you almost gave up japa and didn't? What held you?",
+      "routes_through": null
+    },
+    {
+      "question": "Was there a day you intended to chant before X happened? What was X?",
+      "routes_through": null
+    },
+    {
+      "question": "Whose presence — mentioned or unmentioned — supported your sadhana this week?",
+      "routes_through": null
+    },
+    {
+      "question": "Which family member's presence shaped your sadhana this week — and how?",
+      "routes_through": null
+    },
+    {
+      "question": "If you had one extra hour next week, where would you put it?",
+      "routes_through": null
+    },
+    {
+      "question": "Was hearing SB class different on the days you finished japa first?",
+      "routes_through": null
+    },
+    {
+      "question": "Which time of day was your chanting clearest this week?",
+      "routes_through": null
+    },
+    {
+      "question": "What is one tool — physical or digital — that would have helped you this week?",
+      "routes_through": null
+    },
+    {
+      "question": "Did you drink water before japa this week? Small body, big practice.",
+      "routes_through": null
+    },
+    {
+      "question": "Was there a moment this week when sadhana felt like a chore? What changed it — or didn't?",
+      "routes_through": null
+    }
+  ]
+}
