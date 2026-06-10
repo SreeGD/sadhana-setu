@@ -1,0 +1,88 @@
+# Saturday-check-in dropdown options — Sadhana Setu v1.7
+#
+# Pre-defined choices for tone / bhava / practices / tools, with an
+# "Other" affordance the user can pick to type their own.
+#
+# STATUS: DRAFT — pending SreeGD's review for sastra-rooted phrasing
+# and personal-relevance (these defaults reflect a 52-yr ISKCON
+# householder's sankalpa vocabulary).
+
+status: draft
+review_notes: |
+  Reviewer: SreeGD (Sreenivas Gopal Dasa)
+  Seeded: 2026-06-10
+  Notes: Options drawn from the user's existing schedule (3:30 wake,
+    mangala aarti, SB class, japa-by-9AM, yoga, temple, sleep 10:45),
+    the six-enemies framework, and standard ISKCON sankalpa categories.
+    Free-text "Other" remains for anything outside the list.
+
+tone:
+  - "Returning to early rising"
+  - "Deepening hearing"
+  - "Sharpening attention in japa"
+  - "Renewing prayer"
+  - "Surrender after distraction"
+  - "Steadying after a busy week"
+  - "Sastra-immersion week"
+  - "Sevā focus for family"
+  - "Health and yoga reset"
+
+bhava:
+  - "tṛṇād api sunīcena — lower than a blade of grass"
+  - "taror api sahiṣṇunā — more tolerant than a tree"
+  - "dāsya — servitorship"
+  - "kṛtajñatā — gratitude"
+  - "śaraṇāgati — surrender"
+  - "smaraṇa — constant remembrance"
+  - "ātma-nivedanam — offering of the self"
+  - "viraha — longing in separation"
+  - "kīrtana-rasa — taste of glorification"
+  - "trust in guru-paramparā"
+
+practices:
+  - "Wake by 3:30 AM"
+  - "Mangala-ārati daily"
+  - "16 rounds before 8 AM"
+  - "16 rounds before noon"
+  - "SB class daily"
+  - "BG class twice a week"
+  - "Yoga 4× this week"
+  - "Temple visit"
+  - "Sleep by 10:45 PM"
+  - "No screens after 8 PM"
+  - "Sattvic dinner before 7 PM"
+  - "Tulasi-mālā offerings"
+  - "Read Nāma-tattva pages daily"
+  - "Read Prabhupāda biography pages"
+  - "Mauna (silence) for 1 hour daily"
+  - "Cold water on face before japa"
+  - "P.A.U.S.E. for anger"
+  - "One Krishna pastime before sleep"
+
+tools:
+  - "Beads — fix / replace"
+  - "Bead bag (new)"
+  - "Asana mat / cushion"
+  - "Tulasi-mālā for the neck"
+  - "Japa room arrangement"
+  - "Mobile do-not-disturb 3:30–9:30 AM"
+  - "Mobile do-not-disturb 8:30–10:30 PM"
+  - "BG print copy at desk"
+  - "SB canto / volume (specify in Other)"
+  - "Audio kīrtana playlist"
+  - "Alarm clock (not phone)"
+  - "Lamp / aarati paraphernalia"
+
+priorities:
+  - "Japa quality"
+  - "SB hearing"
+  - "Mangala-ārati"
+  - "Yoga"
+  - "Sleep discipline"
+  - "Sattvic eating"
+  - "Family sevā"
+  - "Father sevā (call / send)"
+  - "Temple sevā"
+  - "Work clarity"
+  - "Health / fitness"
+  - "Sastra-study"

@@ -52,6 +52,10 @@ export async function todayVerse() {
   return pick(items, dayOfYear());
 }
 
+export async function weeklyFormOptions() {
+  return load("weekly_form_options");
+}
+
 export async function weekBhajan() {
   const { items } = await load("bhajans");
   return pick(items, isoWeek());

@@ -273,33 +273,96 @@ button.secondary {
 }
 button.secondary:hover { border-color: var(--gold-soft); }
 
-/* ---------- rounds counter (Today view) ---------- */
+/* ---------- 16-rounds completion picker (Today view) ---------- */
 
-.rounds-counter {
+.completion-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5rem;
+  margin: 0.5rem 0;
+}
+.completion-btn {
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 0.7rem 0.5rem;
+  text-align: center;
+  cursor: pointer;
+  font-family: inherit;
+  color: var(--ink-soft);
+  transition: all 0.15s ease;
+}
+.completion-btn:hover { border-color: var(--gold-soft); }
+.completion-btn .completion-tick {
+  font-size: 1rem;
+  color: var(--gold);
+  font-weight: 600;
+  min-height: 1.1rem;
+}
+.completion-btn .completion-label {
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin: 0.15rem 0;
+}
+.completion-btn .completion-sub {
+  font-size: 0.78rem;
+  color: var(--muted);
+  font-style: italic;
+}
+.completion-btn.selected {
+  background: var(--ink-soft);
+  color: #FFFBF3;
+  border-color: var(--ink-soft);
+}
+.completion-btn.selected .completion-sub { color: rgba(255, 251, 243, 0.8); }
+.completion-btn.selected .completion-tick { color: #FFFBF3; }
+.completion-btn.win-before_8am.selected  { background: #1E6B30; border-color: #1E6B30; }
+.completion-btn.win-before_12pm.selected { background: #2E7D32; border-color: #2E7D32; }
+.completion-btn.win-before_9pm.selected  { background: #C77800; border-color: #C77800; }
+.completion-btn.win-before_11pm.selected { background: #8C5E10; border-color: #8C5E10; }
+
+/* Backwards-compat alias kept for any inline references */
+.rounds-counter { display: none; }
+
+/* ---------- single-select with Other ---------- */
+
+.field-wrap { margin-bottom: 0.5rem; }
+.field-sub { display:block; color: var(--muted); font-size: 0.85rem; margin: 0.4rem 0 0.2rem; }
+select { cursor: pointer; }
+
+/* ---------- multi-select (checkboxes) ---------- */
+
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.3rem 1rem;
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 0.6rem 0.8rem;
+}
+.checkbox-label {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  justify-content: center;
-  margin: 1rem 0;
-}
-.rounds-counter button {
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  border: 1px solid var(--rule);
-  background: var(--card-bg);
-  font-size: 1.5rem;
+  gap: 0.4rem;
+  color: var(--ink);
+  font-size: 0.92rem;
+  padding: 0.2rem 0;
   cursor: pointer;
-  color: var(--ink-soft);
 }
-.rounds-counter .count {
-  font-size: 2.5rem;
-  font-weight: 600;
-  color: var(--ink-soft);
-  min-width: 4rem;
-  text-align: center;
+.checkbox-label input[type="checkbox"] {
+  width: 1.1rem;
+  height: 1.1rem;
+  accent-color: var(--gold);
+  flex-shrink: 0;
+  cursor: pointer;
 }
-.rounds-counter .label { color: var(--muted); font-size: 0.9rem; }
+.checkbox-other {
+  grid-column: 1 / -1;
+  border-top: 1px solid var(--rule);
+  padding-top: 0.4rem;
+  margin-top: 0.2rem;
+}
 
 /* ---------- week dots (Saturday/This Week) ---------- */
 
@@ -326,6 +389,14 @@ button.secondary:hover { border-color: var(--gold-soft); }
 .week-dots .day.complete .count { color: #2E7D32; }
 .week-dots .day.partial  .count { color: #C77800; }
 .week-dots .day.empty    .count { color: var(--muted); }
+.week-dots .day.win-before_8am  { background: #E8F5E8; border-color: #1E6B30; }
+.week-dots .day.win-before_8am .count { color: #1E6B30; }
+.week-dots .day.win-before_12pm { background: #EEF7EE; border-color: #2E7D32; }
+.week-dots .day.win-before_12pm .count { color: #2E7D32; }
+.week-dots .day.win-before_9pm  { background: #FFF5E0; border-color: #C77800; }
+.week-dots .day.win-before_9pm .count { color: #C77800; }
+.week-dots .day.win-before_11pm { background: #FFF8E8; border-color: #8C5E10; }
+.week-dots .day.win-before_11pm .count { color: #8C5E10; }
 
 /* ---------- entry list ---------- */
 
@@ -376,8 +447,10 @@ button.secondary:hover { border-color: var(--gold-soft); }
   .featured-card .card-title { font-size: 1.15rem; }
   .week-dots .day { font-size: 0.75rem; }
   .week-dots .day .count { font-size: 1.05rem; }
-  .rounds-counter button { width: 2.5rem; height: 2.5rem; font-size: 1.3rem; }
-  .rounds-counter .count { font-size: 2rem; }
+  .completion-grid { grid-template-columns: 1fr 1fr; }
+  .completion-btn .completion-label { font-size: 0.9rem; }
+  .completion-btn .completion-sub { font-size: 0.72rem; }
+  .checkbox-grid { grid-template-columns: 1fr; }
 }
 
 /* ---------- toast ---------- */

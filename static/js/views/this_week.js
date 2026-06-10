@@ -14,12 +14,22 @@ function weekDots(saturdayDate) {
     const iso = d.toISOString().slice(0, 10);
     const r = store.getRounds(iso);
     const count = r?.count || 0;
+    const completion = r?.completion;
     let cls = "empty";
-    if (count >= 16) cls = "complete";
-    else if (count > 0) cls = "partial";
+    let badge = "—";
+    if (completion) {
+      cls = "win-" + completion;
+      badge = "🪷";
+    } else if (count >= 16) {
+      cls = "complete";
+      badge = String(count);
+    } else if (count > 0) {
+      cls = "partial";
+      badge = String(count);
+    }
     grid.appendChild(el("div", { class: `day ${cls}` },
       el("div", { class: "label" }, d.toLocaleDateString(undefined, { weekday: "short" })),
-      el("div", { class: "count" }, count > 0 ? String(count) : "—"),
+      el("div", { class: "count" }, badge),
     ));
   }
   return grid;

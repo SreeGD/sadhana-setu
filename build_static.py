@@ -31,6 +31,12 @@ LIBRARIES = {
     "daily_verses": ("daily_verses", "items"),
 }
 
+# Files where we just pass the entire YAML through (no rotation; the
+# JS layer reads named keys directly).
+PASSTHROUGH = {
+    "weekly_form_options",
+}
+
 
 def main() -> None:
     DEST.mkdir(parents=True, exist_ok=True)
@@ -48,6 +54,17 @@ def main() -> None:
         out = DEST / f"{stem}.json"
         out.write_text(json.dumps({out_key: items}, ensure_ascii=False, indent=2))
         print(f"  {src.name:<28} -> {out.relative_to(ROOT)} ({len(items)} entries)")
+
+    # Passthrough libraries (no rotation logic; JS picks fields directly).
+    for stem in PASSTHROUGH:
+        src = SRC / f"{stem}.yaml"
+        if not src.exists():
+            print(f"  ! missing {src}")
+            continue
+        doc = yaml.safe_load(src.read_text())
+        out = DEST / f"{stem}.json"
+        out.write_text(json.dumps(doc, ensure_ascii=False, indent=2))
+        print(f"  {src.name:<28} -> {out.relative_to(ROOT)} (passthrough)")
 
     # Ekadasi is already JSON; copy as-is.
     src_ek = SRC / "ekadasi.json"

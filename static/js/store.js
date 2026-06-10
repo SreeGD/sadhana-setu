@@ -49,6 +49,25 @@ export function decrementRounds(date) {
   return setRounds(date, cur.count - 1, cur.note);
 }
 
+export function setCompletion(date, window) {
+  // window: "before_8am" | "before_12pm" | "before_9pm" | "before_11pm"
+  const s = _read();
+  s.rounds[date] = {
+    count: 16,
+    completion: window,
+    captured_at: _now(),
+    note: s.rounds[date]?.note || null,
+  };
+  _write(s);
+  return s.rounds[date];
+}
+
+export function clearRoundsForDate(date) {
+  const s = _read();
+  delete s.rounds[date];
+  _write(s);
+}
+
 export function roundsBetween(startISO, endISO) {
   const all = _read().rounds;
   return Object.entries(all)
