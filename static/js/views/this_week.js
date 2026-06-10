@@ -6,7 +6,7 @@ import {
   weekVerse, weekBhajan, weekLecture,
 } from "../content.js";
 import {
-  mostRecentSaturday, addDays, el, formatDate
+  upcomingSaturday, addDays, el, formatDate
 } from "../util.js";
 import { weekDots } from "../week_summary.js";
 
@@ -133,7 +133,7 @@ export async function render(root) {
     weekVerse(), weekBhajan(), weekLecture(),
   ]);
 
-  const sat = mostRecentSaturday();
+  const sat = upcomingSaturday();   // Saturday of the calendar week containing today
   const weekStart = addDays(sat, -6);
 
   root.innerHTML = "";

@@ -2,7 +2,7 @@
 // and an Other affordance for free-text entry.
 
 import { weekQuestions, weeklyFormOptions } from "../content.js";
-import { mostRecentSaturday, addDays, el, formatDate, toast } from "../util.js";
+import { upcomingSaturday, addDays, el, formatDate, toast } from "../util.js";
 import { weekDots, summaryLine } from "../week_summary.js";
 import * as store from "../store.js";
 
@@ -90,7 +90,7 @@ function multiSelect(name, options, current) {
 // ----- main render -----
 
 export async function render(root) {
-  const sat = mostRecentSaturday();
+  const sat = upcomingSaturday();   // Saturday of the calendar week containing today
   const satISO = sat.toISOString().slice(0, 10);
   const weekStart = addDays(sat, -6);
   const today = new Date();

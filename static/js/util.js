@@ -25,9 +25,20 @@ export function isoWeek(d = new Date()) {
 }
 
 export function mostRecentSaturday(d = new Date()) {
+  // The Saturday on or before `d`. Used for "the week that just ended".
   const out = new Date(d);
   const daysBack = (d.getDay() + 1) % 7; // Saturday = 6; (6+1)%7 = 0
   out.setDate(out.getDate() - daysBack);
+  out.setHours(0, 0, 0, 0);
+  return out;
+}
+
+export function upcomingSaturday(d = new Date()) {
+  // The Saturday on or after `d` — i.e. the Saturday of the calendar week
+  // that contains `d`. Used for "this week" (Sunday → Saturday containing today).
+  const out = new Date(d);
+  const daysForward = (6 - d.getDay() + 7) % 7;
+  out.setDate(out.getDate() + daysForward);
   out.setHours(0, 0, 0, 0);
   return out;
 }
