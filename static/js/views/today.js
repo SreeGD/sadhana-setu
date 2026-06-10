@@ -1,10 +1,10 @@
-// Today view — capture WHEN 16 rounds were completed + hearing notes.
+// Today view — capture WHEN 16 rounds were completed + SB/BG quick-checks.
 //
 // Vow-aware design: japa is binary at the vow level. The data point that
 // matters is *when* you finished, not how many you've ticked. Four
 // windows + Not yet. Earlier windows color brighter.
 
-import { todayISO, el, formatTime, formatDate, toast } from "../util.js";
+import { todayISO, el, formatDate, toast } from "../util.js";
 import * as store from "../store.js";
 
 const WINDOWS = [
@@ -83,67 +83,13 @@ export async function render(root) {
   }
 
   root.appendChild(el("div", { class: "view-card" },
-    el("h3", {}, "Today's hearing — quick check"),
+    el("h3", {}, "Today's hearing"),
     el("p", { style: "color:var(--muted); font-size:0.9rem; margin: 0 0 0.6rem;" },
       "Optional. Tap once when you've heard SB or BG today."),
     el("div", { class: "hearing-pills" },
       pill("sb", "SB heard", flags.sb),
       pill("bg", "BG heard", flags.bg),
     ),
-  ));
-
-  // Hearing card
-  const sourceInput = el("input", { type: "text", placeholder: "Source (e.g., SB 1.1.1, morning class)" });
-  const lineInput = el("textarea", { placeholder: "What you heard. One line is fine — what stayed with you." });
-  const addBtn = el("button", { class: "primary" }, "Add note");
-  const listUl = el("ul", { class: "entry-list" });
-
-  function renderHearingList() {
-    listUl.innerHTML = "";
-    const items = store.getHearingForDate(date);
-    if (items.length === 0) {
-      listUl.appendChild(el("li", { style: "color:var(--muted); font-style:italic;" },
-        el("span", { class: "text" }, "No hearing notes today yet.")));
-      return;
-    }
-    for (const h of items) {
-      const li = el("li", {},
-        el("span", { class: "when" }, formatTime(h.captured_at)),
-        el("span", { class: "text" },
-          h.source ? el("strong", {}, h.source + ": ") : null,
-          h.line
-        ),
-        el("button", {
-          class: "delete",
-          title: "Delete",
-          onclick: () => { store.deleteHearing(h.captured_at); renderHearingList(); },
-        }, "✕")
-      );
-      listUl.appendChild(li);
-    }
-  }
-
-  addBtn.addEventListener("click", () => {
-    const line = lineInput.value.trim();
-    if (!line) return;
-    store.addHearing(date, line, sourceInput.value.trim());
-    sourceInput.value = "";
-    lineInput.value = "";
-    renderHearingList();
-    toast("Note saved");
-  });
-
-  renderHearingList();
-
-  root.appendChild(el("div", { class: "view-card" },
-    el("h3", {}, "Hearing notes"),
-    el("label", { class: "field" }, "Source"),
-    sourceInput,
-    el("label", { class: "field" }, "What you heard"),
-    lineInput,
-    el("div", { style: "margin-top:0.7rem;" }, addBtn),
-    el("h4", {}, "Today's entries"),
-    listUl,
   ));
 }
 

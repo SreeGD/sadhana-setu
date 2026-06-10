@@ -48,7 +48,7 @@ const root = document.getElementById("root");
 function refreshFooter() {
   const s = storageSummary();
   document.getElementById("storage-summary").textContent =
-    `${s.rounds} days · ${s.hearing} notes · ${s.checkins} check-ins on this device`;
+    `${s.rounds} days · ${s.checkins} check-ins on this device`;
 }
 
 let currentView = "prejapa";
