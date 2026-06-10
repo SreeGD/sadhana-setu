@@ -6,14 +6,16 @@ import {
   weekVerse, weekBhajan, weekLecture,
 } from "../content.js";
 import {
-  upcomingSaturday, addDays, el, formatDate
+  upcomingSaturday, addDays, el, formatDate, collapse
 } from "../util.js";
 import { weekDots } from "../week_summary.js";
 
 function verseCard(v) {
-  return el("div", { class: "view-card weekly-verse-card" },
-    el("div", { class: "card-label" }, `WEEKLY VERSE · ${v.source_label}`),
-    el("h3", {}, v.verse_ref),
+  const det = collapse("weekly_verse",
+    el("summary", { class: "view-card-summary" },
+      el("div", { class: "card-label" }, `WEEKLY VERSE · ${v.source_label}`),
+      el("h3", {}, v.verse_ref),
+    ),
     v.iast ? el("div", { class: "verse-iast", html: v.iast.replace(/\n/g, "<br>") }) : null,
     v.translation ? el("p", { class: "verse-translation" }, v.translation) : null,
     v.essence ? el("p", { style: "font-style:italic; color:var(--ink-soft);" },
@@ -23,6 +25,8 @@ function verseCard(v) {
       v.chanting_application) : null,
     el("p", { class: "card-cite" }, "— " + (v.source || "")),
   );
+  det.classList.add("weekly-verse-card");
+  return det;
 }
 
 function bhajanCard(b) {
@@ -78,10 +82,12 @@ function bhajanCard(b) {
     }
   }
 
-  return el("div", { class: "view-card weekly-bhajan-card" },
-    el("div", { class: "card-label" }, "WEEKLY BHAJAN"),
-    el("h3", {}, b.title),
-    el("p", { style: "color:var(--muted); margin-top:-0.3rem;" }, "by " + (b.author || "")),
+  const det = collapse("weekly_bhajan",
+    el("summary", { class: "view-card-summary" },
+      el("div", { class: "card-label" }, "WEEKLY BHAJAN"),
+      el("h3", {}, b.title),
+      el("p", { class: "summary-byline", style: "color:var(--muted);" }, "by " + (b.author || "")),
+    ),
     b.chanting_mood ? el("p", { style: "font-style:italic; color:var(--ink-soft);" },
       el("strong", {}, "Mood: "), b.chanting_mood) : null,
     b.meditation_for_japa ? el("p", { class: "verse-connection" },
@@ -90,6 +96,8 @@ function bhajanCard(b) {
     el("div", { class: "bhajan-verses" }, ...verseEls),
     el("p", { class: "card-cite" }, "— " + (b.source || "")),
   );
+  det.classList.add("weekly-bhajan-card");
+  return det;
 }
 
 function lectureCard(l) {
@@ -108,14 +116,16 @@ function lectureCard(l) {
     class: "lecture-listen",
   }, l.mp3_url ? "Browse more from this speaker →" : "Browse archive →");
 
-  return el("div", { class: "view-card weekly-lecture-card" },
-    el("div", { class: "card-label" }, "WEEKLY LECTURE · audio.iskcondesiretree.com"),
-    el("h3", {}, l.title),
-    el("p", { style: "color:var(--muted); margin-top:-0.3rem;" },
-      "by " + (l.speaker || ""),
-      l.series ? "  ·  " + l.series : "",
-      l.duration ? "  ·  " + l.duration : "",
+  const det = collapse("weekly_lecture",
+    el("summary", { class: "view-card-summary" },
+      el("div", { class: "card-label" }, "WEEKLY LECTURE · audio.iskcondesiretree.com"),
+      el("h3", {}, l.title),
+      el("p", { class: "summary-byline", style: "color:var(--muted);" },
+        "by " + (l.speaker || ""),
+        l.duration ? "  ·  " + l.duration : "",
+      ),
     ),
+    l.series ? el("p", { style: "color:var(--muted); font-style:italic; margin: 0 0 0.4rem;" }, l.series) : null,
     l.why_it_helps_chanting ? el("p", { style: "white-space: pre-wrap;" }, l.why_it_helps_chanting) : null,
     audioEl,
     l.mp3_url ? el("p", { style: "color: var(--muted); font-size: 0.8rem; margin: 0.2rem 0 0.5rem;" },
@@ -125,6 +135,8 @@ function lectureCard(l) {
     el("div", { style: "margin-top: 0.6rem;" }, browseBtn),
     el("p", { class: "card-cite" }, "— " + (l.source || "ISKCON Desire Tree Audio Archive")),
   );
+  det.classList.add("weekly-lecture-card");
+  return det;
 }
 
 export async function render(root) {
@@ -151,10 +163,12 @@ export async function render(root) {
   if (verse) root.appendChild(verseCard(verse));
 
   // 3. Weekly reading (longer essay)
-  root.appendChild(el("div", { class: "view-card" },
-    el("div", { class: "card-label" }, "WEEKLY READING · " + (reading.reading_minutes || "?") + " min"),
-    el("h3", {}, reading.title),
-    reading.subtitle ? el("p", { style: "color:var(--muted); margin-top:-0.3rem;" }, reading.subtitle) : null,
+  root.appendChild(collapse("weekly_reading",
+    el("summary", { class: "view-card-summary" },
+      el("div", { class: "card-label" }, "WEEKLY READING · " + (reading.reading_minutes || "?") + " min"),
+      el("h3", {}, reading.title),
+      reading.subtitle ? el("p", { class: "summary-byline", style: "color:var(--muted);" }, reading.subtitle) : null,
+    ),
     el("p", { style: "white-space: pre-wrap;" }, reading.content),
     el("p", { class: "card-cite" }, "— " + reading.source),
   ));
@@ -163,10 +177,12 @@ export async function render(root) {
   if (bhajan) root.appendChild(bhajanCard(bhajan));
 
   // 5. Japa method
-  root.appendChild(el("div", { class: "view-card" },
-    el("div", { class: "card-label" }, "JAPA METHOD · " + (method.duration_minutes || "?") + " min"),
-    el("h3", {}, method.name),
-    el("p", { style: "color:var(--muted); margin-top:-0.3rem;" }, "by " + method.teacher),
+  root.appendChild(collapse("japa_method",
+    el("summary", { class: "view-card-summary" },
+      el("div", { class: "card-label" }, "JAPA METHOD · " + (method.duration_minutes || "?") + " min"),
+      el("h3", {}, method.name),
+      el("p", { class: "summary-byline", style: "color:var(--muted);" }, "by " + method.teacher),
+    ),
     el("p", { style: "font-style: italic;" }, method.one_line),
     el("p", {}, method.overview),
     method.steps && method.steps.length
@@ -187,10 +203,12 @@ export async function render(root) {
   if (lecture) root.appendChild(lectureCard(lecture));
 
   // 7. Weekly story
-  root.appendChild(el("div", { class: "view-card" },
-    el("div", { class: "card-label" }, "WEEKLY STORY"),
-    el("h3", {}, story.title),
-    el("p", { style: "color:var(--muted); margin-top:-0.3rem;" }, story.devotee + " — " + story.one_line),
+  root.appendChild(collapse("weekly_story",
+    el("summary", { class: "view-card-summary" },
+      el("div", { class: "card-label" }, "WEEKLY STORY"),
+      el("h3", {}, story.title),
+      el("p", { class: "summary-byline", style: "color:var(--muted);" }, story.devotee + " — " + story.one_line),
+    ),
     el("p", { style: "white-space: pre-wrap;" }, story.text),
     story.key_verse ? el("p", { style: "background:#FFF8E8; padding:0.6rem 0.8rem; border-left:3px solid var(--gold);" },
       el("strong", {}, story.key_verse),

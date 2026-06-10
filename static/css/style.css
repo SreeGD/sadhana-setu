@@ -336,6 +336,55 @@ audio::-webkit-media-controls-panel { background-color: #FFFBF3; }
 .view-card h4 { margin: 0.8rem 0 0.3rem; color: var(--ink-soft); }
 .view-card p  { margin: 0.4rem 0; }
 
+/* ---------- collapsible <details> view-cards ---------- */
+details.view-card.collapsible { overflow: visible; }
+details.view-card.collapsible > summary {
+  list-style: none;
+  cursor: pointer;
+  user-select: none;
+  margin: -1rem -1.1rem;
+  padding: 0.9rem 1.1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 0.6rem;
+  row-gap: 0.2rem;
+  border-radius: 5px;
+  outline: none;
+}
+details.view-card.collapsible > summary::-webkit-details-marker { display: none; }
+details.view-card.collapsible > summary::before {
+  content: "▸";
+  color: var(--gold);
+  font-size: 0.85rem;
+  margin-right: 0.15rem;
+  transition: transform 0.18s ease;
+  flex-shrink: 0;
+  align-self: center;
+}
+details.view-card.collapsible[open] > summary::before { transform: rotate(90deg); display: inline-block; }
+details.view-card.collapsible > summary > * { margin: 0; }
+details.view-card.collapsible > summary .card-label { margin-right: 0.25rem; }
+details.view-card.collapsible > summary h3 { color: var(--ink-soft); font-size: 1.05rem; }
+details.view-card.collapsible > summary .summary-byline {
+  font-size: 0.9rem;
+  font-style: italic;
+}
+details.view-card.collapsible[open] > summary {
+  margin-bottom: 0.6rem;
+  padding-bottom: 0.7rem;
+  border-bottom: 1px solid var(--rule);
+  border-radius: 5px 5px 0 0;
+}
+details.view-card.collapsible > summary:hover {
+  background: rgba(184, 134, 11, 0.04);
+}
+/* Inherit per-variant left-border colors when the card is a <details> */
+details.view-card.weekly-verse-card { border-left-color: var(--gold); background: #FFFDF5; }
+details.view-card.weekly-bhajan-card { border-left-color: #C77800; background: #FFFAF0; }
+details.view-card.weekly-lecture-card { border-left-color: #2E5C99; background: #F5F8FD; }
+details.view-card.weekly-lecture-card .card-label { color: #2E5C99; }
+
 /* ---------- forms / inputs ---------- */
 
 label.field {

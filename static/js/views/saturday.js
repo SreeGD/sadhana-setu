@@ -2,7 +2,7 @@
 // and an Other affordance for free-text entry.
 
 import { weekQuestions, weeklyFormOptions } from "../content.js";
-import { upcomingSaturday, addDays, el, formatDate, toast } from "../util.js";
+import { upcomingSaturday, addDays, el, formatDate, toast, collapse } from "../util.js";
 import { weekDots, summaryLine } from "../week_summary.js";
 import * as store from "../store.js";
 
@@ -134,8 +134,10 @@ export async function render(root) {
     }, (existing?.answers || [])[i] || ""),
   ));
 
-  root.appendChild(el("div", { class: "view-card" },
-    el("h3", {}, "Half 1 — Observe (the week past)"),
+  root.appendChild(collapse("sat_half1",
+    el("summary", { class: "view-card-summary" },
+      el("h3", {}, "Half 1 — Observe (the week past)"),
+    ),
     el("h4", {}, "This week's questions"),
     ...qBlocks,
   ));
@@ -147,8 +149,10 @@ export async function render(root) {
   const tools = multiSelect("tools", opts.tools || [], existing?.tools_needed || []);
   const priorities = multiSelect("priorities", opts.priorities || [], existing?.priorities || []);
 
-  root.appendChild(el("div", { class: "view-card" },
-    el("h3", {}, "Half 2 — Set the coming week"),
+  root.appendChild(collapse("sat_half2",
+    el("summary", { class: "view-card-summary" },
+      el("h3", {}, "Half 2 — Set the coming week"),
+    ),
     el("label", { class: "field" }, "Tone — the orientation"),
     tone.wrapper,
     el("label", { class: "field" }, "Mood (bhava)"),

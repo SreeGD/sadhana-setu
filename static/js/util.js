@@ -77,6 +77,19 @@ export function el(tag, attrs = {}, ...children) {
   return node;
 }
 
+// Collapsible <details> card. First child should be a <summary>. State
+// persists to localStorage under `c_<id>` (0 = open, 1 = collapsed).
+// Default state is OPEN unless user has explicitly collapsed.
+export function collapse(id, ...children) {
+  const KEY = "c_" + id;
+  const closed = localStorage.getItem(KEY) === "1";
+  const det = el("details", { class: "view-card collapsible", ...(closed ? {} : { open: "" }) }, ...children);
+  det.addEventListener("toggle", () => {
+    localStorage.setItem(KEY, det.open ? "0" : "1");
+  });
+  return det;
+}
+
 export function toast(msg, kind = "info") {
   let t = document.getElementById("toast");
   if (!t) {
