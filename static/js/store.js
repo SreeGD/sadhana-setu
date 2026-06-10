@@ -5,6 +5,7 @@
 //     rounds:   { "YYYY-MM-DD": { count, captured_at, note } },
 //     hearing:  [ { date, captured_at, source, line } ],
 //     checkins: { "YYYY-MM-DD" (saturday): { week_start, tone, mood_bhava, ... } },
+//     sankalpa: { "YYYY-MM-DD": { made_at } },
 //     meta:     { last_export, last_import, schema_version }
 //   }
 
@@ -12,11 +13,12 @@ const KEY = "sadhana_setu_v1";
 
 function _read() {
   const raw = localStorage.getItem(KEY);
-  const fallback = { rounds: {}, hearing: [], checkins: {}, hearing_flags: {}, meta: { schema_version: 1 } };
+  const fallback = { rounds: {}, hearing: [], checkins: {}, hearing_flags: {}, sankalpa: {}, meta: { schema_version: 1 } };
   if (!raw) return fallback;
   try {
     const parsed = JSON.parse(raw);
     if (!parsed.hearing_flags) parsed.hearing_flags = {};
+    if (!parsed.sankalpa) parsed.sankalpa = {};
     return parsed;
   } catch { return fallback; }
 }
@@ -128,6 +130,25 @@ export function getHearingFlagsBetween(startISO, endISO) {
     .map(([date, f]) => ({ date, ...f }));
 }
 
+// ---------- sankalpa (vow made before japa) ----------
+
+export function getSankalpa(date) {
+  return _read().sankalpa[date] || null;
+}
+
+export function setSankalpa(date) {
+  const s = _read();
+  s.sankalpa[date] = { made_at: _now() };
+  _write(s);
+  return s.sankalpa[date];
+}
+
+export function clearSankalpa(date) {
+  const s = _read();
+  delete s.sankalpa[date];
+  _write(s);
+}
+
 // ---------- weekly check-ins ----------
 
 export function getCheckin(saturdayISO) {
@@ -163,6 +184,7 @@ export function exportAll() {
     hearing: s.hearing,
     checkins: s.checkins,
     hearing_flags: s.hearing_flags,
+    sankalpa: s.sankalpa,
   };
 }
 
@@ -171,9 +193,10 @@ export function importAll(backup, strategy = "merge") {
     throw new Error("Unrecognised backup file (missing schema_version)");
   }
   const s = strategy === "replace"
-    ? { rounds: {}, hearing: [], checkins: {}, hearing_flags: {}, meta: {} }
+    ? { rounds: {}, hearing: [], checkins: {}, hearing_flags: {}, sankalpa: {}, meta: {} }
     : _read();
   if (!s.hearing_flags) s.hearing_flags = {};
+  if (!s.sankalpa) s.sankalpa = {};
 
   // rounds: keep later captured_at
   for (const [date, r] of Object.entries(backup.rounds || {})) {
@@ -203,6 +226,13 @@ export function importAll(backup, strategy = "merge") {
     const existing = s.hearing_flags[date];
     if (!existing || (f.updated_at || "") > (existing.updated_at || "")) {
       s.hearing_flags[date] = f;
+    }
+  }
+  // sankalpa: keep earlier made_at (first vow of the day wins)
+  for (const [date, v] of Object.entries(backup.sankalpa || {})) {
+    const existing = s.sankalpa[date];
+    if (!existing || (v.made_at || "") < (existing.made_at || "")) {
+      s.sankalpa[date] = v;
     }
   }
   s.meta = s.meta || {};

@@ -5,7 +5,8 @@ import {
   todayNamaTattva, todayBookTip, weekBhajan, weekStory,
   todayEkadasi, todayValue, todayVerse,
 } from "../content.js";
-import { el, formatDate } from "../util.js";
+import { el, formatDate, todayISO, formatTime, toast } from "../util.js";
+import * as store from "../store.js";
 
 function card(cls, label, title, body, cite) {
   const children = [el("div", { class: "card-label" }, label)];
@@ -142,7 +143,60 @@ export async function render(root) {
   root.appendChild(el("div", { class: "support-grid" }, ...supportItems));
   if (ekadasiCard) root.appendChild(ekadasiCard);
   root.appendChild(bookCard);
+  root.appendChild(sankalpaCard());
   root.appendChild(el("div", { class: "meta-line" },
     el("em", {}, "Close this window when ready. The Name awaits."),
   ));
+}
+
+function sankalpaCard() {
+  const date = todayISO();
+  const existing = store.getSankalpa(date);
+
+  const card = el("div", { class: "sankalpa-card" + (existing ? " made" : "") });
+
+  function paint() {
+    card.innerHTML = "";
+    const cur = store.getSankalpa(date);
+    const made = !!cur;
+    card.classList.toggle("made", made);
+
+    const label = made
+      ? `SAṄKALPA · ✓ made at ${formatTime(cur.made_at)}`
+      : "SAṄKALPA · before japa";
+    card.appendChild(el("div", { class: "card-label" }, label));
+
+    card.appendChild(el("div", { class: "sankalpa-vow" },
+      el("span", { class: "quote-mark" }, "“"),
+      "I will try to hear ",
+      el("strong", {}, "THIS"),
+      " mantra.",
+      el("span", { class: "quote-mark" }, "”"),
+    ));
+    card.appendChild(el("div", { class: "card-cite" }, "— HG Bhurijana Prabhu · Melbourne, 2006"));
+
+    if (made) {
+      const undo = el("button", { class: "sankalpa-undo" }, "Undo");
+      undo.addEventListener("click", () => {
+        store.clearSankalpa(date);
+        paint();
+        toast("Saṅkalpa cleared");
+      });
+      card.appendChild(el("div", { class: "sankalpa-action" },
+        el("div", { class: "sankalpa-confirm" }, "Vow made. Now: just this mantra."),
+        undo,
+      ));
+    } else {
+      const btn = el("button", { class: "sankalpa-btn" }, "Make the vow for today");
+      btn.addEventListener("click", () => {
+        store.setSankalpa(date);
+        paint();
+        toast("Saṅkalpa made 🪷");
+      });
+      card.appendChild(btn);
+    }
+  }
+
+  paint();
+  return card;
 }

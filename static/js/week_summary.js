@@ -1,6 +1,6 @@
 // Shared week-summary helpers used by This Week and Saturday views.
 
-import { el, addDays } from "./util.js";
+import { el, addDays, todayISO } from "./util.js";
 import * as store from "./store.js";
 
 const WINDOW_LABEL = {
@@ -23,11 +23,12 @@ export function weekDots(saturdayDate) {
   for (let i = 6; i >= 0; i--) days.push(addDays(saturdayDate, -i));
   const grid = el("div", { class: "week-dots" });
   for (const d of days) {
-    const iso = d.toISOString().slice(0, 10);
+    const iso = todayISO(d);
     const r = store.getRounds(iso);
     const count = r?.count || 0;
     const completion = r?.completion;
     const flags = store.getHearingFlags(iso);
+    const sankalpa = store.getSankalpa(iso);
     let cls = "empty";
     let badge = "—";
     let timeLabel = "";
@@ -42,7 +43,8 @@ export function weekDots(saturdayDate) {
       cls = "partial";
       badge = String(count);
     }
-    const flagRow = (flags.sb || flags.bg) ? el("div", { class: "flag-row" },
+    const flagRow = (flags.sb || flags.bg || sankalpa) ? el("div", { class: "flag-row" },
+      sankalpa ? el("span", { class: "flag-badge sk", title: "Saṅkalpa made" }, "S") : null,
       flags.sb ? el("span", { class: "flag-badge sb" }, "SB") : null,
       flags.bg ? el("span", { class: "flag-badge bg" }, "BG") : null,
     ) : null;
@@ -59,13 +61,14 @@ export function weekDots(saturdayDate) {
 export function weekJapaSummary(saturdayDate) {
   const days = [];
   for (let i = 6; i >= 0; i--) days.push(addDays(saturdayDate, -i));
-  const rounds = days.map(d => store.getRounds(d.toISOString().slice(0, 10)));
+  const rounds = days.map(d => store.getRounds(todayISO(d)));
   let completedDays = 0;
   let sbDays = 0;
   let bgDays = 0;
+  let sankalpaDays = 0;
   const windows = { before_8am: 0, before_12pm: 0, before_9pm: 0, before_11pm: 0 };
   for (let i = 0; i < days.length; i++) {
-    const iso = days[i].toISOString().slice(0, 10);
+    const iso = todayISO(days[i]);
     const r = rounds[i];
     if (r) {
       if ((r.count || 0) >= 16) completedDays++;
@@ -74,8 +77,9 @@ export function weekJapaSummary(saturdayDate) {
     const f = store.getHearingFlags(iso);
     if (f.sb) sbDays++;
     if (f.bg) bgDays++;
+    if (store.getSankalpa(iso)) sankalpaDays++;
   }
-  return { completedDays, windows, sbDays, bgDays };
+  return { completedDays, windows, sbDays, bgDays, sankalpaDays };
 }
 
 export function summaryLine(saturdayDate) {
@@ -85,7 +89,7 @@ export function summaryLine(saturdayDate) {
     .map(([w, n]) => `${WINDOW_LABEL[w]}: ${n}`)
     .join(" · ");
   return {
-    primary: `${s.completedDays}/7 days at vow · SB ${s.sbDays}/7 · BG ${s.bgDays}/7`,
+    primary: `${s.completedDays}/7 at vow · saṅkalpa ${s.sankalpaDays}/7 · SB ${s.sbDays}/7 · BG ${s.bgDays}/7`,
     distribution: dist || "no completion windows recorded yet",
     ...s,
   };

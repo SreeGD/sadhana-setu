@@ -135,6 +135,93 @@ body {
 .ekadasi-card { border-left-color: #8B0000; background: #FFF5F5; margin-bottom: 1rem; }
 .ekadasi-card .card-label { color: #8B0000; }
 
+.sankalpa-card {
+  background: #FFFDF3;
+  border: 1px solid var(--rule);
+  border-left: 4px solid var(--gold);
+  border-radius: 6px;
+  padding: 1.1rem 1.3rem 1.2rem;
+  box-shadow: var(--shadow);
+  margin: 1rem 0 0.6rem;
+  text-align: center;
+}
+.sankalpa-card .card-label {
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.7rem;
+}
+.sankalpa-card.made {
+  background: #F5FBF1;
+  border-left-color: #2E7D32;
+}
+.sankalpa-card.made .card-label { color: #2E7D32; }
+.sankalpa-vow {
+  font-family: Garamond, Georgia, "Times New Roman", serif;
+  font-size: 1.35rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  line-height: 1.4;
+  margin: 0.3rem 0 0.5rem;
+}
+.sankalpa-vow .quote-mark {
+  color: var(--gold);
+  font-size: 1.5rem;
+  font-style: normal;
+  vertical-align: -0.05em;
+}
+.sankalpa-vow strong {
+  color: var(--ink);
+  font-style: normal;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+.sankalpa-card .card-cite {
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-style: italic;
+  margin-bottom: 0.9rem;
+}
+.sankalpa-btn {
+  background: var(--ink-soft);
+  color: #FFFBF3;
+  border: none;
+  border-radius: 999px;
+  padding: 0.65rem 1.6rem;
+  font-family: inherit;
+  font-size: 0.98rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.sankalpa-btn:hover { background: var(--ink); }
+.sankalpa-btn:focus { outline: 2px solid var(--gold-soft); outline-offset: 2px; }
+.sankalpa-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.sankalpa-confirm {
+  color: #2E7D32;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+.sankalpa-undo {
+  background: transparent;
+  border: 1px solid var(--rule);
+  color: var(--muted);
+  font-family: inherit;
+  font-size: 0.82rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  cursor: pointer;
+}
+.sankalpa-undo:hover { color: var(--ink-soft); border-color: var(--gold-soft); }
+
 .verse-card {
   background: #FFFDF7;
   border: 1px solid var(--rule);
@@ -617,6 +704,7 @@ select { cursor: pointer; }
 }
 .week-dots .day .flag-badge.sb { background: #FFE8C0; color: #8B4500; }
 .week-dots .day .flag-badge.bg { background: #E0F0FF; color: #1E4880; }
+.week-dots .day .flag-badge.sk { background: #FFF1D6; color: #8C5E10; border: 1px solid #E2C275; }
 .week-dots .day.win-before_8am  .time-label { color: #1E6B30; }
 .week-dots .day.win-before_12pm .time-label { color: #2E7D32; }
 .week-dots .day.win-before_9pm  .time-label { color: #C77800; }
