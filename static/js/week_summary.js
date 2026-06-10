@@ -10,6 +10,14 @@ const WINDOW_LABEL = {
   before_11pm: "Before 11 PM",
 };
 
+// Short labels shown in the week-dot cell so you can read the time at a glance.
+const WINDOW_SHORT = {
+  before_8am:  "by 8 am",
+  before_12pm: "by noon",
+  before_9pm:  "by 9 pm",
+  before_11pm: "by 11 pm",
+};
+
 export function weekDots(saturdayDate) {
   const days = [];
   for (let i = 6; i >= 0; i--) days.push(addDays(saturdayDate, -i));
@@ -21,9 +29,11 @@ export function weekDots(saturdayDate) {
     const completion = r?.completion;
     let cls = "empty";
     let badge = "—";
+    let timeLabel = "";
     if (completion) {
       cls = "win-" + completion;
       badge = "🪷";
+      timeLabel = WINDOW_SHORT[completion] || "";
     } else if (count >= 16) {
       cls = "complete";
       badge = String(count);
@@ -34,6 +44,7 @@ export function weekDots(saturdayDate) {
     grid.appendChild(el("div", { class: `day ${cls}` },
       el("div", { class: "label" }, d.toLocaleDateString(undefined, { weekday: "short" })),
       el("div", { class: "count" }, badge),
+      timeLabel ? el("div", { class: "time-label" }, timeLabel) : null,
     ));
   }
   return grid;

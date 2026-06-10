@@ -496,6 +496,17 @@ select { cursor: pointer; }
   font-weight: 600;
   margin-top: 0.2rem;
 }
+.week-dots .day .time-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin-top: 0.1rem;
+  letter-spacing: 0.02em;
+}
+.week-dots .day.win-before_8am  .time-label { color: #1E6B30; }
+.week-dots .day.win-before_12pm .time-label { color: #2E7D32; }
+.week-dots .day.win-before_9pm  .time-label { color: #C77800; }
+.week-dots .day.win-before_11pm .time-label { color: #8C5E10; }
 .week-dots .day.complete .count { color: #2E7D32; }
 .week-dots .day.partial  .count { color: #C77800; }
 .week-dots .day.empty    .count { color: var(--muted); }
@@ -557,6 +568,7 @@ select { cursor: pointer; }
   .featured-card .card-title { font-size: 1.15rem; }
   .week-dots .day { font-size: 0.75rem; }
   .week-dots .day .count { font-size: 1.05rem; }
+  .week-dots .day .time-label { font-size: 0.6rem; }
   .completion-grid { grid-template-columns: 1fr 1fr; }
   .completion-btn .completion-label { font-size: 0.9rem; }
   .completion-btn .completion-sub { font-size: 0.72rem; }
