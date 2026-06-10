@@ -212,9 +212,11 @@ def render() -> None:
         log_pattern(saturday, pattern)
 
         from sadhana_setu import sync as _sync
-        if _sync.is_connected():
+        from sadhana_setu.ui import sync_sidebar as _sb
+        creds = _sb.get_active_credentials()
+        if creds is not None:
             try:
-                _sync.push()
+                _sync.push(creds)
                 st.success(
                     f"Check-in saved for week ending {saturday.isoformat()} · "
                     "synced to Google Drive."

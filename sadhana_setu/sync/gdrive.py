@@ -7,9 +7,8 @@ Design (see docs/GDRIVE_TRACKER_DESIGN.md):
 - Pull on app start; push manually + on Saturday check-in submit
 - Row-level merge by primary key, keeping the later updated_at
 
-Token is cached at data/google_token.json. Client secrets live at
-.streamlit/google_oauth.json (user downloads from Google Cloud Console).
-Both files are gitignored.
+This module is framework-agnostic. Credentials are passed in by the caller
+(the Streamlit UI in this app); token persistence is the caller's job too.
 """
 from __future__ import annotations
 
@@ -34,24 +33,35 @@ try:
 except ImportError:  # pragma: no cover - exercised in install-checks
     _LIBS_OK = False
 
-SCOPES = ["https://www.googleapis.com/auth/drive.file"]
+SCOPES = ["https://www.googleapis.com/auth/drive.file", "openid", "email"]
 FOLDER_NAME = "Sadhana Setu"
 DAILY_FILENAME = "tracker_daily.json"
 WEEKLY_FILENAME = "tracker_weekly.json"
-
-CLIENT_SECRETS = Path(".streamlit/google_oauth.json")
-TOKEN_PATH = Path("data/google_token.json")
-DEFAULT_REDIRECT = "http://localhost:8501/"
 
 
 @dataclass
 class DriveSyncStatus:
     available: bool
-    configured: bool
-    connected: bool
     last_pull: str | None
     last_push: str | None
+    user_email: str | None = None
     last_error: str | None = None
+
+
+# ---------- client config ----------
+
+def build_client_config(client_id: str, client_secret: str, redirect_uri: str) -> dict:
+    """Shape the dict Flow.from_client_config expects."""
+    return {
+        "web": {
+            "client_id": client_id,
+            "client_secret": client_secret,
+            "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+            "token_uri": "https://oauth2.googleapis.com/token",
+            "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+            "redirect_uris": [redirect_uri],
+        }
+    }
 
 
 # ---------- availability ----------
@@ -61,46 +71,16 @@ def is_available() -> bool:
     return _LIBS_OK
 
 
-def is_configured() -> bool:
-    """True if the user has dropped their OAuth client secrets file in place."""
-    return CLIENT_SECRETS.exists()
-
-
-def is_connected() -> bool:
-    """True if we have a usable token on disk."""
-    return TOKEN_PATH.exists()
-
-
-def status() -> DriveSyncStatus:
-    last_pull = _read_meta("last_pull")
-    last_push = _read_meta("last_push")
-    return DriveSyncStatus(
-        available=is_available(),
-        configured=is_configured(),
-        connected=is_connected(),
-        last_pull=last_pull,
-        last_push=last_push,
-    )
-
-
 # ---------- OAuth ----------
 
-def start_oauth(redirect_uri: str = DEFAULT_REDIRECT) -> str:
+def start_oauth(client_config: dict, redirect_uri: str) -> str:
     """Return the URL the user should visit to authorize.
 
-    Streamlit usage:
-        url = start_oauth()
-        st.markdown(f"[Connect Drive]({url})")
-        # After redirect, st.query_params["code"] is set; call finalize_oauth.
+    Caller renders this as a link button.
     """
     _require_libs()
-    if not is_configured():
-        raise FileNotFoundError(
-            f"Place your Google OAuth client_secret JSON at {CLIENT_SECRETS}. "
-            "See docs/GDRIVE_SETUP.md."
-        )
-    flow = Flow.from_client_secrets_file(
-        str(CLIENT_SECRETS), scopes=SCOPES, redirect_uri=redirect_uri
+    flow = Flow.from_client_config(
+        client_config, scopes=SCOPES, redirect_uri=redirect_uri
     )
     auth_url, _ = flow.authorization_url(
         access_type="offline", include_granted_scopes="true", prompt="consent"
@@ -108,30 +88,57 @@ def start_oauth(redirect_uri: str = DEFAULT_REDIRECT) -> str:
     return auth_url
 
 
-def finalize_oauth(code: str, redirect_uri: str = DEFAULT_REDIRECT) -> None:
-    """Exchange auth code for tokens and persist."""
+def finalize_oauth(client_config: dict, redirect_uri: str, code: str):
+    """Exchange auth code for credentials. Returns google.oauth2.credentials.Credentials."""
     _require_libs()
-    flow = Flow.from_client_secrets_file(
-        str(CLIENT_SECRETS), scopes=SCOPES, redirect_uri=redirect_uri
+    flow = Flow.from_client_config(
+        client_config, scopes=SCOPES, redirect_uri=redirect_uri
     )
     flow.fetch_token(code=code)
-    TOKEN_PATH.parent.mkdir(parents=True, exist_ok=True)
-    TOKEN_PATH.write_text(flow.credentials.to_json())
+    return flow.credentials
 
 
-def disconnect() -> None:
-    if TOKEN_PATH.exists():
-        TOKEN_PATH.unlink()
+def credentials_from_json(blob: str):
+    """Rehydrate credentials from the JSON the caller persisted in session_state."""
+    _require_libs()
+    return Credentials.from_authorized_user_info(json.loads(blob), SCOPES)
+
+
+def credentials_to_json(creds) -> str:
+    return creds.to_json()
+
+
+def refresh_if_needed(creds) -> bool:
+    """Returns True if creds were refreshed (caller should re-persist)."""
+    _require_libs()
+    if creds.expired and creds.refresh_token:
+        creds.refresh(Request())
+        return True
+    return False
+
+
+def user_email(creds) -> str | None:
+    """Best-effort: pull email from the id_token claims if present."""
+    _require_libs()
+    try:
+        from google.oauth2 import id_token
+        from google.auth.transport.requests import Request as _Req
+        if not creds.id_token:
+            return None
+        claims = id_token.verify_oauth2_token(creds.id_token, _Req(), audience=None)
+        return claims.get("email")
+    except Exception:  # noqa: BLE001
+        return None
 
 
 # ---------- sync ops ----------
 
-def pull() -> tuple[int, int]:
+def pull(creds) -> tuple[int, int]:
     """Pull both files from Drive, merge into SQLite.
 
     Returns (daily_rows_applied, weekly_rows_applied).
     """
-    svc = _drive_service()
+    svc = _drive_service(creds)
     folder_id = _ensure_folder(svc)
     daily = _download_json(svc, folder_id, DAILY_FILENAME) or {}
     weekly = _download_json(svc, folder_id, WEEKLY_FILENAME) or {}
@@ -141,12 +148,12 @@ def pull() -> tuple[int, int]:
     return applied_d, applied_w
 
 
-def push() -> tuple[int, int]:
+def push(creds) -> tuple[int, int]:
     """Push SQLite tracker tables to Drive.
 
     Returns (daily_rows, weekly_rows) written.
     """
-    svc = _drive_service()
+    svc = _drive_service(creds)
     folder_id = _ensure_folder(svc)
     daily_doc = _export_daily()
     weekly_doc = _export_weekly()
@@ -156,6 +163,14 @@ def push() -> tuple[int, int]:
     return (
         len(daily_doc["rounds"]) + len(daily_doc["hearing_notes"]),
         len(weekly_doc["checkins"]),
+    )
+
+
+def status() -> DriveSyncStatus:
+    return DriveSyncStatus(
+        available=is_available(),
+        last_pull=_read_meta("last_pull"),
+        last_push=_read_meta("last_push"),
     )
 
 
@@ -199,11 +214,7 @@ def _export_weekly() -> dict[str, Any]:
 # ---------- merge (row-level, later updated_at wins) ----------
 
 def merge_daily(local: dict[str, Any], remote: dict[str, Any]) -> dict[str, Any]:
-    """Pure merge function — used by tests and by the SQLite-write path.
-
-    rounds: PK=date. Keep later captured_at.
-    hearing_notes: dedup by (date, captured_at, line). Union.
-    """
+    """Pure merge function — used by tests and by the SQLite-write path."""
     merged_rounds: dict[str, dict] = {r["date"]: r for r in local.get("rounds", [])}
     for r in remote.get("rounds", []):
         existing = merged_rounds.get(r["date"])
@@ -228,7 +239,6 @@ def merge_daily(local: dict[str, Any], remote: dict[str, Any]) -> dict[str, Any]
 
 
 def merge_weekly(local: dict[str, Any], remote: dict[str, Any]) -> dict[str, Any]:
-    """checkins: PK=week_start. Keep later submitted_at."""
     merged: dict[str, dict] = {c["week_start"]: c for c in local.get("checkins", [])}
     for c in remote.get("checkins", []):
         existing = merged.get(c["week_start"])
@@ -238,21 +248,18 @@ def merge_weekly(local: dict[str, Any], remote: dict[str, Any]) -> dict[str, Any
 
 
 def _merge_daily(remote: dict[str, Any]) -> int:
-    """Pull side: merge remote daily into SQLite. Returns rows applied."""
     local = _export_daily()
     merged = merge_daily(local, remote)
     return _write_daily(merged, local)
 
 
 def _merge_weekly(remote: dict[str, Any]) -> int:
-    """Pull side: merge remote weekly into SQLite. Returns rows applied."""
     local = _export_weekly()
     merged = merge_weekly(local, remote)
     return _write_weekly(merged, local)
 
 
 def _write_daily(merged: dict[str, Any], local: dict[str, Any]) -> int:
-    """Apply merged daily to SQLite. Only writes rows that differ from local."""
     local_rounds = {r["date"]: r for r in local["rounds"]}
     local_notes = {(n["date"], n["captured_at"], n["line"]) for n in local["hearing_notes"]}
     applied = 0
@@ -329,14 +336,9 @@ def _write_weekly(merged: dict[str, Any], local: dict[str, Any]) -> int:
 
 # ---------- Drive REST ----------
 
-def _drive_service():
+def _drive_service(creds):
     _require_libs()
-    if not is_connected():
-        raise RuntimeError("Drive is not connected. Call start_oauth + finalize_oauth first.")
-    creds = Credentials.from_authorized_user_file(str(TOKEN_PATH), SCOPES)
-    if creds.expired and creds.refresh_token:
-        creds.refresh(Request())
-        TOKEN_PATH.write_text(creds.to_json())
+    refresh_if_needed(creds)
     return build("drive", "v3", credentials=creds, cache_discovery=False)
 
 

@@ -1,30 +1,34 @@
-"""Cloud-sync subsystem.
-
-GDrive is the only backend implemented today; the package is structured so a
-future Dropbox / WebDAV / iCloud backend could slot in beside it.
-"""
+"""Cloud-sync subsystem."""
 from sadhana_setu.sync.gdrive import (
     DriveSyncStatus,
-    disconnect,
+    build_client_config,
+    credentials_from_json,
+    credentials_to_json,
     finalize_oauth,
     is_available,
-    is_configured,
-    is_connected,
+    merge_daily,
+    merge_weekly,
     pull,
     push,
+    refresh_if_needed,
     start_oauth,
     status,
+    user_email,
 )
 
 __all__ = [
     "DriveSyncStatus",
-    "disconnect",
+    "build_client_config",
+    "credentials_from_json",
+    "credentials_to_json",
     "finalize_oauth",
     "is_available",
-    "is_configured",
-    "is_connected",
+    "merge_daily",
+    "merge_weekly",
     "pull",
     "push",
+    "refresh_if_needed",
     "start_oauth",
     "status",
+    "user_email",
 ]
