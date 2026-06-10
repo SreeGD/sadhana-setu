@@ -6,6 +6,7 @@ import * as this_week from "./views/this_week.js";
 import * as saturday from "./views/saturday.js";
 import * as backup from "./views/backup.js";
 import { storageSummary } from "./store.js";
+import { toast, todayISO } from "./util.js";
 
 // ---------- font size ----------
 const FONT_SIZE_KEY = "sadhana_setu_font_size";
@@ -50,7 +51,11 @@ function refreshFooter() {
     `${s.rounds} days · ${s.hearing} notes · ${s.checkins} check-ins on this device`;
 }
 
-async function show(name) {
+let currentView = "prejapa";
+let lastRenderedDate = todayISO();
+
+async function show(name, opts = {}) {
+  currentView = name;
   for (const btn of document.querySelectorAll("[data-view]")) {
     btn.classList.toggle("active", btn.dataset.view === name);
   }
@@ -63,12 +68,30 @@ async function show(name) {
     </div>`;
   }
   refreshFooter();
-  window.scrollTo(0, 0);
+  lastRenderedDate = todayISO();
+  if (!opts.preserveScroll) window.scrollTo(0, 0);
 }
 
 for (const btn of document.querySelectorAll("[data-view]")) {
   btn.addEventListener("click", () => show(btn.dataset.view));
 }
+
+// ---------- midnight auto-refresh ----------
+// Re-render the current view when the local calendar day changes, so
+// the page picks up today's content without manual reload. Fires on
+// three triggers: minute tick, tab visibility regained, window focus.
+function checkDayRollover() {
+  const now = todayISO();
+  if (now !== lastRenderedDate) {
+    show(currentView, { preserveScroll: true });
+    toast("New day — content refreshed");
+  }
+}
+setInterval(checkDayRollover, 60_000);
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden) checkDayRollover();
+});
+window.addEventListener("focus", checkDayRollover);
 
 // Boot
 window.addEventListener("load", () => show("prejapa"));
