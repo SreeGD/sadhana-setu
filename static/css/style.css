@@ -151,6 +151,39 @@ body {
 .week-review-card { border-left-color: #2E7D32; background: #F4FAF4; }
 .week-review-card h3 { color: #2E7D32; }
 
+/* ---------- bhajan audio ---------- */
+.bhajan-audio {
+  margin: 0.7rem 0 0.9rem;
+  padding: 0.6rem 0.8rem;
+  background: #FFF8E8;
+  border: 1px solid var(--rule);
+  border-left: 3px solid #C77800;
+  border-radius: 4px;
+}
+.bhajan-audio-label {
+  font-size: 0.85rem;
+  color: #C77800;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+.bhajan-audio-note {
+  font-size: 0.82rem;
+  color: var(--muted);
+  font-style: italic;
+  margin: 0.3rem 0 0;
+}
+.bhajan-browse {
+  display: inline-block;
+  background: #C77800;
+  color: #FFFBF3;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-family: inherit;
+}
+.bhajan-browse:hover { background: #B36800; }
+
 /* ---------- bhajan multi-verse ---------- */
 .bhajan-verses { margin-top: 0.6rem; }
 .bhajan-verse, .bhajan-refrain {

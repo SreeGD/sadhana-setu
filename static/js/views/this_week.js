@@ -47,6 +47,37 @@ function bhajanCard(b) {
     if (b.verse_translation) verseEls.push(el("p", {}, b.verse_translation));
   }
 
+  // Audio block — embed player if audio_url present, else browse link
+  const audioEls = [];
+  if (b.audio_url) {
+    audioEls.push(el("div", { class: "bhajan-audio-label" },
+      "🎧 " + (b.audio_speaker || "Recording") + " — audio.iskcondesiretree.com"
+    ));
+    audioEls.push(el("audio", {
+      controls: "",
+      preload: "none",
+      src: b.audio_url,
+      style: "width: 100%;",
+    }));
+    if (b.audio_note) {
+      audioEls.push(el("p", { class: "bhajan-audio-note" }, b.audio_note));
+    }
+    audioEls.push(el("p", { style: "font-size: 0.8rem; color: var(--muted); margin: 0.2rem 0 0;" },
+      "If the player doesn't appear, ",
+      el("a", { href: b.audio_url, target: "_blank", rel: "noopener", style: "color: var(--ink-soft);" }, "open the MP3 directly →")
+    ));
+  } else if (b.audio_folder_url) {
+    audioEls.push(el("a", {
+      href: b.audio_folder_url,
+      target: "_blank",
+      rel: "noopener",
+      class: "bhajan-browse",
+    }, "🎧 Browse recordings on audio.iskcondesiretree.com →"));
+    if (b.audio_note) {
+      audioEls.push(el("p", { class: "bhajan-audio-note" }, b.audio_note));
+    }
+  }
+
   return el("div", { class: "view-card weekly-bhajan-card" },
     el("div", { class: "card-label" }, "WEEKLY BHAJAN"),
     el("h3", {}, b.title),
@@ -55,6 +86,7 @@ function bhajanCard(b) {
       el("strong", {}, "Mood: "), b.chanting_mood) : null,
     b.meditation_for_japa ? el("p", { class: "verse-connection" },
       el("strong", {}, "For today's japa: "), b.meditation_for_japa) : null,
+    audioEls.length ? el("div", { class: "bhajan-audio" }, ...audioEls) : null,
     el("div", { class: "bhajan-verses" }, ...verseEls),
     el("p", { class: "card-cite" }, "— " + (b.source || "")),
   );
