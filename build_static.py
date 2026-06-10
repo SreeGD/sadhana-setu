@@ -28,6 +28,7 @@ LIBRARIES = {
     "weekly_stories": ("stories", "items"),
     "japa_methods": ("methods", "items"),
     "weekly_questions": ("questions", "items"),
+    "daily_verses": ("daily_verses", "items"),
 }
 
 

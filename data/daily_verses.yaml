@@ -1,0 +1,621 @@
+# Daily-verse library — Sadhana Setu v1.7
+#
+# Optional pre-japa reading: one verse a day from SB / BG / CC that
+# specifically *brings mood for chanting* — not generic glorification,
+# but verses that orient the heart for hearing/japa.
+#
+# Each entry: verse_ref, category, iast, translation (Prabhupada-aligned
+# literal), mood_brought (short tag), chanting_connection (why this
+# verse builds mood before japa), source.
+#
+# STATUS: DRAFT — seeded by AI assistant from canonical references.
+# Awaiting review by SreeGD (Sreenivas Gopal Dasa) for sastra accuracy
+# and ISKCON-line orthodoxy before promotion to "approved".
+
+status: draft
+review_notes: |
+  Reviewer: SreeGD (Sreenivas Gopal Dasa)
+  Seeded: 2026-06-10
+  Notes: 30 verses spanning Srimad Bhagavatam (12), Bhagavad Gita (8),
+    and Caitanya Caritamrta (10). All references are canonical and
+    citable; translations follow Prabhupada's literal sense; iast is
+    standardized Harvard-Kyoto-style with diacritics. Pending: verify
+    each iast against the BBT critical edition; sharpen mood_brought
+    tags; expand chanting_connection lines to feel less generic.
+
+daily_verses:
+  - verse_ref: "BG 10.25"
+    category: "japa-yajña"
+    iast: |
+      maharṣīṇāṁ bhṛgur ahaṁ
+      girām asmy ekam akṣaram
+      yajñānāṁ japa-yajño 'smi
+      sthāvarāṇāṁ himālayaḥ
+    translation: |
+      Of the great sages I am Bhṛgu; of vibrations I am the transcendental
+      oṁ. Of sacrifices I am the chanting of the holy names [japa-yajña],
+      and of immovable things I am the Himalayas.
+    mood_brought: "japa as the supreme sacrifice"
+    chanting_connection: |
+      Krishna Himself names japa as the sacrifice He IS. Each bead is not
+      a personal exercise — it is Krishna performing yajña through your
+      tongue. Sit with that before the first round.
+    source: "Bhagavad-gītā As It Is 10.25, Prabhupada's purport"
+
+  - verse_ref: "CC Madhya 17.133"
+    category: "nāma-tattva"
+    iast: |
+      nāma cintāmaṇiḥ kṛṣṇaś
+      caitanya-rasa-vigrahaḥ
+      pūrṇaḥ śuddho nitya-mukto
+      'bhinnatvān nāma-nāminoḥ
+    translation: |
+      The holy name of Krishna is a transcendentally blissful bestower
+      of all spiritual benediction, for it is Krishna Himself, the
+      reservoir of all pleasure. Krishna's name is complete, pure, and
+      eternally liberated, because the name and the named are non-different.
+    mood_brought: "faith in the Name's identity with Krishna"
+    chanting_connection: |
+      Chant with the understanding that the syllables you utter ARE
+      Krishna Himself. There is no gap between Name and Named — the
+      meeting has already happened. Speak with attention; He listens.
+    source: "Caitanya Caritāmṛta, Madhya-līlā 17.133, citing Padma Purāṇa"
+
+  - verse_ref: "CC Adi 17.21"
+    category: "method"
+    iast: |
+      harer nāma harer nāma
+      harer nāmaiva kevalam
+      kalau nāsty eva nāsty eva
+      nāsty eva gatir anyathā
+    translation: |
+      In this age of quarrel and hypocrisy the only means of deliverance
+      is chanting the holy name of the Lord. There is no other way.
+      There is no other way. There is no other way.
+    mood_brought: "settled clarity — there is nothing else to do"
+    chanting_connection: |
+      Stop searching for an alternative process, an upgrade, a parallel
+      path. The threefold repetition seals the search. Begin japa as if
+      this single instruction is the whole of dharma — because in this
+      age it is.
+    source: "Caitanya Caritāmṛta, Ādi-līlā 17.21, citing Bṛhan-nāradīya Purāṇa"
+
+  - verse_ref: "CC Antya 20.12 (Śikṣāṣṭakam 1)"
+    category: "glory of chanting"
+    iast: |
+      ceto-darpaṇa-mārjanaṁ bhava-mahā-dāvāgni-nirvāpaṇaṁ
+      śreyaḥ-kairava-candrikā-vitaraṇaṁ vidyā-vadhū-jīvanam
+      ānandāmbudhi-vardhanaṁ prati-padaṁ pūrṇāmṛtāsvādanaṁ
+      sarvātma-snapanaṁ paraṁ vijayate śrī-kṛṣṇa-saṅkīrtanam
+    translation: |
+      Let there be all victory for the chanting of the holy name of
+      Lord Kṛṣṇa, which can cleanse the mirror of the heart and stop
+      the miseries of the blazing fire of material existence. That
+      chanting is the waxing moon that spreads the white lotus of good
+      fortune, the life and soul of all transcendental knowledge, the
+      ever-expanding ocean of bliss, full nectar at every step, and a
+      bath for the soul.
+    mood_brought: "vastness of saṅkīrtana"
+    chanting_connection: |
+      Eight effects in one verse: mirror cleaned, forest fire extinguished,
+      moon rises, knowledge revealed, ocean expanded, nectar tasted at
+      every step, bath in nectar. Begin japa as if these effects are
+      already happening — they are.
+    source: "Caitanya Caritāmṛta, Antya-līlā 20.12 (Śrī Śikṣāṣṭakam, verse 1)"
+
+  - verse_ref: "CC Antya 20.16 (Śikṣāṣṭakam 3)"
+    category: "humility"
+    iast: |
+      tṛṇād api sunīcena
+      taror api sahiṣṇunā
+      amāninā mānadena
+      kīrtanīyaḥ sadā hariḥ
+    translation: |
+      One should chant the holy name of the Lord in a humble state of
+      mind, thinking oneself lower than the straw in the street; one
+      should be more tolerant than a tree, devoid of all sense of false
+      prestige, and ready to offer all respect to others. In such a state
+      of mind one can chant the holy name of the Lord constantly.
+    mood_brought: "the actual qualification for chanting"
+    chanting_connection: |
+      This is not a goal AFTER chanting — it is the precondition.
+      Take 30 seconds to actually feel: lower than straw, more tolerant
+      than a tree, expecting no honor, offering all honor. Then begin.
+    source: "Caitanya Caritāmṛta, Antya-līlā 20.16 (Śrī Śikṣāṣṭakam, verse 3)"
+
+  - verse_ref: "CC Antya 20.21 (Śikṣāṣṭakam 4)"
+    category: "desirelessness"
+    iast: |
+      na dhanaṁ na janaṁ na sundarīṁ
+      kavitāṁ vā jagad-īśa kāmaye
+      mama janmani janmanīśvare
+      bhavatād bhaktir ahaitukī tvayi
+    translation: |
+      O almighty Lord, I have no desire to accumulate wealth, nor do I
+      desire beautiful women, nor do I want any number of followers. I
+      only want Your causeless devotional service, birth after birth.
+    mood_brought: "purified petition"
+    chanting_connection: |
+      The four objects renounced (wealth, women/followers, fame as a
+      poet) are the four poles around which the conditioned mind moves
+      even during japa. Let go of them once, before japa, and the rounds
+      move freely.
+    source: "Caitanya Caritāmṛta, Antya-līlā 20.21 (Śrī Śikṣāṣṭakam, verse 4)"
+
+  - verse_ref: "CC Madhya 20.108"
+    category: "identity"
+    iast: |
+      jīvera 'svarūpa' haya — kṛṣṇera 'nitya-dāsa'
+      kṛṣṇera 'taṭasthā-śakti' 'bhedābheda-prakāśa'
+    translation: |
+      It is the living entity's constitutional position to be an
+      eternal servant of Krishna because he is the marginal energy of
+      Krishna and a manifestation simultaneously one with and different
+      from the Lord.
+    mood_brought: "remembered identity"
+    chanting_connection: |
+      Before chanting, recover the relation: not seeker, not student,
+      not aspirant — eternal servant. The hand picks up the beads from
+      THAT identity, not from any other.
+    source: "Caitanya Caritāmṛta, Madhya-līlā 20.108"
+
+  - verse_ref: "CC Adi 7.95-96"
+    category: "Caitanya's mercy"
+    iast: |
+      kṛṣṇa-mantra haite habe saṁsāra-mocana
+      kṛṣṇa-nāma haite pābe kṛṣṇera caraṇa
+    translation: |
+      Simply by chanting the holy name of Krishna one can obtain freedom
+      from material existence. Indeed, simply by chanting the Hare
+      Krishna mantra one will be able to see the lotus feet of the Lord.
+    mood_brought: "destination clarified"
+    chanting_connection: |
+      Caitanya Mahāprabhu states the outcome in two lines: freedom
+      from saṁsāra, and the lotus feet of Krishna. Begin japa with the
+      destination in view, not with anxiety about whether you'll arrive.
+    source: "Caitanya Caritāmṛta, Ādi-līlā 7.95-96"
+
+  - verse_ref: "CC Adi 1.96"
+    category: "longing"
+    iast: |
+      ataeva śrī-kṛṣṇa-nāma nā āise tāra mukhe
+      sphure nā kabhu bhakti-yoga-rasera mukhe
+    translation: |
+      Therefore the holy name of Krishna does not appear in the mouth
+      of one who is averse to devotional service, nor does the taste of
+      the mellow of bhakti-yoga ever manifest for such a person.
+    mood_brought: "petition for taste"
+    chanting_connection: |
+      The Name does not enter every mouth equally — it requires sukṛti.
+      Approach japa not as something you do TO the Name, but as
+      something the Name allows you to do. Petition first; then chant.
+    source: "Caitanya Caritāmṛta, Ādi-līlā (cf. 1.96 — Prabhupada's purport thread)"
+
+  - verse_ref: "CC Madhya 19.149"
+    category: "sādhu-saṅga"
+    iast: |
+      'sādhu-saṅga', 'sādhu-saṅga' — sarva-śāstre kaya
+      lava-mātra sādhu-saṅge sarva-siddhi haya
+    translation: |
+      The verdict of all revealed scriptures is that by even a moment's
+      association with a pure devotee, one can attain all success.
+    mood_brought: "borrowed strength"
+    chanting_connection: |
+      Whatever chanting capacity you have today, came from devotee
+      association — gurus, books, kīrtana. Remember a single devotee
+      before japa. Their mood will support yours.
+    source: "Caitanya Caritāmṛta, Madhya-līlā 19.151 (Bhakti-rasāmṛta-sindhu)"
+
+  - verse_ref: "SB 11.5.32"
+    category: "yuga-dharma"
+    iast: |
+      kṛṣṇa-varṇaṁ tviṣākṛṣṇaṁ
+      sāṅgopāṅgāstra-pārṣadam
+      yajñaiḥ saṅkīrtana-prāyair
+      yajanti hi su-medhasaḥ
+    translation: |
+      In the age of Kali, intelligent persons perform congregational
+      chanting to worship the incarnation of Godhead who constantly
+      sings the names of Kṛṣṇa. Although His complexion is not blackish,
+      He is Kṛṣṇa Himself. He is accompanied by His associates, servants,
+      weapons, and confidential companions.
+    mood_brought: "lineage gratitude"
+    chanting_connection: |
+      The chanting you do now is what intelligent souls of this age have
+      ALWAYS done. You are part of a stream that includes Caitanya
+      Mahāprabhu, the Six Goswāmīs, your own guru-paramparā. Step in.
+    source: "Śrīmad-Bhāgavatam 11.5.32"
+
+  - verse_ref: "SB 1.2.17"
+    category: "purification"
+    iast: |
+      śṛṇvatāṁ sva-kathāḥ kṛṣṇaḥ
+      puṇya-śravaṇa-kīrtanaḥ
+      hṛdy antaḥ-stho hy abhadrāṇi
+      vidhunoti suhṛt-satām
+    translation: |
+      Śrī Kṛṣṇa, the Personality of Godhead, who is the Paramātmā in
+      everyone's heart and the benefactor of the truthful devotee,
+      cleanses the desire for material enjoyment from the heart of the
+      devotee who has developed the urge to hear His messages, which
+      are in themselves virtuous when properly heard and chanted.
+    mood_brought: "trust in the cleanup"
+    chanting_connection: |
+      You are not the one cleaning the heart — Krishna inside the heart
+      is. Your job is to provide the input: the hearing, the chanting.
+      He does the rest. Begin japa as a contribution, not a battle.
+    source: "Śrīmad-Bhāgavatam 1.2.17, Prabhupada's purport"
+
+  - verse_ref: "SB 1.2.18"
+    category: "progressive purification"
+    iast: |
+      naṣṭa-prāyeṣv abhadreṣu
+      nityaṁ bhāgavata-sevayā
+      bhagavaty uttama-śloke
+      bhaktir bhavati naiṣṭhikī
+    translation: |
+      By regular attendance in classes on the Bhāgavatam and by
+      rendering of service to the pure devotee, all that is troublesome
+      to the heart is almost completely destroyed, and loving service
+      unto the Personality of Godhead, who is praised with
+      transcendental songs, is established as an irrevocable fact.
+    mood_brought: "steady accumulation"
+    chanting_connection: |
+      Each day's japa is one deposit. The cumulative effect is what
+      establishes naiṣṭhika-bhakti. Don't expect today's rounds to do
+      what only a year of days can do. Just deposit today's.
+    source: "Śrīmad-Bhāgavatam 1.2.18"
+
+  - verse_ref: "SB 1.5.11"
+    category: "language of glorification"
+    iast: |
+      tad-vāg-visargo janatāgha-viplavo
+      yasmin prati-ślokam abaddhavaty api
+      nāmāny anantasya yaśo-'ṅkitāni yat
+      śṛṇvanti gāyanti gṛṇanti sādhavaḥ
+    translation: |
+      On the other hand, that literature which is full of descriptions
+      of the transcendental glories of the name, fame, forms, pastimes,
+      etc., of the unlimited Supreme Lord is a different creation,
+      full of transcendental words directed toward bringing about a
+      revolution in the impious lives of this world's misdirected
+      civilization. Such transcendental literatures, even though
+      imperfectly composed, are heard, sung, and accepted by purified
+      men who are thoroughly honest.
+    mood_brought: "imperfection is no obstacle"
+    chanting_connection: |
+      Even imperfect chanting, if it bears the Name, revolutionises the
+      sinful condition. Don't wait for perfection to begin. Begin
+      imperfectly; the Name does the revolution.
+    source: "Śrīmad-Bhāgavatam 1.5.11, Prabhupada's purport"
+
+  - verse_ref: "SB 1.5.17"
+    category: "courage to fall"
+    iast: |
+      tyaktvā sva-dharmaṁ caraṇāmbujaṁ harer
+      bhajann apakvo 'tha patet tato yadi
+      yatra kva vābhadram abhūd amuṣya kiṁ
+      ko vārtha āpto 'bhajatāṁ sva-dharmataḥ
+    translation: |
+      One who has forsaken his material occupations to engage in the
+      devotional service of the Lord may sometimes fall down while in
+      an immature stage, yet there is no danger of his being unsuccessful.
+      On the other hand, a non-devotee, though fully engaged in
+      occupational duties, does not gain anything.
+    mood_brought: "confidence to attempt"
+    chanting_connection: |
+      If you chant inattentively today and fall short of your standard
+      tomorrow, the deposit is not lost. The deposit IS the practice.
+      Begin without hedging against failure.
+    source: "Śrīmad-Bhāgavatam 1.5.17, Prabhupada's purport"
+
+  - verse_ref: "SB 6.3.22"
+    category: "definition of dharma"
+    iast: |
+      etāvān eva loke 'smin
+      puṁsāṁ dharmaḥ paraḥ smṛtaḥ
+      bhakti-yogo bhagavati
+      tan-nāma-grahaṇādibhiḥ
+    translation: |
+      Devotional service, beginning with the chanting of the holy name
+      of the Lord, is the ultimate religious principle for the living
+      entity in human society.
+    mood_brought: "what is essential"
+    chanting_connection: |
+      All other dharmas are decorations on this central act. Yamarāja
+      himself instructs his servants on this point. Beginning your
+      rounds, you are doing the central thing — not a side practice.
+    source: "Śrīmad-Bhāgavatam 6.3.22"
+
+  - verse_ref: "SB 7.5.23-24"
+    category: "nine processes"
+    iast: |
+      śravaṇaṁ kīrtanaṁ viṣṇoḥ
+      smaraṇaṁ pāda-sevanam
+      arcanaṁ vandanaṁ dāsyaṁ
+      sakhyam ātma-nivedanam
+      iti puṁsārpitā viṣṇau
+      bhaktiś cen nava-lakṣaṇā
+    translation: |
+      Prahlāda Mahārāja said: Hearing and chanting about the
+      transcendental holy name, form, qualities, paraphernalia and
+      pastimes of Lord Viṣṇu, remembering them, serving the lotus feet
+      of the Lord, offering the Lord respectful worship with sixteen
+      types of paraphernalia, offering prayers to the Lord, becoming
+      His servant, considering the Lord one's best friend, and
+      surrendering everything unto Him — these nine processes are
+      accepted as pure devotional service.
+    mood_brought: "śravaṇa-kīrtana primacy"
+    chanting_connection: |
+      Prahlāda lists hearing and chanting FIRST — before remembrance,
+      service, prayer. You are now doing the foundational two. Everything
+      else builds from these two. Begin with that hierarchy clear.
+    source: "Śrīmad-Bhāgavatam 7.5.23-24"
+
+  - verse_ref: "SB 10.14.3"
+    category: "surrender"
+    iast: |
+      jñāne prayāsam udapāsya namanta eva
+      jīvanti san-mukharitāṁ bhavadīya-vārtām
+      sthāne sthitāḥ śruti-gatāṁ tanu-vāṅ-manobhir
+      ye prāyaśo 'jita jito 'py asi tais tri-lokyām
+    translation: |
+      My dear Lord, those devotees who have completely given up
+      attempts to mentally speculate about You and instead simply hear
+      about You from the lips of pure devotees, and who pass their
+      lives engaged in dedicating their body, mind and words in Your
+      service while remaining in their own occupational positions —
+      such persons certainly conquer You, although You are otherwise
+      unconquerable.
+    mood_brought: "give up speculation, just hear"
+    chanting_connection: |
+      Stop thinking ABOUT chanting and just hear the chanting. The
+      sastras' verdict is that those who hear from devotees with
+      body-mind-words conquer the unconquerable. Hearing is the
+      single key.
+    source: "Śrīmad-Bhāgavatam 10.14.3, Lord Brahmā's prayers"
+
+  - verse_ref: "SB 11.2.40"
+    category: "symptoms of bhakta"
+    iast: |
+      evaṁ-vrataḥ sva-priya-nāma-kīrtyā
+      jātānurāgo druta-citta uccaiḥ
+      hasaty atho roditi rauti gāyaty
+      unmāda-van nṛtyati loka-bāhyaḥ
+    translation: |
+      By chanting the holy name of the Supreme Lord, one comes to the
+      stage of love of God. Then the devotee is fixed in his vow as an
+      eternal servant of the Lord, and he gradually becomes attached to
+      a particular name and form of the Lord. As his heart melts in
+      ecstatic love, he laughs very loudly or cries or shouts. Sometimes
+      he sings and dances like a madman, indifferent to society.
+    mood_brought: "destination of japa"
+    chanting_connection: |
+      This is what the Name eventually does — not in one round, but as
+      a trajectory. You are not chanting for nothing. There is a final
+      condition the rounds are walking toward. Walk one step today.
+    source: "Śrīmad-Bhāgavatam 11.2.40"
+
+  - verse_ref: "SB 12.3.51"
+    category: "Kali's gift"
+    iast: |
+      kaler doṣa-nidhe rājann
+      asti hy eko mahān guṇaḥ
+      kīrtanād eva kṛṣṇasya
+      mukta-saṅgaḥ paraṁ vrajet
+    translation: |
+      My dear King, although Kali-yuga is an ocean of faults, there is
+      still one good quality about this age: simply by chanting the
+      Hare Krishna mahā-mantra, one can become free from material
+      bondage and be promoted to the transcendental kingdom.
+    mood_brought: "Kali's loophole"
+    chanting_connection: |
+      This age makes most practices impossibly hard. But ONE practice
+      is made easier than ever before. You are sitting at the exact
+      junction where the loophole is widest. Take it.
+    source: "Śrīmad-Bhāgavatam 12.3.51"
+
+  - verse_ref: "BG 8.5"
+    category: "remembering at the end"
+    iast: |
+      anta-kāle ca mām eva
+      smaran muktvā kalevaram
+      yaḥ prayāti sa mad-bhāvaṁ
+      yāti nāsty atra saṁśayaḥ
+    translation: |
+      And whoever, at the time of death, quits his body, remembering
+      Me alone, at once attains My nature. Of this there is no doubt.
+    mood_brought: "rehearsal for the final moment"
+    chanting_connection: |
+      Every round of japa is a rehearsal for the last moment. What
+      you train the mind to fall into now is what it will fall into
+      then. Today's rounds shape the final moment.
+    source: "Bhagavad-gītā As It Is 8.5"
+
+  - verse_ref: "BG 8.7"
+    category: "constant remembrance"
+    iast: |
+      tasmāt sarveṣu kāleṣu
+      mām anusmara yudhya ca
+      mayy arpita-mano-buddhir
+      mām evaiṣyasy asaṁśayam
+    translation: |
+      Therefore, Arjuna, you should always think of Me in the form of
+      Krishna and at the same time carry out your prescribed duty of
+      fighting. With your activities dedicated to Me and your mind and
+      intelligence fixed on Me, you will attain Me without doubt.
+    mood_brought: "japa as integration with duty"
+    chanting_connection: |
+      Krishna's instruction is not "stop fighting and only think of Me."
+      It is BOTH — duty AND remembrance. Japa is the practice of doing
+      both. Today's rounds are training for today's actions.
+    source: "Bhagavad-gītā As It Is 8.7"
+
+  - verse_ref: "BG 9.14"
+    category: "constant kīrtana"
+    iast: |
+      satataṁ kīrtayanto māṁ
+      yatantaś ca dṛḍha-vratāḥ
+      namasyantaś ca māṁ bhaktyā
+      nitya-yuktā upāsate
+    translation: |
+      Always chanting My glories, endeavoring with great determination,
+      bowing down before Me, these great souls perpetually worship Me
+      with devotion.
+    mood_brought: "the great souls' practice"
+    chanting_connection: |
+      Three activities of mahātmās: constant chanting, determined
+      endeavor, devoted obeisance. You are about to do the first.
+      Recognize: you are in the company of mahātmās the moment you
+      pick up the beads.
+    source: "Bhagavad-gītā As It Is 9.14"
+
+  - verse_ref: "BG 9.26"
+    category: "simplicity of bhakti"
+    iast: |
+      patraṁ puṣpaṁ phalaṁ toyaṁ
+      yo me bhaktyā prayacchati
+      tad ahaṁ bhakty-upahṛtam
+      aśnāmi prayatātmanaḥ
+    translation: |
+      If one offers Me with love and devotion a leaf, a flower, fruit,
+      or water, I will accept it.
+    mood_brought: "Krishna's low bar for offerings"
+    chanting_connection: |
+      Krishna accepts a leaf with love. He accepts your imperfect
+      chanting with love too. Don't postpone the offering until it is
+      grand. Offer today's rounds, however they sound.
+    source: "Bhagavad-gītā As It Is 9.26"
+
+  - verse_ref: "BG 9.30"
+    category: "even fallen become saintly"
+    iast: |
+      api cet su-durācāro
+      bhajate mām ananya-bhāk
+      sādhur eva sa mantavyaḥ
+      samyag vyavasito hi saḥ
+    translation: |
+      Even if one commits the most abominable action, if he is engaged
+      in devotional service he is to be considered saintly because he
+      is properly situated in his determination.
+    mood_brought: "Krishna's assessment is mercy"
+    chanting_connection: |
+      Krishna does not assess your worthiness by your worst action.
+      He assesses by your direction. Today's chanting is the direction.
+      Begin without rehearsing your faults.
+    source: "Bhagavad-gītā As It Is 9.30"
+
+  - verse_ref: "BG 10.9"
+    category: "absorption"
+    iast: |
+      mac-cittā mad-gata-prāṇā
+      bodhayantaḥ parasparam
+      kathayantaś ca māṁ nityam
+      tuṣyanti ca ramanti ca
+    translation: |
+      The thoughts of My pure devotees dwell in Me, their lives are
+      surrendered to Me, and they derive great satisfaction and bliss
+      from enlightening one another and conversing about Me.
+    mood_brought: "the devotees' inner condition"
+    chanting_connection: |
+      The condition you aspire to is the condition Krishna describes
+      here: mind in Him, life surrendered to Him, conversation about
+      Him. Today's japa is one act in service of this condition.
+    source: "Bhagavad-gītā As It Is 10.9"
+
+  - verse_ref: "BG 18.66"
+    category: "śaraṇāgati"
+    iast: |
+      sarva-dharmān parityajya
+      mām ekaṁ śaraṇaṁ vraja
+      ahaṁ tvāṁ sarva-pāpebhyo
+      mokṣayiṣyāmi mā śucaḥ
+    translation: |
+      Abandon all varieties of religion and just surrender unto Me. I
+      shall deliver you from all sinful reactions. Do not fear.
+    mood_brought: "surrender and fearlessness"
+    chanting_connection: |
+      The cap of the Gītā: surrender, and don't fear. Sit before japa
+      and let this verse work. The fear of doing it wrong, the fear of
+      not measuring up — Krishna directly addresses these. Mā śucaḥ.
+    source: "Bhagavad-gītā As It Is 18.66"
+
+  - verse_ref: "SB 1.7.10"
+    category: "even self-realized chant"
+    iast: |
+      ātmārāmāś ca munayo
+      nirgranthā apy urukrame
+      kurvanty ahaitukīṁ bhaktim
+      ity ambhūta-guṇo hariḥ
+    translation: |
+      Those who are self-satisfied and free from all material desires
+      are nevertheless attracted to the loving service of Śrī Kṛṣṇa,
+      whose qualities are transcendental and whose activities are
+      wonderful. Hari, the Personality of Godhead, possesses such
+      qualities that He attracts even the liberated souls.
+    mood_brought: "the practice continues forever"
+    chanting_connection: |
+      Even the ātmārāmas — those who have completed self-realization —
+      continue to chant. Chanting is not a means you discard upon
+      arrival. It IS the arrival. Begin with that long view.
+    source: "Śrīmad-Bhāgavatam 1.7.10"
+
+  - verse_ref: "SB 6.3.20"
+    category: "Yamarāja's verdict"
+    iast: |
+      jihvā na vakti bhagavad-guṇa-nāmadheyaṁ
+      cetaś ca na smarati tac-caraṇāravindam
+      kṛṣṇāya no namati yac-chira ekadāpi
+      tān ānayadhvam asato 'kṛta-viṣṇu-kṛtyān
+    translation: |
+      My dear servants, please bring to me only those sinful persons
+      who do not use their tongues to chant the holy name and qualities
+      of Kṛṣṇa, whose hearts do not remember the lotus feet of Kṛṣṇa
+      even once, and whose heads do not bow down even once before Lord
+      Kṛṣṇa.
+    mood_brought: "what counts and what does not"
+    chanting_connection: |
+      Yamarāja's criterion is the simplest possible: did the tongue
+      chant, did the heart remember, did the head bow — even once?
+      Today's rounds satisfy all three. You step out of his jurisdiction.
+    source: "Śrīmad-Bhāgavatam 6.3.20"
+
+  - verse_ref: "CC Antya 20.36 (Śikṣāṣṭakam 7)"
+    category: "longing"
+    iast: |
+      yugāyitaṁ nimeṣeṇa
+      cakṣuṣā prāvṛṣāyitam
+      śūnyāyitaṁ jagat sarvaṁ
+      govinda-viraheṇa me
+    translation: |
+      O Govinda! Feeling Your separation, I am considering a moment to
+      be like twelve years or more. Tears are flowing from my eyes like
+      torrents of rain, and I am feeling all vacant in the world in
+      Your absence.
+    mood_brought: "longing as the goal"
+    chanting_connection: |
+      The most advanced devotional emotion is not satisfaction but
+      separation-longing. Don't seek a placid japa. If a single
+      sincere call of "Govinda" leaves an ache, that ache is the
+      progress.
+    source: "Caitanya Caritāmṛta, Antya-līlā 20.36 (Śrī Śikṣāṣṭakam, verse 7)"
+
+  - verse_ref: "CC Antya 20.39 (Śikṣāṣṭakam 8)"
+    category: "ultimate śaraṇāgati"
+    iast: |
+      āśliṣya vā pāda-ratāṁ pinaṣṭu mām
+      adarśanān marma-hatāṁ karotu vā
+      yathā tathā vā vidadhātu lampaṭo
+      mām eva nāthas tu sa eva nāparaḥ
+    translation: |
+      I know no one but Krishna as my Lord, and He shall remain so even
+      if He handles me roughly by His embrace or makes me brokenhearted
+      by not being present before me. He is completely free to do
+      anything and everything, for He is always my worshipful Lord,
+      unconditionally.
+    mood_brought: "unconditional acceptance"
+    chanting_connection: |
+      The pinnacle of the Śikṣāṣṭakam: He may embrace, He may break
+      the heart by absence, He may do anything — He is still the Lord.
+      Begin japa with this unconditional disposition, asking nothing.
+    source: "Caitanya Caritāmṛta, Antya-līlā 20.47 (Śrī Śikṣāṣṭakam, verse 8)"

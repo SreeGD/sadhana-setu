@@ -120,6 +120,75 @@ body {
 .ekadasi-card { border-left-color: #8B0000; background: #FFF5F5; margin-bottom: 1rem; }
 .ekadasi-card .card-label { color: #8B0000; }
 
+.verse-card {
+  background: #FFFDF7;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--gold-soft);
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow);
+}
+.verse-card .verse-summary {
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  list-style: none;
+  outline: none;
+}
+.verse-card .verse-summary::-webkit-details-marker { display: none; }
+.verse-card .verse-summary::before {
+  content: "▸";
+  color: var(--gold);
+  font-size: 0.8rem;
+  margin-right: 0.2rem;
+  transition: transform 0.18s ease;
+}
+.verse-card[open] .verse-summary::before { transform: rotate(90deg); display: inline-block; }
+.verse-card .verse-label {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+.verse-card .verse-ref { color: var(--ink-soft); font-weight: 600; font-size: 0.95rem; }
+.verse-card .verse-mood { color: var(--muted); font-style: italic; font-size: 0.9rem; }
+.verse-card .verse-toggle { color: var(--muted); font-size: 0.82rem; margin-left: auto; }
+.verse-card .verse-body {
+  padding: 0 1rem 0.9rem;
+  border-top: 1px solid var(--rule);
+}
+.verse-card .verse-iast {
+  color: var(--gold);
+  font-style: italic;
+  font-size: 1.02rem;
+  line-height: 1.7;
+  margin: 0.8rem 0 0.6rem;
+  text-align: center;
+}
+.verse-card .verse-translation {
+  font-size: 1rem;
+  color: var(--ink);
+  margin: 0.6rem 0;
+}
+.verse-card .verse-connection {
+  font-style: italic;
+  color: var(--ink-soft);
+  background: #FFF8E8;
+  border-left: 3px solid var(--gold);
+  padding: 0.5rem 0.8rem;
+  margin: 0.6rem 0;
+}
+@media (max-width: 768px) {
+  .verse-card .verse-summary { gap: 0.3rem; padding: 0.6rem 0.8rem; }
+  .verse-card .verse-toggle { display: none; }
+  .verse-card .verse-iast { font-size: 0.95rem; line-height: 1.55; }
+}
+
 .card-label {
   text-transform: uppercase;
   letter-spacing: 0.06em;

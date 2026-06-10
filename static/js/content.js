@@ -47,6 +47,11 @@ export async function todayBookTip() {
   return pick(items, dayOfYear());
 }
 
+export async function todayVerse() {
+  const { items } = await load("daily_verses");
+  return pick(items, dayOfYear());
+}
+
 export async function weekBhajan() {
   const { items } = await load("bhajans");
   return pick(items, isoWeek());

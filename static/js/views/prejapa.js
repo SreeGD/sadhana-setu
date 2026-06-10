@@ -3,7 +3,7 @@
 import {
   todayAffirmation, todayFaithVerse, todayInspiration, todayTip,
   todayNamaTattva, todayBookTip, weekBhajan, weekStory,
-  todayEkadasi, todayValue,
+  todayEkadasi, todayValue, todayVerse,
 } from "../content.js";
 import { el, formatDate } from "../util.js";
 
@@ -54,12 +54,32 @@ function featured(label, title, body, cite, extra) {
   return c;
 }
 
+function buildVerseCard(verse) {
+  const iast = verse.iast ? el("div", { class: "verse-iast", html: verse.iast.replace(/\n/g, "<br>") }) : null;
+  const translation = verse.translation ? el("p", { class: "verse-translation" }, verse.translation) : null;
+  const connection = verse.chanting_connection ? el("p", { class: "verse-connection" }, verse.chanting_connection) : null;
+  return el("details", { class: "verse-card" },
+    el("summary", { class: "verse-summary" },
+      el("span", { class: "verse-label" }, "VERSE FOR MOOD"),
+      el("span", { class: "verse-ref" }, verse.verse_ref || ""),
+      verse.mood_brought ? el("span", { class: "verse-mood" }, "· " + verse.mood_brought) : null,
+      el("span", { class: "verse-toggle" }, " — tap to read (optional)"),
+    ),
+    el("div", { class: "verse-body" },
+      iast,
+      translation,
+      connection,
+      el("div", { class: "card-cite" }, "— " + (verse.source || "")),
+    ),
+  );
+}
+
 export async function render(root) {
   const dow = new Date().getDay();   // Sun=0, Sat=6
-  const [aff, faith, insp, tip, nt, book, bhajan, story, ekadasi, value] = await Promise.all([
+  const [aff, faith, insp, tip, nt, book, bhajan, story, ekadasi, value, verse] = await Promise.all([
     todayAffirmation(), todayFaithVerse(), todayInspiration(), todayTip(),
     todayNamaTattva(), todayBookTip(), weekBhajan(), weekStory(),
-    todayEkadasi(), todayValue(),
+    todayEkadasi(), todayValue(), todayVerse(),
   ]);
 
   let featuredEl;
@@ -113,6 +133,7 @@ export async function render(root) {
     formatDate(new Date()),
     " · value: ", el("strong", {}, value)
   ));
+  if (verse) root.appendChild(buildVerseCard(verse));
   root.appendChild(featuredEl);
   root.appendChild(el("div", { class: "support-grid" }, ...supportItems));
   if (ekadasiCard) root.appendChild(ekadasiCard);
