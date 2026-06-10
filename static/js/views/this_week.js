@@ -8,7 +8,7 @@ import {
 import {
   upcomingSaturday, addDays, el, formatDate, collapse
 } from "../util.js";
-import { weekDots } from "../week_summary.js";
+import { weekDots, summaryLine } from "../week_summary.js";
 
 function verseCard(v) {
   const det = collapse("weekly_verse",
@@ -153,10 +153,15 @@ export async function render(root) {
     "Week of ", formatDate(weekStart), " — ", formatDate(sat)
   ));
 
-  // 1. Week at a glance
+  // 1. Week at a glance + summary
+  const sLine = summaryLine(sat);
   root.appendChild(el("div", { class: "view-card" },
     el("h3", {}, "Week at a glance"),
     weekDots(sat),
+    el("p", { style: "margin: 0.6rem 0 0.2rem; color: var(--ink-soft); font-weight: 600;" },
+      sLine.primary),
+    el("p", { style: "margin: 0; color: var(--muted); font-size: 0.88rem; font-style: italic;" },
+      sLine.distribution),
   ));
 
   // 2. Weekly verse

@@ -27,6 +27,7 @@ export function weekDots(saturdayDate) {
     const r = store.getRounds(iso);
     const count = r?.count || 0;
     const completion = r?.completion;
+    const flags = store.getHearingFlags(iso);
     let cls = "empty";
     let badge = "—";
     let timeLabel = "";
@@ -41,10 +42,15 @@ export function weekDots(saturdayDate) {
       cls = "partial";
       badge = String(count);
     }
+    const flagRow = (flags.sb || flags.bg) ? el("div", { class: "flag-row" },
+      flags.sb ? el("span", { class: "flag-badge sb" }, "SB") : null,
+      flags.bg ? el("span", { class: "flag-badge bg" }, "BG") : null,
+    ) : null;
     grid.appendChild(el("div", { class: `day ${cls}` },
       el("div", { class: "label" }, d.toLocaleDateString(undefined, { weekday: "short" })),
       el("div", { class: "count" }, badge),
       timeLabel ? el("div", { class: "time-label" }, timeLabel) : null,
+      flagRow,
     ));
   }
   return grid;
@@ -56,16 +62,22 @@ export function weekJapaSummary(saturdayDate) {
   const rounds = days.map(d => store.getRounds(d.toISOString().slice(0, 10)));
   let completedDays = 0;
   let hearingCount = 0;
+  let sbDays = 0;
+  let bgDays = 0;
   const windows = { before_8am: 0, before_12pm: 0, before_9pm: 0, before_11pm: 0 };
   for (let i = 0; i < days.length; i++) {
+    const iso = days[i].toISOString().slice(0, 10);
     const r = rounds[i];
     if (r) {
       if ((r.count || 0) >= 16) completedDays++;
       if (r.completion && windows[r.completion] !== undefined) windows[r.completion]++;
     }
-    hearingCount += store.getHearingForDate(days[i].toISOString().slice(0, 10)).length;
+    hearingCount += store.getHearingForDate(iso).length;
+    const f = store.getHearingFlags(iso);
+    if (f.sb) sbDays++;
+    if (f.bg) bgDays++;
   }
-  return { completedDays, hearingCount, windows };
+  return { completedDays, hearingCount, windows, sbDays, bgDays };
 }
 
 export function summaryLine(saturdayDate) {
@@ -75,7 +87,7 @@ export function summaryLine(saturdayDate) {
     .map(([w, n]) => `${WINDOW_LABEL[w]}: ${n}`)
     .join(" · ");
   return {
-    primary: `${s.completedDays}/7 days at vow · ${s.hearingCount} hearing notes`,
+    primary: `${s.completedDays}/7 days at vow · SB ${s.sbDays}/7 · BG ${s.bgDays}/7 · ${s.hearingCount} hearing notes`,
     distribution: dist || "no completion windows recorded yet",
     ...s,
   };

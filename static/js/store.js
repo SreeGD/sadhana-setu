@@ -12,9 +12,13 @@ const KEY = "sadhana_setu_v1";
 
 function _read() {
   const raw = localStorage.getItem(KEY);
-  if (!raw) return { rounds: {}, hearing: [], checkins: {}, meta: { schema_version: 1 } };
-  try { return JSON.parse(raw); }
-  catch { return { rounds: {}, hearing: [], checkins: {}, meta: { schema_version: 1 } }; }
+  const fallback = { rounds: {}, hearing: [], checkins: {}, hearing_flags: {}, meta: { schema_version: 1 } };
+  if (!raw) return fallback;
+  try {
+    const parsed = JSON.parse(raw);
+    if (!parsed.hearing_flags) parsed.hearing_flags = {};
+    return parsed;
+  } catch { return fallback; }
 }
 
 function _write(s) {
@@ -100,6 +104,30 @@ export function hearingCountBetween(startISO, endISO) {
   return _read().hearing.filter(h => h.date >= startISO && h.date <= endISO).length;
 }
 
+// ---------- hearing flags (sb/bg quick-check) ----------
+
+export function getHearingFlags(date) {
+  return _read().hearing_flags[date] || { sb: false, bg: false };
+}
+
+export function setHearingFlag(date, kind, value) {
+  // kind: "sb" | "bg"
+  const s = _read();
+  const cur = s.hearing_flags[date] || { sb: false, bg: false };
+  cur[kind] = !!value;
+  cur.updated_at = _now();
+  s.hearing_flags[date] = cur;
+  _write(s);
+  return cur;
+}
+
+export function getHearingFlagsBetween(startISO, endISO) {
+  const flags = _read().hearing_flags || {};
+  return Object.entries(flags)
+    .filter(([d]) => d >= startISO && d <= endISO)
+    .map(([date, f]) => ({ date, ...f }));
+}
+
 // ---------- weekly check-ins ----------
 
 export function getCheckin(saturdayISO) {
@@ -134,6 +162,7 @@ export function exportAll() {
     rounds: s.rounds,
     hearing: s.hearing,
     checkins: s.checkins,
+    hearing_flags: s.hearing_flags,
   };
 }
 
@@ -142,8 +171,9 @@ export function importAll(backup, strategy = "merge") {
     throw new Error("Unrecognised backup file (missing schema_version)");
   }
   const s = strategy === "replace"
-    ? { rounds: {}, hearing: [], checkins: {}, meta: {} }
+    ? { rounds: {}, hearing: [], checkins: {}, hearing_flags: {}, meta: {} }
     : _read();
+  if (!s.hearing_flags) s.hearing_flags = {};
 
   // rounds: keep later captured_at
   for (const [date, r] of Object.entries(backup.rounds || {})) {
@@ -166,6 +196,13 @@ export function importAll(backup, strategy = "merge") {
     const existing = s.checkins[week];
     if (!existing || (c.submitted_at || "") > (existing.submitted_at || "")) {
       s.checkins[week] = c;
+    }
+  }
+  // hearing_flags: keep later updated_at
+  for (const [date, f] of Object.entries(backup.hearing_flags || {})) {
+    const existing = s.hearing_flags[date];
+    if (!existing || (f.updated_at || "") > (existing.updated_at || "")) {
+      s.hearing_flags[date] = f;
     }
   }
   s.meta = s.meta || {};

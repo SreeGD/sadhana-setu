@@ -18,6 +18,7 @@ export async function render(root) {
   const date = todayISO();
   const current = store.getRounds(date);
   const selected = current?.completion || null;
+  const flags = store.getHearingFlags(date);
 
   root.innerHTML = "";
   root.appendChild(el("div", { class: "meta-line" }, formatDate(new Date())));
@@ -60,6 +61,35 @@ export async function render(root) {
     selected ? el("div", { class: "meta-line", style: "margin-top:0.6rem;" },
       el("em", {}, `vow complete · `, el("strong", {}, WINDOWS.find(w=>w.id===selected)?.label || ""))
     ) : null,
+  ));
+
+  // Quick hearing checks — SB + BG (one tap per day)
+  function pill(kind, label, on) {
+    const btn = el("button", {
+      class: "hearing-pill" + (on ? " on" : ""),
+      "data-kind": kind,
+    },
+      el("span", { class: "hearing-tick" }, on ? "✓" : ""),
+      el("span", { class: "hearing-label" }, label),
+    );
+    btn.addEventListener("click", () => {
+      const next = !btn.classList.contains("on");
+      store.setHearingFlag(date, kind, next);
+      btn.classList.toggle("on", next);
+      btn.querySelector(".hearing-tick").textContent = next ? "✓" : "";
+      toast(next ? `${label.toUpperCase()} marked` : `${label.toUpperCase()} unmarked`);
+    });
+    return btn;
+  }
+
+  root.appendChild(el("div", { class: "view-card" },
+    el("h3", {}, "Today's hearing — quick check"),
+    el("p", { style: "color:var(--muted); font-size:0.9rem; margin: 0 0 0.6rem;" },
+      "Optional. Tap once when you've heard SB or BG today."),
+    el("div", { class: "hearing-pills" },
+      pill("sb", "SB heard", flags.sb),
+      pill("bg", "BG heard", flags.bg),
+    ),
   ));
 
   // Hearing card

@@ -483,6 +483,55 @@ button.secondary:hover { border-color: var(--gold-soft); }
 /* Backwards-compat alias kept for any inline references */
 .rounds-counter { display: none; }
 
+/* ---------- SB / BG hearing pills (Today) ---------- */
+.hearing-pills {
+  display: flex;
+  gap: 0.6rem;
+  margin: 0.4rem 0;
+}
+.hearing-pill {
+  flex: 1;
+  background: var(--card-bg);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.75rem 1.1rem;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--ink-soft);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.15s ease;
+}
+.hearing-pill:hover { border-color: var(--gold-soft); }
+.hearing-pill .hearing-tick {
+  display: inline-block;
+  width: 1.3rem;
+  height: 1.3rem;
+  border: 1.5px solid var(--rule);
+  border-radius: 4px;
+  text-align: center;
+  line-height: 1.15rem;
+  font-weight: 600;
+  background: var(--surface);
+  color: transparent;
+  transition: all 0.15s ease;
+  flex-shrink: 0;
+}
+.hearing-pill.on {
+  background: #EEF7EE;
+  border-color: #2E7D32;
+  color: #1E6B30;
+}
+.hearing-pill.on .hearing-tick {
+  background: #2E7D32;
+  border-color: #2E7D32;
+  color: #FFFBF3;
+}
+.hearing-label { font-weight: 600; letter-spacing: 0.02em; }
+
 /* ---------- single-select with Other ---------- */
 
 .field-wrap { margin-bottom: 0.5rem; }
@@ -552,6 +601,22 @@ select { cursor: pointer; }
   margin-top: 0.1rem;
   letter-spacing: 0.02em;
 }
+.week-dots .day .flag-row {
+  display: flex;
+  gap: 0.18rem;
+  justify-content: center;
+  margin-top: 0.2rem;
+}
+.week-dots .day .flag-badge {
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 0.05rem 0.3rem;
+  border-radius: 3px;
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+.week-dots .day .flag-badge.sb { background: #FFE8C0; color: #8B4500; }
+.week-dots .day .flag-badge.bg { background: #E0F0FF; color: #1E4880; }
 .week-dots .day.win-before_8am  .time-label { color: #1E6B30; }
 .week-dots .day.win-before_12pm .time-label { color: #2E7D32; }
 .week-dots .day.win-before_9pm  .time-label { color: #C77800; }
