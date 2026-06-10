@@ -31,6 +31,7 @@ LIBRARIES = {
     "daily_verses": ("daily_verses", "items"),
     "weekly_verses": ("weekly_verses", "items"),
     "weekly_lectures": ("weekly_lectures", "items"),
+    "sankalpas": ("sankalpas", "items"),
 }
 
 # Files where we just pass the entire YAML through (no rotation; the

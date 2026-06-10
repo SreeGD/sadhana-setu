@@ -1,0 +1,128 @@
+# Sankalpa pool — Sadhana Setu
+#
+# Pool of pre-japa vows. The Pre-japa view shows ONE per day:
+#   - Wednesday: the anchor (Bhurijana Prabhu's primary vow) — always
+#   - Other days: a non-anchor entry, rotated by day-of-year
+#
+# A saṅkalpa is action-binding ("I will…"), not belief-shaping
+# ("I am…" / "X is true"). Affirmations live in affirmations.yaml.
+# Sources are restricted to material already in this app's corpus
+# (nama_tattva.yaml, tips.yaml, japa_methods.yaml) or the
+# Bhurijana Prabhu Melbourne 2006 workshop notes.
+
+status: approved
+review_notes: |
+  Reviewer: SreeGD (Sreenivas Gopal Dasa)
+  Date: 2026-06-10
+  Notes: 20 vows, grouped by mood-category in comments. The single
+    anchor is Bhurijana 2006's primary teaching — every Wednesday
+    resets to it.
+
+sankalpas:
+  # ============================================================
+  # ANCHOR — every Wednesday
+  # ============================================================
+  - text: "I will try to hear THIS mantra."
+    category: "Anchor"
+    source: "HG Bhurijana Prabhu, Melbourne 2006 japa workshop"
+    anchor: true
+
+  # ============================================================
+  # WILD-MIND VARIANTS
+  # ============================================================
+  - text: "This name — I will hear it."
+    category: "Wild mind"
+    source: "Bhurijana 2006 — one-name variant"
+
+  - text: "I will catch the first 'Hare'."
+    category: "Wild mind"
+    source: "Bhurijana 2006 — 'the most important word… is the first one'"
+
+  - text: "I cannot focus, but I will sit. The attempt is the practice."
+    category: "Wild mind"
+    source: "Bhurijana 2006 — 'just make the attempt, make the saṅkalpa'"
+
+  # ============================================================
+  # MOOD VOWS
+  # ============================================================
+  - text: "I will chant humbler than the straw, more tolerant than the tree, offering respect, expecting none."
+    category: "Mood"
+    source: "Śikṣāṣṭakam 3 (tṛṇād api sunīcena)"
+
+  - text: "I will not retaliate today — even within my mind — so the Name can act."
+    category: "Mood"
+    source: "Śikṣāṣṭakam 3 application; sādhu-nindā offence (Bhurijana 2006)"
+
+  - text: "Today I will not just pronounce — I will call out."
+    category: "Mood"
+    source: "HH Sacinandana Swami, Two Doors"
+
+  - text: "Today I will reform my tendency to remain absent during chanting."
+    category: "Mood"
+    source: "HH Sacinandana Swami, Three-step meditation"
+
+  # ============================================================
+  # INNER-SERVICE VOWS
+  # ============================================================
+  - text: "Today I will serve Kṛṣṇa within while my tongue chants without."
+    category: "Inner service"
+    source: "Śrīla Prabhupāda, Geneva 1974 — Diamond Throne"
+
+  - text: "I will accept the Name as Kṛṣṇa Himself — chanting is meeting, not recitation."
+    category: "Inner service"
+    source: "Padma Purāṇa; CC Madhya 17.133"
+
+  - text: "When the mind rebels, I will neglect it and return to the Name."
+    category: "Inner service"
+    source: "HG Bhurijana Prabhu, 4-step technique — Neglect"
+
+  # ============================================================
+  # TIME-BOUND VOWS
+  # ============================================================
+  - text: "Brahma-muhūrta is here. I will not let it pass without offering rounds."
+    category: "Time-bound"
+    source: "Hari-bhakti-vilāsa; SB 11.18"
+
+  - text: "If I missed brahma-muhūrta, I will not skip — I chant now."
+    category: "Time-bound"
+    source: "Śikṣāṣṭakam 2 (kalau nāsty eva)"
+
+  - text: "Today is Ekādaśī. I will complete my rounds before noon."
+    category: "Time-bound"
+    source: "Hari-bhakti-vilāsa"
+
+  # ============================================================
+  # RELATIONSHIP VOW
+  # ============================================================
+  - text: "Today I chant to Kṛṣṇa as my master. I will address Him in that mood."
+    category: "Relationship"
+    source: "Sanātana Gosvāmī, Bṛhad-Bhāgavatāmṛta — sambandha-jñāna"
+
+  # ============================================================
+  # PERSISTENCE VOWS
+  # ============================================================
+  - text: "Taste is not the test today. Attention is. I will attend, regardless of taste."
+    category: "Persistence"
+    source: "Madhurya-kadambini 3.20; Bhurijana 2006 — 'never mind success'"
+
+  - text: "I will not wait for purity to begin. I begin in spite of impurity — that IS the purification."
+    category: "Persistence"
+    source: "Anartha-nivṛtti principle (CC Madhya 19)"
+
+  - text: "I will not demand sixteen. I will request one. Then one more."
+    category: "Persistence"
+    source: "The 'just one more' principle — HG Bhurijana Prabhu"
+
+  # ============================================================
+  # RECOVERY VOW
+  # ============================================================
+  - text: "If I wander, the next mantra is the same fresh chance. I begin again, now."
+    category: "Recovery"
+    source: "BG 6.26; Bhurijana 2006 — 'the same chance on the next mantra'"
+
+  # ============================================================
+  # END-OF-DAY VOW
+  # ============================================================
+  - text: "Let my last conscious thought tonight be Your Name."
+    category: "End of day"
+    source: "BG 8.6 (anta-kāle ca mām eva); Prahlāda's example (SB 7.5)"

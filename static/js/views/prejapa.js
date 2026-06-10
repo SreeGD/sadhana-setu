@@ -3,7 +3,7 @@
 import {
   todayAffirmation, todayFaithVerse, todayInspiration, todayTip,
   todayNamaTattva, todayBookTip, weekBhajan, weekStory,
-  todayEkadasi, todayValue, todayVerse,
+  todayEkadasi, todayValue, todayVerse, todaySankalpa,
 } from "../content.js";
 import { el, formatDate, todayISO, formatTime, toast } from "../util.js";
 import * as store from "../store.js";
@@ -77,10 +77,10 @@ function buildVerseCard(verse) {
 
 export async function render(root) {
   const dow = new Date().getDay();   // Sun=0, Sat=6
-  const [aff, faith, insp, tip, nt, book, bhajan, story, ekadasi, value, verse] = await Promise.all([
+  const [aff, faith, insp, tip, nt, book, bhajan, story, ekadasi, value, verse, sankalpa] = await Promise.all([
     todayAffirmation(), todayFaithVerse(), todayInspiration(), todayTip(),
     todayNamaTattva(), todayBookTip(), weekBhajan(), weekStory(),
-    todayEkadasi(), todayValue(), todayVerse(),
+    todayEkadasi(), todayValue(), todayVerse(), todaySankalpa(),
   ]);
 
   let featuredEl;
@@ -143,13 +143,13 @@ export async function render(root) {
   root.appendChild(el("div", { class: "support-grid" }, ...supportItems));
   if (ekadasiCard) root.appendChild(ekadasiCard);
   root.appendChild(bookCard);
-  root.appendChild(sankalpaCard());
+  root.appendChild(sankalpaCard(sankalpa));
   root.appendChild(el("div", { class: "meta-line" },
     el("em", {}, "Close this window when ready. The Name awaits."),
   ));
 }
 
-function sankalpaCard() {
+function sankalpaCard(sankalpa) {
   const date = todayISO();
   const existing = store.getSankalpa(date);
 
@@ -161,19 +161,19 @@ function sankalpaCard() {
     const made = !!cur;
     card.classList.toggle("made", made);
 
+    const labelPrefix = sankalpa?.anchor ? "SAṄKALPA · anchor" : "SAṄKALPA · before japa";
     const label = made
       ? `SAṄKALPA · ✓ made at ${formatTime(cur.made_at)}`
-      : "SAṄKALPA · before japa";
+      : labelPrefix;
     card.appendChild(el("div", { class: "card-label" }, label));
 
-    card.appendChild(el("div", { class: "sankalpa-vow" },
-      el("span", { class: "quote-mark" }, "“"),
-      "I will try to hear ",
-      el("strong", {}, "THIS"),
-      " mantra.",
-      el("span", { class: "quote-mark" }, "”"),
-    ));
-    card.appendChild(el("div", { class: "card-cite" }, "— HG Bhurijana Prabhu · Melbourne, 2006"));
+    const vowText = sankalpa?.text || "I will try to hear THIS mantra.";
+    const vowBody = vowText.replace(/\b([A-Z]{2,})\b/g, "<strong>$1</strong>");
+    card.appendChild(el("div", {
+      class: "sankalpa-vow",
+      html: `<span class="quote-mark">“</span>${vowBody}<span class="quote-mark">”</span>`,
+    }));
+    card.appendChild(el("div", { class: "card-cite" }, "— " + (sankalpa?.source || "HG Bhurijana Prabhu · Melbourne, 2006")));
 
     if (made) {
       const undo = el("button", { class: "sankalpa-undo" }, "Undo");

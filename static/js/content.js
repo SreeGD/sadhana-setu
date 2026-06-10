@@ -100,6 +100,16 @@ export async function todayEkadasi() {
   return (doc.dates || []).find(e => e.date === today) || null;
 }
 
+export async function todaySankalpa(d = new Date()) {
+  // Saṅkalpa for today's japa. Wednesday returns the marked anchor;
+  // other days rotate through the rest of the pool by day-of-year.
+  const { items } = await load("sankalpas");
+  const anchor = items.find(s => s.anchor) || items[0];
+  if (d.getDay() === 3) return anchor;
+  const pool = items.filter(s => !s.anchor);
+  return pool.length ? pick(pool, dayOfYear(d)) : anchor;
+}
+
 export async function todayValue() {
   // Rotating practice-value tag for the meta line.
   const values = [
