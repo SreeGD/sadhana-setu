@@ -7,6 +7,8 @@ from __future__ import annotations
 
 import json
 import shutil
+import subprocess
+import time
 from pathlib import Path
 
 import yaml
@@ -14,6 +16,7 @@ import yaml
 ROOT = Path(__file__).parent
 SRC = ROOT / "data"
 DEST = ROOT / "static" / "content"
+STATIC = ROOT / "static"
 
 # Map: yaml file stem -> (key in the YAML to extract, key in the output JSON).
 LIBRARIES = {
@@ -74,6 +77,51 @@ def main() -> None:
     if src_ek.exists():
         shutil.copyfile(src_ek, DEST / "ekadasi.json")
         print(f"  ekadasi.json (copied through)")
+
+    build_service_worker()
+
+
+def cache_version() -> str:
+    try:
+        sha = subprocess.run(
+            ["git", "rev-parse", "--short", "HEAD"],
+            cwd=ROOT, capture_output=True, text=True, check=True,
+        ).stdout.strip()
+        if sha:
+            return sha
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        pass
+    return str(int(time.time()))
+
+
+def precache_list() -> list[str]:
+    """Same-origin URLs to precache on SW install. Paths are relative to the
+    served root (which on GitHub Pages is /sadhana-setu/static/... → we
+    register the SW from /sadhana-setu/ so root-relative './' paths work)."""
+    urls: list[str] = ["./", "./index.html", "./manifest.webmanifest"]
+    for sub in ("css", "js", "content", "icons"):
+        base = STATIC / sub
+        if not base.exists():
+            continue
+        for p in sorted(base.rglob("*")):
+            if p.is_file() and not p.name.startswith("."):
+                rel = p.relative_to(STATIC).as_posix()
+                urls.append(f"./{rel}")
+    return urls
+
+
+def build_service_worker() -> None:
+    tmpl = STATIC / "sw.js.template"
+    if not tmpl.exists():
+        print("  ! sw.js.template missing — skipping SW build")
+        return
+    version = cache_version()
+    urls = precache_list()
+    out = tmpl.read_text()
+    out = out.replace("__CACHE_VERSION__", version)
+    out = out.replace("__PRECACHE_LIST__", json.dumps(urls, indent=2))
+    (STATIC / "sw.js").write_text(out)
+    print(f"  sw.js.template               -> static/sw.js (cache={version}, {len(urls)} urls)")
 
 
 if __name__ == "__main__":
