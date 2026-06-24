@@ -64,8 +64,9 @@ The daily Nama-Tattva teaching can draw from the **reviewed corpus** (senior Vai
 Holy Name) in addition to the existing curated library — cited to speaker + lecture — deepening
 the daily teaching with the gathered material.
 
-**Why this priority**: Nama-Tattva is the app's existing dedicated "teaching on the Name" slot;
-it is the most natural and highest-value place for the corpus beyond pre-japa.
+**Why this priority**: Nama-Tattva is a dedicated daily "teaching on the Name" — a **new view**
+surfacing the existing curated `nama_tattva` library, now corpus-preferred. It is the most natural
+and highest-value place for the corpus beyond pre-japa.
 
 **Independent Test**: Open Nama-Tattva; confirm it can show a reviewed corpus teaching with
 citation, stable within a day, falling back to the curated library when no match/offline.
@@ -146,7 +147,10 @@ readable in clean form; unreviewed notes never appear.
 - **FR-006**: All enriched surfaces MUST honor the **Sattvic-Medium** constraints (no streaks,
   scoring, push, gamification, screen-during-japa) — Constitution Principle IV.
 - **FR-007**: The system MUST enrich the **Nama-Tattva** surface (US2).
-- **FR-008**: The system MUST enrich the **Saturday check-in** surface (US3).
+- **FR-008**: The system MUST enrich the **Saturday check-in** surface (US3). Unlike Nama-Tattva
+  (which falls back to its curated library), the Saturday corpus teaching is **purely additive** —
+  when there is no match it is simply **absent** (the check-in's own questions/reflection remain),
+  not replaced by a curated teaching.
 - **FR-009**: The system MUST provide a **study/browse view** of reviewed notes (US4) — in scope
   this round.
 - **FR-010**: The surfaces in scope for this round are **Nama-Tattva, the Saturday check-in, and

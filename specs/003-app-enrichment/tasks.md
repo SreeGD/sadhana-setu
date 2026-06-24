@@ -52,7 +52,7 @@ per-surface theme (daily=value, Saturday=sankalpa). No `[NEEDS CLARIFICATION]` o
 - [ ] T005 [US1] Implement `get_for_surface(theme, surface_id, *, date, state, querier)` in `sadhana_setu/flows/corpus_teaching.py`: resolve candidates (cached per date+theme), return top not in `state["surfaced"]`, mark it; clean text + citation; None on no-match/offline (FR-001/002/003/004/012/013)
 - [ ] T006 [US1] Refactor `sadhana_setu/flows/harinaam_teaching.py::fetch_teaching` to delegate to `corpus_teaching` with a shared `state`, so pre-japa joins the dedup (plan R1/decision 6)
 - [ ] T007 [US1] Wire pre-japa to pass the per-day `state` (`st.session_state["corpus_<date>"]`) in `sadhana_setu/ui/prejapa_view.py`
-- [ ] T008 [P] [US1] Test `tests/test_corpus_teaching.py` (injected querier + plain state): review-gate (only harinaam-note), clean text, cache hit (querier called once per theme), dedup (distinct lecture_ids), None on offline/exhausted (SC-001/002, FR-012/013)
+- [ ] T008 [P] [US1] Test `tests/test_corpus_teaching.py` (injected querier + plain state): review-gate (only harinaam-note), clean text, cache hit (querier called once per theme), **within-day stability** (a second call for the same date/theme/surface returns the same teaching — SC-005), dedup (distinct lecture_ids), None on offline/exhausted (SC-001/002, FR-012/013)
 
 **Checkpoint**: the shared service works; pre-japa uses it.
 
