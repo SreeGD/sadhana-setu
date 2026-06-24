@@ -5,98 +5,143 @@ description: "Task list for 002-note-enrichment"
 # Tasks: Note Enrichment
 
 **Input**: Design documents from `specs/002-note-enrichment/`
+**Prerequisites**: plan.md, spec.md (user stories), research.md, data-model.md, contracts/, quickstart.md;
+**depends on `001-corpus-pipeline`** (committed transcripts).
 
-**Prerequisites**: plan.md (required), spec.md (required), research.md;
-**depends on `001-corpus-pipeline`** producing committed transcripts.
+**Tests**: INCLUDED — grounding correctness and the review gate are trust-critical (Constitution
+I/V). Tests mock `claude -p`, `call_tool_sync` (kg-mcp), and `CorpusProcessor`; no network.
 
-**Tests**: Included — grounding correctness and the review gate are the trust-critical paths.
+**Organization**: By user story (US1–US5 from spec.md).
 
-**Organization**: Grouped by user story (US1–US5 from spec.md).
+## Format: `[ID] [P?] [Story?] Description with file path`
 
-## Format: `[ID] [P?] [Story] Description`
+- **[P]**: parallelizable (different files, no incomplete-task dependency)
+- **[USn]**: user-story label (story phases only)
 
-- **[P]**: Can run in parallel (different files, no dependencies)
-- **[Story]**: US1–US5
+## Clarification note
 
-## Phase 0: Research (resolve before building)
+Spec `## Clarifications` (2026-06-24): engine = **Claude Code headless** (`claude -p`, not API);
+**one note per transcript**; transcript errors **annotate-only** (`[sic?: …]`); review via a
+**Streamlit UI**; approval **auto-ingests** into ChromaDB + triggers KG rebuild. No `[NEEDS
+CLARIFICATION]` open.
 
-- [ ] T001 Resolve `[NEEDS CLARIFICATION]` FR-013/FR-014/FR-015 via `/speckit-clarify` (R4/R5/R1)
-- [ ] T002 [P] Document `kg-mcp` tool contracts for grounding (research R2) into `contracts/`
-- [ ] T003 [P] Read-only audit of vidya-karana ChromaDB back-ingest path (research R3)
-- [ ] T004 [P] Draft + golden-test the enrichment prompt contract & section schema (research R6)
+---
 
 ## Phase 1: Setup
 
-- [ ] T005 Create `corpus/notes/` content tree mirroring `corpus/transcripts/` set structure
-- [ ] T006 Add note-enrichment deps to `pyproject.toml` (LLM client per FR-015; reuse existing MCP client)
-- [ ] T007 Define note front-matter + citation + review-record schema in `data-model.md` and `contracts/`
+- [ ] T001 Add enrichment config to `sadhana_setu/corpus/config.py`: `enrichment_version`, `claude` CLI flags (`-p --output-format json`), and a `claude`/`kg-mcp` preflight
+- [ ] T002 [P] Add `corpus/notes/<set>/` convention + a notes section to `corpus/README.md`
+- [ ] T003 [P] Confirm `streamlit`/`pyyaml` deps in `pyproject.toml` (already present); add any enrichment-only dev deps
+
+---
 
 ## Phase 2: Foundational (Blocking Prerequisites)
 
 **⚠️ No user-story work begins until this phase is complete.**
 
-- [ ] T008 Implement `sadhana_setu/corpus/notes.py`: read/write notes, front-matter, status state machine (`draft`/`reviewed`)
-- [ ] T009 [P] Test `tests/corpus/test_notes.py`: front-matter round-trip, status transitions
-- [ ] T010 Implement `sadhana_setu/corpus/grounding.py`: resolve candidate citations via `kg-mcp`; mark `[UNVERIFIED]`; offline fail-safe (FR-002, FR-003, FR-010)
-- [ ] T011 [P] Test `tests/corpus/test_grounding.py` with mocked `kg-mcp`: verified vs unverified vs offline
+- [ ] T004 Implement `sadhana_setu/corpus/notes.py`: ClassNote read/write, front-matter against `contracts/note-frontmatter.schema.json`, `draft → reviewed` state machine (data-model.md)
+- [ ] T005 [P] Test `tests/corpus/test_notes.py`: front-matter round-trip + status transitions + reviewed-requires-reviewer
+- [ ] T006 Implement `sadhana_setu/corpus/llm.py`: `Provider` interface + `ClaudeCodeProvider` (shells `claude -p --output-format json`), parse + validate output against `contracts/enrichment-output.schema.json`
+- [ ] T007 [P] Test `tests/corpus/test_llm.py`: parse/validate a stubbed `claude -p` JSON payload; schema-violation rejected
+
+**Checkpoint**: note I/O + LLM provider ready.
+
+---
 
 ## Phase 3: User Story 1 — Generate enriched class notes (P1) 🎯 MVP
 
-**Goal**: Transcript → structured draft note with all required sections + timestamp back-links.
+**Goal**: One transcript → structured draft note with all sections + timestamp back-links.
+**Independent test**: run `enrich` on a fixture transcript (stubbed provider); a draft note with all FR-001 sections appears, each teaching timestamped, marked `draft`.
 
-- [ ] T012 [US1] Implement `sadhana_setu/corpus/enrich.py`: call LLM with the prompt contract; parse sections + candidate citations + timestamp anchors
-- [ ] T013 [US1] Render note via `notes.py` to `corpus/notes/<set>/<slug>.md` with provenance front-matter, `status: draft` (FR-001, FR-005, FR-006)
-- [ ] T014 [US1] Idempotency: skip if a note for that transcript+enrichment-version exists; `--regenerate` resets to draft + bumps version (FR-009)
-- [ ] T015 [US1] Wire `enrich` into `cli.py` (`python -m sadhana_setu.corpus enrich [--set NAME]`)
-- [ ] T016 [P] [US1] Test `tests/corpus/test_enrich.py` on a short fixture transcript with a stubbed LLM: all sections present, timestamps linked, marked draft
+- [ ] T008 [US1] Implement `sadhana_setu/corpus/enrich.py`: load a `001` transcript, call the provider with the prompt contract, parse `key_teachings`/`glossary`/`practical_application`/`sic_flags`
+- [ ] T009 [US1] Render + write the draft note to `corpus/notes/<set>/<id>.md` via `notes.py` with provenance front-matter, `status: draft` (FR-001/005); inline `[sic?: …]` flags (FR-014)
+- [ ] T010 [US1] Idempotency: skip existing note for the same transcript + `enrichment_version`; `--regenerate` resets to draft + bumps version (FR-009)
+- [ ] T011 [US1] Wire `enrich` into `sadhana_setu/corpus/cli.py` (`python -m sadhana_setu.corpus enrich [--set NAME]`)
+- [ ] T012 [P] [US1] Test `tests/corpus/test_enrich.py` on a fixture transcript with a stubbed provider (golden file): all sections present, timestamps linked, `draft`
 
-**Checkpoint**: One transcript → committed structured draft note.
+**Checkpoint**: transcript → committed structured draft note.
 
-## Phase 4: User Story 2 — Ground verses/references in the KG (P1)
+---
 
-**Goal**: Every published verse/reference comes from `kg-mcp`, not the LLM.
+## Phase 4: User Story 2 — Ground verses in the KG (P1)
 
-- [ ] T017 [US2] Integrate `grounding.py` into the enrich flow: LLM proposes candidate references only; grounding substitutes authoritative KG text (FR-002, FR-012)
-- [ ] T018 [US2] `[UNVERIFIED]` handling: withhold ungrounded citations from the verified body, list them in a review section (FR-003)
-- [ ] T019 [US2] Fail-safe: if `kg-mcp` offline, do not emit verses as verified; mark note unverifiable (FR-010)
-- [ ] T020 [P] [US2] Extend grounding tests for substitution + withholding + offline behavior
+**Goal**: Every published verse comes from `kg-mcp`, not the LLM.
+**Independent test**: a candidate `verse_ref` resolves to the `get_verse` text; an unresolvable one is `[UNVERIFIED]`; kg-mcp offline → fail-safe.
 
-**Checkpoint**: Notes contain only KG-grounded verses; SC-001 testable.
+- [ ] T013 [US2] Implement `sadhana_setu/corpus/grounding.py`: resolve `candidate_verse_refs` via `call_tool_sync("get_verse", {"verse_ref": …})`; substitute authoritative `iast`/`translation` (contracts/grounding.md)
+- [ ] T014 [US2] `[UNVERIFIED]` handling (withhold ungrounded from body) + `kg_status` offline fail-safe in `sadhana_setu/corpus/grounding.py` (FR-003/010)
+- [ ] T015 [US2] Integrate `grounding.py` into `enrich.py` so the note body's `verses_cited` are KG-sourced only (FR-002/012)
+- [ ] T016 [P] [US2] Test `tests/corpus/test_grounding.py` with mocked `call_tool_sync`: verified / `[UNVERIFIED]` / offline fail-safe
 
-## Phase 5: User Story 3 — Cross-references to purports & related teachings (P2)
+**Checkpoint**: notes contain only KG-grounded verses (SC-001).
+
+---
+
+## Phase 5: User Story 3 — Cross-references (P2)
 
 **Goal**: Grounded cross-references deepen each note.
+**Independent test**: each key teaching yields ≥1 grounded cross-reference that resolves in the KG.
 
-- [ ] T021 [US3] Add cross-reference generation: query `cross_author_chunks`/`search_corpus` for related purports/teachings per key teaching (FR-004)
-- [ ] T022 [US3] Render cross-references with resolvable citations; reuse grounding for verification
-- [ ] T023 [P] [US3] Test that each key teaching yields ≥1 grounded cross-reference
+- [ ] T017 [US3] Cross-reference generation in `sadhana_setu/corpus/grounding.py`: resolve `candidate_cross_refs` via `search_corpus`/`cross_author_chunks`; render with citations (FR-004)
+- [ ] T018 [P] [US3] Test `tests/corpus/test_grounding.py` (cross-ref cases): grounded vs dropped
 
-## Phase 6: User Story 4 — Review gate (P1)
+**Checkpoint**: notes carry grounded purport/teaching cross-links.
 
-**Goal**: Only devotee-approved notes are publishable.
+---
 
-- [ ] T024 [US4] Implement `sadhana_setu/corpus/review.py`: `review approve <note>` records reviewer + date, flips `draft → reviewed` (FR-007, FR-008)
-- [ ] T025 [US4] Publish eligibility: exclude unreviewed notes from any publish/back-ingest step
-- [ ] T026 [P] [US4] Test `tests/corpus/test_review.py`: approval flow + exclusion of unreviewed (SC-003)
+## Phase 6: User Story 4 — Review gate via Streamlit UI (P1)
 
-**Checkpoint**: Review gate holds; nothing publishes without approval.
+**Goal**: Only devotee-approved notes are publishable; approval happens in a UI.
+**Independent test**: approve a draft in the UI → status `reviewed` + reviewer/date; unreviewed notes excluded from publish/ingest.
 
-## Phase 7: User Story 5 — Back-ingest reviewed notes into the KG (P3)
+- [ ] T019 [US4] Implement `sadhana_setu/corpus/review.py`: `approve(note, reviewer)` → `draft → reviewed` (+ `reviewed_at`), publish-eligibility check (FR-007/008)
+- [ ] T020 [US4] Implement `sadhana_setu/ui/review_view.py` (Streamlit): list drafts, render note + `[UNVERIFIED]`/`[sic?]` aids, Approve action
+- [ ] T021 [US4] Wire the Approve action to call `review.approve` then trigger back-ingest (US5)
+- [ ] T022 [P] [US4] Test `tests/corpus/test_review.py`: approval flow + exclusion of unreviewed (SC-003)
 
-**Goal**: Reviewed notes become queryable via `kg-mcp` for the app (003).
+**Checkpoint**: review gate holds; nothing publishes without approval.
 
-- [ ] T027 [US5] Implement `sadhana_setu/corpus/ingest.py`: add reviewed notes to vidya-karana ChromaDB via its existing path; key by note id (FR-011)
-- [ ] T028 [US5] Idempotent replace on re-ingest; trigger/await KG refresh
-- [ ] T029 [P] [US5] Test: after back-ingest, `kg-mcp` `search_corpus` retrieves a note passage (SC-005)
+---
 
-## Phase 8: Polish
+## Phase 7: User Story 5 — Auto back-ingest into the KG (P3)
 
-- [ ] T030 [P] `quickstart.md`: enrich → review → publish → back-ingest runbook
-- [ ] T031 Run `/speckit-analyze` for cross-artifact consistency before `/speckit-implement`
+**Goal**: Approving a note ingests it (verified body) into ChromaDB → KG.
+**Independent test**: approve → `CorpusProcessor.ingest_text` called with the verified body keyed by note id; re-approve replaces, not duplicates.
+
+- [ ] T023 [US5] Implement `sadhana_setu/corpus/ingest.py`: call `CorpusProcessor.ingest_text(text, source_id=note_id, metadata=…)` with the **verified body only**; idempotent replace (contracts/ingest.md, FR-011)
+- [ ] T024 [US5] Trigger KG rebuild + record `ingested_at`; fail-safe queue if ChromaDB/trigger unavailable
+- [ ] T025 [P] [US5] Test `tests/corpus/test_ingest.py` with mocked `CorpusProcessor`: verified-body-only, idempotent replace by `source_id` (SC-005)
+
+**Checkpoint**: approved notes reachable via `kg-mcp` for the app (003).
+
+---
+
+## Phase 8: Polish & Cross-Cutting
+
+- [ ] T026 [P] Cross-check `specs/002-note-enrichment/quickstart.md` against the implemented commands/UI
+- [ ] T027 [P] Module docstrings + consistent CLI/UI messaging across `sadhana_setu/corpus/`
+- [ ] T028 Run `/speckit-analyze` for cross-artifact consistency before `/speckit-implement`
+
+---
 
 ## Dependencies
 
-- Requires `001-corpus-pipeline` transcripts as input.
-- Phase 0 clarifications (T001) precede schema + prompt decisions.
-- Grounding (US2) underpins US3; review gate (US4) precedes back-ingest (US5).
+- **Setup (P1)** → **Foundational (P2)** → user stories.
+- **US1** is the MVP. **US2** grounding underpins US1's *published* validity (a note with ungrounded
+  verses is not publishable) — implement US1 structure, then US2 before any note is approved.
+- **US3** builds on US2 grounding. **US4** (review) precedes **US5** (ingest); US5 is wired to the
+  US4 approval action.
 - `[P]` tasks within a phase touch different files and may run in parallel.
+
+## Parallel execution examples
+
+- Phase 2: T005, T007 in parallel after T004/T006 land.
+- Phase 3: T012 alongside finishing T008–T011.
+- Phase 4–5: grounding tests T016/T018 in parallel with their sibling implementations.
+
+## Implementation strategy
+
+- **MVP = Phases 1–4 (US1 + US2)**: a structured, KG-grounded draft note is the irreducible value
+  (an ungrounded note is not trustworthy).
+- Then **US3** (cross-refs), **US4** (review UI), **US5** (auto-ingest) as incremental slices.
+- Stop after each phase for a working, testable increment.
