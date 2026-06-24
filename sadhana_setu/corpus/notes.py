@@ -106,22 +106,27 @@ def render_body(content: NoteContent) -> str:
     for kt in content.key_teachings:
         lines.append(f"- **[{kt.timestamp}]** {kt.point.strip()}")
         for c in kt.citations:
-            if c.verified:
+            if not c.verified:
+                continue
+            if c.kind == "verse" and c.iast:
                 lines.append(f"    - {c.source}: *{c.iast}* — {c.translation}")
+            else:  # a related corpus passage found via the verse's gloss
+                lines.append(f"    - cf. {c.source}")
     lines.append("")
 
-    verses = [c for kt in content.key_teachings for c in kt.citations if c.verified]
+    verses = [c for kt in content.key_teachings for c in kt.citations
+              if c.verified and c.kind == "verse" and c.iast]
     if verses:
         lines.append("## Verses cited\n")
         for c in verses:
             lines.append(f"- **{c.source}** — *{c.iast}*\n  {c.translation}")
         lines.append("")
 
-    if content.cross_references:
-        lines.append("## Cross-references\n")
-        for c in content.cross_references:
-            if c.verified:
-                lines.append(f"- {c.source}: {c.translation or c.candidate}")
+    verified_xrefs = [c for c in content.cross_references if c.verified]
+    if verified_xrefs:
+        lines.append("## Related references\n")
+        for c in verified_xrefs:
+            lines.append(f"- **{c.source}** — {c.candidate}")
         lines.append("")
 
     lines.append("## Practical application\n")

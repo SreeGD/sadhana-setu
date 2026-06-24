@@ -52,15 +52,44 @@ def _extract_result(stdout: str) -> str:
     return stdout
 
 
-def parse_enrichment(raw: str) -> dict:
-    """Parse + validate the model's answer into the enrichment output contract."""
+def _parse_json(raw: str) -> dict:
     text = _FENCE_RE.sub("", raw).strip()
     try:
-        obj = json.loads(text)
+        return json.loads(text)
     except json.JSONDecodeError as exc:
         raise EnrichmentError(f"enrichment output is not valid JSON: {exc}") from exc
+
+
+def parse_enrichment(raw: str) -> dict:
+    """Parse + validate a full (combined) enrichment object."""
+    obj = _parse_json(raw)
     validate_enrichment(obj)
     return obj
+
+
+def parse_section(raw: str) -> dict:
+    """Parse + validate one transcript-window's enrichment (key_teachings + candidates)."""
+    obj = _parse_json(raw)
+    validate_section(obj)
+    return obj
+
+
+def parse_synthesis(raw: str) -> dict:
+    """Parse + validate the synthesis pass (theme, practical application, glossary)."""
+    obj = _parse_json(raw)
+    if not obj.get("theme_summary") or not obj.get("practical_application"):
+        raise EnrichmentError("synthesis missing theme_summary / practical_application")
+    return obj
+
+
+def validate_section(obj: dict) -> None:
+    if not isinstance(obj, dict) or not isinstance(obj.get("key_teachings"), list):
+        raise EnrichmentError("section output must have a key_teachings list")
+    for i, kt in enumerate(obj["key_teachings"]):
+        if not isinstance(kt, dict) or not kt.get("point") or not kt.get("timestamp"):
+            raise EnrichmentError(f"section key_teachings[{i}] needs point + timestamp")
+        if not _TS_RE.match(str(kt["timestamp"])):
+            raise EnrichmentError(f"section key_teachings[{i}].timestamp must be HH:MM:SS.mmm")
 
 
 def validate_enrichment(obj: dict) -> None:

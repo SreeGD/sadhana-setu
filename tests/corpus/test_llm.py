@@ -46,3 +46,25 @@ def test_bad_timestamp_rejected():
 def test_non_json_rejected():
     with pytest.raises(EnrichmentError):
         parse_enrichment("not json at all")
+
+
+def test_parse_section_and_synthesis():
+    from sadhana_setu.corpus.llm import parse_section, parse_synthesis
+
+    section = parse_section(json.dumps({
+        "key_teachings": [{"point": "p", "timestamp": "00:00:01.000",
+                           "candidate_verses": [{"ref": "BG 18.66", "gloss": "surrender"}]}],
+        "candidate_cross_refs": [{"query": "shelter"}],
+    }))
+    assert section["key_teachings"][0]["candidate_verses"][0]["ref"] == "BG 18.66"
+
+    synth = parse_synthesis(json.dumps({
+        "theme_summary": "t", "practical_application": "a", "glossary": []}))
+    assert synth["theme_summary"] == "t"
+
+
+def test_parse_synthesis_missing_fields_rejected():
+    from sadhana_setu.corpus.llm import parse_synthesis
+
+    with pytest.raises(EnrichmentError):
+        parse_synthesis(json.dumps({"theme_summary": "t"}))  # no practical_application
