@@ -9,6 +9,16 @@
 **Input**: User description: "Enrich class notes from the transcriptions. After transcription,
 enhance notes with references using LLM. Make sure enriched notes are checked into github."
 
+## Clarifications
+
+### Session 2026-06-24
+
+- Q: Which LLM performs enrichment, and must it be local? → A: **Claude Code in headless mode** (`claude -p`), behind a thin provider interface — NOT the Anthropic API. Reuses the existing Claude Code subscription (no separate API key/billing); operates on text transcripts only (VI honored). A local model remains swappable via the interface.
+- Q: Note granularity — per-transcript or aggregated? → A: **One note per transcript** (1:1 with `001`); clean provenance, incremental processing. Series-level synthesis is out of scope for this round.
+- Q: How are whisper transcript errors handled during enrichment? → A: **Annotate-only** — flag suspected mishearings inline (e.g. `[sic?: …]`); the `001` transcript stays verbatim/immutable; the reviewer resolves.
+- Q: How does a devotee approve a draft note? → A: A **lightweight Streamlit review UI** (approve flips `draft → reviewed`, stamping reviewer + date).
+- Q: When do reviewed notes flow into the KG? → A: **Automatically on approval** — approving in the review UI immediately ingests the note into ChromaDB and triggers a KG rebuild.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Generate enriched class notes from a transcript (Priority: P1)
@@ -88,8 +98,9 @@ citation.
 
 ### User Story 4 - Review gate before publish (Priority: P1)
 
-A qualified devotee reviews a draft note for tattva accuracy. On approval, the note's status
-flips to `reviewed` and it becomes part of the published corpus. Until then it is visibly marked
+A qualified devotee reviews a draft note for tattva accuracy in a **lightweight Streamlit review
+UI**. On approval, the note's status flips to `reviewed`, it becomes part of the published
+corpus, and it is **immediately ingested into the KG** (US5). Until then it is visibly marked
 draft and excluded from anything the app surfaces.
 
 **Why this priority**: Constitution Principle V is non-negotiable — LLM output is a draft until a
@@ -110,12 +121,13 @@ excluded.
 
 ### User Story 5 - Ingest reviewed notes back into the knowledge graph (Priority: P3)
 
-Once reviewed, an enriched note is ingested back into vidya-karana's corpus/ChromaDB so it
-becomes queryable through the same `kg-mcp` path the Sadhana Setu app already uses — closing the
-loop so future app features (003) can surface these teachings.
+**Approving a note in the review UI (US4) automatically** ingests it into vidya-karana's
+corpus/ChromaDB and triggers a KG rebuild, so it becomes queryable through the same `kg-mcp` path
+the Sadhana Setu app already uses — closing the loop so future app features (003) can surface
+these teachings.
 
-**Why this priority**: This makes the enriched corpus reachable by the app, but it depends on
-everything above and on the app-enrichment work (003), so it is the last slice here.
+**Why this priority**: This makes the enriched corpus reachable by the app. It is wired to the
+approval action (US4) but its retrieval guarantee is validated last.
 
 **Independent Test**: Ingest one reviewed note; confirm `kg-mcp` (`search_corpus`) can retrieve a
 passage from it afterward.
@@ -132,12 +144,11 @@ passage from it afterward.
 ### Edge Cases
 
 - The LLM hallucinates a verse not present in the KG → flagged `[UNVERIFIED]`, withheld (US2).
-- A transcript has misheard Sanskrit (whisper error) → enrichment notes the ambiguity rather
-  than "correcting" the speaker; reviewer resolves. [NEEDS CLARIFICATION: should enrichment
-  propose transcript corrections back to 001, or only annotate?]
+- A transcript has misheard Sanskrit (whisper error) → enrichment flags the ambiguity inline
+  (`[sic?: …]`) and the reviewer resolves it; the `001` transcript is never edited (FR-014).
 - `kg-mcp` offline → fail safe (US2 scenario 3).
-- A teaching spans multiple transcripts → [NEEDS CLARIFICATION: are notes strictly per-transcript,
-  or can a note aggregate a multi-part series / full seminar?]
+- A teaching spans multiple transcripts → each transcript still gets its own note (one note per
+  transcript, FR-013); a series-level synthesis is out of scope this round.
 - Note must be regenerated after the model or prompt changes → versioning of enrichment so old
   reviewed notes are not silently invalidated.
 
@@ -155,28 +166,31 @@ passage from it afterward.
 - **FR-004**: The system MUST add **cross-references** to relevant Prabhupāda purports and related
   corpus teachings, each grounded and cited.
 - **FR-005**: Each note MUST carry provenance front-matter linking to its source transcript (and
-  thus to the original audio), the enrichment model + prompt version, and a `status`
-  (`draft`/`reviewed`).
+  thus to the original audio), the enrichment engine (Claude Code) + prompt version, and a
+  `status` (`draft`/`reviewed`).
 - **FR-006**: Notes MUST be committed to GitHub as Markdown, diff-friendly, and clearly marked
   `draft` until reviewed.
-- **FR-007**: The system MUST enforce a **review gate**: only `reviewed` notes are eligible for
-  publish/back-ingest (Constitution Principle V).
-- **FR-008**: The review action MUST record reviewer identity and date.
+- **FR-007**: The system MUST enforce a **review gate** via a lightweight **Streamlit review UI**:
+  only `reviewed` notes are eligible for publish/back-ingest (Constitution Principle V).
+- **FR-008**: The review action (approving in the UI) MUST record reviewer identity and date.
 - **FR-009**: Enrichment MUST be **idempotent**: re-running does not silently overwrite an
   existing note; regeneration is explicit (`--regenerate`) and bumps the enrichment version.
 - **FR-010**: When `kg-mcp` is unavailable, enrichment MUST **fail safe** — it must not emit
   ungrounded verses as verified.
-- **FR-011**: Reviewed notes MUST be ingestible **back into vidya-karana's corpus/ChromaDB → KG**,
-  idempotently (replace, not duplicate).
+- **FR-011**: Approving a note in the review UI MUST **automatically ingest it back into
+  vidya-karana's corpus/ChromaDB and trigger a KG rebuild**, idempotently (replace, not
+  duplicate), so the Sadhana Setu app can surface it.
 - **FR-012**: The note MUST preserve the speaker's meaning; enrichment annotates and references
   but never paraphrases the speaker as if quoting them (Constitution Principle I).
-- **FR-013**: The system MUST define note **granularity**. [NEEDS CLARIFICATION: one note per
-  transcript, or aggregate notes per lecture-series / full seminar?]
-- **FR-014**: The system MUST define handling of **transcript errors** found during enrichment.
-  [NEEDS CLARIFICATION: annotate-only, or propose corrections upstream to 001?]
-- **FR-015**: The enrichment LLM choice and prompt contract MUST be specified.
-  [NEEDS CLARIFICATION: which LLM — local model for Principle VI, or a cloud model (text-only,
-  no audio) is acceptable for the enrichment step?]
+- **FR-013**: Notes MUST be generated at **one-note-per-transcript** granularity (1:1 with the
+  `001` transcript). Series/seminar-level synthesis is out of scope for this round.
+- **FR-014**: On a suspected transcript error (misheard Sanskrit), enrichment MUST
+  **annotate-only** — flag the ambiguity inline (e.g. `[sic?: …]`) without altering the `001`
+  transcript (which stays verbatim per Constitution I); the reviewer resolves it.
+- **FR-015**: Enrichment MUST run via **Claude Code in headless mode** (`claude -p`), invoked
+  behind a thin provider interface (not the Anthropic API). The prompt contract makes the model
+  propose *candidate* references only; KG grounding (FR-002) supplies final verse text. A local
+  model may be substituted through the same interface.
 
 ### Key Entities *(include if feature involves data)*
 
@@ -185,9 +199,10 @@ passage from it afterward.
 - **Citation / Reference**: A grounded link to a verse or corpus passage, carrying the
   `kg-mcp`-sourced text/IAST/translation and a resolvable identifier. May be `verified` or
   `[UNVERIFIED]`.
-- **Review Record**: reviewer identity, date, decision, optional notes — attached to a Class Note.
-- **Enrichment Version**: model + prompt-version pair, recorded so notes are reproducible and
-  re-review is traceable.
+- **Review Record**: reviewer identity, date, decision, optional notes — captured via the
+  Streamlit review UI and attached to a Class Note.
+- **Enrichment Version**: engine (Claude Code) + prompt-version pair, recorded so notes are
+  reproducible and re-review is traceable.
 
 ## Success Criteria *(mandatory)*
 
@@ -209,6 +224,9 @@ passage from it afterward.
 - Grounding uses the **existing `kg-mcp`** already wired at `sadhana_setu/mcp_client.py`
   (Constitution Principle VIII).
 - Verse/Sanskrit content is **KG-sourced, never LLM-invented** (Principle I).
-- LLM output is a **draft**; nothing publishes without devotee review (Principle V).
-- Notes are committed as text (Markdown) — diff-friendly and reviewable in pull requests.
-- Back-ingest reuses vidya-karana's existing ChromaDB ingest path rather than a new store.
+- Enrichment runs via **Claude Code headless** (`claude -p`) behind a provider interface — not the
+  Anthropic API (FR-015); its output is a **draft**; nothing publishes without devotee review
+  (Principle V).
+- Notes are one-per-transcript Markdown (FR-013) — diff-friendly and reviewable in pull requests.
+- Review happens in a **lightweight Streamlit UI**; approving auto-ingests the note into
+  vidya-karana's existing ChromaDB path and triggers a KG rebuild (FR-007/008/011).
