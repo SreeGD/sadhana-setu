@@ -83,6 +83,29 @@ def test_regenerate_resets_reviewed_to_draft(cfg, manifest):
     assert notes_mod.read_front_matter(path).status is NoteStatus.DRAFT
 
 
+def test_failed_lecture_does_not_abort_batch(cfg, manifest):
+    """A claude/parse failure on one lecture is recorded but the batch continues (scale)."""
+    from sadhana_setu.corpus.llm import EnrichmentError
+
+    for lid, title in [("bad-1", "BAD LECTURE"), ("good-1", "GOOD LECTURE")]:
+        body = "\n".join(f"[00:0{i}:00.000 → 00:0{i}:30.000] Line {i}." for i in range(3))
+        tpath = write_transcript(cfg, "holy-name-seminar", lid, body=body)
+        add_lecture(manifest, "holy-name-seminar", id=lid, title=title, sha256="b" * 64,
+                    status=Status.TRANSCRIBED, transcript_path=tpath, whisper_model="m")
+
+    class FlakyProvider:
+        def complete(self, prompt):
+            if "TASK: SYNTHESIS" in prompt:
+                if "BAD LECTURE" in prompt:
+                    raise EnrichmentError("`claude -p` failed after 3 attempts (exit 1): Overloaded")
+                return SYNTHESIS_JSON
+            return SECTION_JSON
+
+    res = enrich_set(cfg, manifest, provider=FlakyProvider(), caller=_caller)
+    assert "good-1" in res.enriched              # the healthy lecture still gets a note
+    assert any("bad-1" in f for f in res.failed)  # the failure is recorded, not raised
+
+
 def test_kg_offline_marks_unverifiable(cfg, manifest):
     _transcribed_lecture(cfg, manifest)
 

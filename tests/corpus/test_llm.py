@@ -1,5 +1,6 @@
 """T007 — enrichment output parse + validation; claude envelope extraction."""
 import json
+from types import SimpleNamespace
 
 import pytest
 
@@ -68,3 +69,32 @@ def test_parse_synthesis_missing_fields_rejected():
 
     with pytest.raises(EnrichmentError):
         parse_synthesis(json.dumps({"theme_summary": "t"}))  # no practical_application
+
+
+def test_complete_retries_transient_then_succeeds(cfg, monkeypatch):
+    """A transient non-zero `claude -p` exit is retried, not fatal (scale resilience)."""
+    from sadhana_setu.corpus import llm
+    from sadhana_setu.corpus.config import CorpusConfig
+
+    monkeypatch.setattr(CorpusConfig, "claude_cli", lambda self: "claude")
+    monkeypatch.setattr(llm, "_RETRY_SLEEP", 0)
+    seq = [SimpleNamespace(returncode=1, stderr="API Error: Overloaded", stdout=""),
+           SimpleNamespace(returncode=0, stderr="",
+                           stdout=json.dumps({"result": json.dumps(GOOD)}))]
+    monkeypatch.setattr(llm.subprocess, "run", lambda *a, **k: seq.pop(0))
+    out = llm.ClaudeCodeProvider(cfg).complete("x")
+    assert "On attentive" in out and not seq  # both queued results consumed
+
+
+def test_complete_raises_enrichmenterror_with_stderr(cfg, monkeypatch):
+    """After exhausting retries, surface claude's stderr instead of a bare CalledProcessError."""
+    from sadhana_setu.corpus import llm
+    from sadhana_setu.corpus.config import CorpusConfig
+
+    monkeypatch.setattr(CorpusConfig, "claude_cli", lambda self: "claude")
+    monkeypatch.setattr(llm, "_RETRY_SLEEP", 0)
+    monkeypatch.setattr(llm.subprocess, "run", lambda *a, **k: SimpleNamespace(
+        returncode=1, stderr="API Error: Overloaded", stdout=""))
+    with pytest.raises(EnrichmentError) as ei:
+        llm.ClaudeCodeProvider(cfg).complete("x")
+    assert "Overloaded" in str(ei.value)
