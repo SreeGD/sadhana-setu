@@ -8,7 +8,9 @@ draft (FR-009).
 """
 from __future__ import annotations
 
+import os
 import re
+from concurrent.futures import ThreadPoolExecutor
 
 from sadhana_setu.corpus import notes as notes_mod
 from sadhana_setu.corpus import transcript as transcript_mod
@@ -20,6 +22,8 @@ from sadhana_setu.corpus.notes import NoteFrontMatter, NoteStatus
 
 _SEG_RE = re.compile(r"^\[(\d{2}):(\d{2}):(\d{2})\.\d{3}")
 WINDOW_SECONDS = 600  # ~10-minute enrichment windows
+# Window enrichments are independent → run several `claude -p` calls concurrently.
+ENRICH_CONCURRENCY = int(os.environ.get("CORPUS_ENRICH_CONCURRENCY", "4"))
 
 
 class EnrichResult:
@@ -54,12 +58,19 @@ def _enrich_one(cfg, sset: SourceSet, lec, prov, caller, out_path) -> None:
     transcript_file = cfg.repo_root / lec.transcript_path
     _, body = transcript_mod.parse(transcript_file.read_text(encoding="utf-8"))
 
+    windows = split_windows(body)
+
+    def _section(win: tuple[str, str]) -> dict:
+        label, text = win
+        return parse_section(prov.complete(build_section_prompt(sset.speaker, lec.title, label, text)))
+
+    fragments = _map_windows(_section, windows)  # parallel `claude -p`, order preserved
+
     teachings: list[dict] = []
     cross_refs: list[dict] = []
     sic_flags: list[dict] = []
-    for label, window in split_windows(body):
-        frag = parse_section(prov.complete(build_section_prompt(sset.speaker, lec.title, label, window)))
-        teachings.extend(frag.get("key_teachings", []))
+    for frag in fragments:
+        teachings.extend(frag.get("key_teachings", []) or [])
         cross_refs.extend(frag.get("candidate_cross_refs", []) or [])
         sic_flags.extend(frag.get("sic_flags", []) or [])
 
@@ -89,6 +100,14 @@ def _enrich_one(cfg, sset: SourceSet, lec, prov, caller, out_path) -> None:
         status=NoteStatus.DRAFT,
     )
     notes_mod.write(out_path, fm, content)
+
+
+def _map_windows(fn, items: list) -> list:
+    """Map ``fn`` over windows, concurrently when worthwhile (order preserved)."""
+    if ENRICH_CONCURRENCY <= 1 or len(items) <= 1:
+        return [fn(x) for x in items]
+    with ThreadPoolExecutor(max_workers=min(ENRICH_CONCURRENCY, len(items))) as ex:
+        return list(ex.map(fn, items))
 
 
 def split_windows(body: str, window_seconds: int = WINDOW_SECONDS) -> list[tuple[str, str]]:

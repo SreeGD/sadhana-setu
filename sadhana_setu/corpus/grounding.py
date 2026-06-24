@@ -35,7 +35,19 @@ def default_caller(name: str, args: dict):
 
 def ground(enrichment: dict, *, caller=None) -> NoteContent:
     """Resolve all candidate references in ``enrichment`` into a grounded NoteContent."""
-    call = caller or default_caller
+    base = caller or default_caller
+
+    # Memoize identical lookups within this note — the same verse / query recurs across many
+    # teachings, so this avoids dozens of redundant kg-mcp round-trips.
+    import json
+
+    _cache: dict = {}
+
+    def call(name: str, args: dict):
+        key = (name, json.dumps(args, sort_keys=True, default=str))
+        if key not in _cache:
+            _cache[key] = base(name, args)
+        return _cache[key]
 
     # Liveness gate (fail-safe). kg_status returning an error payload also counts as down.
     try:
