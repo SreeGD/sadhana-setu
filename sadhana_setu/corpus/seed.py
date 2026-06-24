@@ -17,9 +17,9 @@ from sadhana_setu.corpus.manifest import Lecture, Manifest, SourceSet, Status
 
 # FR-014 Holy-Name topic filter (applied to speaker sets only).
 TOPIC_KEYWORDS = (
-    "holy name", "holy-name", "harinam", "hari-nam", "harinām", "nama", "nāma",
-    "naam", "japa", "chant", "offens", "aparadha", "aparādha", "bhava", "bhāva",
-    "sixteen rounds", "namatattva", "nama-tattva",
+    "holy name", "holy-name", "holyname", "harinam", "hari-nam", "harinām", "nama",
+    "nāma", "naam", "japa", "chant", "offens", "aparadha", "aparādha", "bhava",
+    "bhāva", "sixteen rounds", "namatattva", "nama-tattva",
 )
 _AUDIO_EXT = (".mp3", ".m4a", ".ogg", ".opus", ".wav")
 _DATE_RE = re.compile(r"(\d{4})[-/](\d{2})[-/](\d{2})")
@@ -64,9 +64,18 @@ def parse_listing(html: str, base_url: str = "") -> list[ListingEntry]:
     entries: list[ListingEntry] = []
     for href, text in parser.entries:
         url = urljoin(base_url, href)
-        title = text or _title_from_url(url)
+        # Apache autoindex truncates the visible link text (e.g. "BJP_Seminar_-_Holyna..>");
+        # the href is the canonical full filename (carries date + topic words), so prefer it
+        # whenever the anchor text is missing or looks truncated.
+        title = text if text and not _looks_truncated(text) else _title_from_url(url)
         entries.append(ListingEntry(title=title, url=url, date=_extract_date(title, url)))
     return entries
+
+
+def _looks_truncated(text: str) -> bool:
+    """True for an autoindex-truncated anchor (e.g. 'BJP_Seminar_-_Holyna..>')."""
+    t = text.rstrip().rstrip(">").rstrip()
+    return t.endswith("..") or t.endswith("…")
 
 
 def seed_set(manifest: Manifest, set_id: str, entries: list[ListingEntry],
