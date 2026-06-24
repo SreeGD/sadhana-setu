@@ -20,7 +20,7 @@ worth guarding. Keep them small and fixture-based (no network in CI).
 
 ## Phase 0: Research (resolve before building)
 
-- [ ] T001 Resolve `[NEEDS CLARIFICATION]` FR-013/FR-014/FR-015 via `/speckit-clarify` (R4/R5/R6 in research.md)
+- [x] T001 Resolve `[NEEDS CLARIFICATION]` FR-013/FR-014/FR-015 via `/speckit-clarify` — **done (Session 2026-06-24)**; see spec `## Clarifications`
 - [ ] T002 [P] Survey `audio.iskcondesiretree.com` listing structure + terms of use (research R2)
 - [ ] T003 [P] Read-only reuse audit of vidya-karana `audio_daemon.py` / `agents/pipeline.py` / `corpus_processor.py`; produce reuse map (research R3)
 - [ ] T004 [P] Benchmark whisper.cpp models on 2–3 sample lectures; pin model + flags (research R1, R7)

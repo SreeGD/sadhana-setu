@@ -11,6 +11,16 @@ mainly from Bhurijana Prabhu, HH Sachinandana Maharaj, Mahatma Prabhu, HH Radhan
 HDG Srila Prabhupada, transcribe, make sure transcription is checked into github. Also pull
 information from holyname seminars, transcribe, make it part of github. Use whisper.cpp."
 
+## Clarifications
+
+### Session 2026-06-24
+
+- Q: How is "all relevant lectures" bounded for Round 1? → A: Holy Name seminars in full, plus lectures by the five named speakers whose title/tag is a Holy-Name topic (japa, nāma, chanting, the ten offenses, bhāva); speakers' general back-catalogs are deferred.
+- Q: How are non-English source lectures handled? → A: Excluded from Round 1 and recorded in the manifest as `deferred` (Round 1 stays English-first; nothing is lost).
+- Q: How do lectures enter the manifest and how are new ones discovered? → A: Hybrid — a one-time assisted listing seeds the manifest, then additions are made manually (no recurring automated crawl).
+- Q: What timestamp granularity do transcripts use? → A: Segment-level (whisper.cpp default, ~per phrase/sentence).
+- Q: Use existing published transcripts when available? → A: No — always transcribe with whisper.cpp for uniform, reproducible provenance.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Register a lecture source and fetch its audio (Priority: P1)
@@ -113,8 +123,9 @@ confirm checksums match and transcripts are byte-stable (modulo declared nondete
   continues with other entries and reports it.
 - A lecture is a duplicate of one already in the corpus (same audio, different URL) → detected
   by checksum and not transcribed twice; the alternate URL is recorded on the existing entry.
-- Audio is not in English (e.g., Hindi/Bengali portions, or a non-English seminar) →
-  `[NEEDS CLARIFICATION]` (see FR-013): transcribe in source language, translate, or skip?
+- Audio is not in English (e.g., Hindi/Bengali portions, or a non-English seminar) → entry is
+  marked `deferred` with the detected language and excluded from Round 1; it is retained in the
+  manifest for a later round (FR-013).
 - Very long lectures (90+ min) → transcription must chunk/stream without exhausting memory.
 - A source's terms forbid derivative text → the source is excluded, not worked around
   (Constitution Principle III).
@@ -130,8 +141,9 @@ confirm checksums match and transcripts are byte-stable (modulo declared nondete
   known), source set, processing status, and — once fetched — the audio SHA-256 checksum.
 - **FR-003**: The system MUST fetch audio to a **git-ignored local cache**; audio files MUST
   NOT be committed to the repository (Constitution Principle III).
-- **FR-004**: The system MUST transcribe audio **verbatim** using whisper.cpp (`whisper-cli`),
-  producing timestamped transcripts.
+- **FR-004**: The system MUST transcribe audio **verbatim** using whisper.cpp (`whisper-cli`) for
+  **every** in-scope lecture — third-party/published transcripts are NOT used — producing
+  **segment-level** timestamped transcripts.
 - **FR-005**: Each transcript MUST be stored as a text/Markdown file with provenance
   front-matter: source URL, checksum, speaker, title, date, whisper model, and date
   transcribed.
@@ -149,23 +161,27 @@ confirm checksums match and transcripts are byte-stable (modulo declared nondete
   excluded, with reason.
 - **FR-012**: On a checksum mismatch between cache and manifest, the system MUST stop and
   report a provenance error rather than proceed silently.
-- **FR-013**: The system MUST handle non-English source audio per a defined policy.
-  [NEEDS CLARIFICATION: for non-English lectures/seminars — transcribe in source language,
-  auto-translate to English, or exclude from this round?]
-- **FR-014**: The corpus MUST define **lecture-selection criteria** so "all relevant lectures"
-  is bounded. [NEEDS CLARIFICATION: is the scope every Holy-Name-tagged lecture by these
-  speakers, a curated subset, or seminar-first? What defines "relevant"?]
-- **FR-015**: The system MUST define a **deduplication and re-run policy** for when a source
-  listing changes upstream. [NEEDS CLARIFICATION: how often is the source re-scanned, and how
-  are newly-added lectures discovered — manual add, or automated listing crawl?]
+- **FR-013**: The system MUST **exclude non-English source audio from Round 1**, recording such
+  entries in the manifest with status `deferred` and the detected language, so none are lost.
+  Round 1 produces an English-first corpus.
+- **FR-014**: The Round 1 corpus scope MUST be bounded to: **all Holy Name seminars in full**,
+  plus lectures by the five named speakers whose **title or tag indicates a Holy-Name topic**
+  (e.g., japa, nāma, chanting, the ten offenses, bhāva). Speakers' general back-catalogs are
+  out of scope for Round 1.
+- **FR-015**: New lectures MUST enter the manifest via a **hybrid** method: a one-time assisted
+  listing seeds the manifest, after which additions are made **manually**. No recurring automated
+  crawl runs (honoring source terms, Constitution Principle III). Deduplication is by audio
+  checksum (FR-009).
 
 ### Key Entities *(include if feature involves data)*
 
 - **Source Set**: A named grouping of lectures — one per featured speaker, one per Holy Name
   seminar. Has a title, a speaker/seminar identity, and member lectures.
 - **Lecture (Manifest Entry)**: A single audio item. Attributes: source URL(s), speaker,
-  title, date, source set, status (`pending`/`fetched`/`transcribed`/`unavailable`/`excluded`),
-  audio SHA-256, duration, language.
+  title, date, source set, status
+  (`pending`/`fetched`/`transcribed`/`unavailable`/`excluded`/`deferred`), audio SHA-256,
+  duration, language. `deferred` = in the corpus's intent but out of Round 1 scope (e.g.,
+  non-English audio per FR-013).
 - **Transcript**: The verbatim text output for one lecture. Attributes: provenance
   front-matter (links back to its manifest entry), timestamped body, whisper model.
 - **Audio Cache Item**: The downloaded audio in the local git-ignored cache, keyed by
@@ -188,13 +204,15 @@ confirm checksums match and transcripts are byte-stable (modulo declared nondete
 
 ## Assumptions
 
-- Transcription uses **whisper.cpp** locally (`whisper-cli` is already installed via Homebrew);
-  no cloud STT is used for the core path (Constitution Principle VI).
+- Transcription uses **whisper.cpp** locally (`whisper-cli` is already installed via Homebrew)
+  for **every** in-scope lecture; no cloud STT and no third-party transcripts are used
+  (Constitution Principle VI; FR-004). Transcripts carry **segment-level** timestamps.
 - Only **text + manifest** are committed; audio stays in a git-ignored local cache
   (locked decision).
 - The corpus lives **inside the `sadhana-setu` monorepo** under `corpus/` (locked decision).
-- Source audio is predominantly English Holy-Name lectures; non-English handling is deferred
-  to FR-013 clarification.
+- Round 1 is **English-first**: non-English lectures are excluded and recorded as `deferred`
+  (FR-013). Scope is bounded to seminars-in-full + Holy-Name-topic speaker lectures (FR-014).
+- New entries are seeded once via an assisted listing, then maintained manually (FR-015).
 - vidya-karana's existing audio/ingest infrastructure (`scripts/audio_daemon.py`,
   `agents/pipeline.py`, `agents/corpus_processor.py`) MAY be reused where it fits, rather than
   building fetch/transcribe orchestration from scratch (Constitution Principle VIII; evaluated

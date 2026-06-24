@@ -5,8 +5,11 @@
 # git-ignored cache; only this manifest + the resulting text are committed.
 #
 # This is a SCHEMA STUB with empty source sets. The exact field set is finalized in
-# specs/001-corpus-pipeline/data-model.md (Phase 1). Lecture-selection criteria, dedup,
-# and rescan policy are open ([NEEDS CLARIFICATION] FR-013/014/015 in the spec).
+# specs/001-corpus-pipeline/data-model.md (Phase 1).
+#
+# Scope (resolved, Clarify 2026-06-24): Round 1 = all Holy Name seminars in full + speaker
+# lectures whose title/tag is a Holy-Name topic; non-English entries are recorded with
+# status `deferred`; entries are seeded once via assisted listing, then maintained manually.
 #
 # Entry shape (illustrative — not yet populated):
 #   lectures:
