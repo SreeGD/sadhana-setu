@@ -1,0 +1,57 @@
+# Hari-Nāma Corpus — Source Manifest (STUB / scaffolding)
+#
+# Single source of truth for which lectures belong to the corpus. The pipeline
+# (specs/001-corpus-pipeline) reads and updates this file. Audio is fetched to a
+# git-ignored cache; only this manifest + the resulting text are committed.
+#
+# This is a SCHEMA STUB with empty source sets. The exact field set is finalized in
+# specs/001-corpus-pipeline/data-model.md (Phase 1). Lecture-selection criteria, dedup,
+# and rescan policy are open ([NEEDS CLARIFICATION] FR-013/014/015 in the spec).
+#
+# Entry shape (illustrative — not yet populated):
+#   lectures:
+#     - id: bhurijana-attentive-chanting-2018-01-12   # stable slug, also the transcript filename
+#       title: "Attentive Chanting of the Holy Name"
+#       urls:                                          # one or more source URLs (alternates allowed)
+#         - "https://audio.iskcondesiretree.com/...mp3"
+#       date: 2018-01-12                               # if known
+#       status: pending                                # pending | fetched | transcribed | unavailable | excluded
+#       sha256: null                                   # filled on fetch
+#       duration_seconds: null                         # filled on fetch/transcribe
+#       language: en                                   # source-audio language
+#       notes: ""                                      # maintainer notes / exclusion reason
+
+version: 0
+manifest_status: stub          # stub until spec 001 is implemented and entries are added
+
+source_sets:
+  - id: bhurijana-prabhu
+    speaker: "Bhūrijana Prabhu"
+    kind: speaker
+    lectures: []
+
+  - id: sacinandana-maharaja
+    speaker: "HH Sacīnandana Mahārāja"
+    kind: speaker
+    lectures: []
+
+  - id: mahatma-prabhu
+    speaker: "Mahātmā Prabhu"
+    kind: speaker
+    lectures: []
+
+  - id: radhanath-swami
+    speaker: "HH Rādhānāth Swami"
+    kind: speaker
+    lectures: []
+
+  - id: srila-prabhupada
+    speaker: "A.C. Bhaktivedānta Swami Śrīla Prabhupāda"
+    kind: speaker
+    lectures: []
+
+  # One set per Holy Name seminar; add more as seminars are registered.
+  - id: holy-name-seminar
+    speaker: "Holy Name Seminar"
+    kind: seminar
+    lectures: []
