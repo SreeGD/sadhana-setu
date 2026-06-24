@@ -43,13 +43,17 @@ class PrejapaReading:
 
 
 def build_reading(d: date | None = None, *, querier=None, checkin_loader=None,
-                  today_value: str | None = None) -> PrejapaReading:
-    """Assemble the day's transformation arc. Deterministic by ``d``; never raises."""
+                  today_value: str | None = None, state: dict | None = None) -> PrejapaReading:
+    """Assemble the day's transformation arc. Deterministic by ``d``; never raises.
+
+    ``state`` is the shared per-day corpus-retrieval state (spec 003); when the app passes the
+    same state to other surfaces, the pre-japa teaching participates in cross-surface dedup.
+    """
     d = d or date.today()
     theme = today_value or pick_today_value(d)
 
     orient = _orient(d)
-    deepen, corpus_online = _deepen(d, theme, querier)
+    deepen, corpus_online = _deepen(d, theme, querier, state)
     apply = contemplations_mod.pick_for_today(d)
     enter = _enter(d, orient)
     echo = _sankalpa_echo(d, checkin_loader)
@@ -71,11 +75,11 @@ def _orient(d: date) -> ReadingStage:
     return ReadingStage(label="Orient", body=body, citation=citation, source_kind="curated")
 
 
-def _deepen(d: date, theme: str, querier) -> tuple[ReadingStage, bool]:
-    # Self-contained corpus call; falls back to curated nāma-tattva (FR-003/008).
+def _deepen(d: date, theme: str, querier, state) -> tuple[ReadingStage, bool]:
+    # Shared corpus retrieval; falls back to curated nāma-tattva (FR-003/008).
     from sadhana_setu.flows.harinaam_teaching import fetch_teaching
 
-    stage = fetch_teaching(theme, querier=querier)
+    stage = fetch_teaching(theme, querier=querier, state=state)
     if stage is not None:
         return stage, True
     nt = nama_mod.pick_for_today(d)

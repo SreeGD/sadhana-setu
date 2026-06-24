@@ -76,7 +76,7 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-VIEWS = ["Pre-japa", "Today", "This Week", "Saturday Check-in", "History"]
+VIEWS = ["Pre-japa", "Nama-Tattva", "Today", "This Week", "Saturday Check-in", "Notes", "History"]
 
 with st.sidebar:
     view = st.radio("View", VIEWS)
@@ -91,6 +91,9 @@ with st.sidebar:
 if view == "Pre-japa":
     from sadhana_setu.ui import prejapa_view
     prejapa_view.render()
+elif view == "Nama-Tattva":
+    from sadhana_setu.ui import nama_tattva_view
+    nama_tattva_view.render()
 elif view == "Today":
     from sadhana_setu.ui import today_view
     today_view.render()
@@ -100,6 +103,9 @@ elif view == "This Week":
 elif view == "Saturday Check-in":
     from sadhana_setu.ui import saturday_view
     saturday_view.render()
+elif view == "Notes":
+    from sadhana_setu.ui import notes_view
+    notes_view.render()
 elif view == "History":
     from sadhana_setu.ui import history_view
     history_view.render()

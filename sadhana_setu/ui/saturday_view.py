@@ -40,6 +40,24 @@ def _ensure_seeded() -> bool:
     return True
 
 
+def _render_corpus_teaching(existing) -> None:
+    """Optional, additive: a reviewed corpus teaching themed by the week's sankalpa (FR-008/014).
+
+    Purely additive — absent (not curated-replaced) when there is no match.
+    """
+    from sadhana_setu.flows import corpus_teaching
+    from sadhana_setu.flows.today_value import pick_today_value
+
+    bits = [getattr(existing, "tone", ""), getattr(existing, "mood_bhava", "")] if existing else []
+    theme = " ".join(b for b in bits if b).strip() or pick_today_value(date.today())
+    state = st.session_state.setdefault(
+        f"corpus_{date.today().isoformat()}", corpus_teaching.new_state())
+    t = corpus_teaching.get_for_surface(theme, "saturday", date=date.today(), state=state)
+    if t is None:
+        return
+    st.markdown(f"> **A teaching to sit with this week** — {t.body}\n>\n> — *{t.citation}*")
+
+
 def _render_week(summary: WeekSummary) -> None:
     cols = st.columns(7)
     for i, (d, count) in enumerate(summary.days):
@@ -89,6 +107,7 @@ def render() -> None:
 
     st.markdown("### Half 1 — Observe (the week past)")
     _render_week(summary)
+    _render_corpus_teaching(existing)
 
     st.markdown("**Pattern this week**")
     pattern = surface_for_saturday(saturday)

@@ -28,8 +28,8 @@ per-surface theme (daily=value, Saturday=sankalpa). No `[NEEDS CLARIFICATION]` o
 
 ## Phase 1: Setup
 
-- [ ] T001 Create module skeletons `sadhana_setu/flows/corpus_teaching.py`, `sadhana_setu/flows/corpus_notes.py`, and test files `tests/test_corpus_teaching.py`, `tests/test_corpus_notes.py`
-- [ ] T002 [P] Add "Nama-Tattva" and "Notes" placeholders to `VIEWS` + dispatch stubs in `sadhana_setu/ui/app.py` (wired in later phases)
+- [X] T001 Create module skeletons `sadhana_setu/flows/corpus_teaching.py`, `sadhana_setu/flows/corpus_notes.py`, and test files `tests/test_corpus_teaching.py`, `tests/test_corpus_notes.py`
+- [X] T002 [P] Add "Nama-Tattva" and "Notes" placeholders to `VIEWS` + dispatch stubs in `sadhana_setu/ui/app.py` (wired in later phases)
 
 ---
 
@@ -37,8 +37,8 @@ per-surface theme (daily=value, Saturday=sankalpa). No `[NEEDS CLARIFICATION]` o
 
 **⚠️ No user-story work begins until this phase is complete.**
 
-- [ ] T003 Extract the reusable candidate query + clean-text-from-note helpers from `sadhana_setu/flows/harinaam_teaching.py` into shared functions (no behavior change yet) so `corpus_teaching.py` can reuse them
-- [ ] T004 Implement `new_state()` + the per-`(date, theme)` candidate cache scaffold in `sadhana_setu/flows/corpus_teaching.py` (per contracts/corpus-teaching.md)
+- [X] T003 Extract the reusable candidate query + clean-text-from-note helpers from `sadhana_setu/flows/harinaam_teaching.py` into shared functions (no behavior change yet) so `corpus_teaching.py` can reuse them
+- [X] T004 Implement `new_state()` + the per-`(date, theme)` candidate cache scaffold in `sadhana_setu/flows/corpus_teaching.py` (per contracts/corpus-teaching.md)
 
 **Checkpoint**: shared retrieval primitives + cache scaffold ready.
 
@@ -49,10 +49,10 @@ per-surface theme (daily=value, Saturday=sankalpa). No `[NEEDS CLARIFICATION]` o
 **Goal**: One cached, de-duplicating, review-gated retrieval path that any surface can call.
 **Independent test**: with an injected querier + state, repeated calls return distinct reviewed teachings (cached, deduped), and None when exhausted/offline.
 
-- [ ] T005 [US1] Implement `get_for_surface(theme, surface_id, *, date, state, querier)` in `sadhana_setu/flows/corpus_teaching.py`: resolve candidates (cached per date+theme), return top not in `state["surfaced"]`, mark it; clean text + citation; None on no-match/offline (FR-001/002/003/004/012/013)
-- [ ] T006 [US1] Refactor `sadhana_setu/flows/harinaam_teaching.py::fetch_teaching` to delegate to `corpus_teaching` with a shared `state`, so pre-japa joins the dedup (plan R1/decision 6)
-- [ ] T007 [US1] Wire pre-japa to pass the per-day `state` (`st.session_state["corpus_<date>"]`) in `sadhana_setu/ui/prejapa_view.py`
-- [ ] T008 [P] [US1] Test `tests/test_corpus_teaching.py` (injected querier + plain state): review-gate (only harinaam-note), clean text, cache hit (querier called once per theme), **within-day stability** (a second call for the same date/theme/surface returns the same teaching — SC-005), dedup (distinct lecture_ids), None on offline/exhausted (SC-001/002, FR-012/013)
+- [X] T005 [US1] Implement `get_for_surface(theme, surface_id, *, date, state, querier)` in `sadhana_setu/flows/corpus_teaching.py`: resolve candidates (cached per date+theme), return top not in `state["surfaced"]`, mark it; clean text + citation; None on no-match/offline (FR-001/002/003/004/012/013)
+- [X] T006 [US1] Refactor `sadhana_setu/flows/harinaam_teaching.py::fetch_teaching` to delegate to `corpus_teaching` with a shared `state`, so pre-japa joins the dedup (plan R1/decision 6)
+- [X] T007 [US1] Wire pre-japa to pass the per-day `state` (`st.session_state["corpus_<date>"]`) in `sadhana_setu/ui/prejapa_view.py`
+- [X] T008 [P] [US1] Test `tests/test_corpus_teaching.py` (injected querier + plain state): review-gate (only harinaam-note), clean text, cache hit (querier called once per theme), **within-day stability** (a second call for the same date/theme/surface returns the same teaching — SC-005), dedup (distinct lecture_ids), None on offline/exhausted (SC-001/002, FR-012/013)
 
 **Checkpoint**: the shared service works; pre-japa uses it.
 
@@ -63,9 +63,9 @@ per-surface theme (daily=value, Saturday=sankalpa). No `[NEEDS CLARIFICATION]` o
 **Goal**: A dedicated daily teaching view that prefers a reviewed corpus teaching.
 **Independent test**: open Nama-Tattva; shows a reviewed corpus teaching (cited) for today's value, or curated fallback; distinct from pre-japa's (dedup).
 
-- [ ] T009 [US2] Implement `sadhana_setu/ui/nama_tattva_view.py`: theme = `pick_today_value`; call `corpus_teaching.get_for_surface(..., "nama-tattva", state=...)`; render corpus teaching, else curated `nama_tattva` (FR-007/011)
-- [ ] T010 [US2] Add "Nama-Tattva" to `VIEWS` + dispatch in `sadhana_setu/ui/app.py`
-- [ ] T011 [P] [US2] Import-safe smoke test of `nama_tattva_view.render` wiring in `tests/test_corpus_teaching.py`
+- [X] T009 [US2] Implement `sadhana_setu/ui/nama_tattva_view.py`: theme = `pick_today_value`; call `corpus_teaching.get_for_surface(..., "nama-tattva", state=...)`; render corpus teaching, else curated `nama_tattva` (FR-007/011)
+- [X] T010 [US2] Add "Nama-Tattva" to `VIEWS` + dispatch in `sadhana_setu/ui/app.py`
+- [X] T011 [P] [US2] Import-safe smoke test of `nama_tattva_view.render` wiring in `tests/test_corpus_teaching.py`
 
 **Checkpoint**: Nama-Tattva renders corpus-preferred with curated fallback.
 
@@ -76,8 +76,8 @@ per-surface theme (daily=value, Saturday=sankalpa). No `[NEEDS CLARIFICATION]` o
 **Goal**: An optional corpus teaching in the Saturday reflection, themed by the week's sankalpa.
 **Independent test**: open Saturday with a check-in present; an optional corpus teaching themed by tone/mood_bhava appears (cited), absent cleanly otherwise; no scoring.
 
-- [ ] T012 [US3] In `sadhana_setu/ui/saturday_view.py`: theme = `get_checkin(most_recent_saturday()).tone`/`mood_bhava` (fallback to day's value); call `corpus_teaching.get_for_surface(..., "saturday", state=...)`; render optionally; absent cleanly when None (FR-008/014)
-- [ ] T013 [P] [US3] Test that the Saturday theme derives from the week's sankalpa + absent-on-None in `tests/test_corpus_teaching.py`
+- [X] T012 [US3] In `sadhana_setu/ui/saturday_view.py`: theme = `get_checkin(most_recent_saturday()).tone`/`mood_bhava` (fallback to day's value); call `corpus_teaching.get_for_surface(..., "saturday", state=...)`; render optionally; absent cleanly when None (FR-008/014)
+- [X] T013 [P] [US3] Test that the Saturday theme derives from the week's sankalpa + absent-on-None in `tests/test_corpus_teaching.py`
 
 **Checkpoint**: Saturday reflection offers a themed corpus teaching.
 
@@ -88,10 +88,10 @@ per-surface theme (daily=value, Saturday=sankalpa). No `[NEEDS CLARIFICATION]` o
 **Goal**: Browse + read the reviewed enriched notes.
 **Independent test**: open Notes; reviewed notes listed by speaker/seminar and readable; drafts never shown; empty-state when none.
 
-- [ ] T014 [US4] Implement `sadhana_setu/flows/corpus_notes.py`: `list_reviewed_notes()` (enumerate `corpus/notes/**/*.md`, front-matter `status: reviewed` only) + `read_note(path)` (contracts/study-view.md)
-- [ ] T015 [US4] Implement `sadhana_setu/ui/notes_view.py`: list reviewed notes grouped by speaker/seminar; render selected note's Markdown; empty-state message (FR-009)
-- [ ] T016 [US4] Add "Notes" to `VIEWS` + dispatch in `sadhana_setu/ui/app.py`
-- [ ] T017 [P] [US4] Test `tests/test_corpus_notes.py`: reviewed-only enumeration, draft excluded, front-matter/body parse (SC-001)
+- [X] T014 [US4] Implement `sadhana_setu/flows/corpus_notes.py`: `list_reviewed_notes()` (enumerate `corpus/notes/**/*.md`, front-matter `status: reviewed` only) + `read_note(path)` (contracts/study-view.md)
+- [X] T015 [US4] Implement `sadhana_setu/ui/notes_view.py`: list reviewed notes grouped by speaker/seminar; render selected note's Markdown; empty-state message (FR-009)
+- [X] T016 [US4] Add "Notes" to `VIEWS` + dispatch in `sadhana_setu/ui/app.py`
+- [X] T017 [P] [US4] Test `tests/test_corpus_notes.py`: reviewed-only enumeration, draft excluded, front-matter/body parse (SC-001)
 
 **Checkpoint**: reviewed notes are browsable in-app.
 
@@ -99,9 +99,9 @@ per-surface theme (daily=value, Saturday=sankalpa). No `[NEEDS CLARIFICATION]` o
 
 ## Phase 7: Polish & Cross-Cutting
 
-- [ ] T018 [P] Sattvic-medium audit across the new surfaces (no metrics/scoring/streaks/push) + cross-check `quickstart.md` (SC-004)
-- [ ] T019 [P] Verify graceful curated fallback + no broken/empty states across the enriched surfaces (`sadhana_setu/ui/nama_tattva_view.py`, `saturday_view.py`, `notes_view.py`) when the corpus is offline (FR-004/SC-003)
-- [ ] T020 Run `/speckit-analyze` for cross-artifact consistency before `/speckit-implement`
+- [X] T018 [P] Sattvic-medium audit across the new surfaces (no metrics/scoring/streaks/push) + cross-check `quickstart.md` (SC-004)
+- [X] T019 [P] Verify graceful curated fallback + no broken/empty states across the enriched surfaces (`sadhana_setu/ui/nama_tattva_view.py`, `saturday_view.py`, `notes_view.py`) when the corpus is offline (FR-004/SC-003)
+- [X] T020 Run `/speckit-analyze` for cross-artifact consistency before `/speckit-implement`
 
 ---
 

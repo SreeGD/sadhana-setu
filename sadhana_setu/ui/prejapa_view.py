@@ -12,6 +12,7 @@ from datetime import date
 import streamlit as st
 
 from sadhana_setu.calendar import ekadasi_name, is_ekadasi
+from sadhana_setu.flows import corpus_teaching
 from sadhana_setu.flows.prejapa_reading import PrejapaReading, build_reading
 from sadhana_setu.flows.today_value import pick_today_value
 
@@ -40,7 +41,9 @@ _CSS = """
 def render() -> None:
     st.markdown(_CSS, unsafe_allow_html=True)
     today = date.today()
-    reading = build_reading(today)
+    # Shared per-day corpus state so pre-japa's teaching joins the cross-surface dedup (spec 003).
+    state = st.session_state.setdefault(f"corpus_{today.isoformat()}", corpus_teaching.new_state())
+    reading = build_reading(today, state=state)
 
     _render_meta(today)
     if not reading.corpus_online:
