@@ -13,13 +13,17 @@ deep into Hari-Nāma and find genuine transformation.
 
 ## Goal → Spec mapping
 
-| # | Goal (from the brief) | Spec | Round |
+| # | Goal (from the brief) | Spec | Status |
 |---|---|---|---|
-| G1 | Gather lectures from `audio.iskcondesiretree.com` (Bhūrijana Prabhu, HH Sacīnandana Mahārāja, Mahātmā Prabhu, HH Rādhānāth Swami, Śrīla Prabhupāda) **+ Holy Name seminars**, transcribe, commit transcripts + manifest to GitHub | `001-corpus-pipeline` | **1 (now)** |
-| G2 | Enrich transcripts into class notes with LLM-added references; commit enriched notes to GitHub | `002-note-enrichment` | **1 (now)** |
-| G3 | Enhance Sadhana Setu with the newly gathered information | `003-app-enrichment` | 2 |
-| G4 | Make Sadhana Setu available in Telugu, Kannada, and Tamil | `004-localization` | 2 |
-| G5 | Review and redesign pre-japa reading to bring transformation | `005-prejapa-transformation` | 2 |
+| G1 | Gather lectures from `audio.iskcondesiretree.com` (Bhūrijana Prabhu, HH Sacīnandana Mahārāja, Mahātmā Prabhu, HH Rādhānāth Swami, Śrīla Prabhupāda) **+ Holy Name seminars**, transcribe, commit transcripts + manifest to GitHub | `001-corpus-pipeline` | ✅ implemented (on `main`) |
+| G2 | Enrich transcripts into class notes with LLM-added references; commit enriched notes to GitHub | `002-note-enrichment` | ✅ implemented (on `main`) |
+| G3 | Enhance Sadhana Setu with the newly gathered information | `003-app-enrichment` | 📝 specced (awaiting `/speckit-clarify`) |
+| G4 | Make Sadhana Setu available in Telugu, Kannada, and Tamil | `004-localization` | 📝 specced (awaiting `/speckit-clarify`) |
+| G5 | Review and redesign pre-japa reading to bring transformation | `005-prejapa-transformation` | ✅ implemented (on `main`) |
+
+**Validated end-to-end on real audio** (2026-06-24): Bhūrijana Prabhu's Holy Name Seminar 01 ran
+`fetch → transcribe → enrich → review → ingest → surface in pre-japa`; transcript + reviewed note
+are committed. `003` generalizes the `005` retrieval pattern; `004` localizes the app (te/kn/ta).
 
 ## Round 1 — Corpus Foundation (specced now)
 
