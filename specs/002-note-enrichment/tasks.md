@@ -30,7 +30,7 @@ CLARIFICATION]` open.
 ## Phase 1: Setup
 
 - [ ] T001 Add enrichment config to `sadhana_setu/corpus/config.py`: `enrichment_version`, `claude` CLI flags (`-p --output-format json`), and a `claude`/`kg-mcp` preflight
-- [ ] T002 [P] Add `corpus/notes/<set>/` convention + a notes section to `corpus/README.md`
+- [ ] T002 [P] Add `corpus/notes/<set-id>/` convention + a notes section to `corpus/README.md`
 - [ ] T003 [P] Confirm `streamlit`/`pyyaml` deps in `pyproject.toml` (already present); add any enrichment-only dev deps
 
 ---
@@ -54,10 +54,10 @@ CLARIFICATION]` open.
 **Independent test**: run `enrich` on a fixture transcript (stubbed provider); a draft note with all FR-001 sections appears, each teaching timestamped, marked `draft`.
 
 - [ ] T008 [US1] Implement `sadhana_setu/corpus/enrich.py`: load a `001` transcript, call the provider with the prompt contract, parse `key_teachings`/`glossary`/`practical_application`/`sic_flags`
-- [ ] T009 [US1] Render + write the draft note to `corpus/notes/<set>/<id>.md` via `notes.py` with provenance front-matter, `status: draft` (FR-001/005); inline `[sic?: …]` flags (FR-014)
+- [ ] T009 [US1] Render + write the draft note to `corpus/notes/<set-id>/<lecture-id>.md` via `notes.py` with provenance front-matter, `status: draft` (FR-001/005); inline `[sic?: …]` flags (FR-014). The maintainer commits notes to git (FR-006; documented in `quickstart.md`)
 - [ ] T010 [US1] Idempotency: skip existing note for the same transcript + `enrichment_version`; `--regenerate` resets to draft + bumps version (FR-009)
 - [ ] T011 [US1] Wire `enrich` into `sadhana_setu/corpus/cli.py` (`python -m sadhana_setu.corpus enrich [--set NAME]`)
-- [ ] T012 [P] [US1] Test `tests/corpus/test_enrich.py` on a fixture transcript with a stubbed provider (golden file): all sections present, timestamps linked, `draft`
+- [ ] T012 [P] [US1] Test `tests/corpus/test_enrich.py` on a fixture transcript with a stubbed provider (golden file): all sections present, timestamps linked, `draft`; and `--regenerate` on a `reviewed` note resets it to `draft` + bumps version (FR-009 — not silently invalidated)
 
 **Checkpoint**: transcript → committed structured draft note.
 

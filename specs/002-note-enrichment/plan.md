@@ -23,7 +23,7 @@ provider interface (not the Anthropic API); the existing MCP client
 `agents/corpus_processor.py::CorpusProcessor.ingest_text` for back-ingest; `streamlit` (review
 UI, already a dep); `pyyaml`.
 
-**Storage**: Markdown notes under `corpus/notes/<set>/<id>.md` with YAML front-matter (status +
+**Storage**: Markdown notes under `corpus/notes/<set-id>/<lecture-id>.md` with YAML front-matter (status +
 review record inline); enrichment-version pinned in config.
 
 **Testing**: `pytest`. Grounding tested with a mocked `call_tool_sync`; review state machine
@@ -93,8 +93,8 @@ sadhana_setu/ui/
 
 corpus/
 └── notes/
-    └── <speaker-or-seminar>/
-        └── <id>.md         # enriched class note + provenance front-matter (status: draft|reviewed)
+    └── <set-id>/
+        └── <lecture-id>.md  # enriched class note + provenance front-matter (status: draft|reviewed)
 
 tests/
 └── corpus/

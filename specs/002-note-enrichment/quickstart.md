@@ -21,10 +21,17 @@ Validation/run guide for the enrichment stage (spec 002). Contracts + data model
 python -m sadhana_setu.corpus enrich --set holy-name-seminar
 ```
 
-**Expect**: for each transcribed lecture, a draft note at `corpus/notes/<set>/<id>.md` with all
+**Expect**: for each transcribed lecture, a draft note at `corpus/notes/<set-id>/<lecture-id>.md` with all
 FR-001 sections; every `key_teaching` carries a transcript timestamp; every verse in the body is
 KG-sourced (resolved via `get_verse`); ungrounded candidates appear under `[UNVERIFIED]`; status
 is `draft`. Re-running is idempotent unless `--regenerate`.
+
+**Then commit** the draft notes (FR-006) — the pipeline writes files but does not commit:
+
+```bash
+git add corpus/notes/
+git commit -m "corpus: enrich notes for <set> (draft)"
+```
 
 ## Scenario 2 — KG-offline fail-safe (US2)
 
