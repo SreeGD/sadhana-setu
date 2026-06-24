@@ -178,8 +178,12 @@ passage from it afterward.
 - **FR-010**: When `kg-mcp` is unavailable, enrichment MUST **fail safe** — it must not emit
   ungrounded verses as verified.
 - **FR-011**: Approving a note in the review UI MUST **automatically ingest it back into
-  vidya-karana's corpus/ChromaDB and trigger a KG rebuild**, idempotently (replace, not
-  duplicate), so the Sadhana Setu app can surface it.
+  vidya-karana's corpus/ChromaDB**, idempotently (replace, not duplicate). **NOTE (verified live
+  2026-06-24):** kg-mcp serves a *static snapshot*, so ingestion alone does NOT make the note
+  retrievable — vidya-karana-kg's snapshot MUST be **rebuilt** before `search_corpus` surfaces it.
+  The rebuild is a required, heavyweight, separate-project step (see `contracts/ingest.md`); a
+  consumer needing immediate retrieval may instead query the live ChromaDB with a
+  `kind=harinaam-note` filter. Ingest runs via vidya-karana's venv (chromadb is not a sadhana_setu dep).
 - **FR-012**: The note MUST preserve the speaker's meaning; enrichment annotates and references
   but never paraphrases the speaker as if quoting them (Constitution Principle I).
 - **FR-013**: Notes MUST be generated at **one-note-per-transcript** granularity (1:1 with the

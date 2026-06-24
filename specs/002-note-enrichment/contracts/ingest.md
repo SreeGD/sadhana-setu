@@ -37,3 +37,20 @@ by `CorpusProcessor` (reused, not reimplemented).
 |---|---|
 | `CorpusProcessor`/ChromaDB unavailable | Approval still records `reviewed`; ingest is queued/retried; `ingested_at` stays null and the UI shows "pending ingest" |
 | KG rebuild trigger unavailable | Fall back to nightly cron; note remains ingested into ChromaDB |
+
+## IMPORTANT — retrieval requires a snapshot rebuild (verified live, 2026-06-24)
+
+**kg-mcp serves a static snapshot, NOT the live ChromaDB.** On the first real ingest we confirmed:
+the 12 ingested `harinaam-note` chunks landed correctly in vidya-karana's ChromaDB collection
+`vidya_karana_corpus` (122,789 chunks total), but kg-mcp loads a pre-built NetworkX snapshot
+(e.g. `kg-20260428-...final.json.gz`, ~145K nodes) with chunks baked in — so freshly-ingested
+content is **invisible to `search_corpus` until vidya-karana-kg's snapshot is rebuilt**.
+
+Implications (correcting the optimistic FR-011 reading):
+- The **rebuild is required for retrieval**, not a nightly nicety. `ingested_at` means "written to
+  ChromaDB", which is necessary but **not sufficient** for the app to surface the note.
+- The rebuild is a **heavyweight operation in the separate vidya-karana-kg project**, not a quick
+  in-process trigger. Two viable models: (A) run/await vidya-karana-kg's snapshot rebuild after a
+  batch of approvals; (B) have the consumer (e.g. `005`) query the live ChromaDB directly with a
+  `kind=harinaam-note` filter to bypass the snapshot. Choose deliberately; both are follow-ups.
+- Cross-venv: `chromadb` is not in the sadhana_setu venv; ingest runs via vidya-karana's venv.
