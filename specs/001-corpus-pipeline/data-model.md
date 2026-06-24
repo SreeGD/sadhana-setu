@@ -34,7 +34,7 @@ A single audio item and the unit the pipeline processes.
 | `status` | enum (see below) | Required; drives the state machine. |
 | `sha256` | hex(64) \| null | Null until fetched; set from cached audio. |
 | `duration_seconds` | int \| null | Set on fetch/transcribe. |
-| `language` | BCP-47 (`en`, `hi`, …) | Detected/declared; non-`en` ⇒ `deferred` (FR-013). |
+| `language` | BCP-47 (`en`, `hi`, …) | **Declared at `seed`** (default `en`); **confirmed by a cheap language-detect sample at `fetch`**, where non-`en` ⇒ `deferred` (FR-013). Set before transcription so non-English audio is never fully transcribed. |
 | `topic_tags` | list[string] | Drives FR-014 topic filter (japa, nama, chanting, offenses, bhava). |
 | `notes` | string | Maintainer notes / exclusion or deferral reason. |
 | `transcript_path` | path \| null | Set when `transcribed`; relative to repo root. |
@@ -53,7 +53,8 @@ pending ──► fetched ──► transcribed
 
 - `pending → fetched`: audio downloaded to cache, `sha256`/`duration` recorded.
 - `fetched → transcribed`: transcript written; `transcript_path`/`whisper_model` recorded.
-- `pending → deferred`: language ≠ `en` (FR-013) or out-of-scope per FR-014.
+- `pending → deferred`: language ≠ `en` — declared at `seed` or detected from a short sample at
+  `fetch` (FR-013) — or out-of-scope per FR-014. Decided before transcription.
 - `pending → unavailable`: URL dead/moved (recorded with date in `notes`).
 - `* → excluded`: source terms forbid derivative text (FR-011), with reason.
 - Transitions are idempotent: re-running a stage on an entry already past it is a no-op unless an

@@ -55,10 +55,10 @@ speaker lectures; non-English ⇒ `deferred`; segment timestamps; always whisper
 **Goal**: A manifest entry's audio downloads to the git-ignored cache with a recorded checksum.
 **Independent test**: add one lecture URL, run `fetch`, confirm cached audio + recorded `sha256`, nothing audio staged in git.
 
-- [ ] T011 [US1] Implement `sadhana_setu/corpus/seed.py`: parse a speaker/seminar listing into draft `pending` entries, apply FR-014 topic filter, capture `title`/`urls`/`date`/`topic_tags` (research R2)
+- [ ] T011 [US1] Implement `sadhana_setu/corpus/seed.py`: parse a speaker/seminar listing into draft `pending` entries, apply FR-014 topic filter, capture `title`/`urls`/`date`/`topic_tags` and a declared `language` (default `en`) (research R2)
 - [ ] T012 [US1] Implement `sadhana_setu/corpus/fetch.py`: serial rate-limited download to `<cache>/<sha256>.<ext>`, compute SHA-256, record `sha256`/`duration_seconds`, set `status: fetched`
 - [ ] T013 [US1] Fetch idempotency (reuse cache on hash match) + checksum-mismatch provenance error (exit 1) in `sadhana_setu/corpus/fetch.py` (FR-007, FR-012)
-- [ ] T014 [US1] Handle dead URL ⇒ `unavailable`, forbidden ⇒ `excluded`, non-English language-detect ⇒ `deferred` in `sadhana_setu/corpus/fetch.py` (FR-011, FR-013)
+- [ ] T014 [US1] In `sadhana_setu/corpus/fetch.py`: dead URL ⇒ `unavailable`, forbidden ⇒ `excluded`; confirm language via a cheap detect on a short audio sample (seed-declared `language` is the default) and set non-English ⇒ `deferred` **before any transcription** (FR-011, FR-013)
 - [ ] T015 [US1] Wire `seed` and `fetch` into `sadhana_setu/corpus/cli.py`
 - [ ] T016 [P] [US1] Test fetch with a local fixture (no network): checksum, idempotency, mismatch error in `tests/corpus/test_fetch.py`
 - [ ] T017 [P] [US1] Test seed parser against a saved listing HTML fixture in `tests/corpus/test_seed.py`

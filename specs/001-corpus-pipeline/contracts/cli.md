@@ -33,7 +33,9 @@ SHA-256, record `sha256`/`duration_seconds`, set `status: fetched`.
 - Idempotent: cached file with matching hash ⇒ reused, no re-download (FR-007).
 - Checksum mismatch vs. recorded `sha256` ⇒ **stop with provenance error** (FR-012).
 - Dead URL ⇒ `status: unavailable` (date in `notes`); forbidden ⇒ `excluded`. Run continues.
-- Non-English detected ⇒ `status: deferred`, `language` set (FR-013).
+- Language: taken from the `seed`-declared `language` (default `en`); if `en` or unknown, a cheap
+  language-detect pass on a short audio sample confirms it. Non-English ⇒ `status: deferred`,
+  `language` set, **no transcription attempted** (FR-013).
 
 ### `transcribe` — verbatim transcription (US2)
 

@@ -53,6 +53,13 @@ python -m sadhana_setu.corpus transcribe --set holy-name-seminar
 - `status: transcribed`; `transcript_path` + `whisper_model` recorded.
 - Re-running is a no-op (idempotent) unless `--retranscribe`.
 
+**Then commit** the text outputs (FR-006) — the pipeline writes files but does not commit:
+
+```bash
+git add corpus/sources/manifest.yaml corpus/transcripts/
+git commit -m "corpus: add transcripts for <set>"   # audio cache stays git-ignored
+```
+
 ## Scenario 4 — Status report (US3)
 
 ```bash
