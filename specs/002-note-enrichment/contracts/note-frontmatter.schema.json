@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sadhana-setu/corpus/note-frontmatter.schema.json",
+  "title": "Class Note Front-Matter",
+  "description": "YAML front-matter on every enriched class note (spec 002, FR-005). Body sections follow per data-model.md.",
+  "type": "object",
+  "required": [
+    "lecture_id", "set_id", "transcript_path", "sha256", "speaker", "title",
+    "status", "enrichment_engine", "enrichment_version", "enriched_at"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "lecture_id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "set_id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "transcript_path": { "type": "string" },
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "speaker": { "type": "string" },
+    "title": { "type": "string" },
+    "status": { "type": "string", "enum": ["draft", "reviewed"] },
+    "enrichment_engine": { "type": "string", "const": "claude-code" },
+    "enrichment_version": { "type": "string" },
+    "enriched_at": { "type": "string", "format": "date-time" },
+    "reviewer": { "type": ["string", "null"] },
+    "reviewed_at": { "type": ["string", "null"], "format": "date-time" },
+    "ingested_at": { "type": ["string", "null"], "format": "date-time" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "const": "reviewed" } } },
+      "then": { "required": ["reviewer", "reviewed_at"] }
+    }
+  ]
+}

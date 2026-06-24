@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sadhana-setu/corpus/enrichment-output.schema.json",
+  "title": "Enrichment LLM Output",
+  "description": "The single JSON object Claude Code (`claude -p --output-format json`) must return for one transcript. The model supplies reference IDENTIFIERS only — never final verse text; grounding.py resolves them via kg-mcp.",
+  "type": "object",
+  "required": ["theme_summary", "key_teachings", "practical_application"],
+  "additionalProperties": false,
+  "properties": {
+    "theme_summary": { "type": "string", "minLength": 1 },
+    "key_teachings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["point", "timestamp"],
+        "additionalProperties": false,
+        "properties": {
+          "point": { "type": "string", "minLength": 1 },
+          "timestamp": {
+            "type": "string",
+            "description": "HH:MM:SS.mmm anchor into the source transcript (SC-002)",
+            "pattern": "^\\d{2}:\\d{2}:\\d{2}\\.\\d{3}$"
+          },
+          "candidate_verse_refs": {
+            "type": "array",
+            "items": { "type": "string", "description": "e.g. 'BG 18.66' — resolved via get_verse" }
+          }
+        }
+      }
+    },
+    "practical_application": { "type": "string", "minLength": 1 },
+    "glossary": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["term", "gloss"],
+        "additionalProperties": false,
+        "properties": {
+          "term": { "type": "string" },
+          "gloss": { "type": "string" }
+        }
+      }
+    },
+    "candidate_cross_refs": {
+      "type": "array",
+      "description": "Free-text queries for search_corpus / cross_author_chunks (grounded later).",
+      "items": {
+        "type": "object",
+        "required": ["query"],
+        "additionalProperties": false,
+        "properties": {
+          "query": { "type": "string" },
+          "value_id": { "type": "string", "description": "optional, for cross_author_chunks" }
+        }
+      }
+    },
+    "sic_flags": {
+      "type": "array",
+      "description": "Suspected whisper mishearings (FR-014); rendered inline as [sic?: ...]. The transcript is never edited.",
+      "items": {
+        "type": "object",
+        "required": ["timestamp", "heard", "suspected"],
+        "additionalProperties": false,
+        "properties": {
+          "timestamp": { "type": "string", "pattern": "^\\d{2}:\\d{2}:\\d{2}\\.\\d{3}$" },
+          "heard": { "type": "string" },
+          "suspected": { "type": "string" }
+        }
+      }
+    }
+  }
+}

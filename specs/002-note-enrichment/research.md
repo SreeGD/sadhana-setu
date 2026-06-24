@@ -30,7 +30,21 @@ accept and return, so `grounding.py` can resolve candidate citations reliably?
 `cross_author_chunks` per docs); behavior on a miss (empty vs error) — drives the `[UNVERIFIED]`
 path and the offline fail-safe.
 
-**Decision**: _TBD_ — document the contract in `contracts/` before implementing grounding.
+**Finding (read-only audit)**: `kg/mcp/tools.py` exposes:
+- `get_verse(verse_ref: str) -> {devanagari, iast, word_for_word, translation, purport_summary}`
+- `find_verses(source=None, exemplified_by_value=None, edge_kind="any") -> list`
+- `search_corpus(query: str, mode="kg_augmented", top_k=10) -> list`
+- `cross_author_chunks(value_id: str, authors=None, limit_per_author=5) -> list`
+- `kg_status() -> dict`
+
+The app already calls these via `sadhana_setu/mcp_client.py::call_tool_sync(name, args)` over stdio
+(e.g. `call_tool_sync("get_verse", {"verse_ref": "BG 18.66"})`).
+
+**Decision**: `grounding.py` reuses `call_tool_sync`. The LLM proposes a `verse_ref` (e.g.
+"BG 18.66"); grounding calls `get_verse` and substitutes the returned `iast`/`translation` as the
+authoritative text. An empty/missing result ⇒ mark `[UNVERIFIED]` (FR-003); a `kg_status()`
+failure or transport error ⇒ fail-safe (FR-010). Cross-references use `search_corpus`
+(kg_augmented) and `cross_author_chunks`. Contract captured in `contracts/grounding.md`.
 
 ## R3 — vidya-karana ChromaDB back-ingest path (FR-011)
 
@@ -41,8 +55,17 @@ corpus/ChromaDB so it becomes KG-queryable, and how is idempotent replace done?
 ingest scripts; ChromaDB collection + id scheme; whether the KG rebuild is nightly cron or can be
 triggered.
 
-**Decision**: _TBD_ — produce an ingest contract (id scheme, replace semantics, KG-refresh
-trigger).
+**Finding (read-only audit)**: vidya-karana's `agents/corpus_processor.py::CorpusProcessor`
+("Agent 0 — ingests source materials into ChromaDB with verified references") exposes
+`ingest_text(text, source_id, metadata: dict) -> int` (chunks + adds via
+`systems/chromadb_manager.py::ChromaDBManager.add_chunks`, returns new-chunk count) and includes
+IAST normalization. The KG itself is a NetworkX snapshot rebuilt nightly by cron with a manual
+trigger (per vidya-karana-kg README).
+
+**Decision**: Back-ingest reuses `CorpusProcessor.ingest_text` with `source_id` = the note's
+stable id (idempotent replace keyed by that id) and `metadata` carrying speaker/lecture/note
+provenance. After ingest, trigger the KG rebuild (manual trigger; fall back to nightly cron if
+the trigger is unavailable). Contract captured in `contracts/ingest.md`.
 
 ## R4 — Note granularity (depends on spec FR-013)
 
@@ -68,7 +91,13 @@ references, not final verse text)?
 identifiers + timestamp anchors, in a parseable structure (e.g. JSON), so `grounding.py` can
 resolve and `notes.py` can render. Few-shot examples from a real transcript.
 
-**Decision**: _TBD_ — define in `contracts/` with a golden-file test.
+**Decision**: The enrichment prompt instructs Claude Code (via `claude -p --output-format json`)
+to return a **single JSON object** with: `theme_summary`, `key_teachings[]` (each with `point`,
+`timestamp`, optional `candidate_verse_refs[]`), `glossary[]`, `practical_application`, and
+`candidate_cross_refs[]` (free-text queries for `search_corpus`/`cross_author_chunks`). The model
+supplies **reference identifiers only**, never final verse text — grounding fills that in (R2).
+Suspected mishearings are emitted as `sic_flags[]` (FR-014). Contract + JSON schema in
+`contracts/enrichment-output.schema.json`, validated by a golden-file test.
 
 ## R7 — Review workflow ergonomics
 
@@ -81,6 +110,10 @@ back-ingest + KG rebuild** (FR-011). To investigate at plan time: whether it is 
 Streamlit page or folds into the existing app.
 
 ## Clarification status
+
+Resolved during `/speckit-plan` (2026-06-24): R2 (kg-mcp tool contracts via `call_tool_sync`),
+R3 (back-ingest via `CorpusProcessor.ingest_text`, idempotent by `source_id`), R6 (enrichment
+JSON output contract). No open research items remain.
 
 Resolved in the spec's `## Clarifications` (Session 2026-06-24): FR-015 (R1, Claude Code
 headless), FR-013 (R4, one note per transcript), FR-014 (R5, annotate-only), review ergonomics

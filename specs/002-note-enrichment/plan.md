@@ -7,36 +7,40 @@
 ## Summary
 
 Transform the verbatim transcripts produced by `001-corpus-pipeline` into structured, study-ready
-**class notes** using an LLM, where every verse and cross-reference is grounded through `kg-mcp`
-(never invented), each note links back to transcript timestamps, drafts pass a devotee review
-gate before publish, and reviewed notes are ingested back into vidya-karana's corpus/ChromaDB so
-the Sadhana Setu app can surface them.
+**class notes**, one per transcript, using **Claude Code headless** (`claude -p`) — every verse
+and cross-reference grounded through `kg-mcp` (never invented), each note linking back to
+transcript timestamps. Suspected mishearings are flagged inline (annotate-only). A **Streamlit
+review UI** is the devotee gate; **approving a note auto-ingests it** into vidya-karana's
+ChromaDB (via `CorpusProcessor.ingest_text`) and triggers a KG rebuild so the app can surface it.
 
 ## Technical Context
 
 **Language/Version**: Python 3.11+ (same package + tooling as the app and 001).
 
-**Primary Dependencies**: an LLM client (provider per FR-015 clarification); the existing MCP
-client `sadhana_setu/mcp_client.py` → `kg-mcp`; `pyyaml` (front-matter); vidya-karana's ChromaDB
-ingest path (reuse) for back-ingest.
+**Primary Dependencies**: **Claude Code CLI** (`claude -p --output-format json`) behind a thin
+provider interface (not the Anthropic API); the existing MCP client
+`sadhana_setu/mcp_client.py::call_tool_sync` → `kg-mcp`; vidya-karana's
+`agents/corpus_processor.py::CorpusProcessor.ingest_text` for back-ingest; `streamlit` (review
+UI, already a dep); `pyyaml`.
 
-**Storage**: Markdown notes under `corpus/notes/<set>/<slug>.md` with YAML front-matter; review
-records embedded in front-matter or a sidecar; enrichment-version registry in config.
+**Storage**: Markdown notes under `corpus/notes/<set>/<id>.md` with YAML front-matter (status +
+review record inline); enrichment-version pinned in config.
 
-**Testing**: `pytest`. Grounding logic tested with a mocked `kg-mcp`; review-gate state machine
-tested directly; one end-to-end test on a short fixture transcript with a stubbed LLM.
+**Testing**: `pytest`. Grounding tested with a mocked `call_tool_sync`; review state machine
+tested directly; enrichment tested with a stubbed `claude -p` provider on a fixture transcript;
+back-ingest tested with a mocked `CorpusProcessor`.
 
-**Target Platform**: macOS / local-first. LLM may be local (Principle VI) or cloud text-only
-(no audio leaves the machine) pending FR-015.
+**Target Platform**: macOS / local-first. Enrichment runs via the local Claude Code CLI on text
+transcripts; no audio involved (Principle VI honored).
 
-**Project Type**: CLI + library (single project), extending `sadhana_setu/corpus/`.
+**Project Type**: CLI + library + a small Streamlit review page, extending `sadhana_setu/corpus/`.
 
-**Performance Goals**: Batch; bounded by LLM + KG round-trips. No latency target.
+**Performance Goals**: Batch; bounded by `claude -p` + KG round-trips. No latency target.
 
 **Constraints**: KG-grounded verses only; fail-safe when `kg-mcp` offline; idempotent; review
-gate before publish; speaker's words never paraphrased as quotes.
+gate before publish (Streamlit UI); speaker's words never paraphrased as quotes.
 
-**Scale/Scope**: One note per transcript (pending FR-013), hundreds of notes over time.
+**Scale/Scope**: One note per transcript (FR-013), hundreds of notes over time.
 
 ## Constitution Check
 
@@ -49,11 +53,11 @@ gate before publish; speaker's words never paraphrased as quotes.
 - **III. Attribution & Fair Use** — Notes credit speaker via transcript provenance; text-only. ✅
 - **IV. Sattvic Medium** — Study notes; no metrics/gamification. ✅
 - **V. Review Gate** — Central to this feature (US4, FR-007, FR-008). ✅
-- **VI. Local-First & Offline** — LLM locality is the FR-015 decision; audio never involved here
-  (works on text transcripts). ✅ (pending FR-015)
+- **VI. Local-First & Offline** — Enrichment runs via the local Claude Code CLI on text
+  transcripts; no audio involved (FR-015). ✅
 - **VII. Monorepo Conventions** — Notes under `corpus/notes/`. ✅
-- **VIII. Reuse Vidya-Karana** — Grounding via existing `kg-mcp`; back-ingest via existing
-  ChromaDB path (FR-002, FR-011). ✅
+- **VIII. Reuse Vidya-Karana** — Grounding via existing `kg-mcp` (`call_tool_sync`); back-ingest
+  via existing `CorpusProcessor.ingest_text` (FR-002, FR-011). ✅
 
 No violations. Complexity Tracking not required.
 
@@ -66,10 +70,10 @@ specs/002-note-enrichment/
 ├── plan.md
 ├── spec.md
 ├── research.md
-├── data-model.md        # Phase 1 — note schema, citation model, review record (TBD)
-├── quickstart.md        # Phase 1 — enrich → review → publish runbook (TBD)
-├── contracts/           # Phase 1 — LLM prompt contract, note front-matter, kg-mcp usage (TBD)
-└── tasks.md
+├── data-model.md        # Phase 1 — note schema, citation model, review record (DONE)
+├── quickstart.md        # Phase 1 — enrich → review → ingest runbook (DONE)
+├── contracts/           # Phase 1 — enrichment-output schema, note front-matter, grounding, ingest (DONE)
+└── tasks.md             # Phase 2 — /speckit-tasks output (drafted; regenerate)
 ```
 
 ### Source Code (repository root)
@@ -77,22 +81,27 @@ specs/002-note-enrichment/
 ```text
 sadhana_setu/
 └── corpus/
-    ├── enrich.py            # LLM enrichment: transcript → draft note sections
-    ├── grounding.py         # kg-mcp lookups; verify citations; mark [UNVERIFIED]; fail-safe
-    ├── notes.py             # note read/write, front-matter, status state machine
-    ├── review.py            # review gate: approve/record reviewer + date; publish eligibility
-    └── ingest.py            # back-ingest reviewed notes into vidya-karana ChromaDB → KG
+    ├── llm.py              # provider interface; ClaudeCodeProvider wraps `claude -p --output-format json`
+    ├── enrich.py           # transcript → draft note (calls provider, parses enrichment JSON)
+    ├── grounding.py        # kg-mcp lookups via call_tool_sync; verify citations; [UNVERIFIED]; fail-safe
+    ├── notes.py            # note read/write, front-matter, status state machine
+    ├── review.py           # approval logic: draft → reviewed (+ reviewer/date); publish eligibility
+    └── ingest.py           # back-ingest via CorpusProcessor.ingest_text + KG rebuild trigger
+
+sadhana_setu/ui/
+    └── review_view.py      # Streamlit review UI: list drafts, show note, approve → ingest
 
 corpus/
 └── notes/
     └── <speaker-or-seminar>/
-        └── <slug>.md        # enriched class note + provenance front-matter (status: draft|reviewed)
+        └── <id>.md         # enriched class note + provenance front-matter (status: draft|reviewed)
 
 tests/
 └── corpus/
-    ├── test_grounding.py    # mocked kg-mcp: verified vs [UNVERIFIED]; offline fail-safe
-    ├── test_review.py       # state machine: draft → reviewed; publish exclusion
-    └── test_enrich.py       # stubbed LLM on a short fixture transcript
+    ├── test_grounding.py   # mocked call_tool_sync: verified vs [UNVERIFIED]; offline fail-safe
+    ├── test_review.py      # state machine: draft → reviewed; publish exclusion
+    ├── test_enrich.py      # stubbed claude -p provider on a fixture transcript (golden file)
+    └── test_ingest.py      # mocked CorpusProcessor: idempotent replace by source_id
 ```
 
 **Structure Decision**: Enrichment extends the `sadhana_setu/corpus/` sub-package from 001 and
@@ -102,16 +111,24 @@ Principle VIII.
 
 ## Key design decisions (finalized in data-model.md / contracts/)
 
-1. **Note front-matter**: source transcript id, audio checksum (inherited), speaker, enrichment
-   model + prompt version, status, reviewer, review date.
-2. **Grounding contract**: the LLM proposes *candidate* citations (reference identifiers, not
-   verse text); `grounding.py` resolves each via `kg-mcp` and substitutes authoritative text;
-   unresolved → `[UNVERIFIED]`. The LLM never supplies final verse text.
-3. **Review state machine**: `draft → reviewed` (one-way unless re-enriched, which resets to
-   draft and bumps version).
-4. **Fail-safe**: if `kg-mcp` is unreachable, no note is published; the run reports unverifiable.
-5. **Back-ingest**: reuse vidya-karana's ChromaDB ingest entry point; key by note id for
-   idempotent replace.
+1. **Enrichment engine**: `llm.py` exposes a `Provider` interface; `ClaudeCodeProvider` shells out
+   to `claude -p --output-format json` with the prompt contract and parses the result. A local
+   model can implement the same interface. No Anthropic API key.
+2. **Enrichment output contract**: the model returns one JSON object (theme, key_teachings with
+   timestamps + `candidate_verse_refs`, glossary, practical_application, `candidate_cross_refs`,
+   `sic_flags`). It supplies *reference identifiers only* — never final verse text
+   (`contracts/enrichment-output.schema.json`).
+3. **Grounding contract**: `grounding.py` resolves each `candidate_verse_ref` via
+   `call_tool_sync("get_verse", {"verse_ref": …})` and substitutes the returned `iast`/
+   `translation`; cross-refs via `search_corpus`/`cross_author_chunks`; unresolved → `[UNVERIFIED]`
+   (`contracts/grounding.md`).
+4. **Review state machine**: `draft → reviewed` (one-way unless re-enriched, which resets to draft
+   and bumps the enrichment version). Approval happens in the Streamlit UI.
+5. **Fail-safe**: if `kg_status()` fails or the transport errors, no verses are emitted as
+   verified; the note is marked unverifiable and withheld (FR-010).
+6. **Back-ingest on approval**: `ingest.py` calls `CorpusProcessor.ingest_text(text,
+   source_id=note_id, metadata=…)` (idempotent replace by `source_id`) then triggers a KG rebuild
+   (`contracts/ingest.md`).
 
 ## Complexity Tracking
 
