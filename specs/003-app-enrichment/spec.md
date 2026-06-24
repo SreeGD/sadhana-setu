@@ -22,6 +22,16 @@ reviewed corpus across the app's other reading moments — Nama-Tattva, the Satu
 a place to read the notes themselves — while honoring every Sattvic-Medium constraint. It does
 **not** change the pipeline or enrichment; it consumes their output.
 
+## Clarifications
+
+### Session 2026-06-24
+
+- Q: Which surfaces are in scope this round? → A: **All three** — Nama-Tattva, the Saturday check-in, AND a study/browse view of the notes.
+- Q: Corpus vs. curated when a reviewed match exists? → A: **Prefer the corpus teaching**; the curated library is the fallback (mirrors `005`).
+- Q: How to bound the ~2 s live-ChromaDB query cost? → A: **Cache the day's resolved teaching(s)** (keyed by date + theme) and reuse across all surfaces and re-opens.
+- Q: Same teaching across surfaces in a day? → A: **De-duplicate within a day** — each surface gets a distinct reviewed teaching; surfaces with no fresh match fall back to curated.
+- Q: What theme drives each surface's retrieval? → A: **Per-surface natural theme** — daily surfaces use the day's value; the Saturday check-in uses the week's sankalpa/focus.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - A shared corpus-retrieval service (Priority: P1)
@@ -112,10 +122,10 @@ readable in clean form; unreviewed notes never appear.
 
 - Corpus offline / vidya-karana venv unavailable → every surface falls back to curated content;
   no broken or empty states (mirrors `005`).
-- The same teaching could surface in pre-japa AND Nama-Tattva on the same day → [NEEDS
-  CLARIFICATION: should the app de-duplicate corpus teachings across surfaces within a day?]
-- Latency: the live-ChromaDB query bridges to vidya-karana's venv (~2s) → [NEEDS CLARIFICATION:
-  acceptable per-surface, or cache the day's retrievals once?]
+- The same teaching could surface in pre-japa AND Nama-Tattva on the same day → resolved:
+  **de-duplicate within a day** (FR-013); each surface gets a distinct reviewed teaching.
+- Latency: the live-ChromaDB query bridges to vidya-karana's venv (~2s) → resolved: **cache the
+  day's retrieval(s) once** (FR-012), reused across surfaces and re-opens.
 - Retrieval freshness: kg-mcp's snapshot is stale, so reviewed-note retrieval MUST use the live
   ChromaDB path (`005` pattern), not kg-mcp `search_corpus`.
 
@@ -137,16 +147,19 @@ readable in clean form; unreviewed notes never appear.
   scoring, push, gamification, screen-during-japa) — Constitution Principle IV.
 - **FR-007**: The system MUST enrich the **Nama-Tattva** surface (US2).
 - **FR-008**: The system MUST enrich the **Saturday check-in** surface (US3).
-- **FR-009**: The system SHOULD provide a **study/browse view** of reviewed notes (US4).
-- **FR-010**: The set of surfaces in scope for this round MUST be defined. [NEEDS CLARIFICATION:
-  Nama-Tattva + Saturday + study view, or also Today/History/others? Which are P1 vs deferred?]
-- **FR-011**: The relationship between **curated and corpus content** MUST be defined. [NEEDS
-  CLARIFICATION: does corpus content augment the curated libraries (shown alongside / preferred
-  when available), or replace them where a match exists?]
-- **FR-012**: A **retrieval-cost policy** MUST be defined. [NEEDS CLARIFICATION: query the live
-  ChromaDB per surface per open, or retrieve the day's teaching(s) once and cache for all surfaces?]
-- **FR-013**: Cross-surface **de-duplication** MUST be defined. [NEEDS CLARIFICATION: may the same
-  teaching appear in multiple surfaces the same day, or should they differ?]
+- **FR-009**: The system MUST provide a **study/browse view** of reviewed notes (US4) — in scope
+  this round.
+- **FR-010**: The surfaces in scope for this round are **Nama-Tattva, the Saturday check-in, and
+  the study/browse view** (all three).
+- **FR-011**: When a reviewed corpus teaching matches, the surface MUST **prefer the corpus
+  teaching** and use its curated library as the fallback (one best teaching, not both).
+- **FR-012**: Retrieval MUST be **cached per day**: the day's teaching(s) are resolved once (keyed
+  by date + theme) and reused across all surfaces and re-opens, bounding the live-ChromaDB cost.
+- **FR-013**: Corpus teachings MUST be **de-duplicated within a day** across surfaces — each
+  surface gets a distinct reviewed teaching; a surface with no remaining fresh match falls back to
+  curated.
+- **FR-014**: Each surface MUST retrieve by its **natural theme** — daily surfaces (Nama-Tattva)
+  by the day's value; the Saturday check-in by the week's sankalpa/focus.
 
 ### Key Entities *(include if feature involves data)*
 
@@ -154,7 +167,8 @@ readable in clean form; unreviewed notes never appear.
   lecture) returned by the shared retrieval capability.
 - **Enriched Surface**: an existing app view (Nama-Tattva, Saturday check-in, study view) that
   consumes the retrieval capability with a curated fallback.
-- **Retrieval Cache (optional)**: the day's/week's resolved teachings, to bound query cost.
+- **Retrieval Cache**: the day's resolved teachings keyed by date + theme, reused across surfaces
+  (FR-012) and tracking what has already been surfaced today to enforce de-duplication (FR-013).
 
 ## Success Criteria *(mandatory)*
 
