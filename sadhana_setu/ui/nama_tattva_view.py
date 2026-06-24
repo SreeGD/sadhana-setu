@@ -10,6 +10,8 @@ from datetime import date
 
 import streamlit as st
 
+from sadhana_setu import i18n
+from sadhana_setu.content import nama_tattva as nt_mod
 from sadhana_setu.content.nama_tattva import pick_for_today as pick_curated
 from sadhana_setu.flows import corpus_teaching
 from sadhana_setu.flows.today_value import pick_today_value
@@ -34,17 +36,20 @@ def render() -> None:
     teaching = corpus_teaching.get_for_surface(
         pick_today_value(today), "nama-tattva", date=today, state=state)
 
-    if teaching is not None:  # prefer corpus (FR-011)
+    if teaching is not None:  # prefer corpus (FR-011); corpus-note localization is US4 (deferred)
         body, cite = teaching.body, teaching.citation
     else:
         nt = pick_curated(today)
         if nt is None:
-            st.info("No Nama-Tattva for today.")
+            st.info(i18n.t("nama_tattva.empty"))
             return
-        body, cite = nt.teaching, nt.source
+        # Curated content: show the reviewed translation for the locale, else English (FR-003/004).
+        idx = today.timetuple().tm_yday % max(1, len(nt_mod.all_teachings()))
+        body = i18n.localize_content("nama_tattva", idx, "teaching", nt.teaching)
+        cite = i18n.maybe_transliterate(nt.source) if nt.source else nt.source
 
     st.markdown(
-        f"<div class='nt-card'><div class='nt-label'>Nāma-Tattva — a teaching on the Name</div>"
+        f"<div class='nt-card'><div class='nt-label'>{i18n.t('nama_tattva.heading')}</div>"
         f"<div class='nt-body'>{body}</div>"
         f"<div class='nt-cite'>— {cite}</div></div>",
         unsafe_allow_html=True,

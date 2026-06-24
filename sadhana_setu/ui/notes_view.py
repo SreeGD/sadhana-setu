@@ -9,23 +9,24 @@ from itertools import groupby
 
 import streamlit as st
 
+from sadhana_setu import i18n
 from sadhana_setu.flows import corpus_notes
 
 
 def render() -> None:
-    st.markdown("### Hari-Nāma Notes")
-    st.caption("Reviewed class notes from the gathered Holy-Name lectures.")
+    st.markdown(f"### {i18n.t('notes.heading')}")
+    st.caption(i18n.t("notes.caption"))
 
     notes = corpus_notes.list_reviewed_notes()
     if not notes:
-        st.info("No reviewed notes yet. Enriched notes appear here once a devotee approves them.")
+        st.info(i18n.t("notes.empty"))
         return
 
     labels = {f"{n.title}  ·  {n.speaker}": n for n in notes}
     by_speaker = {sp: list(g) for sp, g in groupby(notes, key=lambda n: n.speaker)}
     st.caption(" · ".join(f"{sp} ({len(g)})" for sp, g in by_speaker.items()))
 
-    choice = st.selectbox("Open a note", list(labels))
+    choice = st.selectbox(i18n.t("notes.open"), list(labels))
     if choice:
         _, body = corpus_notes.read_note(labels[choice].path)
         st.markdown(body)

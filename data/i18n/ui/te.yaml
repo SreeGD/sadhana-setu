@@ -1,0 +1,13 @@
+# UI message catalog — Telugu (తెలుగు). SEED for native-devotee verification (FR-011).
+# Only reviewed strings live here; t() shows these, else falls back to English per key.
+# Machine drafts land in te.draft.yaml (NOT shown) until promoted here by a native reviewer.
+view.pre_japa: "జప-పూర్వ"
+view.nama_tattva: "నామ-తత్త్వ"
+view.today: "నేడు"
+view.this_week: "ఈ వారం"
+view.saturday: "శనివారం సమీక్ష"
+view.notes: "గమనికలు"
+view.history: "చరిత్ర"
+sidebar.view: "వీక్షణ"
+sidebar.language: "భాష"
+nama_tattva.heading: "నామ-తత్త్వ — నామము గురించి ఒక బోధ"

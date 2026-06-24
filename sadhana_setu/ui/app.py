@@ -20,6 +20,11 @@ ensure_initialized()
 st.markdown(
     """
     <style>
+    /* Indic-script fonts (spec 004 / FR-005) — ensure Telugu/Kannada/Tamil render (no tofu). */
+    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu&family=Noto+Sans+Kannada&family=Noto+Sans+Tamil&display=swap');
+    html, body, [class*="css"] {
+        font-family: 'Noto Sans Telugu', 'Noto Sans Kannada', 'Noto Sans Tamil', inherit;
+    }
     h4 {
         color: #6B3410 !important;
         margin-top: 1rem !important;
@@ -78,8 +83,22 @@ st.markdown(
 
 VIEWS = ["Pre-japa", "Nama-Tattva", "Today", "This Week", "Saturday Check-in", "Notes", "History"]
 
+from sadhana_setu import i18n
+
+_LANGS = {"English": "en", "తెలుగు": "te", "ಕನ್ನಡ": "kn", "தமிழ்": "ta"}
+_VIEW_KEYS = {
+    "Pre-japa": "view.pre_japa", "Nama-Tattva": "view.nama_tattva", "Today": "view.today",
+    "This Week": "view.this_week", "Saturday Check-in": "view.saturday", "Notes": "view.notes",
+    "History": "view.history",
+}
+
 with st.sidebar:
-    view = st.radio("View", VIEWS)
+    _codes = list(_LANGS.values())
+    _lang = st.selectbox(i18n.t("sidebar.language"), list(_LANGS),
+                         index=_codes.index(i18n.get_locale()) if i18n.get_locale() in _codes else 0)
+    i18n.set_locale(_LANGS[_lang])
+    view = st.radio(i18n.t("sidebar.view"), VIEWS,
+                    format_func=lambda v: i18n.t(_VIEW_KEYS.get(v, v)))
     label = protected_label()
     if label:
         st.markdown(f"\U0001F549 _{label}_")
