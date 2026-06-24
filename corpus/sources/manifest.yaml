@@ -1,5 +1,5 @@
 version: 0
-manifest_status: active          # real content present
+manifest_status: active
 source_sets:
 - id: bhurijana-prabhu
   speaker: Bhūrijana Prabhu
@@ -17,6 +17,106 @@ source_sets:
     topic_tags:
     - holy name
     transcript_path: corpus/transcripts/bhurijana-prabhu/bjp-holyname-01-2010-02-19-chowpatty.md
+    whisper_model: ggml-large-v3-turbo
+  - id: bjp-seminar-holyname-01-2010-02-20-iskcon-chowpatty-2010-02-20
+    title: BJP Seminar Holyname 01 2010 02 20 ISKCON Chowpatty
+    urls:
+    - https://audio.iskcondesiretree.com/03_-_ISKCON_Prabhujis/ISKCON_Prabhujis_-_A_to_J/His_Grace_Bhurijana_Prabhu/Seminars/Holyname/BJP_Seminar_-_Holyname-01_-_2010-02-20_ISKCON_Chowpatty.mp3
+    date: '2010-02-20'
+    status: transcribed
+    sha256: e3aeab3c63d78505bd10a1b5f418c9d7a4a6def361f71d20155a05ebdea77ab4
+    duration_seconds: 6272
+    language: en
+    topic_tags:
+    - holyname
+    transcript_path: corpus/transcripts/bhurijana-prabhu/bjp-seminar-holyname-01-2010-02-20-iskcon-chowpatty-2010-02-20.md
+    whisper_model: ggml-large-v3-turbo
+  - id: bjp-seminars-japa-seminar-day-01-2020-01-14-iskcon-nvcc-2020-01-14
+    title: BJP Seminars Japa Seminar Day 01 2020 01 14 ISKCON NVCC
+    urls:
+    - https://audio.iskcondesiretree.com/03_-_ISKCON_Prabhujis/ISKCON_Prabhujis_-_A_to_J/His_Grace_Bhurijana_Prabhu/Seminars/Japa/BJP_Seminars_-_Japa_Seminar_Day-01_-_2020-01-14_ISKCON_NVCC.mp3
+    date: '2020-01-14'
+    status: transcribed
+    sha256: e2694d0a48966246aad6d423e591208d0b9bb29cc49060a7b3de09d54f0b7f4e
+    duration_seconds: 5161
+    language: en
+    topic_tags:
+    - japa
+    transcript_path: corpus/transcripts/bhurijana-prabhu/bjp-seminars-japa-seminar-day-01-2020-01-14-iskcon-nvcc-2020-01-14.md
+    whisper_model: ggml-large-v3-turbo
+  - id: bjp-seminars-japa-seminar-day-02-2020-01-15-iskcon-nvcc-2020-01-15
+    title: BJP Seminars Japa Seminar Day 02 2020 01 15 ISKCON NVCC
+    urls:
+    - https://audio.iskcondesiretree.com/03_-_ISKCON_Prabhujis/ISKCON_Prabhujis_-_A_to_J/His_Grace_Bhurijana_Prabhu/Seminars/Japa/BJP_Seminars_-_Japa_Seminar_Day-02_-_2020-01-15_ISKCON_NVCC.mp3
+    date: '2020-01-15'
+    status: transcribed
+    sha256: 1332d027db287dd834c1d0543a53f7a16843e094676a659dafbd08357cfef140
+    duration_seconds: 613
+    language: en
+    topic_tags:
+    - japa
+    transcript_path: corpus/transcripts/bhurijana-prabhu/bjp-seminars-japa-seminar-day-02-2020-01-15-iskcon-nvcc-2020-01-15.md
+    whisper_model: ggml-large-v3-turbo
+  - id: bjp-seminars-japa-seminar-day-03-2020-01-16-iskcon-nvcc-2020-01-16
+    title: BJP Seminars Japa Seminar Day 03 2020 01 16 ISKCON NVCC
+    urls:
+    - https://audio.iskcondesiretree.com/03_-_ISKCON_Prabhujis/ISKCON_Prabhujis_-_A_to_J/His_Grace_Bhurijana_Prabhu/Seminars/Japa/BJP_Seminars_-_Japa_Seminar_Day-03_-_2020-01-16_ISKCON_NVCC.mp3
+    date: '2020-01-16'
+    status: transcribed
+    sha256: f1042aab72ff52d4d1ce96ba047fdd6ee4c195b186184a683ccdf58d829c7cd8
+    duration_seconds: 6381
+    language: en
+    topic_tags:
+    - japa
+    transcript_path: corpus/transcripts/bhurijana-prabhu/bjp-seminars-japa-seminar-day-03-2020-01-16-iskcon-nvcc-2020-01-16.md
+    whisper_model: ggml-large-v3-turbo
+  - id: bjp-seminar-japa-retreat-monday-special
+    title: BJP Seminar Japa Retreat Monday special
+    urls:
+    - https://audio.iskcondesiretree.com/03_-_ISKCON_Prabhujis/ISKCON_Prabhujis_-_A_to_J/His_Grace_Bhurijana_Prabhu/Seminars/Japa_Retreat/BJP_Seminar_-_Japa_Retreat_-_Monday_special.mp3
+    status: transcribed
+    sha256: 462232a1942169f6f44203096a34f088f0b2791b47adcd4e8c3d3096e7017baf
+    duration_seconds: 2360
+    language: en
+    topic_tags:
+    - japa
+    transcript_path: corpus/transcripts/bhurijana-prabhu/bjp-seminar-japa-retreat-monday-special.md
+    whisper_model: ggml-large-v3-turbo
+  - id: bjp-seminar-japa-retreat-morning-lecture-day-02
+    title: BJP Seminar Japa Retreat Morning lecture Day 02
+    urls:
+    - https://audio.iskcondesiretree.com/03_-_ISKCON_Prabhujis/ISKCON_Prabhujis_-_A_to_J/His_Grace_Bhurijana_Prabhu/Seminars/Japa_Retreat/BJP_Seminar_-_Japa_Retreat_-_Morning_lecture_Day-02.mp3
+    status: transcribed
+    sha256: 49d0eeda9dcfb8fcd7a4c12734a2d2ca71e14832f712c8f6dd55f415bc34de39
+    duration_seconds: 4560
+    language: en
+    topic_tags:
+    - japa
+    transcript_path: corpus/transcripts/bhurijana-prabhu/bjp-seminar-japa-retreat-morning-lecture-day-02.md
+    whisper_model: ggml-large-v3-turbo
+  - id: bjp-seminar-japa-retreat-transcendental-questions-and-answer
+    title: BJP Seminar Japa Retreat Transcendental questions and answers Day 04
+    urls:
+    - https://audio.iskcondesiretree.com/03_-_ISKCON_Prabhujis/ISKCON_Prabhujis_-_A_to_J/His_Grace_Bhurijana_Prabhu/Seminars/Japa_Retreat/BJP_Seminar_-_Japa_Retreat_-_Transcendental_questions_and_answers_Day-04.mp3
+    status: transcribed
+    sha256: 6cf455f52a8eb1620c34a6d33ee3bc11cd5e48522ff8dd1a546fbec5ff1fdadf
+    duration_seconds: 4529
+    language: en
+    topic_tags:
+    - japa
+    transcript_path: corpus/transcripts/bhurijana-prabhu/bjp-seminar-japa-retreat-transcendental-questions-and-answer.md
+    whisper_model: ggml-large-v3-turbo
+  - id: bjp-seminar-japa-retreat-afternoon-lecture-and-japa-practice
+    title: BJP Seminar Japa Retreat afternoon lecture and japa practice Day 01
+    urls:
+    - https://audio.iskcondesiretree.com/03_-_ISKCON_Prabhujis/ISKCON_Prabhujis_-_A_to_J/His_Grace_Bhurijana_Prabhu/Seminars/Japa_Retreat/BJP_Seminar_-_Japa_Retreat_-_afternoon_lecture_and_japa_practice_Day-01.mp3
+    status: transcribed
+    sha256: f160a8ef3b4b48c2c9077734c87b24ac54d76a40bb2868c118090445ea13e64d
+    duration_seconds: 1267
+    language: en
+    topic_tags:
+    - japa
+    transcript_path: corpus/transcripts/bhurijana-prabhu/bjp-seminar-japa-retreat-afternoon-lecture-and-japa-practice.md
     whisper_model: ggml-large-v3-turbo
 - id: sacinandana-maharaja
   speaker: HH Sacīnandana Mahārāja
