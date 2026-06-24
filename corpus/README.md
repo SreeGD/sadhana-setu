@@ -4,9 +4,28 @@ Verbatim transcripts and enriched class notes of Holy-Name teachings, gathered f
 Setu platform. Governed by the [Constitution](../.specify/memory/constitution.md) and built per
 the specs in [`specs/`](../specs/). See the [roadmap](../docs/CORPUS_ROADMAP.md).
 
-> **Status:** scaffolding only. The pipeline (`specs/001-corpus-pipeline`) and enrichment
-> (`specs/002-note-enrichment`) are specified but not yet implemented. The directories below
-> define the conventions those specs will fill.
+> **Status:** the pipeline (`specs/001-corpus-pipeline`) is **implemented** in
+> `sadhana_setu/corpus/` (`seed` → `fetch` → `transcribe` → `status` / `verify`); enrichment
+> (`specs/002-note-enrichment`) is specified but not yet built. The manifest is an empty stub
+> until lectures are seeded.
+
+## Usage
+
+```bash
+# 1. seed the manifest from a listing page (assisted; verify entries before fetch)
+python -m sadhana_setu.corpus seed --set holy-name-seminar --url <listing-url>
+# 2. download audio to the git-ignored cache (records SHA-256)
+python -m sadhana_setu.corpus fetch --set holy-name-seminar
+# 3. transcribe verbatim with whisper.cpp (needs the model downloaded)
+python -m sadhana_setu.corpus transcribe --set holy-name-seminar
+# progress + reproducibility
+python -m sadhana_setu.corpus status --json
+python -m sadhana_setu.corpus verify --set holy-name-seminar
+```
+
+**Tooling:** `whisper-cli` (whisper.cpp, model `ggml-large-v3-turbo` in `$WHISPER_MODEL_DIR`)
+and `ffmpeg`/`ffprobe` on `PATH`; Python deps via `pip install -e ".[dev]"`. See
+[`../specs/001-corpus-pipeline/quickstart.md`](../specs/001-corpus-pipeline/quickstart.md).
 
 ## What lives here (and what does not)
 
