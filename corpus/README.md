@@ -4,10 +4,10 @@ Verbatim transcripts and enriched class notes of Holy-Name teachings, gathered f
 Setu platform. Governed by the [Constitution](../.specify/memory/constitution.md) and built per
 the specs in [`specs/`](../specs/). See the [roadmap](../docs/CORPUS_ROADMAP.md).
 
-> **Status:** the pipeline (`specs/001-corpus-pipeline`) is **implemented** in
-> `sadhana_setu/corpus/` (`seed` → `fetch` → `transcribe` → `status` / `verify`); enrichment
-> (`specs/002-note-enrichment`) is specified but not yet built. The manifest is an empty stub
-> until lectures are seeded.
+> **Status:** the pipeline (`specs/001-corpus-pipeline`) and the enrichment stage
+> (`specs/002-note-enrichment`) are both **implemented** in `sadhana_setu/corpus/`
+> (`seed` → `fetch` → `transcribe` → `enrich` → review UI → `status` / `verify`). The manifest is
+> an empty stub until lectures are seeded; no notes exist until transcripts are enriched.
 
 ## Usage
 
@@ -18,10 +18,20 @@ python -m sadhana_setu.corpus seed --set holy-name-seminar --url <listing-url>
 python -m sadhana_setu.corpus fetch --set holy-name-seminar
 # 3. transcribe verbatim with whisper.cpp (needs the model downloaded)
 python -m sadhana_setu.corpus transcribe --set holy-name-seminar
+# 4. enrich transcripts into draft notes (Claude Code + kg-mcp grounding)
+python -m sadhana_setu.corpus enrich --set holy-name-seminar
+# 5. review + approve drafts (approving auto-ingests into the KG)
+streamlit run sadhana_setu/ui/review_view.py
 # progress + reproducibility
 python -m sadhana_setu.corpus status --json
 python -m sadhana_setu.corpus verify --set holy-name-seminar
 ```
+
+**Enriched notes** land in `corpus/notes/<set-id>/<lecture-id>.md` (one per transcript), with
+KG-grounded verse citations, `[UNVERIFIED]`/`[sic?]` review aids, and a `draft`/`reviewed` status.
+Enrichment runs **Claude Code headless** (`claude -p`); grounding + back-ingest reuse the
+existing `kg-mcp` and vidya-karana ChromaDB. See
+[`../specs/002-note-enrichment/`](../specs/002-note-enrichment/).
 
 **Tooling:** `whisper-cli` (whisper.cpp, model `ggml-large-v3-turbo` in `$WHISPER_MODEL_DIR`)
 and `ffmpeg`/`ffprobe` on `PATH`; Python deps via `pip install -e ".[dev]"`. See

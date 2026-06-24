@@ -38,6 +38,10 @@ class CorpusConfig:
     fetch_rate_limit_seconds: float = 2.0
     chunk_seconds: int = 600
     user_agent: str = "sadhana-setu-corpus/0.1 (+https://github.com/SreeGD/sadhana-setu)"
+    # Enrichment (spec 002): Claude Code headless, not the Anthropic API.
+    notes_dir: Path = None  # set in from_env
+    enrichment_version: str = "claude-code/v1"
+    claude_flags: tuple[str, ...] = ("-p", "--output-format", "json")
 
     @classmethod
     def from_env(cls, repo_root: Path | str | None = None) -> "CorpusConfig":
@@ -49,6 +53,7 @@ class CorpusConfig:
             transcripts_dir=Path(
                 os.environ.get("CORPUS_TRANSCRIPTS_DIR", corpus / "transcripts")
             ),
+            notes_dir=Path(os.environ.get("CORPUS_NOTES_DIR", corpus / "notes")),
             manifest_path=Path(
                 os.environ.get("CORPUS_MANIFEST", corpus / "sources" / "manifest.yaml")
             ),
@@ -86,6 +91,15 @@ class CorpusConfig:
         exe = shutil.which("ffprobe")
         if not exe:
             raise ToolMissingError("ffprobe not found on PATH (ships with ffmpeg).")
+        return exe
+
+    def claude_cli(self) -> str:
+        exe = shutil.which("claude")
+        if not exe:
+            raise ToolMissingError(
+                "claude (Claude Code CLI) not found on PATH. Enrichment runs "
+                "`claude -p`; install Claude Code."
+            )
         return exe
 
     def preflight(self, *, require_model: bool = True) -> None:

@@ -15,6 +15,7 @@ from pathlib import Path
 
 import httpx
 
+from sadhana_setu.corpus import enrich as enrich_mod
 from sadhana_setu.corpus import fetch as fetch_mod
 from sadhana_setu.corpus import sets as sets_mod
 from sadhana_setu.corpus import transcribe as transcribe_mod
@@ -97,6 +98,18 @@ def _cmd_transcribe(args, cfg: CorpusConfig) -> int:
     return EXIT_OK
 
 
+def _cmd_enrich(args, cfg: CorpusConfig) -> int:
+    cfg.preflight(require_model=False)
+    cfg.claude_cli()  # ensure Claude Code is available
+    manifest = Manifest.load(cfg.manifest_path)
+    result = enrich_mod.enrich_set(cfg, manifest, args.set, regenerate=args.regenerate)
+    payload = {"enriched": result.enriched, "skipped": result.skipped,
+               "unverifiable": result.unverifiable}
+    _emit(args, payload,
+          "enrich: " + ", ".join(f"{k}={len(v)}" for k, v in payload.items()))
+    return EXIT_OK if not result.unverifiable else EXIT_PROVENANCE
+
+
 def _cmd_status(args, cfg: CorpusConfig) -> int:
     manifest = Manifest.load(cfg.manifest_path)
     report = sets_mod.status_report(manifest, args.set)
@@ -162,6 +175,11 @@ def _parser() -> argparse.ArgumentParser:
 
     sf = sub.add_parser("fetch", parents=[common], help="download audio to the cache")
     sf.set_defaults(func=_cmd_fetch)
+
+    se = sub.add_parser("enrich", parents=[common], help="enrich transcripts into draft notes")
+    se.add_argument("--regenerate", action="store_true",
+                    help="re-enrich even if a note exists (resets reviewed → draft)")
+    se.set_defaults(func=_cmd_enrich)
 
     st = sub.add_parser("transcribe", parents=[common], help="transcribe fetched audio")
     st.add_argument("--retranscribe", action="store_true",
