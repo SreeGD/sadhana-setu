@@ -25,6 +25,31 @@ def test_extracts_date():
     assert dated.date == "2018-01-12"
 
 
+# Apache autoindex truncates the visible link text but keeps the full filename in href.
+AUTOINDEX = """
+<html><body><pre>
+  <a href="BJP_Seminar_-_Holyname-01_-_2010-02-19_ISKCON_Chowpatty.mp3">BJP_Seminar_-_Holyna..&gt;</a>
+  <a href="BJP_Seminar_-_Holyname-01_-_2010-02-20_ISKCON_Chowpatty.mp3">BJP_Seminar_-_Holyna..&gt;</a>
+</pre></body></html>
+"""
+
+
+def test_truncated_anchor_uses_filename_for_title_and_date():
+    entries = seed_mod.parse_listing(AUTOINDEX, base_url="https://site.test/folder/")
+    titles = [e.title for e in entries]
+    # Title recovered from the href filename, not the "Holyna..>" stub.
+    assert all("Holyname" in t for t in titles)
+    assert all(".." not in t and ">" not in t for t in titles)
+    assert {e.date for e in entries} == {"2010-02-19", "2010-02-20"}
+
+
+def test_holyname_one_word_matches_topic_filter(manifest):
+    entries = seed_mod.parse_listing(AUTOINDEX, base_url="https://site.test/folder/")
+    added = seed_mod.seed_set(manifest, "bhurijana-prabhu", entries)
+    assert len(added) == 2  # both 'Holyname' lectures kept by the speaker-set filter
+    assert all("holyname" in lec.topic_tags for lec in added)
+
+
 def test_speaker_set_applies_topic_filter(manifest):
     entries = seed_mod.parse_listing(LISTING, base_url="https://site.test/")
     added = seed_mod.seed_set(manifest, "bhurijana-prabhu", entries)

@@ -31,6 +31,7 @@ class EnrichResult:
         self.enriched: list[str] = []
         self.skipped: list[str] = []
         self.unverifiable: list[str] = []
+        self.failed: list[str] = []
 
 
 def enrich_set(cfg: CorpusConfig, manifest: Manifest, set_id: str | None = None,
@@ -51,6 +52,8 @@ def enrich_set(cfg: CorpusConfig, manifest: Manifest, set_id: str | None = None,
             result.enriched.append(lec.id)
         except KGUnavailable as exc:
             result.unverifiable.append(f"{lec.id}: {exc}")
+        except Exception as exc:  # one lecture's LLM/parse failure must not abort the batch
+            result.failed.append(f"{lec.id}: {exc}")
     return result
 
 

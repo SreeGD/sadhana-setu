@@ -48,6 +48,24 @@ def test_reviewed_with_reviewer_ok():
     fm.validate()
 
 
+def test_verses_cited_deduplicated():
+    # The same verse cited by two teachings appears once in the 'Verses cited' summary.
+    content = _content()
+    content.key_teachings = [
+        KeyTeaching(point="a", timestamp="00:00:01.000", citations=[
+            Citation(kind="verse", candidate="BG 18.66", verse_ref="BG 18.66", source="BG 18.66",
+                     iast="sarva-dharmān parityajya", translation="Abandon all", verified=True)]),
+        KeyTeaching(point="b", timestamp="00:00:02.000", citations=[
+            Citation(kind="verse", candidate="BG 18.66", verse_ref="BG 18.66", source="BG 18.66",
+                     iast="sarva-dharmān parityajya", translation="Abandon all", verified=True)]),
+    ]
+    body = render(_fm(), content)
+    section = body.split("## Verses cited", 1)[1].split("##", 1)[0]
+    assert section.count("**BG 18.66**") == 1  # deduped in the summary
+    # …but each teaching keeps its own inline citation.
+    assert body.count("sarva-dharmān parityajya") >= 3  # 2 inline + 1 summary
+
+
 def test_verified_verse_renders_unverified_withheld():
     content = _content()
     content.key_teachings[0].citations = [

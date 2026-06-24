@@ -104,10 +104,10 @@ def _cmd_enrich(args, cfg: CorpusConfig) -> int:
     manifest = Manifest.load(cfg.manifest_path)
     result = enrich_mod.enrich_set(cfg, manifest, args.set, regenerate=args.regenerate)
     payload = {"enriched": result.enriched, "skipped": result.skipped,
-               "unverifiable": result.unverifiable}
+               "unverifiable": result.unverifiable, "failed": result.failed}
     _emit(args, payload,
           "enrich: " + ", ".join(f"{k}={len(v)}" for k, v in payload.items()))
-    return EXIT_OK if not result.unverifiable else EXIT_PROVENANCE
+    return EXIT_OK if not (result.unverifiable or result.failed) else EXIT_PROVENANCE
 
 
 def _cmd_status(args, cfg: CorpusConfig) -> int:

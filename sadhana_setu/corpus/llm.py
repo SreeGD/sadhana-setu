@@ -9,12 +9,17 @@ from __future__ import annotations
 import json
 import re
 import subprocess
+import time
 from abc import ABC, abstractmethod
 
 from sadhana_setu.corpus.config import CorpusConfig
 
 _TS_RE = re.compile(r"^\d{2}:\d{2}:\d{2}\.\d{3}$")
 _FENCE_RE = re.compile(r"^```(?:json)?\s*|\s*```$", re.MULTILINE)
+# `claude -p` exits non-zero on transient API overloads; retry with backoff before giving up
+# so one blip during a long batch doesn't lose a whole lecture's enrichment.
+_MAX_TRIES = 3
+_RETRY_SLEEP = 5.0  # seconds; grows per attempt
 
 
 class EnrichmentError(RuntimeError):
@@ -34,11 +39,19 @@ class ClaudeCodeProvider(Provider):
         self.cfg = cfg
 
     def complete(self, prompt: str) -> str:
-        proc = subprocess.run(
-            [self.cfg.claude_cli(), *self.cfg.claude_flags],
-            input=prompt, capture_output=True, text=True, check=True,
+        cmd = [self.cfg.claude_cli(), *self.cfg.claude_flags]
+        last = None
+        for attempt in range(1, _MAX_TRIES + 1):
+            proc = subprocess.run(cmd, input=prompt, capture_output=True, text=True)
+            if proc.returncode == 0:
+                return _extract_result(proc.stdout)
+            last = proc
+            if attempt < _MAX_TRIES:
+                time.sleep(_RETRY_SLEEP * attempt)
+        detail = (last.stderr or last.stdout or "").strip().replace("\n", " ")[:400]
+        raise EnrichmentError(
+            f"`claude -p` failed after {_MAX_TRIES} attempts (exit {last.returncode}): {detail}"
         )
-        return _extract_result(proc.stdout)
 
 
 def _extract_result(stdout: str) -> str:
