@@ -1,0 +1,31 @@
+# Pre-japa contemplative micro-practices (spec 005, FR-005).
+# Each is ONE short act to do before chanting — sit with / repeat once / hold.
+# Requires no input, no tracking, no scoring. Verse-bearing prompts carry a source.
+contemplations:
+  - kind: prayer
+    prompt: "Repeat once, slowly: tṛṇād api sunīcena taror api sahiṣṇunā — lower than the grass, more tolerant than a tree. Then begin."
+    source: "Śikṣāṣṭaka 3"
+
+  - kind: question
+    prompt: "Before the first round: whose Name am I about to call? Hold that for one breath."
+    source: null
+
+  - kind: sit_with
+    prompt: "Sit with this: the Name and Kṛṣṇa are not different. To chant is already to be with Him."
+    source: "Padma Purāṇa (cited in Hari-nāma-cintāmaṇi)"
+
+  - kind: prayer
+    prompt: "Offer once, quietly: 'O Name, please appear on my tongue and let me hear You.' Then chant to hear."
+    source: null
+
+  - kind: question
+    prompt: "One honest question, no answer required: am I chanting to hear, or to finish?"
+    source: null
+
+  - kind: sit_with
+    prompt: "Sit with this: each holy Name is Kṛṣṇa fully present — not a means to Him, but Him."
+    source: "Caitanya-caritāmṛta, Madhya 17.133"
+
+  - kind: prayer
+    prompt: "Take shelter once: 'Hare — O energy of the Lord, please engage me in His service.' Then enter japa."
+    source: null
