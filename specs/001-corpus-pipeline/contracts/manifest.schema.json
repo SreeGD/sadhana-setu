@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sadhana-setu/corpus/manifest.schema.json",
+  "title": "Hari-Nāma Corpus Source Manifest",
+  "description": "Authoritative source of truth for which lectures belong to the corpus (spec 001).",
+  "type": "object",
+  "required": ["version", "source_sets"],
+  "additionalProperties": false,
+  "properties": {
+    "version": { "type": "integer", "minimum": 0 },
+    "manifest_status": { "type": "string", "enum": ["stub", "active"] },
+    "source_sets": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/sourceSet" }
+    }
+  },
+  "$defs": {
+    "sourceSet": {
+      "type": "object",
+      "required": ["id", "speaker", "kind", "lectures"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+        "speaker": { "type": "string", "minLength": 1 },
+        "kind": { "type": "string", "enum": ["speaker", "seminar"] },
+        "lectures": { "type": "array", "items": { "$ref": "#/$defs/lecture" } }
+      }
+    },
+    "lecture": {
+      "type": "object",
+      "required": ["id", "title", "urls", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+        "title": { "type": "string", "minLength": 1 },
+        "urls": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "format": "uri" }
+        },
+        "date": { "type": ["string", "null"], "format": "date" },
+        "status": {
+          "type": "string",
+          "enum": ["pending", "fetched", "transcribed", "deferred", "unavailable", "excluded"]
+        },
+        "sha256": { "type": ["string", "null"], "pattern": "^[0-9a-f]{64}$" },
+        "duration_seconds": { "type": ["integer", "null"], "minimum": 0 },
+        "language": { "type": "string", "default": "en" },
+        "topic_tags": { "type": "array", "items": { "type": "string" } },
+        "transcript_path": { "type": ["string", "null"] },
+        "whisper_model": { "type": ["string", "null"] },
+        "notes": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "status": { "const": "transcribed" } } },
+          "then": { "required": ["sha256", "transcript_path", "whisper_model"] }
+        },
+        {
+          "if": { "properties": { "status": { "const": "fetched" } } },
+          "then": { "required": ["sha256"] }
+        }
+      ]
+    }
+  }
+}

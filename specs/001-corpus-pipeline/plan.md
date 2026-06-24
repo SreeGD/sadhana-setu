@@ -10,18 +10,20 @@ Build a reproducible, manifest-driven pipeline that fetches Holy-Name lecture au
 `audio.iskcondesiretree.com` into a git-ignored local cache, transcribes it verbatim with
 whisper.cpp, and commits timestamped transcripts plus the source manifest to GitHub. Audio is
 never committed. The pipeline is idempotent and organized by source set (per speaker, per Holy
-Name seminar). Where it fits, it reuses vidya-karana's existing audio/ingest code rather than
-writing fresh orchestration.
+Name seminar). Round 1 is English-first and topic-bounded (per spec Clarifications); non-English
+lectures are recorded as `deferred`. A read-only audit (research R3) found vidya-karana's audio
+code is text-to-speech, so 001 reuses its proven **operational pattern** (serial queue, checksum
+idempotency, quarantine) rather than its code; the ChromaDB/KG reuse lands in 002.
 
 ## Technical Context
 
 **Language/Version**: Python 3.11+ (matches `pyproject.toml`; whisper.cpp invoked as a
 subprocess)
 
-**Primary Dependencies**: `whisper-cli` (whisper.cpp, Homebrew), `ffmpeg` (audio decode/convert),
-`httpx` or `requests` (fetch), `pyyaml` (manifest), `python-dateutil`. Reuse candidates from
-`/Users/sree/Projects/vidya-karana`: `scripts/audio_daemon.py`, `agents/pipeline.py`,
-`agents/corpus_processor.py`.
+**Primary Dependencies**: `whisper-cli` (whisper.cpp, Homebrew) with `ggml-large-v3-turbo`,
+`ffmpeg` (decode to 16 kHz mono WAV + silence-boundary segmentation), `httpx` (fetch),
+`pyyaml` (manifest), `python-dateutil`. No direct vidya-karana code reuse for 001 (its audio is
+TTS); the daemon's queue/checksum/quarantine **pattern** is mirrored (research R3).
 
 **Storage**: Plain files. Manifest in YAML under `corpus/sources/`; transcripts in Markdown
 under `corpus/transcripts/<speaker-or-seminar>/`; audio in a git-ignored cache (default
@@ -36,14 +38,14 @@ one end-to-end test against a single short fixture lecture.
 package layout.
 
 **Performance Goals**: Throughput bounded by whisper.cpp; long lectures (90+ min) transcribe
-without exhausting memory via chunking/streaming. No hard latency target — this is a batch
-maintainer tool.
+without exhausting memory via ffmpeg ~10-min silence-boundary chunking with offset-corrected
+timestamps (research R7). No hard latency target — this is a batch maintainer tool.
 
 **Constraints**: Offline core path (no cloud STT); no audio committed; idempotent re-runs;
-every output carries provenance.
+every output carries provenance; serial + rate-limited fetch honoring source terms.
 
-**Scale/Scope**: Five named speakers + N Holy Name seminars; initial target on the order of
-hundreds of lectures, growing. Text-only in git.
+**Scale/Scope**: Round 1 (English-first, topic-bounded) — all Holy Name seminars in full + the
+five speakers' Holy-Name-topic lectures; order of hundreds of lectures, growing. Text-only in git.
 
 ## Constitution Check
 
@@ -59,7 +61,8 @@ hundreds of lectures, growing. Text-only in git.
   *enriched* content is gated in 002. Verbatim transcripts are reviewable as plain-text diffs. ✅
 - **VI. Local-First & Offline** — whisper.cpp local; audio never leaves the machine. ✅
 - **VII. Monorepo Conventions** — Fixed `corpus/` layout defined below. ✅
-- **VIII. Reuse Vidya-Karana** — Reuse evaluation is a Phase 0 deliverable (`research.md`). ✅
+- **VIII. Reuse Vidya-Karana** — Audit done (research R3): vidya-karana audio is TTS, so 001
+  mirrors its operational pattern, not its code; genuine ChromaDB/KG reuse lands in 002. ✅
 
 No violations. Complexity Tracking not required.
 
@@ -71,11 +74,11 @@ No violations. Complexity Tracking not required.
 specs/001-corpus-pipeline/
 ├── plan.md              # This file
 ├── spec.md              # Feature spec
-├── research.md          # Phase 0 — whisper model sizing, source-site survey, reuse eval
-├── data-model.md        # Phase 1 — manifest + transcript front-matter schema (TBD in /speckit-plan)
-├── quickstart.md        # Phase 1 — maintainer runbook (TBD)
-├── contracts/           # Phase 1 — manifest schema, transcript front-matter contract (TBD)
-└── tasks.md             # Phase 2 — /speckit-tasks output
+├── research.md          # Phase 0 — model, seed approach, reuse map, chunking (RESOLVED)
+├── data-model.md        # Phase 1 — entities, fields, state machine (DONE)
+├── quickstart.md        # Phase 1 — maintainer run/validation guide (DONE)
+├── contracts/           # Phase 1 — manifest.schema.json, transcript-frontmatter.schema.json, cli.md (DONE)
+└── tasks.md             # Phase 2 — /speckit-tasks output (already drafted)
 ```
 
 ### Source Code (repository root)
@@ -119,10 +122,12 @@ cleanly separated inside the one monorepo (Constitution Principle VII).
    manifest entry id so transcript ↔ manifest is bidirectional.
 3. **Idempotency key**: audio SHA-256. Fetch skips if checksum matches; transcribe skips if a
    transcript for that checksum + model already exists.
-4. **whisper.cpp invocation**: model + flags pinned in config so transcripts are reproducible;
-   model recorded in front-matter. Long audio chunked via ffmpeg segmentation.
-5. **Reuse boundary**: `research.md` decides which of vidya-karana's `audio_daemon.py` /
-   `pipeline.py` / `corpus_processor.py` to import/wrap vs. reimplement thin.
+4. **whisper.cpp invocation**: `ggml-large-v3-turbo` + flags pinned in config so transcripts are
+   reproducible; model recorded in front-matter. Long audio chunked via ffmpeg silence-boundary
+   segmentation with offset-corrected timestamps (research R7).
+5. **Reuse boundary** (research R3, resolved): 001 imports no vidya-karana code (its audio is
+   TTS); it mirrors the `audio_daemon.py` queue/checksum/quarantine pattern. ChromaDB ingest
+   (`corpus_processor.py` / `ChromaDBManager`) and `kg-mcp` grounding are reused by 002, not 001.
 
 ## Complexity Tracking
 
