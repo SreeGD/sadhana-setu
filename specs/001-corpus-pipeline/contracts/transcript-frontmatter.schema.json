@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sadhana-setu/corpus/transcript-frontmatter.schema.json",
+  "title": "Transcript Front-Matter",
+  "description": "YAML front-matter required on every committed transcript Markdown file (spec 001, FR-005). The body below the front-matter is verbatim, segment-timestamped text.",
+  "type": "object",
+  "required": [
+    "lecture_id", "set_id", "speaker", "title", "source_urls", "sha256",
+    "duration_seconds", "language", "whisper_model", "whisper_flags",
+    "timestamp_granularity", "transcribed_at", "pipeline_version"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "lecture_id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "set_id": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "speaker": { "type": "string" },
+    "title": { "type": "string" },
+    "date": { "type": ["string", "null"], "format": "date" },
+    "source_urls": { "type": "array", "minItems": 1, "items": { "type": "string", "format": "uri" } },
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "duration_seconds": { "type": "integer", "minimum": 0 },
+    "language": { "type": "string", "const": "en" },
+    "whisper_model": { "type": "string" },
+    "whisper_flags": { "type": "string" },
+    "timestamp_granularity": { "type": "string", "const": "segment" },
+    "transcribed_at": { "type": "string", "format": "date-time" },
+    "pipeline_version": { "type": "string" }
+  }
+}

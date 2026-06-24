@@ -95,6 +95,95 @@ def call_tool_sync(name: str, args: dict, bin_path: str | None = None) -> Any:
     return asyncio.run(_run())
 
 
+class _SyncKGSession:
+    """A persistent synchronous kg-mcp session.
+
+    Keeps ONE kg-mcp subprocess + loaded graph alive across many tool calls — the connect,
+    every call, and the close all run in a single coroutine on a dedicated background loop, so
+    the graph (145K+ nodes) loads once instead of per lookup. Use via ``kg_session()``.
+    """
+
+    def __init__(self, bin_path: str | None = None):
+        self._bin = bin_path
+        self._loop = None
+        self._thread = None
+        self._req: "asyncio.Queue | None" = None
+        self._ready = None  # threading.Event
+        self._err: Exception | None = None
+
+    def __enter__(self) -> "_SyncKGSession":
+        import threading
+
+        self._ready = threading.Event()
+        self._thread = threading.Thread(target=self._run, daemon=True)
+        self._thread.start()
+        self._ready.wait()
+        if self._err is not None:
+            raise self._err
+        return self
+
+    def _run(self) -> None:
+        self._loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(self._loop)
+        try:
+            self._loop.run_until_complete(self._serve())
+        finally:
+            self._loop.close()
+
+    async def _serve(self) -> None:
+        self._req = asyncio.Queue()
+        client = KGMCPClient(bin_path=self._bin)
+        try:
+            await client.connect()
+        except Exception as exc:  # noqa: BLE001
+            self._err = exc
+            self._ready.set()
+            return
+        self._ready.set()
+        while True:
+            name, args, done = await self._req.get()
+            if name is None:
+                break
+            try:
+                done(("ok", parse_response(await client.call_tool(name, args))))
+            except Exception as exc:  # noqa: BLE001
+                done(("err", exc))
+        try:
+            await client.close()
+        except Exception:  # noqa: BLE001
+            pass
+
+    def call(self, name: str, args: dict):
+        import threading
+
+        box: dict = {}
+        done_evt = threading.Event()
+
+        def done(val):
+            box["v"] = val
+            done_evt.set()
+
+        asyncio.run_coroutine_threadsafe(self._req.put((name, args, done)), self._loop)
+        done_evt.wait()
+        kind, val = box["v"]
+        if kind == "err":
+            raise val
+        return val
+
+    def __exit__(self, *exc) -> None:
+        try:
+            asyncio.run_coroutine_threadsafe(self._req.put((None, None, None)), self._loop)
+        except Exception:  # noqa: BLE001
+            pass
+        if self._thread is not None:
+            self._thread.join(timeout=10)
+
+
+def kg_session(bin_path: str | None = None) -> _SyncKGSession:
+    """Context manager yielding a persistent sync kg-mcp session (one graph load for many calls)."""
+    return _SyncKGSession(bin_path)
+
+
 async def _smoke() -> bool:
     print(f"[smoke] kg-mcp binary: {KG_MCP_BIN}")
     if not os.path.exists(KG_MCP_BIN):

@@ -17,3 +17,13 @@ data/google_token.json
 *.egg-info/
 build/
 dist/
+.claude/settings.local.json
+
+# Hari-Nāma corpus: audio is fetched locally and NEVER committed (Constitution III/VI).
+# Only transcripts, notes, and the source manifest are tracked.
+corpus/.audio-cache/
+corpus/**/*.mp3
+corpus/**/*.m4a
+corpus/**/*.wav
+corpus/**/*.ogg
+corpus/**/*.opus
