@@ -22,6 +22,16 @@ before publish (Constitution Principle V applies to translations just as to enri
 Sanskrit verses and IAST are a special case: they are not "translated" away — the question is
 whether to add a vernacular gloss alongside.
 
+## Clarifications
+
+### Session 2026-06-24
+
+- Q: Scope for this round? → A: **UI strings + the daily curated content** (affirmations, faith verses, nāma-tattva, contemplations); weekly stories and corpus notes are deferred.
+- Q: Sanskrit verses/terms in a vernacular locale? → A: **Transliterate them phonetically into the vernacular script** (Telugu/Kannada/Tamil) — the exact Sanskrit sounds are preserved (tattva-safe), via a transliteration engine.
+- Q: i18n mechanism? → A: **Per-locale YAML/JSON message catalogs** (`en`/`te`/`kn`/`ta`): key → string with English fallback, matching the existing `content/*.yaml` convention.
+- Q: Drafting + review tooling? → A: **Claude Code drafts translations into the catalog files** (marked unreviewed); a native-devotee reviewer approves per item via the files (git diff is the review trail).
+- Q: Rollout across the three languages? → A: **Telugu first**, end-to-end, then replicate the established pipeline for Kannada and Tamil.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Read the app interface in my language (Priority: P1)
@@ -108,9 +118,9 @@ chosen language with attribution; unreviewed translations withheld.
 ### Edge Cases
 
 - A string/content item is partially translated → fall back to English per-item (never a blank).
-- Sanskrit verses: [NEEDS CLARIFICATION: keep Devanāgarī + IAST and ADD a vernacular gloss, or also
-  transliterate the IAST into the vernacular script? Sanskrit terms — translate, transliterate, or
-  keep as IAST?]
+- Sanskrit verses/terms → resolved (FR-010): **transliterated phonetically into the vernacular
+  script** (sounds preserved); surrounding prose is translated. A transliteration miss for a rare
+  term falls back to IAST.
 - Right-to-left / complex shaping: N/A for te/kn/ta (all LTR), but conjunct shaping must be correct.
 - The static (GitHub Pages) build must carry the same localization, not just the Streamlit app.
 
@@ -130,17 +140,20 @@ chosen language with attribution; unreviewed translations withheld.
   both the Streamlit app and the static build (fonts bundled/available; no tofu).
 - **FR-006**: Citations/provenance MUST be **preserved** on translated content.
 - **FR-007**: Localization MUST honor all **Sattvic-Medium** constraints (Constitution IV).
-- **FR-008**: The **i18n mechanism** MUST be specified. [NEEDS CLARIFICATION: gettext/.po, a
-  per-locale YAML/JSON message catalog, or another approach compatible with Streamlit + the static
-  build?]
-- **FR-009**: The **scope/sequence** MUST be defined. [NEEDS CLARIFICATION: UI-only first then
-  content, or both together? Which content libraries first?]
-- **FR-010**: **Sanskrit handling** MUST be defined. [NEEDS CLARIFICATION: verses keep
-  Devanāgarī+IAST + add a vernacular gloss vs. transliterate into the vernacular script; Sanskrit
-  terms translate vs. transliterate vs. keep IAST.]
-- **FR-011**: The **translation/review tooling** MUST be defined. [NEEDS CLARIFICATION: who/what
-  produces the machine draft (Claude Code, as in `002`?), and how do native-devotee reviewers
-  approve — a review UI like `002`, edited resource files, or a workflow?]
+- **FR-008**: Translations MUST be stored as **per-locale YAML/JSON message catalogs**
+  (`en`/`te`/`kn`/`ta`): key → string with **English fallback**, matching the existing
+  `content/*.yaml` convention, loadable in both the Streamlit app and the static build.
+- **FR-009**: This round's scope is **UI strings + the daily curated content** (affirmations,
+  faith verses, nāma-tattva, contemplations). Weekly stories and corpus notes are **deferred**.
+- **FR-010**: Sanskrit verses and terms MUST be **transliterated phonetically into the vernacular
+  script** (Telugu/Kannada/Tamil) via a transliteration engine — preserving the exact Sanskrit
+  sounds (tattva-safe). (IAST/Devanāgarī MAY also be retained; the surrounding prose is translated.)
+- **FR-011**: Translations MUST be produced as a **Claude Code machine draft written into the
+  catalog files** (marked unreviewed), then **approved per item by a native-devotee reviewer via
+  the files** (a `reviewed` status per entry; git diff is the review trail). Unreviewed entries
+  are never published (Constitution V).
+- **FR-013**: Rollout MUST proceed **Telugu first, end-to-end**, then replicate the established
+  catalog + transliteration + review pipeline for Kannada and Tamil.
 - **FR-012**: The **static build** MUST carry the same localization as the Streamlit app.
 
 ### Key Entities *(include if feature involves data)*
@@ -169,7 +182,12 @@ chosen language with attribution; unreviewed translations withheld.
 - Translation is **machine-draft + native-devotee review** (locked decision); the review gate is
   Constitution Principle V, mirroring `002`.
 - Targets **Telugu, Kannada, Tamil** (+ English). Hindi/Bengali/others are out of scope this round.
-- Sanskrit verses/IAST are **not** discarded; vernacular is added per the FR-010 decision.
+- Sanskrit verses/terms are **transliterated into the vernacular script** (sounds preserved),
+  not discarded (FR-010); a transliteration engine (e.g. indic-transliteration / Aksharamukha) is
+  introduced.
+- Translations are stored as **per-locale YAML/JSON catalogs** (FR-008), drafted by **Claude
+  Code** and **reviewed per item by a native devotee via the files** (FR-011).
+- Rollout is **Telugu first**, then Kannada + Tamil (FR-013).
 - Reuses existing content structures (`sadhana_setu/content/*` + `data/*.yaml`) and the static
   build path; this is localization of the existing app, not a new app.
 - Corpus-note localization (US4) likely depends on `003-app-enrichment` surfacing being in place.
