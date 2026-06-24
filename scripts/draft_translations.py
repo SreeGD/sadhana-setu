@@ -52,10 +52,26 @@ def _translate_batch(strings: list[str], language: str) -> list[str]:
     return json.loads(out)
 
 
+def _translate_all(strings: list[str], language: str, chunk_size: int = 10) -> list[str]:
+    """Translate in chunks (one `claude -p` call each) — faster + resilient for big libraries."""
+    out: list[str] = []
+    for i in range(0, len(strings), chunk_size):
+        chunk = strings[i:i + chunk_size]
+        try:
+            res = _translate_batch(chunk, language)
+        except Exception:  # noqa: BLE001
+            res = []
+        if not isinstance(res, list) or len(res) != len(chunk):
+            res = chunk  # alignment safety: keep English for this chunk (review will catch)
+        print(f"  ...{min(i + chunk_size, len(strings))}/{len(strings)}", flush=True)
+        out.extend(res)
+    return out
+
+
 def draft_ui(locale: str) -> Path:
     en = yaml.safe_load((I18N / "ui" / "en.yaml").read_text(encoding="utf-8")) or {}
     keys, vals = list(en), list(en.values())
-    translated = _translate_batch(vals, _LANG[locale])
+    translated = _translate_all(vals, _LANG[locale])
     out = I18N / "ui" / f"{locale}.draft.yaml"
     out.write_text(yaml.safe_dump(dict(zip(keys, translated)), allow_unicode=True), encoding="utf-8")
     return out
@@ -65,7 +81,7 @@ def draft_content(locale: str, library: str) -> Path:
     items = yaml.safe_load((DATA / f"{library}.yaml").read_text(encoding="utf-8")).get(library, [])
     fields = _CONTENT_FIELDS[library]
     flat = [it.get(f, "") for it in items for f in fields]
-    translated = _translate_batch(flat, _LANG[locale])
+    translated = _translate_all(flat, _LANG[locale])
     rows, k = [], 0
     for idx, _ in enumerate(items):
         row = {"id": idx, "reviewed": False}
