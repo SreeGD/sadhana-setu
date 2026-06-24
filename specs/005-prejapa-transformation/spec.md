@@ -23,6 +23,16 @@ transformational teaching than the current curated libraries alone. This feature
 pre-japa reading around **transformation outcomes** while honoring every Sattvic-Medium
 constraint (no gamification, no streaks, no push, no quantifying the chanter).
 
+## Clarifications
+
+### Session 2026-06-24
+
+- Q: Does `005` depend on `003-app-enrichment`? → A: **Self-contained** — `005` makes its own minimal `kg-mcp` call for one reviewed Hari-Nāma teaching; it is NOT blocked by `003` (which later handles broader corpus→app surfacing).
+- Q: What happens to the existing supporting cards? → A: **Restructure them into the arc** (orient→deepen→apply→enter), repurposing what fits, dropping redundancy, keeping valued pieces (e.g. Saturday bhajan).
+- Q: What is the time budget? → A: **Keep ~60–75 seconds** — transformation through depth and disposition, not length; the micro-practice is only seconds.
+- Q: How is "transformation" evaluated without scoring the devotee? → A: **A build-time design-review rubric** (arc present: orient/deepen/apply/enter + sattvic-medium audit); no runtime measurement of the chanter.
+- Q: Does the closing resolve connect to the weekly sankalpa? → A: **Optional echo** — show the current weekly sankalpa as a gentle reminder, but the resolve itself comes from the day's reading.
+
 ## User Scenarios & Testing *(mandatory)*
 
 ### User Story 1 - Enter japa in the right consciousness (Priority: P1)
@@ -94,9 +104,8 @@ requires no input, tracking, or scoring, and does not delay the start of japa.
 
 ### Edge Cases
 
-- The reading must not become longer or heavier than the current ~1-minute budget — transformation
-  through depth, not volume. [NEEDS CLARIFICATION: is the time budget still ~60–75s, or is a
-  slightly longer contemplative reading acceptable?]
+- The reading must not become longer or heavier than the ~60–75 second budget (FR-009) —
+  transformation through depth, not volume.
 - During japa the screen must stay closed/silent (existing constraint) — the reading is *before*,
   never during.
 - The devotee may open pre-japa multiple times a day → the reading is stable within a day (same
@@ -125,16 +134,16 @@ requires no input, tracking, or scoring, and does not delay the start of japa.
   orientation) and rotate across days.
 - **FR-008**: When the corpus/`kg-mcp` path is unavailable, the reading MUST **fall back
   gracefully** to the existing curated libraries with a quiet indicator (no error/broken layout).
-- **FR-009**: The reading MUST stay within the established **brief time budget** so it remains a
-  daily-sustainable threshold practice. [NEEDS CLARIFICATION: exact budget — keep ~60–75s?]
-- **FR-010**: The redesign MUST define what happens to the **existing supporting cards**
-  (affirmation, faith verse, inspiration, nāma-tattva, tip, bhajan). [NEEDS CLARIFICATION: are
-  they restructured around the transformation arc, trimmed, or kept alongside?]
-- **FR-011**: "Transformation" MUST have an observable, **non-quantifying** definition the design
-  is evaluated against. [NEEDS CLARIFICATION: how do we know it "brings transformation" without
-  measuring/scoring the devotee — e.g. design review against a rubric, the user's own felt sense?]
-- **FR-012**: The redesign MUST define its **relationship to the Saturday check-in and Today
-  capture** (does the pre-japa resolve connect to the weekly sankalpa?). [NEEDS CLARIFICATION]
+- **FR-009**: The reading MUST stay within a **~60–75 second** budget so it remains a
+  daily-sustainable threshold practice — transformation through depth, not length.
+- **FR-010**: The redesign MUST **restructure the existing supporting cards** (affirmation, faith
+  verse, inspiration, nāma-tattva, tip, bhajan) **into the transformation arc** — repurposing what
+  fits each stage, dropping redundancy, and retaining valued pieces (e.g. the Saturday bhajan).
+- **FR-011**: The redesign MUST be evaluated against a **build-time design-review rubric** — the
+  arc is present (orient → deepen with a grounded teaching → apply → point into japa) AND a
+  sattvic-medium audit passes. No runtime measurement or scoring of the devotee (Constitution IV).
+- **FR-012**: The closing resolve MUST be generated from the **day's reading**; the current weekly
+  sankalpa MAY be shown as an **optional gentle echo/reminder** but does not generate the resolve.
 
 ### Key Entities *(include if feature involves data)*
 
@@ -149,8 +158,8 @@ requires no input, tracking, or scoring, and does not delay the start of japa.
 
 ### Measurable Outcomes
 
-- **SC-001**: The reading completes within the agreed time budget (FR-009) — it stays a
-  sustainable daily threshold practice, not a study session.
+- **SC-001**: The reading completes within **~60–75 seconds** (FR-009) — it stays a sustainable
+  daily threshold practice, not a study session.
 - **SC-002**: 100% of Sanskrit/verse/teaching content in the reading is citation-bearing and
   KG-grounded (zero fabricated content).
 - **SC-003**: A design/UX + tattva review confirms **zero** Sattvic-Medium violations (no
@@ -164,10 +173,10 @@ requires no input, tracking, or scoring, and does not delay the start of japa.
 
 - Builds on the existing `sadhana_setu/ui/prejapa_view.py` and content libraries; this is a
   **redesign of the reading**, not a new app.
-- Draws transformational teachings from the **reviewed** `002` corpus via the existing `kg-mcp`
-  path (`sadhana_setu/mcp_client.py`); unreviewed notes are never surfaced (Constitution V).
-- Likely depends on `003-app-enrichment` for the corpus→app surfacing plumbing; this spec may be
-  sequenced after or alongside it. [NEEDS CLARIFICATION: sequence vs 003]
+- Draws transformational teachings from the **reviewed** `002` corpus via a **self-contained,
+  minimal `kg-mcp` call** (`sadhana_setu/mcp_client.py`); unreviewed notes are never surfaced
+  (Constitution V). It is **not blocked by `003-app-enrichment`** (FR-012 clarification); `003`
+  later handles the broader corpus→app surfacing.
 - Honors all v1 sacred constraints; transformation is pursued through depth and disposition, not
   features, metrics, or length.
 - Single-practitioner audience (the founder-as-user) for this round; multi-user is out of scope.
