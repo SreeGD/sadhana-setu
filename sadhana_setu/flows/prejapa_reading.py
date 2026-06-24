@@ -42,14 +42,14 @@ class PrejapaReading:
     corpus_online: bool = False
 
 
-def build_reading(d: date | None = None, *, caller=None, checkin_loader=None,
+def build_reading(d: date | None = None, *, querier=None, checkin_loader=None,
                   today_value: str | None = None) -> PrejapaReading:
     """Assemble the day's transformation arc. Deterministic by ``d``; never raises."""
     d = d or date.today()
     theme = today_value or pick_today_value(d)
 
     orient = _orient(d)
-    deepen, corpus_online = _deepen(d, theme, caller)
+    deepen, corpus_online = _deepen(d, theme, querier)
     apply = contemplations_mod.pick_for_today(d)
     enter = _enter(d, orient)
     echo = _sankalpa_echo(d, checkin_loader)
@@ -71,11 +71,11 @@ def _orient(d: date) -> ReadingStage:
     return ReadingStage(label="Orient", body=body, citation=citation, source_kind="curated")
 
 
-def _deepen(d: date, theme: str, caller) -> tuple[ReadingStage, bool]:
+def _deepen(d: date, theme: str, querier) -> tuple[ReadingStage, bool]:
     # Self-contained corpus call; falls back to curated nāma-tattva (FR-003/008).
     from sadhana_setu.flows.harinaam_teaching import fetch_teaching
 
-    stage = fetch_teaching(theme, caller=caller)
+    stage = fetch_teaching(theme, querier=querier)
     if stage is not None:
         return stage, True
     nt = nama_mod.pick_for_today(d)
