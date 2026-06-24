@@ -58,8 +58,8 @@ choice persists across sessions; English remains available.
 ### User Story 2 - Read the curated content in my language (Priority: P1)
 
 The curated content libraries (affirmations, faith-verse summaries, nāma-tattva teachings,
-inspirations, tips, contemplations, weekly questions/stories) are available in the chosen
-language — **machine-drafted then native-devotee-reviewed** before publish.
+and contemplations — **the four daily libraries in scope this round**, FR-009) are available in
+the chosen language — **machine-drafted then native-devotee-reviewed** before publish.
 
 **Why this priority**: The content *is* the app's spiritual value; localized UI over English
 content is half the experience. Content carries tattva, so the review gate is essential here.
@@ -152,9 +152,9 @@ chosen language with attribution; unreviewed translations withheld.
   catalog files** (marked unreviewed), then **approved per item by a native-devotee reviewer via
   the files** (a `reviewed` status per entry; git diff is the review trail). Unreviewed entries
   are never published (Constitution V).
+- **FR-012**: The **static build** MUST carry the same localization as the Streamlit app.
 - **FR-013**: Rollout MUST proceed **Telugu first, end-to-end**, then replicate the established
   catalog + transliteration + review pipeline for Kannada and Tamil.
-- **FR-012**: The **static build** MUST carry the same localization as the Streamlit app.
 
 ### Key Entities *(include if feature involves data)*
 
