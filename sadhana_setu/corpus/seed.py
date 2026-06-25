@@ -79,14 +79,15 @@ def _looks_truncated(text: str) -> bool:
 
 
 def seed_set(manifest: Manifest, set_id: str, entries: list[ListingEntry],
-             *, language: str = "en") -> list[Lecture]:
+             *, language: str = "en", force_all: bool = False) -> list[Lecture]:
     """Add draft ``pending`` lectures to ``set_id``; return the newly added ones.
 
     Existing lectures (matched by URL) are left untouched (idempotent). Speaker sets
-    apply the topic filter; seminar sets include everything.
+    apply the topic filter; seminar sets include everything. ``force_all`` bypasses the
+    filter (for a dedicated Holy-Name/Japa folder whose titles may not carry keywords).
     """
     sset: SourceSet = manifest.get_set(set_id)
-    apply_filter = sset.kind == "speaker"
+    apply_filter = sset.kind == "speaker" and not force_all
     existing_urls = {u for lec in sset.lectures for u in lec.urls}
     existing_ids = {lec.id for _, lec in manifest.iter_lectures()}
 

@@ -60,6 +60,13 @@ def test_speaker_set_applies_topic_filter(manifest):
     assert not any("Overview" in t for t in titles)
 
 
+def test_force_all_bypasses_topic_filter_on_speaker_set(manifest):
+    # A dedicated Holy-Name folder: keep every lecture even if a title lacks a keyword.
+    entries = seed_mod.parse_listing(LISTING, base_url="https://site.test/")
+    added = seed_mod.seed_set(manifest, "bhurijana-prabhu", entries, force_all=True)
+    assert len(added) == 3  # incl. the generic 'Bhagavad-gītā Overview' the filter would drop
+
+
 def test_seminar_set_includes_everything(manifest):
     entries = seed_mod.parse_listing(LISTING, base_url="https://site.test/")
     added = seed_mod.seed_set(manifest, "holy-name-seminar", entries)

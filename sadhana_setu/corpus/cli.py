@@ -64,7 +64,8 @@ def _cmd_seed(args, cfg: CorpusConfig) -> int:
         print("error: seed requires --url or --html", file=sys.stderr)
         return EXIT_SOURCE
     entries = seed_mod.parse_listing(html, base)
-    added = seed_mod.seed_set(manifest, args.set, entries, language=args.language)
+    added = seed_mod.seed_set(manifest, args.set, entries, language=args.language,
+                              force_all=getattr(args, "force_all", False))
     if manifest.manifest_status == "stub":
         manifest.manifest_status = "active"
     manifest.save()
@@ -171,6 +172,9 @@ def _parser() -> argparse.ArgumentParser:
     sp.add_argument("--url", help="listing page URL to fetch + parse")
     sp.add_argument("--html", help="local listing HTML file (offline)")
     sp.add_argument("--language", default="en", help="declared language (default en)")
+    sp.add_argument("--all", dest="force_all", action="store_true",
+                    help="take every lecture (bypass the Holy-Name topic filter) — use when the "
+                         "URL is a dedicated Holy-Name/Japa folder whose titles may omit keywords")
     sp.set_defaults(func=_cmd_seed)
 
     sf = sub.add_parser("fetch", parents=[common], help="download audio to the cache")
