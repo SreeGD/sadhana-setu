@@ -49,6 +49,20 @@ def test_non_json_rejected():
         parse_enrichment("not json at all")
 
 
+def test_parse_tolerates_trailing_prose():
+    # The model often appends an explanation after the JSON object — decode just the object.
+    raw = json.dumps(GOOD) + "\n\nThis window contains only kīrtana, so no teachings were extracted."
+    obj = parse_enrichment(raw)
+    assert obj["theme_summary"].startswith("On attentive")
+
+
+def test_parse_section_tolerates_trailing_prose():
+    from sadhana_setu.corpus.llm import parse_section
+    raw = ('{"key_teachings": [{"point": "p", "timestamp": "00:00:01.000"}], '
+           '"candidate_cross_refs": []}\nNote: this window is mostly chanting.')
+    assert parse_section(raw)["key_teachings"][0]["point"] == "p"
+
+
 def test_parse_section_and_synthesis():
     from sadhana_setu.corpus.llm import parse_section, parse_synthesis
 

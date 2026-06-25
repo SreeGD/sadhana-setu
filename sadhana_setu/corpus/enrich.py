@@ -16,7 +16,9 @@ from sadhana_setu.corpus import notes as notes_mod
 from sadhana_setu.corpus import transcript as transcript_mod
 from sadhana_setu.corpus.config import CorpusConfig
 from sadhana_setu.corpus.grounding import KGUnavailable, ground
-from sadhana_setu.corpus.llm import ClaudeCodeProvider, parse_section, parse_synthesis
+from sadhana_setu.corpus.llm import (
+    ClaudeCodeProvider, EnrichmentError, parse_section, parse_synthesis,
+)
 from sadhana_setu.corpus.manifest import Manifest, SourceSet, Status
 from sadhana_setu.corpus.notes import NoteFrontMatter, NoteStatus
 
@@ -65,7 +67,12 @@ def _enrich_one(cfg, sset: SourceSet, lec, prov, caller, out_path) -> None:
 
     def _section(win: tuple[str, str]) -> dict:
         label, text = win
-        return parse_section(prov.complete(build_section_prompt(sset.speaker, lec.title, label, text)))
+        try:
+            return parse_section(prov.complete(build_section_prompt(sset.speaker, lec.title, label, text)))
+        except EnrichmentError:
+            # One unparseable window (e.g. a pure-kīrtana stretch) must not abort the lecture —
+            # it simply contributes no teachings; the rest of the windows still enrich.
+            return {"key_teachings": [], "candidate_cross_refs": [], "sic_flags": []}
 
     fragments = _map_windows(_section, windows)  # parallel `claude -p`, order preserved
 
@@ -76,6 +83,10 @@ def _enrich_one(cfg, sset: SourceSet, lec, prov, caller, out_path) -> None:
         teachings.extend(frag.get("key_teachings", []) or [])
         cross_refs.extend(frag.get("candidate_cross_refs", []) or [])
         sic_flags.extend(frag.get("sic_flags", []) or [])
+
+    if not teachings:
+        # No window yielded a teaching — a kīrtana / guided-japa recording with no lecture content.
+        raise EnrichmentError("no teachings extracted (kīrtana/guided-japa recording?)")
 
     synth = parse_synthesis(prov.complete(build_synthesis_prompt(sset.speaker, lec.title, teachings)))
     enrichment = {

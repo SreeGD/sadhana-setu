@@ -40,17 +40,20 @@ class ClaudeCodeProvider(Provider):
 
     def complete(self, prompt: str) -> str:
         cmd = [self.cfg.claude_cli(), *self.cfg.claude_flags]
-        last = None
+        reason = "no attempt"
         for attempt in range(1, _MAX_TRIES + 1):
             proc = subprocess.run(cmd, input=prompt, capture_output=True, text=True)
             if proc.returncode == 0:
-                return _extract_result(proc.stdout)
-            last = proc
+                result = _extract_result(proc.stdout)
+                if result and result.strip():
+                    return result
+                reason = "exit 0 but empty result (throttle/is_error)"  # retry transient empties
+            else:
+                reason = f"exit {proc.returncode}: " + (proc.stderr or proc.stdout or "").strip()[:300]
             if attempt < _MAX_TRIES:
                 time.sleep(_RETRY_SLEEP * attempt)
-        detail = (last.stderr or last.stdout or "").strip().replace("\n", " ")[:400]
         raise EnrichmentError(
-            f"`claude -p` failed after {_MAX_TRIES} attempts (exit {last.returncode}): {detail}"
+            f"`claude -p` failed after {_MAX_TRIES} attempts — {reason}".replace("\n", " ")
         )
 
 
@@ -66,11 +69,18 @@ def _extract_result(stdout: str) -> str:
 
 
 def _parse_json(raw: str) -> dict:
+    # The model sometimes wraps the JSON in fences or appends explanatory prose after the object
+    # ("This window contains only kīrtana…"). Decode just the first JSON object and ignore any
+    # trailing text instead of failing on "Extra data".
     text = _FENCE_RE.sub("", raw).strip()
-    try:
-        return json.loads(text)
-    except json.JSONDecodeError as exc:
-        raise EnrichmentError(f"enrichment output is not valid JSON: {exc}") from exc
+    start = text.find("{")
+    if start != -1:
+        try:
+            obj, _ = json.JSONDecoder().raw_decode(text[start:])
+            return obj
+        except json.JSONDecodeError:
+            pass
+    raise EnrichmentError(f"enrichment output is not valid JSON: {text[:80]!r}")
 
 
 def parse_enrichment(raw: str) -> dict:
