@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import os
 import re
+import threading
 from concurrent.futures import ThreadPoolExecutor
 
 from sadhana_setu.corpus import notes as notes_mod
@@ -24,8 +25,18 @@ from sadhana_setu.corpus.notes import NoteFrontMatter, NoteStatus
 
 _SEG_RE = re.compile(r"^\[(\d{2}):(\d{2}):(\d{2})\.\d{3}")
 WINDOW_SECONDS = 600  # ~10-minute enrichment windows
-# Window enrichments are independent → run several `claude -p` calls concurrently.
+# Global cap on concurrent `claude -p` calls across ALL lectures and windows — the single knob
+# for API back-pressure (raising it risks throttling; the retry/robustness in llm.py absorbs blips).
 ENRICH_CONCURRENCY = int(os.environ.get("CORPUS_ENRICH_CONCURRENCY", "4"))
+# How many lecture pipelines run at once; each is still bounded by the global claude cap above.
+LECTURE_CONCURRENCY = int(os.environ.get("CORPUS_ENRICH_LECTURES", "3"))
+_claude_sem = threading.BoundedSemaphore(max(1, ENRICH_CONCURRENCY))
+
+
+def _complete(prov, prompt: str) -> str:
+    """One `claude -p` call, throttled by the global concurrency cap."""
+    with _claude_sem:
+        return prov.complete(prompt)
 
 
 class EnrichResult:
@@ -40,6 +51,7 @@ def enrich_set(cfg: CorpusConfig, manifest: Manifest, set_id: str | None = None,
                *, provider=None, caller=None, regenerate: bool = False) -> EnrichResult:
     result = EnrichResult()
     prov = provider or ClaudeCodeProvider(cfg)
+    todo: list[tuple] = []
     for sset, lec in manifest.iter_lectures(set_id):
         if lec.status is not Status.TRANSCRIBED or not lec.transcript_path:
             continue
@@ -49,14 +61,41 @@ def enrich_set(cfg: CorpusConfig, manifest: Manifest, set_id: str | None = None,
             if fm.enrichment_version == cfg.enrichment_version:
                 result.skipped.append(lec.id)
                 continue
+        todo.append((sset, lec, out_path))
+
+    if not todo:
+        return result
+    # Live runs share ONE kg-mcp session for the whole batch — the 145K-node graph loads once,
+    # not per lecture. Tests pass a mocked caller and skip the session.
+    if caller is None:
+        from sadhana_setu.mcp_client import kg_session
+
+        with kg_session() as sess:
+            _run_lectures(cfg, prov, sess.call, todo, result)
+    else:
+        _run_lectures(cfg, prov, caller, todo, result)
+    return result
+
+
+def _run_lectures(cfg, prov, caller, todo: list[tuple], result: "EnrichResult") -> None:
+    """Enrich each lecture (up to LECTURE_CONCURRENCY in flight); claude calls share the global cap."""
+    def work(item):
+        sset, lec, out_path = item
         try:
             _enrich_one(cfg, sset, lec, prov, caller, out_path)
-            result.enriched.append(lec.id)
+            return ("enriched", lec.id)
         except KGUnavailable as exc:
-            result.unverifiable.append(f"{lec.id}: {exc}")
-        except Exception as exc:  # one lecture's LLM/parse failure must not abort the batch
-            result.failed.append(f"{lec.id}: {exc}")
-    return result
+            return ("unverifiable", f"{lec.id}: {exc}")
+        except Exception as exc:  # one lecture's failure must not abort the batch
+            return ("failed", f"{lec.id}: {exc}")
+
+    if LECTURE_CONCURRENCY <= 1 or len(todo) <= 1:
+        outs = [work(x) for x in todo]
+    else:
+        with ThreadPoolExecutor(max_workers=min(LECTURE_CONCURRENCY, len(todo))) as ex:
+            outs = list(ex.map(work, todo))
+    for kind, val in outs:
+        getattr(result, kind).append(val)
 
 
 def _enrich_one(cfg, sset: SourceSet, lec, prov, caller, out_path) -> None:
@@ -68,7 +107,7 @@ def _enrich_one(cfg, sset: SourceSet, lec, prov, caller, out_path) -> None:
     def _section(win: tuple[str, str]) -> dict:
         label, text = win
         try:
-            return parse_section(prov.complete(build_section_prompt(sset.speaker, lec.title, label, text)))
+            return parse_section(_complete(prov, build_section_prompt(sset.speaker, lec.title, label, text)))
         except EnrichmentError:
             # One unparseable window (e.g. a pure-kīrtana stretch) must not abort the lecture —
             # it simply contributes no teachings; the rest of the windows still enrich.
@@ -88,7 +127,7 @@ def _enrich_one(cfg, sset: SourceSet, lec, prov, caller, out_path) -> None:
         # No window yielded a teaching — a kīrtana / guided-japa recording with no lecture content.
         raise EnrichmentError("no teachings extracted (kīrtana/guided-japa recording?)")
 
-    synth = parse_synthesis(prov.complete(build_synthesis_prompt(sset.speaker, lec.title, teachings)))
+    synth = parse_synthesis(_complete(prov, build_synthesis_prompt(sset.speaker, lec.title, teachings)))
     enrichment = {
         "theme_summary": synth["theme_summary"],
         "practical_application": synth["practical_application"],
@@ -97,15 +136,8 @@ def _enrich_one(cfg, sset: SourceSet, lec, prov, caller, out_path) -> None:
         "candidate_cross_refs": cross_refs,
         "sic_flags": sic_flags,
     }
-    # Live runs: ground every candidate through ONE persistent kg-mcp session (the 145K-node
-    # graph loads once, not per lookup). Tests pass a mocked `caller` and skip the session.
-    if caller is None:
-        from sadhana_setu.mcp_client import kg_session
-
-        with kg_session() as sess:
-            content = ground(enrichment, caller=sess.call)  # raises KGUnavailable ⇒ withhold
-    else:
-        content = ground(enrichment, caller=caller)
+    # Ground every candidate through the batch's shared kg-mcp session (opened once in enrich_set).
+    content = ground(enrichment, caller=caller)  # raises KGUnavailable ⇒ withhold
 
     fm = NoteFrontMatter(
         lecture_id=lec.id, set_id=sset.id, transcript_path=lec.transcript_path,

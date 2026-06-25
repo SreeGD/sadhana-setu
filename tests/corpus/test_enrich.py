@@ -106,6 +106,21 @@ def test_failed_lecture_does_not_abort_batch(cfg, manifest):
     assert any("bad-1" in f for f in res.failed)  # the failure is recorded, not raised
 
 
+def test_parallel_enriches_all_lectures(cfg, manifest):
+    """LECTURE_CONCURRENCY > 1: every transcribed lecture gets a note (order-independent)."""
+    ids = []
+    for i in range(4):
+        body = "\n".join(f"[00:0{j}:00.000 → 00:0{j}:30.000] Line {j}." for j in range(3))
+        tpath = write_transcript(cfg, "holy-name-seminar", f"talk-{i}", body=body)
+        add_lecture(manifest, "holy-name-seminar", id=f"talk-{i}", title=f"Talk {i}", sha256="c" * 64,
+                    status=Status.TRANSCRIBED, transcript_path=tpath, whisper_model="m")
+        ids.append(f"talk-{i}")
+    res = enrich_set(cfg, manifest, provider=StubProvider(), caller=_caller)
+    assert set(res.enriched) == set(ids)
+    for lid in ids:
+        assert notes_mod.note_path(cfg, "holy-name-seminar", lid).exists()
+
+
 def test_kg_offline_marks_unverifiable(cfg, manifest):
     _transcribed_lecture(cfg, manifest)
 
