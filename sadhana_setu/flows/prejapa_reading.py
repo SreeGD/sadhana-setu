@@ -11,10 +11,18 @@ from dataclasses import dataclass, field
 from datetime import date
 
 from sadhana_setu.content import contemplations as contemplations_mod
+from sadhana_setu.content import daily_verses as verses_mod
 from sadhana_setu.content import faith_verses as faith_mod
+from sadhana_setu.content import inspirations as inspirations_mod
 from sadhana_setu.content import nama_tattva as nama_mod
+from sadhana_setu.content import sankalpas as sankalpas_mod
+from sadhana_setu.content import tips as tips_mod
 from sadhana_setu.content.affirmations import pick_for_today as pick_affirmation
 from sadhana_setu.content.contemplations import Contemplation
+from sadhana_setu.content.daily_verses import DailyVerse
+from sadhana_setu.content.inspirations import Inspiration
+from sadhana_setu.content.sankalpas import Sankalpa
+from sadhana_setu.content.tips import Tip
 from sadhana_setu.flows.today_value import pick_today_value
 
 
@@ -40,6 +48,12 @@ class PrejapaReading:
     enter: Resolve
     sankalpa_echo: str | None = None
     corpus_online: bool = False
+    # Blended elements (spec 005 v3) — kept light: verse + story are collapsible (tap-to-read),
+    # the tip is a one-liner, the saṅkalpa is the vow taken at the threshold into japa.
+    mood_verse: DailyVerse | None = None
+    tip: Tip | None = None
+    inspiration: Inspiration | None = None
+    sankalpa: Sankalpa | None = None
 
 
 def build_reading(d: date | None = None, *, querier=None, checkin_loader=None,
@@ -58,8 +72,14 @@ def build_reading(d: date | None = None, *, querier=None, checkin_loader=None,
     enter = _enter(d, orient)
     echo = _sankalpa_echo(d, checkin_loader)
 
-    return PrejapaReading(date=d, orient=orient, deepen=deepen, apply=apply, enter=enter,
-                          sankalpa_echo=echo, corpus_online=corpus_online)
+    return PrejapaReading(
+        date=d, orient=orient, deepen=deepen, apply=apply, enter=enter,
+        sankalpa_echo=echo, corpus_online=corpus_online,
+        mood_verse=verses_mod.pick_for_today(d),
+        tip=tips_mod.pick_for_today(d),
+        inspiration=inspirations_mod.pick_for_today(d),
+        sankalpa=sankalpas_mod.pick_for_today(d),
+    )
 
 
 def _orient(d: date) -> ReadingStage:

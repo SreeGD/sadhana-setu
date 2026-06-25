@@ -1,60 +1,25 @@
-// Pre-japa view — featured card rotates by weekday; supporting grid + book tip + ekadasi.
+// Pre-japa view — v3 transformation arc (blend), parity with the Streamlit prejapa_view.
+// (verse·optional) → orient → tip → deepen → story·optional → apply → saṅkalpa → enter japa.
+// Reads in under two minutes; the verse and story are collapsible so they cost no budget.
 
 import {
   todayAffirmation, todayFaithVerse, todayInspiration, todayTip,
-  todayNamaTattva, todayBookTip, weekBhajan, weekStory,
-  todayEkadasi, todayValue, todayVerse, todaySankalpa,
+  todayNamaTattva, todayBookTip, todayEkadasi, todayValue, todayVerse, todaySankalpa,
 } from "../content.js";
 import { el, formatDate, todayISO, formatTime, toast } from "../util.js";
 import * as store from "../store.js";
 
-function card(cls, label, title, body, cite) {
-  const children = [el("div", { class: "card-label" }, label)];
-  if (title) children.push(el("div", { class: "card-title" }, title));
-  if (body) children.push(el("div", { class: "card-body" }, body));
-  if (cite) children.push(el("div", { class: "card-cite" }, "— " + cite));
-  return el("div", { class: cls }, ...children);
-}
-
-function affirmCard(entry) {
-  return card("support-card", "AFFIRMATION", null, `"${entry.text}"`, entry.source);
-}
-function faithCard(entry) {
-  return card("support-card", "FAITH VERSE", entry.verse_ref, entry.summary, entry.source);
-}
-function inspirationCard(entry) {
-  return card("support-card", "INSPIRATION", entry.title, entry.text, entry.source);
-}
-function tipCard(entry) {
-  return card("support-card", "TODAY'S TIP", null, entry.tip, entry.source);
-}
-function namaTattvaCard(entry) {
-  return card("support-card", "NĀMA-TATTVA", entry.title, entry.teaching, entry.source);
-}
-function bhajanCard(entry) {
-  const body = el("div", {},
-    entry.verse_iast ? el("div", { class: "iast", html: entry.verse_iast.replace(/\n/g, "<br>") }) : null,
-    entry.verse_translation ? el("p", {}, entry.verse_translation) : null,
-  );
-  return card("support-card", "BHAJAN", entry.title, "", `${entry.author} — ${entry.source}`)
-    .appendChild(body), card("support-card", "BHAJAN", entry.title, entry.verse_translation || "", entry.author);
-}
-function storyCard(entry) {
-  return card("support-card", "STORY", entry.title, entry.one_line, entry.scripture);
-}
-
-// Featured card big version
-function featured(label, title, body, cite, extra) {
-  const c = el("div", { class: "featured-card" },
+// A prominent arc-stage card (orient / deepen / apply / enter).
+function arcCard(label, bodyHtml, cite, title) {
+  return el("div", { class: "featured-card" },
     el("div", { class: "card-label" }, label),
     title ? el("div", { class: "card-title" }, title) : null,
-    el("div", { class: "card-body" }, body),
-    extra,
+    el("div", { class: "card-body", html: bodyHtml }),
     cite ? el("div", { class: "card-cite" }, "— " + cite) : null,
   );
-  return c;
 }
 
+// Optional mood verse — collapsible (tap to read).
 function buildVerseCard(verse) {
   const iast = verse.iast ? el("div", { class: "verse-iast", html: verse.iast.replace(/\n/g, "<br>") }) : null;
   const translation = verse.translation ? el("p", { class: "verse-translation" }, verse.translation) : null;
@@ -66,94 +31,78 @@ function buildVerseCard(verse) {
       verse.mood_brought ? el("span", { class: "verse-mood" }, "· " + verse.mood_brought) : null,
       el("span", { class: "verse-toggle" }, " — tap to read (optional)"),
     ),
-    el("div", { class: "verse-body" },
-      iast,
-      translation,
-      connection,
+    el("div", { class: "verse-body" }, iast, translation, connection,
       el("div", { class: "card-cite" }, "— " + (verse.source || "")),
     ),
   );
 }
 
+// Optional inspiration story — collapsible, reuses the verse-card styling.
+function buildStoryCard(insp) {
+  return el("details", { class: "verse-card" },
+    el("summary", { class: "verse-summary" },
+      el("span", { class: "verse-label" }, "A STORY TO CARRY IN"),
+      el("span", { class: "verse-ref" }, insp.title || ""),
+      el("span", { class: "verse-toggle" }, " — tap to read (optional)"),
+    ),
+    el("div", { class: "verse-body" },
+      el("p", { class: "verse-translation" }, insp.text),
+      el("div", { class: "card-cite" }, "— " + (insp.source || "")),
+    ),
+  );
+}
+
 export async function render(root) {
-  const dow = new Date().getDay();   // Sun=0, Sat=6
-  const [aff, faith, insp, tip, nt, book, bhajan, story, ekadasi, value, verse, sankalpa] = await Promise.all([
+  const [aff, faith, insp, tip, nt, book, ekadasi, value, verse, sankalpa] = await Promise.all([
     todayAffirmation(), todayFaithVerse(), todayInspiration(), todayTip(),
-    todayNamaTattva(), todayBookTip(), weekBhajan(), weekStory(),
-    todayEkadasi(), todayValue(), todayVerse(), todaySankalpa(),
+    todayNamaTattva(), todayBookTip(), todayEkadasi(), todayValue(), todayVerse(), todaySankalpa(),
   ]);
 
-  let featuredEl;
-  const featuredOrder = ["AFFIRMATION", "FAITH VERSE", "INSPIRATION", "TIP", "NĀMA-TATTVA"];
-  if (dow === 6) {
-    // Saturday — bhajan. Show the FIRST verse here (full bhajan lives in This Week).
-    const firstVerse = (bhajan.verses && bhajan.verses[0]) || null;
-    const iastSrc = firstVerse?.iast || bhajan.verse_iast || "";
-    const translation = firstVerse?.translation || bhajan.verse_translation || "";
-    featuredEl = featured(
-      "TODAY'S BHAJAN — verse 1 (full text in This Week)",
-      bhajan.title,
-      translation,
-      `${bhajan.author} — ${bhajan.source}`,
-      iastSrc ? el("div", { class: "iast", style: "color:#B8860B; font-style:italic; margin: 0.5rem 0 0.7rem;", html: iastSrc.replace(/\n/g, "<br>") }) : null
-    );
-  } else if (dow === 0) {
-    // Sunday — story
-    featuredEl = featured("TODAY'S STORY", story.title, story.text, story.scripture);
-  } else {
-    const lab = featuredOrder[dow - 1] || "INSPIRATION";
-    if (lab === "AFFIRMATION") featuredEl = featured("TODAY'S AFFIRMATION", null, `"${aff.text}"`, aff.source);
-    else if (lab === "FAITH VERSE") featuredEl = featured("TODAY'S FAITH VERSE", faith.verse_ref, faith.summary, faith.source);
-    else if (lab === "INSPIRATION") featuredEl = featured("TODAY'S INSPIRATION", insp.title, insp.text, insp.source);
-    else if (lab === "TIP") featuredEl = featured("TODAY'S TIP", null, tip.tip, tip.source);
-    else featuredEl = featured("TODAY'S NĀMA-TATTVA", nt.title, nt.teaching, nt.source);
-  }
-
-  // Supporting grid — 4 entries that aren't already in the featured
-  const featuredLabel = dow >= 1 && dow <= 5 ? featuredOrder[dow - 1] : null;
-  const supportItems = [
-    ["AFFIRMATION", affirmCard(aff)],
-    ["FAITH VERSE", faithCard(faith)],
-    ["INSPIRATION", inspirationCard(insp)],
-    ["TIP", tipCard(tip)],
-    ["NĀMA-TATTVA", namaTattvaCard(nt)],
-  ].filter(([lab]) => lab !== featuredLabel).slice(0, 4).map(([, c]) => c);
-
-  // Book tip + ekadasi at the bottom
-  const bookCard = el("div", { class: "book-card" },
-    el("div", { class: "card-label" }, "FROM THE BOOK · DAILY PRACTICE"),
-    el("div", { class: "card-title" }, book.title),
-    el("div", { class: "card-body" }, book.instruction),
-    el("div", { class: "card-cite" }, "— " + book.source + (book.addresses ? `  ·  addresses: ${book.addresses}` : "")),
-  );
-
-  const ekadasiCard = ekadasi ? el("div", { class: "ekadasi-card" },
-    el("div", { class: "card-label" }, "EKĀDAŚĪ TODAY"),
-    el("div", { class: "card-title" }, ekadasi.name),
-    el("div", { class: "card-body" }, "Fast from grains and beans. Increase chanting and hearing."),
-  ) : null;
-
   root.innerHTML = "";
-  root.appendChild(el("div", { class: "meta-line" },
-    formatDate(new Date()),
-    " · value: ", el("strong", {}, value)
-  ));
+
+  // Meta line (date · value · ekadasi badge)
+  const meta = el("div", { class: "meta-line" },
+    formatDate(new Date()), " · value: ", el("strong", {}, value));
+  if (ekadasi) meta.appendChild(el("span", { class: "eka-badge" }, "🌿 " + ekadasi.name));
+  root.appendChild(meta);
+
+  // Mood verse — collapsible
   if (verse) root.appendChild(buildVerseCard(verse));
-  root.appendChild(featuredEl);
-  root.appendChild(el("div", { class: "support-grid" }, ...supportItems));
-  if (ekadasiCard) root.appendChild(ekadasiCard);
-  root.appendChild(bookCard);
+
+  // ORIENT — affirmation + the Name's promise
+  const orientBody = `“${aff.text}”` +
+    (faith ? `<span class="orient-faith">The Name promises: ${faith.summary}</span>` : "");
+  root.appendChild(arcCard("ORIENT", orientBody, aff.source || (faith && faith.verse_ref)));
+
+  // Today's tip — one practical line
+  if (tip) root.appendChild(el("div", { class: "pj-tip" },
+    el("span", { class: "pj-tip-label" }, "Today's tip"), tip.tip));
+
+  // DEEPEN — a teaching on the Holy Name
+  if (nt) root.appendChild(arcCard("A TEACHING ON THE HOLY NAME", nt.teaching, nt.source, nt.title));
+
+  // Inspiration story — collapsible
+  if (insp) root.appendChild(buildStoryCard(insp));
+
+  // APPLY — a micro-practice to sit with, once
+  if (book) root.appendChild(
+    arcCard("SIT WITH THIS — ONCE, BEFORE YOU CHANT", book.instruction, book.source, book.title));
+
+  // SAṄKALPA — today's vow + button
   root.appendChild(sankalpaCard(sankalpa));
+
+  // ENTER japa
+  root.appendChild(arcCard("ENTER JAPA",
+    "Now enter your japa — chant to hear each Name, taking shelter, more humble than a blade of " +
+    `grass. Carry today's orientation in: “${aff.text}”`, null));
+
   root.appendChild(el("div", { class: "meta-line" },
-    el("em", {}, "Close this window when ready. The Name awaits."),
-  ));
+    el("em", {}, "Close this window when ready. The Name awaits.")));
 }
 
 function sankalpaCard(sankalpa) {
   const date = todayISO();
-  const existing = store.getSankalpa(date);
-
-  const card = el("div", { class: "sankalpa-card" + (existing ? " made" : "") });
+  const card = el("div", { class: "sankalpa-card" });
 
   function paint() {
     card.innerHTML = "";
@@ -162,9 +111,7 @@ function sankalpaCard(sankalpa) {
     card.classList.toggle("made", made);
 
     const labelPrefix = sankalpa?.anchor ? "SAṄKALPA · anchor" : "SAṄKALPA · before japa";
-    const label = made
-      ? `SAṄKALPA · ✓ made at ${formatTime(cur.made_at)}`
-      : labelPrefix;
+    const label = made ? `SAṄKALPA · ✓ made at ${formatTime(cur.made_at)}` : labelPrefix;
     card.appendChild(el("div", { class: "card-label" }, label));
 
     const vowText = sankalpa?.text || "I will try to hear THIS mantra.";
@@ -177,22 +124,12 @@ function sankalpaCard(sankalpa) {
 
     if (made) {
       const undo = el("button", { class: "sankalpa-undo" }, "Undo");
-      undo.addEventListener("click", () => {
-        store.clearSankalpa(date);
-        paint();
-        toast("Saṅkalpa cleared");
-      });
+      undo.addEventListener("click", () => { store.clearSankalpa(date); paint(); toast("Saṅkalpa cleared"); });
       card.appendChild(el("div", { class: "sankalpa-action" },
-        el("div", { class: "sankalpa-confirm" }, "Vow made. Now: just this mantra."),
-        undo,
-      ));
+        el("div", { class: "sankalpa-confirm" }, "Vow made. Now: just this mantra."), undo));
     } else {
       const btn = el("button", { class: "sankalpa-btn" }, "Make the vow for today");
-      btn.addEventListener("click", () => {
-        store.setSankalpa(date);
-        paint();
-        toast("Saṅkalpa made 🪷");
-      });
+      btn.addEventListener("click", () => { store.setSankalpa(date); paint(); toast("Saṅkalpa made 🪷"); });
       card.appendChild(btn);
     }
   }
