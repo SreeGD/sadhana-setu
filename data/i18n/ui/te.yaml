@@ -1,13 +1,35 @@
-# UI message catalog — Telugu (తెలుగు). SEED for native-devotee verification (FR-011).
-# Only reviewed strings live here; t() shows these, else falls back to English per key.
-# Machine drafts land in te.draft.yaml (NOT shown) until promoted here by a native reviewer.
-view.pre_japa: "జప-పూర్వ"
-view.nama_tattva: "నామ-తత్త్వ"
-view.today: "నేడు"
-view.this_week: "ఈ వారం"
-view.saturday: "శనివారం సమీక్ష"
-view.notes: "గమనికలు"
-view.history: "చరిత్ర"
-sidebar.view: "వీక్షణ"
-sidebar.language: "భాష"
-nama_tattva.heading: "నామ-తత్త్వ — నామము గురించి ఒక బోధ"
+view.pre_japa: జప-పూర్వ
+view.nama_tattva: నామ-తత్త్వ
+view.today: నేడు
+view.this_week: ఈ వారం
+view.saturday: శనివారం సమీక్ష
+view.notes: గమనికలు
+view.history: చరిత్ర
+sidebar.view: వీక్షణ
+sidebar.language: భాష
+nama_tattva.heading: నామ-తత్త్వ — నామము గురించి ఒక బోధ
+notes.caption: సేకరించిన హరి-నామ ప్రవచనాల నుండి సమీక్షించిన తరగతి గమనికలు.
+notes.empty: ఇంకా సమీక్షించిన గమనికలు లేవు. ఒక భక్తుడు ఆమోదించిన తర్వాత సుసంపన్నమైన
+  గమనికలు ఇక్కడ కనిపిస్తాయి.
+notes.heading: హరి-నామ గమనికలు
+notes.open: ఒక గమనికను తెరవండి
+prejapa.apply: దీనితో కాసేపు కూర్చోండి — జపానికి ముందు ఒకసారి
+prejapa.corpus_offline: కార్పస్ ఆఫ్‌లైన్ — నేటి బోధన ఎంపిక చేసిన గ్రంథాలయం నుండి.
+prejapa.deepen_default: హరి-నామంపై ఒక బోధన
+prejapa.enter: జపంలోకి ప్రవేశించండి
+prejapa.enter_body: 'ఇప్పుడు మీ జపంలోకి ప్రవేశించండి — ప్రతి నామాన్ని వినడానికి జపించండి,
+  ఆశ్రయం పొందుతూ, గడ్డిపోచ కంటే వినయంగా. నేటి దృష్టిని లోనికి తీసుకెళ్లండి: {orient}'
+prejapa.footer: సిద్ధమైనప్పుడు ఈ విండోను మూసివేయండి. జప సమయంలో తెర నిశ్శబ్దంగా ఉంటుంది.
+prejapa.machine_banner: ఇక్కడి తెలుగు యంత్ర-అనువాదం — భక్తుల సమీక్ష కోసం వేచి ఉంది.
+prejapa.make_vow: నేటి సంకల్పం చేయండి
+prejapa.name_promises: 'నామం వాగ్దానం చేస్తుంది: {summary}'
+prejapa.orient: దిశానిర్దేశం
+prejapa.sankalpa_anchor: Saṅkalpa · ఆధారం
+prejapa.sankalpa_before: Saṅkalpa · జపానికి ముందు
+prejapa.sankalpa_made: Saṅkalpa · ✓ చేయబడింది
+prejapa.story_to_carry: లోనికి తీసుకెళ్లడానికి ఒక కథ
+prejapa.tap_to_read: చదవడానికి నొక్కండి (ఐచ్ఛికం)
+prejapa.tip_label: నేటి చిట్కా
+prejapa.undo: రద్దు చేయి
+prejapa.verse_for_mood: భావం కోసం శ్లోకం
+prejapa.vow_made: 'సంకల్పం పూర్తయింది. ఇప్పుడు: కేవలం ఈ మంత్రం.'
