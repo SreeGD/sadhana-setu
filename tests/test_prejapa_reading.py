@@ -66,6 +66,28 @@ def test_apply_requires_no_input():
     assert isinstance(r.apply.prompt, str)
 
 
+def test_blend_elements_present():
+    # spec 005 v3 blend: verse (collapsible), tip, inspiration (collapsible), sankalpa vow.
+    r = build_reading(FIXED, querier=_no_corpus, checkin_loader=lambda d: None)
+    assert r.mood_verse and r.mood_verse.verse_ref
+    assert r.tip and r.tip.tip
+    assert r.inspiration and r.inspiration.title
+    assert r.sankalpa and r.sankalpa.text
+
+
+def test_sankalpa_anchor_on_wednesday():
+    wed = build_reading(date(2026, 6, 24))      # a Wednesday → anchor vow
+    thu = build_reading(date(2026, 6, 25))      # other day → rotated pool
+    assert wed.sankalpa.anchor is True
+    assert thu.sankalpa.anchor is False
+
+
+def test_blend_elements_daily_stable():
+    a = build_reading(FIXED, querier=_no_corpus, checkin_loader=lambda d: None)
+    b = build_reading(FIXED, querier=_no_corpus, checkin_loader=lambda d: None)
+    assert a.mood_verse == b.mood_verse and a.sankalpa == b.sankalpa and a.tip == b.tip
+
+
 def test_view_import_safe():
     import importlib
 

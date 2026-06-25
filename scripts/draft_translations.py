@@ -26,9 +26,14 @@ I18N = REPO / "data" / "i18n"
 DATA = REPO / "data"
 _LANG = {"te": "Telugu", "kn": "Kannada", "ta": "Tamil"}
 # Which field(s) carry the translatable prose per daily library (FR-009 scope).
+# The pre-japa blend (spec 005) adds tips, inspirations, daily_verses, sankalpas. For verses, the
+# `iast` is transliterated separately (never translated) — only the gloss prose is translated.
 _CONTENT_FIELDS = {
     "affirmations": ["text"], "faith_verses": ["summary"],
     "nama_tattva": ["title", "teaching"], "contemplations": ["prompt"],
+    "tips": ["tip"], "inspirations": ["title", "text"],
+    "daily_verses": ["translation", "mood_brought", "chanting_connection"],
+    "sankalpas": ["text"],
 }
 
 

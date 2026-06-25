@@ -92,6 +92,25 @@ def localize_content(library: str, item_id, field: str, english: str, *, locale:
     return english
 
 
+def localize_content_machine(library: str, item_id, field: str, english: str,
+                             *, locale: str | None = None) -> str:
+    """Return ANY available translation incl. unreviewed machine drafts (caller has opted OUT of
+    the review gate — e.g. 'full Telugu' pre-japa). Reads the live catalog then the `.draft` one.
+    """
+    loc = locale or get_locale()
+    if loc == "en":
+        return english
+    base = _i18n_dir() / "content" / loc
+    for fname in (f"{library}.yaml", f"{library}.draft.yaml"):
+        rows = _load(base / fname) or []
+        for row in rows if isinstance(rows, list) else []:
+            if str(row.get("id")) == str(item_id):
+                v = row.get(field)
+                if v:
+                    return v
+    return english
+
+
 def _content_catalog(locale: str, library: str) -> list:
     return _load(_i18n_dir() / "content" / locale / f"{library}.yaml") or []
 

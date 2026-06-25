@@ -55,6 +55,15 @@ def test_citation_preserved(i18n_dir):
                                  locale="te") == "CC Madhya 20.108"
 
 
+def test_localize_content_machine_shows_drafts(i18n_dir):
+    # The machine path (user opted out of the gate) shows unreviewed drafts; the gated path withholds.
+    (i18n_dir / "content" / "te" / "tips.draft.yaml").write_text(
+        "- id: 0\n  tip: తెలుగు చిట్కా\n  reviewed: false\n", encoding="utf-8")
+    assert i18n.localize_content_machine("tips", 0, "tip", "EN", locale="te") == "తెలుగు చిట్కా"
+    assert i18n.localize_content("tips", 0, "tip", "EN", locale="te") == "EN"  # gate still withholds
+    assert i18n.localize_content_machine("tips", 0, "tip", "EN", locale="en") == "EN"  # English untouched
+
+
 def test_maybe_transliterate(i18n_dir):
     i18n.set_locale("te")
     assert i18n.maybe_transliterate("Hare Kṛṣṇa") == "హరే కృష్ణ"
