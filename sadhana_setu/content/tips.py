@@ -59,6 +59,15 @@ def pick_tip(
     return chooser.choice(candidates)
 
 
+def pick_for_today(d=None):
+    """Deterministic one-tip-a-day (by day-of-year) for the pre-japa arc."""
+    import datetime
+    d = d or datetime.date.today()
+    if not _ALL:
+        return None
+    return _ALL[d.timetuple().tm_yday % len(_ALL)]
+
+
 def reload() -> None:
     """Re-read the YAML. For tests."""
     global _ALL

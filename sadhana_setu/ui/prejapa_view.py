@@ -1,12 +1,14 @@
-"""Pre-japa view — v2 transformation arc (spec 005).
+"""Pre-japa view — v3 transformation arc (spec 005 + blend).
 
-Replaces the informational card layout with a single contemplative movement:
-  orient → deepen (a grounded Hari-Nāma teaching) → apply (a micro-practice) → enter japa.
-Reads in ~60–75s; ends pointing into chanting. All sattvic-medium constraints honored:
-no streaks, no scoring, no push, no screen interaction expected during japa.
+A single contemplative movement that reads in under two minutes and ends pointing into japa:
+  (verse·optional) → orient → tip → deepen (a grounded Hari-Nāma teaching) → story·optional →
+  apply (a micro-practice) → saṅkalpa (today's vow) → enter japa.
+The mood verse and inspiration story are collapsible (tap-to-read), so they add depth without
+spending the time budget. All sattvic-medium constraints honored: no streaks, no scoring, no push.
 """
 from __future__ import annotations
 
+import re
 from datetime import date
 
 import streamlit as st
@@ -27,6 +29,14 @@ _CSS = """
             text-transform:uppercase; margin-bottom:0.35rem; }
 .pj-body { color:#3D2C1E; line-height:1.55; }
 .pj-cite { color:#8B7355; font-size:0.8rem; margin-top:0.4rem; font-style:italic; }
+.pj-verse-iast { color:#B8860B; font-style:italic; line-height:1.6; margin-bottom:0.5rem; }
+.pj-tip { color:#5C4631; font-size:0.9rem; margin:-0.3rem 0 0.8rem; padding:0 0.3rem; }
+.pj-tip-label { color:#B8860B; font-size:0.7rem; letter-spacing:0.12em; font-weight:600;
+                text-transform:uppercase; margin-right:0.4rem; }
+.pj-vow { background:#FFF8E8; border:1px solid #D4A86A; border-radius:8px;
+          padding:0.85rem 1.1rem; margin-bottom:0.5rem; text-align:center; }
+.pj-vow .pj-label { color:#6B3410; }
+.pj-vow-text { color:#5C3a1a; font-style:italic; font-size:1.1rem; line-height:1.5; margin:0.3rem 0; }
 .pj-enter { background:#FFF8E8; border:1px solid #D4A86A; border-radius:8px;
             padding:0.9rem 1.1rem; margin-top:0.4rem; }
 .pj-enter .pj-label { color:#6B3410; }
@@ -52,12 +62,16 @@ def render() -> None:
             unsafe_allow_html=True,
         )
 
+    _mood_verse(reading)                                  # optional — collapsible
     _stage("Orient", reading.orient.body, reading.orient.citation)
+    _tip(reading)                                         # one practical line
     _stage(reading.deepen.label, reading.deepen.body, reading.deepen.citation)
+    _inspiration(reading)                                 # optional — collapsible
 
     if reading.apply is not None:
         _stage("Sit with this — once, before you chant", reading.apply.prompt, reading.apply.source)
 
+    _sankalpa(reading, today)                             # today's vow + button
     _enter(reading)
 
     st.markdown(
@@ -85,6 +99,71 @@ def _stage(label: str, body: str, citation: str | None) -> None:
     )
 
 
+def _mood_verse(reading: PrejapaReading) -> None:
+    v = reading.mood_verse
+    if not v:
+        return
+    head = f"Verse for mood · {v.verse_ref}"
+    if v.mood_brought:
+        head += f" · {v.mood_brought}"
+    with st.expander(f"📖 {head} — tap to read (optional)", expanded=False):
+        parts = []
+        if v.iast:
+            parts.append(f"<div class='pj-verse-iast'>{v.iast.strip().replace(chr(10), '<br>')}</div>")
+        if v.translation:
+            parts.append(f"<div class='pj-body'>{v.translation.strip()}</div>")
+        if v.chanting_connection:
+            parts.append(f"<div class='pj-cite'>{v.chanting_connection}</div>")
+        if v.source:
+            parts.append(f"<div class='pj-cite'>— {v.source}</div>")
+        st.markdown("".join(parts), unsafe_allow_html=True)
+
+
+def _tip(reading: PrejapaReading) -> None:
+    t = reading.tip
+    if not t:
+        return
+    src = f"<span class='pj-cite'> — {t.source}</span>" if t.source else ""
+    st.markdown(
+        f"<div class='pj-tip'><span class='pj-tip-label'>Today's tip</span>{t.tip}{src}</div>",
+        unsafe_allow_html=True,
+    )
+
+
+def _inspiration(reading: PrejapaReading) -> None:
+    i = reading.inspiration
+    if not i:
+        return
+    with st.expander(f"✨ A story to carry in · {i.title} — tap to read (optional)", expanded=False):
+        cite = f"<div class='pj-cite'>— {i.source}</div>" if i.source else ""
+        st.markdown(f"<div class='pj-body'>{i.text}</div>{cite}", unsafe_allow_html=True)
+
+
+def _sankalpa(reading: PrejapaReading, today: date) -> None:
+    s = reading.sankalpa
+    if not s:
+        return
+    key = f"sankalpa_made_{today.isoformat()}"
+    made = st.session_state.get(key, False)
+    # Emphasize a SHOUTED keyword (e.g. THIS) the way the vow is spoken.
+    vow = re.sub(r"\b([A-Z]{2,})\b", r"<strong>\1</strong>", s.text)
+    label = "Saṅkalpa · ✓ made" if made else ("Saṅkalpa · anchor" if s.anchor else "Saṅkalpa · before japa")
+    cite = f"<div class='pj-cite'>— {s.source}</div>" if s.source else ""
+    st.markdown(
+        f"<div class='pj-vow'><div class='pj-label'>{label}</div>"
+        f"<div class='pj-vow-text'>“{vow}”</div>{cite}</div>",
+        unsafe_allow_html=True,
+    )
+    if made:
+        st.caption("Vow made. Now: just this mantra.")
+        if st.button("Undo", key="pj_sankalpa_undo"):
+            st.session_state[key] = False
+            _rerun()
+    elif st.button("Make the vow for today", key="pj_sankalpa_make"):
+        st.session_state[key] = True
+        _rerun()
+
+
 def _enter(reading: PrejapaReading) -> None:
     echo = (f"<div class='pj-echo'>{reading.sankalpa_echo}</div>"
             if reading.sankalpa_echo else "")
@@ -93,3 +172,9 @@ def _enter(reading: PrejapaReading) -> None:
         f"<div class='pj-enter-body'>{reading.enter.text}</div>{echo}</div>",
         unsafe_allow_html=True,
     )
+
+
+def _rerun() -> None:
+    fn = getattr(st, "rerun", None) or getattr(st, "experimental_rerun", None)
+    if fn:
+        fn()
