@@ -121,15 +121,1940 @@ source_sets:
 - id: sacinandana-maharaja
   speaker: HH Sacīnandana Mahārāja
   kind: speaker
-  lectures: []
+  lectures:
+  - id: sns-retreat-holy-name-retreat-01-entering-the-retreat-2023-0-2023-08-16
+    title: SNS Retreat Holy Name Retreat 01 Entering the Retreat 2023 08 16 Slovenia
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2023/01/SNS_Retreat_-_Holy_Name_Retreat-01-Entering_the_Retreat_-_2023-08-16_Slovenia.mp3
+    date: '2023-08-16'
+    status: transcribed
+    sha256: 5511cd1480c9d6fc8a4e2bf4ff56d609363368b47ba580e188774e49c5a0bbed
+    duration_seconds: 6873
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-01-entering-the-retreat-2023-0-2023-08-16.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-02-sb-11-02-42-discovery-lectu-2023-08-17
+    title: SNS Retreat Holy Name Retreat 02 SB 11 02 42 Discovery Lecture 01 2023
+      08 17 Slovenia
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2023/01/SNS_Retreat_-_Holy_Name_Retreat-02-_SB_11-02-42_Discovery_Lecture-01_-_2023-08-17_Slovenia.mp3
+    date: '2023-08-17'
+    status: transcribed
+    sha256: 72fc8b4c1bdd082260749b5781374db24819039f593e2f3f251a7ac1b0ce4a5b
+    duration_seconds: 5256
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-02-sb-11-02-42-discovery-lectu-2023-08-17.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-03-entering-the-retreat-worksh-2023-08-17
+    title: SNS Retreat Holy Name Retreat 03 Entering the Retreat Workshop 01 2023
+      08 17 Slovenia
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2023/01/SNS_Retreat_-_Holy_Name_Retreat-03_Entering_the_Retreat-Workshop-01_-_2023-08-17_Slovenia.mp3
+    date: '2023-08-17'
+    status: transcribed
+    sha256: 22fd150e71d288dee9c0abb262e59b860b064dda6f7c52e13d660ba628b0ae95
+    duration_seconds: 7107
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-03-entering-the-retreat-worksh-2023-08-17.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-04-evening-krishna-katha-2023-2023-08-17
+    title: SNS Retreat Holy Name Retreat 04 Evening Krishna Katha 2023 08 17 Slovenia
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2023/01/SNS_Retreat_-_Holy_Name_Retreat-04-Evening_Krishna_Katha_-_2023-08-17_Slovenia.mp3
+    date: '2023-08-17'
+    status: transcribed
+    sha256: 7635748d0798831184899662024a23863279c6db2a436e5db0ddf5dbb1264c9e
+    duration_seconds: 7037
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-04-evening-krishna-katha-2023-2023-08-17.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-05-sb-11-03-30-discovery-lectu-2023-08-18
+    title: SNS Retreat Holy Name Retreat 05 SB 11 03 30 Discovery Lecture 02 2023
+      08 18 Slovenia
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2023/01/SNS_Retreat_-_Holy_Name_Retreat-05-SB_11-03-30-Discovery_Lecture-02_-_2023-08-18_Slovenia.mp3
+    date: '2023-08-18'
+    status: transcribed
+    sha256: dc09b6521dad5482f6b6bf47c72cc509b43d930a5a0aff3cbd6406427f8fac2d
+    duration_seconds: 4803
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-05-sb-11-03-30-discovery-lectu-2023-08-18.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-06-workshop-02-2023-08-18-slov-2023-08-18
+    title: SNS Retreat Holy Name Retreat 06 Workshop 02 2023 08 18 Slovenia
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2023/01/SNS_Retreat_-_Holy_Name_Retreat-06-Workshop-02_-_2023-08-18_Slovenia.mp3
+    date: '2023-08-18'
+    status: transcribed
+    sha256: a3acbfce986a6070740842b169ec176cd9b5232466bee54e361fb3bf605bd04d
+    duration_seconds: 4777
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-06-workshop-02-2023-08-18-slov-2023-08-18.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-07-evening-krishna-katha-2023-2023-08-18
+    title: SNS Retreat Holy Name Retreat 07 Evening Krishna Katha 2023 08 18 Slovenia
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2023/01/SNS_Retreat_-_Holy_Name_Retreat-07-Evening_Krishna_Katha_-_2023-08-18_Slovenia.mp3
+    date: '2023-08-18'
+    status: transcribed
+    sha256: 97c845c68b62c67afe71d2f38b0adb646eab7701f6d2713ba38cbe496b3888a7
+    duration_seconds: 4720
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-07-evening-krishna-katha-2023-2023-08-18.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-08-sb-02-03-17-taking-the-retr-2023-08-19
+    title: SNS Retreat Holy Name Retreat 08 SB 02 03 17 Taking the Retreat Home 2023
+      08 19 Slovenia
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2023/01/SNS_Retreat_-_Holy_Name_Retreat-08-SB_02-03-17-Taking_the_Retreat_Home_-_2023-08-19_Slovenia.mp3
+    date: '2023-08-19'
+    status: transcribed
+    sha256: 272a44cb18cfb6cff09277ca812cc4e52b231a5db7167c399e2939be357438bc
+    duration_seconds: 4735
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-08-sb-02-03-17-taking-the-retr-2023-08-19.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-01-opening-the-retreat-2023-12-2023-12-03
+    title: SNS Retreat Holy Name Retreat 01 Opening the Retreat 2023 12 03
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2023/02/SNS_Retreat_-_Holy_Name_Retreat-01_Opening_the_Retreat_-_2023-12-03.mp3
+    date: '2023-12-03'
+    status: transcribed
+    sha256: 0c94088e7388a71aad968b5c128977680a28e85e848edbe6ac2fca5529c5701b
+    duration_seconds: 10417
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-01-opening-the-retreat-2023-12-2023-12-03.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-02-guided-japa-session-01-2023-2023-12-04
+    title: SNS Retreat Holy Name Retreat 02 Guided Japa Session 01 2023 12 04
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2023/02/SNS_Retreat_-_Holy_Name_Retreat-02_Guided_Japa_Session-01_-_2023-12-04.mp3
+    date: '2023-12-04'
+    status: transcribed
+    sha256: bad5e74620e78faaccf55881c2dbd740d107365d025bdfb3a58938b0be701a2c
+    duration_seconds: 255
+    language: en
+    topic_tags:
+    - holy name
+    - japa
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-02-guided-japa-session-01-2023-2023-12-04.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-03-guided-japa-session-02-2023-2023-12-04
+    title: SNS Retreat Holy Name Retreat 03 Guided Japa Session 02 2023 12 04
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2023/02/SNS_Retreat_-_Holy_Name_Retreat-03_Guided_Japa_Session-02_-_2023-12-04.mp3
+    date: '2023-12-04'
+    status: transcribed
+    sha256: 829b127c0ae047efb611b1e5f95c14691ab32a2a4340a4f2c820dc9dfe3c6951
+    duration_seconds: 13
+    language: en
+    topic_tags:
+    - holy name
+    - japa
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-03-guided-japa-session-02-2023-2023-12-04.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-04-guided-japa-session-03-2023-2023-12-04
+    title: SNS Retreat Holy Name Retreat 04 Guided Japa Session 03 2023 12 04
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2023/02/SNS_Retreat_-_Holy_Name_Retreat-04_Guided_Japa_Session-03_-_2023-12-04.mp3
+    date: '2023-12-04'
+    status: transcribed
+    sha256: f8e4c0db510dd7bf520159331db8f449d75e3d04ac7a9d7aaa86c04bf1857d3a
+    duration_seconds: 505
+    language: en
+    topic_tags:
+    - holy name
+    - japa
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-04-guided-japa-session-03-2023-2023-12-04.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-05-guided-japa-session-04-2023-2023-12-04
+    title: SNS Retreat Holy Name Retreat 05 Guided Japa Session 04 2023 12 04
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2023/02/SNS_Retreat_-_Holy_Name_Retreat-05_Guided_Japa_Session-04_-_2023-12-04.mp3
+    date: '2023-12-04'
+    status: transcribed
+    sha256: 7807449a3685b43fbe3c0fc611c43ea3422a8b991881a5e44d239494b24c94d9
+    duration_seconds: 292
+    language: en
+    topic_tags:
+    - holy name
+    - japa
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-05-guided-japa-session-04-2023-2023-12-04.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-06-guided-japa-session-05-2023-2023-12-04
+    title: SNS Retreat Holy Name Retreat 06 Guided Japa Session 05 2023 12 04
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2023/02/SNS_Retreat_-_Holy_Name_Retreat-06_Guided_Japa_Session-05_-_2023-12-04.mp3
+    date: '2023-12-04'
+    status: transcribed
+    sha256: 0f179f7fd0a754e35b56a71f70bd0daa2d35c427c9f321b86c35414e45e31517
+    duration_seconds: 271
+    language: en
+    topic_tags:
+    - holy name
+    - japa
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-06-guided-japa-session-05-2023-2023-12-04.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-07-the-heart-of-the-holy-name-2023-12-04
+    title: SNS Retreat Holy Name Retreat 07 The Heart of the Holy Name 01 2023 12
+      04
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2023/02/SNS_Retreat_-_Holy_Name_Retreat-07_The_Heart_of_the_Holy_Name-01_-_2023-12-04.mp3
+    date: '2023-12-04'
+    status: transcribed
+    sha256: b07ee8541ea8e70674a6161be9794621bf4f842adc65f0e240ee6a7a05bcf435
+    duration_seconds: 7745
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-07-the-heart-of-the-holy-name-2023-12-04.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-08-kirtan-with-inspiration-202-2023-12-04
+    title: SNS Retreat Holy Name Retreat 08 Kirtan with Inspiration 2023 12 04
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2023/02/SNS_Retreat_-_Holy_Name_Retreat-08_Kirtan_with_Inspiration_-_2023-12-04.mp3
+    date: '2023-12-04'
+    status: transcribed
+    sha256: 6439be8093f7a76bcfbdce48e5f7a7124f671215154a3af79e61eb85581c6ec4
+    duration_seconds: 3672
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-08-kirtan-with-inspiration-202-2023-12-04.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-09-the-heart-of-the-holy-name-2023-12-06
+    title: SNS Retreat Holy Name Retreat 09 The Heart of the Holy Name 02 2023 12
+      06
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2023/02/SNS_Retreat_-_Holy_Name_Retreat-09_The_Heart_of_the_Holy_Name-02_-_2023-12-06.mp3
+    date: '2023-12-06'
+    status: transcribed
+    sha256: 77e7c0e9ee39e492ae59bab39fc92b3f4c22af04d4bb33dc4006b3fe97ff6063
+    duration_seconds: 7530
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-09-the-heart-of-the-holy-name-2023-12-06.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-10-kirtan-with-inspiration-202-2023-12-07
+    title: SNS Retreat Holy Name Retreat 10 Kirtan with Inspiration 2023 12 07
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2023/02/SNS_Retreat_-_Holy_Name_Retreat-10_Kirtan_with_Inspiration_-_2023-12-07.mp3
+    date: '2023-12-07'
+    status: transcribed
+    sha256: 85f9f95a39f4c3a23cda4b57a4910f117928a9bcd4d1bc8bbebec67579090330
+    duration_seconds: 1408
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-10-kirtan-with-inspiration-202-2023-12-07.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-11-japa-inspiration-2023-12-07-2023-12-07
+    title: SNS Retreat Holy Name Retreat 11 Japa Inspiration 2023 12 07
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2023/02/SNS_Retreat_-_Holy_Name_Retreat-11_Japa_Inspiration_-_2023-12-07.mp3
+    date: '2023-12-07'
+    status: transcribed
+    sha256: 43b81f9a86081719c061cc0c11d5486a9d09652bfb39c1a1511067224d5b8a4a
+    duration_seconds: 160
+    language: en
+    topic_tags:
+    - holy name
+    - japa
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-11-japa-inspiration-2023-12-07-2023-12-07.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-12-kirtan-2023-12-07-2023-12-07
+    title: SNS Retreat Holy Name Retreat 12 Kirtan 2023 12 07
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2023/02/SNS_Retreat_-_Holy_Name_Retreat-12_Kirtan_-_2023-12-07.mp3
+    date: '2023-12-07'
+    status: transcribed
+    sha256: 94482d929cc36ccfd6cb057bd844fce23cf1a0cd68226fbba3f2783daafbc945
+    duration_seconds: 3175
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-12-kirtan-2023-12-07-2023-12-07.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-13-questions-and-answers-2023-2023-12-08
+    title: SNS Retreat Holy Name Retreat 13 Questions and Answers 2023 12 08
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2023/02/SNS_Retreat_-_Holy_Name_Retreat-13_Questions_and_Answers_-_2023-12-08.mp3
+    date: '2023-12-08'
+    status: transcribed
+    sha256: d48e885c6452dc322208768f25e65d9e4b90a2f0d8d82da30236840cf5687e82
+    duration_seconds: 11787
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-13-questions-and-answers-2023-2023-12-08.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-seminars-holy-name-retreat-01-2014-09-18-new-govardhana-2014-09-18
+    title: SNS Seminars Holy Name Retreat 01 2014 09 18 New Govardhana Village
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2014/SNS_Seminars_-_Holy_Name_Retreat_01_-_2014-09-18_New_Govardhana_Village.mp3
+    date: '2014-09-18'
+    status: transcribed
+    sha256: b58ed82ffcdeebed0f4c253c80041ea0d150540c19822f957014aa4f1a7da82d
+    duration_seconds: 5957
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-seminars-holy-name-retreat-01-2014-09-18-new-govardhana-2014-09-18.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-seminars-holy-name-retreat-02-2014-09-18-new-govardhana-2014-09-18
+    title: SNS Seminars Holy Name Retreat 02 2014 09 18 New Govardhana Village
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2014/SNS_Seminars_-_Holy_Name_Retreat_02_-_2014-09-18_New_Govardhana_Village.mp3
+    date: '2014-09-18'
+    status: transcribed
+    sha256: 9f2e1408879e03cfff96f3fbc824e696affacbeb16dae3e8e7c3f322777f1dc2
+    duration_seconds: 4154
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-seminars-holy-name-retreat-02-2014-09-18-new-govardhana-2014-09-18.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-seminars-holy-name-retreat-03-2014-09-18-new-govardhana-2014-09-18
+    title: SNS Seminars Holy Name Retreat 03 2014 09 18 New Govardhana Village
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2014/SNS_Seminars_-_Holy_Name_Retreat_03_-_2014-09-18_New_Govardhana_Village.mp3
+    date: '2014-09-18'
+    status: transcribed
+    sha256: 58e2117eba283fb6763b1739a34c7c3bdf8cfea2f0734d81e429ddc28200772f
+    duration_seconds: 2428
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-seminars-holy-name-retreat-03-2014-09-18-new-govardhana-2014-09-18.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-seminars-holy-name-retreat-04-2014-09-18-new-govardhana-2014-09-18
+    title: SNS Seminars Holy Name Retreat 04 2014 09 18 New Govardhana Village
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2014/SNS_Seminars_-_Holy_Name_Retreat_04_-_2014-09-18_New_Govardhana_Village.mp3
+    date: '2014-09-18'
+    status: transcribed
+    sha256: e9b20c8dedd75ed86e61e6235b3f2ca70562fa1b35b71cf2dc4c54d645f1d68d
+    duration_seconds: 247
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-seminars-holy-name-retreat-04-2014-09-18-new-govardhana-2014-09-18.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-seminars-holy-name-retreat-05-2014-09-19-new-govardhana-2014-09-19
+    title: SNS Seminars Holy Name Retreat 05 2014 09 19 New Govardhana Village
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2014/SNS_Seminars_-_Holy_Name_Retreat_05_-_2014-09-19_New_Govardhana_Village.mp3
+    date: '2014-09-19'
+    status: transcribed
+    sha256: ae017bcd39e7d81898d56ac5eb893a44bde514d1471a0a3abeb47e8b79e3f411
+    duration_seconds: 1901
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-seminars-holy-name-retreat-05-2014-09-19-new-govardhana-2014-09-19.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-seminars-holy-name-retreat-06-2014-09-19-new-govardhana-2014-09-19
+    title: SNS Seminars Holy Name Retreat 06 2014 09 19 New Govardhana Village
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2014/SNS_Seminars_-_Holy_Name_Retreat_06_-_2014-09-19_New_Govardhana_Village.mp3
+    date: '2014-09-19'
+    status: transcribed
+    sha256: deaea069e742c52c74a2b962f75c8a7bd3f8ee1a1806cfd44246bfa99ab976f5
+    duration_seconds: 4677
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-seminars-holy-name-retreat-06-2014-09-19-new-govardhana-2014-09-19.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-seminars-holy-name-retreat-07-2014-09-19-new-govardhana-2014-09-19
+    title: SNS Seminars Holy Name Retreat 07 2014 09 19 New Govardhana Village
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2014/SNS_Seminars_-_Holy_Name_Retreat_07_-_2014-09-19_New_Govardhana_Village.mp3
+    date: '2014-09-19'
+    status: transcribed
+    sha256: 69a59d93b43db5a4142acd6ed4914de98e0678efb72e573998d9cf792432f805
+    duration_seconds: 4156
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-seminars-holy-name-retreat-07-2014-09-19-new-govardhana-2014-09-19.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-seminars-holy-name-retreat-08-2014-09-19-new-govardhana-2014-09-19
+    title: SNS Seminars Holy Name Retreat 08 2014 09 19 New Govardhana Village
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2014/SNS_Seminars_-_Holy_Name_Retreat_08_-_2014-09-19_New_Govardhana_Village.mp3
+    date: '2014-09-19'
+    status: transcribed
+    sha256: df9300044dda8cbed1c02b3f1068a15c0bad1b453eec3b7313f61606292e784c
+    duration_seconds: 2719
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-seminars-holy-name-retreat-08-2014-09-19-new-govardhana-2014-09-19.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-seminars-holy-name-retreat-09-2014-09-20-new-govardhana-2014-09-20
+    title: SNS Seminars Holy Name Retreat 09 2014 09 20 New Govardhana Village
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2014/SNS_Seminars_-_Holy_Name_Retreat_09_-_2014-09-20_New_Govardhana_Village.mp3
+    date: '2014-09-20'
+    status: transcribed
+    sha256: a7335759b00d95ab883a729b4e5fd7ad758fcc6027807dffba9eb4c7539cec56
+    duration_seconds: 1912
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-seminars-holy-name-retreat-09-2014-09-20-new-govardhana-2014-09-20.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-seminars-holy-name-retreat-10-2014-09-20-new-govardhana-2014-09-20
+    title: SNS Seminars Holy Name Retreat 10 2014 09 20 New Govardhana Village
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2014/SNS_Seminars_-_Holy_Name_Retreat_10_-_2014-09-20_New_Govardhana_Village.mp3
+    date: '2014-09-20'
+    status: transcribed
+    sha256: e1c3d7932f3a64e4f7d22f0f9f00800a3ed7315f6dbe8be64a5bfb0b837fce05
+    duration_seconds: 1541
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-seminars-holy-name-retreat-10-2014-09-20-new-govardhana-2014-09-20.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-seminars-holy-name-retreat-11-2014-09-20-new-govardhana-2014-09-20
+    title: SNS Seminars Holy Name Retreat 11 2014 09 20 New Govardhana Village
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2014/SNS_Seminars_-_Holy_Name_Retreat_11_-_2014-09-20_New_Govardhana_Village.mp3
+    date: '2014-09-20'
+    status: transcribed
+    sha256: 9dd97059939f2155f85656ea080588eb30ca00899dc5315f16ca878bf4e6c623
+    duration_seconds: 4780
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-seminars-holy-name-retreat-11-2014-09-20-new-govardhana-2014-09-20.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-seminars-holy-name-retreat-12-2014-09-20-new-govardhana-2014-09-20
+    title: SNS Seminars Holy Name Retreat 12 2014 09 20 New Govardhana Village
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2014/SNS_Seminars_-_Holy_Name_Retreat_12_-_2014-09-20_New_Govardhana_Village.mp3
+    date: '2014-09-20'
+    status: transcribed
+    sha256: 3c46e46888c065b9d53eaada5e8f6e796bf23658e656a70af3febcecda561da4
+    duration_seconds: 2560
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-seminars-holy-name-retreat-12-2014-09-20-new-govardhana-2014-09-20.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-seminars-holy-name-retreat-13-2014-09-21-new-govardhana-2014-09-21
+    title: SNS Seminars Holy Name Retreat 13 2014 09 21 New Govardhana Village
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2014/SNS_Seminars_-_Holy_Name_Retreat_13_-_2014-09-21_New_Govardhana_Village.mp3
+    date: '2014-09-21'
+    status: transcribed
+    sha256: fb5335039f4898c581bc7a65617386e3e2eabdb9e149aa174bb5554cac601fa4
+    duration_seconds: 2578
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-seminars-holy-name-retreat-13-2014-09-21-new-govardhana-2014-09-21.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-seminars-holy-name-retreat-14-2014-09-21-new-govardhana-2014-09-21
+    title: SNS Seminars Holy Name Retreat 14 2014 09 21 New Govardhana Village
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2014/SNS_Seminars_-_Holy_Name_Retreat_14_-_2014-09-21_New_Govardhana_Village.mp3
+    date: '2014-09-21'
+    status: transcribed
+    sha256: 051012d306cede472035006793a1f33776a84f52b524796f0f5282d856b730aa
+    duration_seconds: 2594
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-seminars-holy-name-retreat-14-2014-09-21-new-govardhana-2014-09-21.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-seminars-holy-name-retreat-15-2014-09-21-new-govardhana-2014-09-21
+    title: SNS Seminars Holy Name Retreat 15 2014 09 21 New Govardhana Village
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2014/SNS_Seminars_-_Holy_Name_Retreat_15_-_2014-09-21_New_Govardhana_Village.mp3
+    date: '2014-09-21'
+    status: transcribed
+    sha256: 42f86e7ca293cf180f53813211592a60a1ed664e6872c7a5d8042a28d89f397b
+    duration_seconds: 3759
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-seminars-holy-name-retreat-15-2014-09-21-new-govardhana-2014-09-21.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-holy-name-retreat-introduction-2018-11-27-gv-2018-11-27
+    title: SNS Holy Name Retreat Introduction 2018 11 27 GV
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2018/SNS_Holy_Name_Retreat_-_Introduction_-_2018-11-27_GV.mp3
+    date: '2018-11-27'
+    status: transcribed
+    sha256: 4c513a738a3662fade7397d0ecbe273053101fb232c47507b8e743fcee5528e4
+    duration_seconds: 267
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-holy-name-retreat-introduction-2018-11-27-gv-2018-11-27.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-holy-name-retreat-retreat-02-tuning-in-01-2018-11-27-gv-2018-11-27
+    title: SNS Holy Name Retreat Retreat 02 Tuning In 01 2018 11 27 GV
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2018/SNS_Holy_Name_Retreat_-_Retreat_02-Tuning_In_01_-_2018-11-27_GV.mp3
+    date: '2018-11-27'
+    status: transcribed
+    sha256: dad9aca59e8843769373876a4db8d3bdcd369bf96d4d46aefc7bcc34d037447a
+    duration_seconds: 1491
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-holy-name-retreat-retreat-02-tuning-in-01-2018-11-27-gv-2018-11-27.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-holy-name-retreat-retreat-03-tuning-in-02-2018-11-27-gv-2018-11-27
+    title: SNS Holy Name Retreat Retreat 03 Tuning In 02 2018 11 27 GV
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2018/SNS_Holy_Name_Retreat_-_Retreat_03-Tuning_In_02_-_2018-11-27_GV.mp3
+    date: '2018-11-27'
+    status: transcribed
+    sha256: a380f1d408b51b0a50aa54f821939ae79762b1e4e2b028333c8957e12894db8e
+    duration_seconds: 267
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-holy-name-retreat-retreat-03-tuning-in-02-2018-11-27-gv-2018-11-27.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-holy-name-retreat-retreat-04-tuning-in-03-2018-11-27-gv-2018-11-27
+    title: SNS Holy Name Retreat Retreat 04 Tuning In 03 2018 11 27 GV
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2018/SNS_Holy_Name_Retreat_-_Retreat_04-Tuning_In_03_-_2018-11-27_GV.mp3
+    date: '2018-11-27'
+    status: transcribed
+    sha256: 7661e8d3c52c44594e456e1f02d6a849d7aa7a0fc9cc3273316f89f8e3200dde
+    duration_seconds: 1491
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-holy-name-retreat-retreat-04-tuning-in-03-2018-11-27-gv-2018-11-27.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-holy-name-retreat-retreat-06-the-living-name-2018-11-28-2018-11-28
+    title: SNS Holy Name Retreat Retreat 06 The Living Name 2018 11 28 GV
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2018/SNS_Holy_Name_Retreat_-_Retreat_06-The_Living_Name_-_2018-11-28_GV.mp3
+    date: '2018-11-28'
+    status: transcribed
+    sha256: b6f63b89948c6b3908c88adcf024bb66f73aca46ed193d346f250b332ed6ad27
+    duration_seconds: 6216
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-holy-name-retreat-retreat-06-the-living-name-2018-11-28-2018-11-28.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-holy-name-retreat-retreat-07-evening-katha-and-kirtan-20-2018-11-28
+    title: SNS Holy Name Retreat Retreat 07 Evening Katha and Kirtan 2018 11 28 GV
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2018/SNS_Holy_Name_Retreat_-_Retreat_07-Evening_Katha_and_Kirtan_-_2018-11-28_GV.mp3
+    date: '2018-11-28'
+    status: transcribed
+    sha256: 495d93c46a5e49b9e9f54b40f18e17ab93ac7dfb03a4b52cfc8030f91e26e6a2
+    duration_seconds: 3790
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-holy-name-retreat-retreat-07-evening-katha-and-kirtan-20-2018-11-28.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-holy-name-retreat-retreat-08-inspiration-2018-11-28-gv-2018-11-28
+    title: SNS Holy Name Retreat Retreat 08 Inspiration 2018 11 28 GV
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2018/SNS_Holy_Name_Retreat_-_Retreat_08-Inspiration_-_2018-11-28_GV.mp3
+    date: '2018-11-28'
+    status: transcribed
+    sha256: 7c4c1a3a44d1d61ee0c2421f75eecef4a62d1b8664413962f9b56f0805050711
+    duration_seconds: 343
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-holy-name-retreat-retreat-08-inspiration-2018-11-28-gv-2018-11-28.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-holy-name-retreat-retreat-09-introduction-2018-11-29-gv-2018-11-29
+    title: SNS Holy Name Retreat Retreat 09 Introduction 2018 11 29 GV
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2018/SNS_Holy_Name_Retreat_-_Retreat_09-Introduction_-_2018-11-29_GV.mp3
+    date: '2018-11-29'
+    status: transcribed
+    sha256: b2f36e6f2b8d21500397eab0c7feb0804a90cc15df0ae7f5ef251020b185abb1
+    duration_seconds: 344
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-holy-name-retreat-retreat-09-introduction-2018-11-29-gv-2018-11-29.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-holy-name-retreat-retreat-10-inspiration-2018-11-29-gv-2018-11-29
+    title: SNS Holy Name Retreat Retreat 10 Inspiration 2018 11 29 GV
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2018/SNS_Holy_Name_Retreat_-_Retreat_10-Inspiration_-_2018-11-29_GV.mp3
+    date: '2018-11-29'
+    status: transcribed
+    sha256: 2a8d7fb735f09f36ac16c6e79baee12505e5ba7f895e7428864b24a6d6a2998e
+    duration_seconds: 732
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-holy-name-retreat-retreat-10-inspiration-2018-11-29-gv-2018-11-29.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-holy-name-retreat-retreat-11-the-living-name-2018-11-30-2018-11-30
+    title: SNS Holy Name Retreat Retreat 11 The Living Name 2018 11 30 GV
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2018/SNS_Holy_Name_Retreat_-_Retreat_11-The_Living_Name_-_2018-11-30_GV.mp3
+    date: '2018-11-30'
+    status: transcribed
+    sha256: d14b0226bbd3467232baaa7cf774e072746ff9366d248ccd38299430b93d40a4
+    duration_seconds: 5323
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-holy-name-retreat-retreat-11-the-living-name-2018-11-30-2018-11-30.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-holy-name-retreat-retreat-12-at-surabhi-kunda-2018-11-30-2018-11-30
+    title: SNS Holy Name Retreat Retreat 12 At Surabhi Kunda 2018 11 30 GV
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2018/SNS_Holy_Name_Retreat_-_Retreat_12-At_Surabhi_Kunda_-_2018-11-30_GV.mp3
+    date: '2018-11-30'
+    status: transcribed
+    sha256: 32d7dd3355d7a039d0a96ba4b81f90e3ad4ba4a17f50b395abbf3848a729651b
+    duration_seconds: 4673
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-holy-name-retreat-retreat-12-at-surabhi-kunda-2018-11-30-2018-11-30.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-holy-name-retreat-retreat-13-japa-inspiration-2018-12-01-2018-12-01
+    title: SNS Holy Name Retreat Retreat 13 Japa Inspiration 2018 12 01 TK
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2018/SNS_Holy_Name_Retreat_-_Retreat_13-Japa_Inspiration_-_2018-12-01_TK.mp3
+    date: '2018-12-01'
+    status: transcribed
+    sha256: 1c7966f115856773a793e73e93bd2a1ef216cfb81bf067a9219bac88d104cae0
+    duration_seconds: 734
+    language: en
+    topic_tags:
+    - holy name
+    - japa
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-holy-name-retreat-retreat-13-japa-inspiration-2018-12-01-2018-12-01.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-holy-name-retreat-retreat-14-closing-ceremony-2018-12-02-2018-12-02
+    title: SNS Holy Name Retreat Retreat 14 Closing Ceremony 2018 12 02 GV
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2018/SNS_Holy_Name_Retreat_-_Retreat_14-Closing_Ceremony_-_2018-12-02_GV.mp3
+    date: '2018-12-02'
+    status: transcribed
+    sha256: 1da96e65beb740010ff704d1f724dcaf18acd75c2da8f10837eb8db2aec98809
+    duration_seconds: 1721
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-holy-name-retreat-retreat-14-closing-ceremony-2018-12-02-2018-12-02.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-holy-name-retreat-retreat-15-conclusion-2018-12-02-gv-2018-12-02
+    title: SNS Holy Name Retreat Retreat 15 Conclusion 2018 12 02 GV
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2018/SNS_Holy_Name_Retreat_-_Retreat_15-Conclusion_-_2018-12-02_GV.mp3
+    date: '2018-12-02'
+    status: transcribed
+    sha256: 456c7d169d3f433478a6d8204a9a002d13041dfe9648a2d71bde79baed02826a
+    duration_seconds: 396
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-holy-name-retreat-retreat-15-conclusion-2018-12-02-gv-2018-12-02.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-01-entering-the-retreat-2022-1-2022-11-11
+    title: SNS Retreat Holy Name Retreat 01 Entering the Retreat 2022 11 11
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2022/SNS_Retreat_-_Holy_Name_Retreat-01-Entering_the_Retreat_-_2022-11-11.mp3
+    date: '2022-11-11'
+    status: transcribed
+    sha256: 69e9ce9bf952c5db7f87268642a9e74b55466d15413beb4c7960dc1bf16e2a3d
+    duration_seconds: 3562
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-01-entering-the-retreat-2022-1-2022-11-11.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-02-kirtan-introduction-2022-11-2022-11-11
+    title: SNS Retreat Holy Name Retreat 02 Kirtan Introduction 2022 11 11
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2022/SNS_Retreat_-_Holy_Name_Retreat-02-Kirtan_Introduction_-_2022-11-11.mp3
+    date: '2022-11-11'
+    status: transcribed
+    sha256: 3149a38d3864b9584f24bf0f5b0c4f75e0ce2253bab21fa95c799252a90eb2ff
+    duration_seconds: 352
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-02-kirtan-introduction-2022-11-2022-11-11.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-03-chanting-with-absorption-20-2022-11-12
+    title: SNS Retreat Holy Name Retreat 03 Chanting with Absorption 2022 11 12
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2022/SNS_Retreat_-_Holy_Name_Retreat-03-Chanting_with_Absorption_-_2022-11-12.mp3
+    date: '2022-11-12'
+    status: transcribed
+    sha256: c10766288913b108705455292f8bf7aef37da573805f7ba4a80a6c6631dd234d
+    duration_seconds: 6550
+    language: en
+    topic_tags:
+    - holy name
+    - chant
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-03-chanting-with-absorption-20-2022-11-12.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-04-kirtan-introduction-2022-11-2022-11-12
+    title: SNS Retreat Holy Name Retreat 04 Kirtan Introduction 2022 11 12
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2022/SNS_Retreat_-_Holy_Name_Retreat-04-Kirtan-Introduction_-_2022-11-12.mp3
+    date: '2022-11-12'
+    status: transcribed
+    sha256: 352be94295c0c73523e39f0cd8fd3c00d0c3ae5452caedc07bf4887760aba209
+    duration_seconds: 421
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-04-kirtan-introduction-2022-11-2022-11-12.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-05-inspiration-2022-11-13-2022-11-13
+    title: SNS Retreat Holy Name Retreat 05 Inspiration 2022 11 13
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2022/SNS_Retreat_-_Holy_Name_Retreat-05-Inspiration_-_2022-11-13.mp3
+    date: '2022-11-13'
+    status: transcribed
+    sha256: 03d0702b2c173fd105b5bf25cd9473936361e3fea8966419bab2ae10e7990f75
+    duration_seconds: 435
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-05-inspiration-2022-11-13-2022-11-13.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-06-inspirational-katha-2022-11-2022-11-13
+    title: SNS Retreat Holy Name Retreat 06 Inspirational Katha 2022 11 13
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2022/SNS_Retreat_-_Holy_Name_Retreat-06-Inspirational_Katha_-_2022-11-13.mp3
+    date: '2022-11-13'
+    status: transcribed
+    sha256: b5c8f0f98e9e388da3beb013eceb1c3a13a51c65505c9603b8fb14fdbfe5e684
+    duration_seconds: 894
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-06-inspirational-katha-2022-11-2022-11-13.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-07-chanting-with-humility-2022-2022-11-14
+    title: SNS Retreat Holy Name Retreat 07 Chanting with Humility 2022 11 14
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2022/SNS_Retreat_-_Holy_Name_Retreat-07-Chanting_with_Humility_-_2022-11-14.mp3
+    date: '2022-11-14'
+    status: transcribed
+    sha256: ecb10f081f3d14cac721e5ff27bd8572d35ef143da3c2f850134aae83c44a263
+    duration_seconds: 7443
+    language: en
+    topic_tags:
+    - holy name
+    - chant
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-07-chanting-with-humility-2022-2022-11-14.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-08-chanting-prayerfully-2022-1-2022-11-15
+    title: SNS Retreat Holy Name Retreat 08 Chanting Prayerfully 2022 11 15
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2022/SNS_Retreat_-_Holy_Name_Retreat-08-Chanting_Prayerfully_-_2022-11-15.mp3
+    date: '2022-11-15'
+    status: transcribed
+    sha256: 6f9a5d6a0cbeea25a97177799dace8cf6acedfd19fd3ad2c2be2d702f303632e
+    duration_seconds: 466
+    language: en
+    topic_tags:
+    - holy name
+    - chant
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-08-chanting-prayerfully-2022-1-2022-11-15.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-09-ter-kadamba-conclusion-2022-2022-11-15
+    title: SNS Retreat Holy Name Retreat 09 Ter Kadamba Conclusion 2022 11 15
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2022/SNS_Retreat_-_Holy_Name_Retreat-09-Ter_Kadamba_Conclusion_-_2022-11-15.mp3
+    date: '2022-11-15'
+    status: transcribed
+    sha256: 82ffb4ec3e789628fe06d8bbbb42801e20c7d25b941ddf3840002de4c95ff61f
+    duration_seconds: 738
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-09-ter-kadamba-conclusion-2022-2022-11-15.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-10-questions-and-retreat-2022-2022-11-16
+    title: SNS Retreat Holy Name Retreat 10 Questions and Retreat 2022 11 16
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2022/SNS_Retreat_-_Holy_Name_Retreat-10-Questions_and_Retreat_-_2022-11-16.mp3
+    date: '2022-11-16'
+    status: transcribed
+    sha256: 1da95633d4906172c5cd8b56383c8826733c9e367c8cb163a60e50248c3ed15c
+    duration_seconds: 5428
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-10-questions-and-retreat-2022-2022-11-16.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-11-conclusion-2022-11-16-2022-11-16
+    title: SNS Retreat Holy Name Retreat 11 Conclusion 2022 11 16
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2022/SNS_Retreat_-_Holy_Name_Retreat-11-Conclusion_-_2022-11-16.mp3
+    date: '2022-11-16'
+    status: transcribed
+    sha256: a5f6d6949985bc2d4838606214c1dce5749e134524da9ecceb746ffc29bb406a
+    duration_seconds: 1298
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-11-conclusion-2022-11-16-2022-11-16.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-01-welcome-2024-11-20-2024-11-20
+    title: SNS Retreat Holy Name Retreat 01 Welcome 2024 11 20
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2024/SNS_Retreat_-_Holy_Name_Retreat-01_Welcome_-_2024-11-20.mp3
+    date: '2024-11-20'
+    status: transcribed
+    sha256: ce2ba8474d65da96a958458f6639d3f8c4630de44066e4b2ac00ae215f8a1c08
+    duration_seconds: 3945
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-01-welcome-2024-11-20-2024-11-20.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-02-presentation-of-classes-202-2024-11-20
+    title: SNS Retreat Holy Name Retreat 02 Presentation of Classes 2024 11 20
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2024/SNS_Retreat_-_Holy_Name_Retreat-02_Presentation_of_Classes_-_2024-11-20.mp3
+    date: '2024-11-20'
+    status: transcribed
+    sha256: f7332e34c4ab7b540b20f98bde2188e68063b8a69d9ca460384a064aa4681e41
+    duration_seconds: 5547
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-02-presentation-of-classes-202-2024-11-20.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-03-learning-to-chant-with-devo-2024-11-21
+    title: SNS Retreat Holy Name Retreat 03 Learning to Chant with Devotion 01 2024
+      11 21
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2024/SNS_Retreat_-_Holy_Name_Retreat-03_Learning_to_Chant_with_Devotion-01_-_2024-11-21.mp3
+    date: '2024-11-21'
+    status: transcribed
+    sha256: 135ee1230f6fc2fd1fb747d3d93effaa3ee44f58b7860c6b3f288fd20d358f68
+    duration_seconds: 7387
+    language: en
+    topic_tags:
+    - holy name
+    - chant
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-03-learning-to-chant-with-devo-2024-11-21.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-04-learning-to-chant-with-devo-2024-11-22
+    title: SNS Retreat Holy Name Retreat 04 Learning to Chant with Devotion 02 2024
+      11 22
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2024/SNS_Retreat_-_Holy_Name_Retreat-04_Learning_to_Chant_with_Devotion-02_-_2024-11-22.mp3
+    date: '2024-11-22'
+    status: transcribed
+    sha256: ad579c275b9140f81b47639529c86dc49fbf8099325aabb50ffb6a93fb8dd0cc
+    duration_seconds: 5514
+    language: en
+    topic_tags:
+    - holy name
+    - chant
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-04-learning-to-chant-with-devo-2024-11-22.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-05-64-rounds-day-inspiration-2-2024-11-23
+    title: SNS Retreat Holy Name Retreat 05 64 Rounds Day Inspiration 2024 11 23
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2024/SNS_Retreat_-_Holy_Name_Retreat-05_64-Rounds_Day_Inspiration_-_2024-11-23.mp3
+    date: '2024-11-23'
+    status: transcribed
+    sha256: 17dd960a8679967f83b6d80ac7d2bf1511324bb57501242e0307bdc0eeab64c6
+    duration_seconds: 1131
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-05-64-rounds-day-inspiration-2-2024-11-23.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-06-learning-to-chant-with-devo-2024-11-24
+    title: SNS Retreat Holy Name Retreat 06 Learning to Chant with Devotion 03 2024
+      11 24
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2024/SNS_Retreat_-_Holy_Name_Retreat-06_Learning_to_Chant_with_Devotion-03_-_2024-11-24.mp3
+    date: '2024-11-24'
+    status: transcribed
+    sha256: e418860ef5f2b398cb93ede06a3adfe86f73565d9689cd512a360b84fafb5d88
+    duration_seconds: 8692
+    language: en
+    topic_tags:
+    - holy name
+    - chant
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-06-learning-to-chant-with-devo-2024-11-24.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-retreat-holy-name-retreat-07-closing-of-the-retreat-2024-2024-11-25
+    title: SNS Retreat Holy Name Retreat 07 Closing of the Retreat 2024 11 25
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Retreats/Holy_Name_Retreat/2024/SNS_Retreat_-_Holy_Name_Retreat-07_Closing_of_the_Retreat_-_2024-11-25.mp3
+    date: '2024-11-25'
+    status: transcribed
+    sha256: bc63837a6a5900b4ca8ab2073f64d91b0ad2714678fa4508722a9438e20bd3c7
+    duration_seconds: 11757
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-retreat-holy-name-retreat-07-closing-of-the-retreat-2024-2024-11-25.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-seminars-harinaam-cintamani-01-2016-07-04-2016-07-04
+    title: SNS Seminars Harinaam Cintamani 01 2016 07 04
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Seminars/Harinama_Cintamani/01/SNS_Seminars_-_Harinaam_Cintamani_01_-_2016-07-04.mp3
+    date: '2016-07-04'
+    status: transcribed
+    sha256: 51c67e20117a15b6f2af7511fee2867ac90c0984474bdf6fc3b08b00819b84f8
+    duration_seconds: 3929
+    language: en
+    topic_tags:
+    - naam
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-seminars-harinaam-cintamani-01-2016-07-04-2016-07-04.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-seminars-harinaam-cintamani-02-2016-07-05-2016-07-05
+    title: SNS Seminars Harinaam Cintamani 02 2016 07 05
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Seminars/Harinama_Cintamani/01/SNS_Seminars_-_Harinaam_Cintamani_02_-_2016-07-05.mp3
+    date: '2016-07-05'
+    status: transcribed
+    sha256: 4f910bd9e2f55cac5a0b9e2e9d1a8977b34bd05c45eb089e69d9036149cba643
+    duration_seconds: 5591
+    language: en
+    topic_tags:
+    - naam
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-seminars-harinaam-cintamani-02-2016-07-05-2016-07-05.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-seminars-harinaam-cintamani-03-2016-07-06-2016-07-06
+    title: SNS Seminars Harinaam Cintamani 03 2016 07 06
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Seminars/Harinama_Cintamani/01/SNS_Seminars_-_Harinaam_Cintamani_03_-_2016-07-06.mp3
+    date: '2016-07-06'
+    status: transcribed
+    sha256: 320ef5cd3b36d56ca86728681617266dd0deb388e1a0ccaae4aa9969123bd7ff
+    duration_seconds: 3966
+    language: en
+    topic_tags:
+    - naam
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-seminars-harinaam-cintamani-03-2016-07-06-2016-07-06.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-seminars-harinaam-cintamani-04-2016-07-08-2016-07-08
+    title: SNS Seminars Harinaam Cintamani 04 2016 07 08
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Seminars/Harinama_Cintamani/01/SNS_Seminars_-_Harinaam_Cintamani_04_-_2016-07-08.mp3
+    date: '2016-07-08'
+    status: transcribed
+    sha256: b9765a2fc561a7f7ba3dac8164ef2480367958a570efac7c7cdde81c5e206065
+    duration_seconds: 4617
+    language: en
+    topic_tags:
+    - naam
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-seminars-harinaam-cintamani-04-2016-07-08-2016-07-08.md
+    whisper_model: ggml-large-v3-turbo
+  - id: sns-seminars-harinaam-cintamani-05-2016-07-09-2016-07-09
+    title: SNS Seminars Harinaam Cintamani 05 2016 07 09
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Seminars/Harinama_Cintamani/01/SNS_Seminars_-_Harinaam_Cintamani_05_-_2016-07-09.mp3
+    date: '2016-07-09'
+    status: transcribed
+    sha256: 8eecc90afc6d326a7739a331350b3e8271c15c77a8b090879ba1e5ebebc37aed
+    duration_seconds: 3455
+    language: en
+    topic_tags:
+    - naam
+    transcript_path: corpus/transcripts/sacinandana-maharaja/sns-seminars-harinaam-cintamani-05-2016-07-09-2016-07-09.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 01-sns-seminars-kirtan-course-harinama-cintamani-day-01-01-i
+    title: 01 SNS Seminars Kirtan Course Harinama Cintamani Day 01 01 Introduction
+      ISKCON Radhadesh
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Seminars/Harinama_Cintamani/02/01_-_SNS_Seminars_-_Kirtan_Course_Harinama_Cintamani_Day_01_01-Introduction_ISKCON_Radhadesh.mp3
+    status: transcribed
+    sha256: d10bf858863c4509f590021b3e6e8449a00c31262a1927e9c783657bb0b48c69
+    duration_seconds: 4579
+    language: en
+    topic_tags:
+    - harinam
+    - nama
+    transcript_path: corpus/transcripts/sacinandana-maharaja/01-sns-seminars-kirtan-course-harinama-cintamani-day-01-01-i.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 02-sns-seminars-kirtan-course-harinama-cintamani-day-01-02-e
+    title: 02 SNS Seminars Kirtan Course Harinama Cintamani Day 01 02 Evening Session
+      ISKCON Radhadesh
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Seminars/Harinama_Cintamani/02/02_-_SNS_Seminars_-_Kirtan_Course_Harinama_Cintamani_Day_01_02-Evening_Session_ISKCON_Radhadesh.mp3
+    status: transcribed
+    sha256: 6b874c03e720ba4612bddf572edc14ec2370cd210f85132e1fa47d74c1da6451
+    duration_seconds: 5509
+    language: en
+    topic_tags:
+    - harinam
+    - nama
+    transcript_path: corpus/transcripts/sacinandana-maharaja/02-sns-seminars-kirtan-course-harinama-cintamani-day-01-02-e.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 03-sns-seminars-kirtan-course-harinama-cintamani-day-01-03-e
+    title: 03 SNS Seminars Kirtan Course Harinama Cintamani Day 01 03 Evening Last
+      Session ISKCON Radhadesh
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Seminars/Harinama_Cintamani/02/03_-_SNS_Seminars_-_Kirtan_Course_Harinama_Cintamani_Day_01_03-Evening_Last_Session_ISKCON_Radhadesh.mp3
+    status: transcribed
+    sha256: 02340a93a3e27bc0fcabb1ffe6b4eb2e9e6306e72ec8c6565f7be9d17ebc7d09
+    duration_seconds: 2098
+    language: en
+    topic_tags:
+    - harinam
+    - nama
+    transcript_path: corpus/transcripts/sacinandana-maharaja/03-sns-seminars-kirtan-course-harinama-cintamani-day-01-03-e.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 04-sns-seminars-kirtan-course-harinama-cintamani-day-02-01-s
+    title: 04 SNS Seminars Kirtan Course Harinama Cintamani Day 02 01 SB Lecture ISKCON
+      Radhadesh
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Seminars/Harinama_Cintamani/02/04_-_SNS_Seminars_-_Kirtan_Course_Harinama_Cintamani_Day_02_01-SB_Lecture_ISKCON_Radhadesh.mp3
+    status: transcribed
+    sha256: 37624f909d9d590983f4968d245e74b76e21e2dcc5f263e6ea92087b15d43755
+    duration_seconds: 3427
+    language: en
+    topic_tags:
+    - harinam
+    - nama
+    transcript_path: corpus/transcripts/sacinandana-maharaja/04-sns-seminars-kirtan-course-harinama-cintamani-day-02-01-s.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 05-sns-seminars-kirtan-course-harinama-cintamani-day-02-02-m
+    title: 05 SNS Seminars Kirtan Course Harinama Cintamani Day 02 02 Morning Session
+      ISKCON Radhadesh
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Seminars/Harinama_Cintamani/02/05_-_SNS_Seminars_-_Kirtan_Course_Harinama_Cintamani_Day_02_02_Morning_Session_ISKCON_Radhadesh.mp3
+    status: transcribed
+    sha256: 020898fa695b761a02d6139bdae25c746ff100a6ae93388664922bf43d8434ef
+    duration_seconds: 2832
+    language: en
+    topic_tags:
+    - harinam
+    - nama
+    transcript_path: corpus/transcripts/sacinandana-maharaja/05-sns-seminars-kirtan-course-harinama-cintamani-day-02-02-m.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 06-sns-seminars-kirtan-course-harinama-cintamani-day-02-03-e
+    title: 06 SNS Seminars Kirtan Course Harinama Cintamani Day 02 03 Evening Haridas
+      Thakur ISKCON Radhadesh
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Seminars/Harinama_Cintamani/02/06_-_SNS_Seminars_-_Kirtan_Course_Harinama_Cintamani_Day_02_03_Evening-Haridas_Thakur_ISKCON_Radhadesh.mp3
+    status: transcribed
+    sha256: 8173a3fd433ea2f35c2bab667a04a97075263bf9e4511cb292f19f5284c84496
+    duration_seconds: 3927
+    language: en
+    topic_tags:
+    - harinam
+    - nama
+    transcript_path: corpus/transcripts/sacinandana-maharaja/06-sns-seminars-kirtan-course-harinama-cintamani-day-02-03-e.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 07-sns-seminars-kirtan-course-harinama-cintamani-day-03-02-m
+    title: 07 SNS Seminars Kirtan Course Harinama Cintamani Day 03 02 Morning Session
+      ISKCON Radhadesh
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Seminars/Harinama_Cintamani/02/07_-_SNS_Seminars_-_Kirtan_Course_Harinama_Cintamani_Day_03_02_Morning_Session_ISKCON_Radhadesh.mp3
+    status: transcribed
+    sha256: 5338b9f87d27f33e96e724f7a316bbe282e2c2d2562628ac27c405d0bacf76df
+    duration_seconds: 3282
+    language: en
+    topic_tags:
+    - harinam
+    - nama
+    transcript_path: corpus/transcripts/sacinandana-maharaja/07-sns-seminars-kirtan-course-harinama-cintamani-day-03-02-m.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 08-sns-seminars-kirtan-course-harinama-cintamani-day-03-03-m
+    title: 08 SNS Seminars Kirtan Course Harinama Cintamani Day 03 03 Morning Session
+      ISKCON Radhadesh
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Seminars/Harinama_Cintamani/02/08_-_SNS_Seminars_-_Kirtan_Course_Harinama_Cintamani_Day_03_03_Morning_Session_ISKCON_Radhadesh.mp3
+    status: transcribed
+    sha256: f779646105d14e31863ecb9f623dce2d72297ff0dadc521b774e06ec2ed00e2a
+    duration_seconds: 3434
+    language: en
+    topic_tags:
+    - harinam
+    - nama
+    transcript_path: corpus/transcripts/sacinandana-maharaja/08-sns-seminars-kirtan-course-harinama-cintamani-day-03-03-m.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 09-sns-seminars-kirtan-course-harinama-cintamani-day-03-04-e
+    title: 09 SNS Seminars Kirtan Course Harinama Cintamani Day 03 04 Evening Session
+      ISKCON Radhadesh
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Seminars/Harinama_Cintamani/02/09_-_SNS_Seminars_-_Kirtan_Course_Harinama_Cintamani_Day_03_04_Evening_Session_ISKCON_Radhadesh.mp3
+    status: transcribed
+    sha256: 14730a71048b5046cf76d0b8f8a644275af5e0cf9b1860796fe922b260bb4caf
+    duration_seconds: 5324
+    language: en
+    topic_tags:
+    - harinam
+    - nama
+    transcript_path: corpus/transcripts/sacinandana-maharaja/09-sns-seminars-kirtan-course-harinama-cintamani-day-03-04-e.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 10-sns-seminars-kirtan-course-harinama-cintamani-day-04-01-m
+    title: 10 SNS Seminars Kirtan Course Harinama Cintamani Day 04 01 Morning Lecture
+      ISKCON Radhadesh
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Seminars/Harinama_Cintamani/02/10_-_SNS_Seminars_-_Kirtan_Course_Harinama_Cintamani_Day_04_01_Morning_Lecture_ISKCON_Radhadesh.mp3
+    status: transcribed
+    sha256: 76eee6dd6acbf28fec889209308927534fa8a35849dc73e433a51ffcaeea0730
+    duration_seconds: 3589
+    language: en
+    topic_tags:
+    - harinam
+    - nama
+    transcript_path: corpus/transcripts/sacinandana-maharaja/10-sns-seminars-kirtan-course-harinama-cintamani-day-04-01-m.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 11-sns-seminars-kirtan-course-harinama-cintamani-day-04-02-m
+    title: 11 SNS Seminars Kirtan Course Harinama Cintamani Day 04 02 Morning Session
+      01 ISKCON Radhadesh
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Seminars/Harinama_Cintamani/02/11_-_SNS_Seminars_-_Kirtan_Course_Harinama_Cintamani_Day_04_02_Morning_Session_01_ISKCON_Radhadesh.mp3
+    status: transcribed
+    sha256: fc5ee8657720830dd8cf4b61f5e6a79c206c23b3319395ce635773462b90c8d8
+    duration_seconds: 6402
+    language: en
+    topic_tags:
+    - harinam
+    - nama
+    transcript_path: corpus/transcripts/sacinandana-maharaja/11-sns-seminars-kirtan-course-harinama-cintamani-day-04-02-m.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 12-sns-seminars-kirtan-course-harinama-cintamani-day-04-03-m
+    title: 12 SNS Seminars Kirtan Course Harinama Cintamani Day 04 03 Morning Session
+      02 ISKCON Radhadesh
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Seminars/Harinama_Cintamani/02/12_-_SNS_Seminars_-_Kirtan_Course_Harinama_Cintamani_Day_04_03_Morning_Session_02_ISKCON_Radhadesh.mp3
+    status: transcribed
+    sha256: 2de3bc1433bd32765f40b0263ef446f657eb64fa46aa34dbad4f470cf3ee3749
+    duration_seconds: 1390
+    language: en
+    topic_tags:
+    - harinam
+    - nama
+    transcript_path: corpus/transcripts/sacinandana-maharaja/12-sns-seminars-kirtan-course-harinama-cintamani-day-04-03-m.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 13-sns-seminars-kirtan-course-harinama-cintamani-day-04-04-e
+    title: 13 SNS Seminars Kirtan Course Harinama Cintamani Day 04 04 Evening Session
+      ISKCON Radhadesh
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Seminars/Harinama_Cintamani/02/13_-_SNS_Seminars_-_Kirtan_Course_Harinama_Cintamani_Day_04_04_Evening_Session_ISKCON_Radhadesh.mp3
+    status: transcribed
+    sha256: 6bbf3fb98edecd5e22c42b5c8b398441a67079ae4e0f7db88bb7b5851f4a82fc
+    duration_seconds: 4484
+    language: en
+    topic_tags:
+    - harinam
+    - nama
+    transcript_path: corpus/transcripts/sacinandana-maharaja/13-sns-seminars-kirtan-course-harinama-cintamani-day-04-04-e.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 14-sns-seminars-kirtan-course-harinama-cintamani-day-04-05-c
+    title: 14 SNS Seminars Kirtan Course Harinama Cintamani Day 04 05 Closing Kirtan
+      ISKCON Radhadesh
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Seminars/Harinama_Cintamani/02/14_-_SNS_Seminars_-_Kirtan_Course_Harinama_Cintamani_Day_04_05_Closing_Kirtan_ISKCON_Radhadesh.mp3
+    status: transcribed
+    sha256: 0b09d4dd045434b02055e6a610ac008324c0e8f38dc4ab2624414fcf7b8ae707
+    duration_seconds: 1311
+    language: en
+    topic_tags:
+    - harinam
+    - nama
+    transcript_path: corpus/transcripts/sacinandana-maharaja/14-sns-seminars-kirtan-course-harinama-cintamani-day-04-05-c.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 15-sns-seminars-kirtan-course-harinama-cintamani-day-05-01-m
+    title: 15 SNS Seminars Kirtan Course Harinama Cintamani Day 05 01 Morning Lecture
+      ISKCON Radhadesh
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Seminars/Harinama_Cintamani/02/15_-_SNS_Seminars_-_Kirtan_Course_Harinama_Cintamani_Day_05_01_Morning_Lecture_ISKCON_Radhadesh.mp3
+    status: transcribed
+    sha256: 01af61ae7595b37f32f50f035afd863bfd05fe559f129fb5c4240bbe3f38378c
+    duration_seconds: 4012
+    language: en
+    topic_tags:
+    - harinam
+    - nama
+    transcript_path: corpus/transcripts/sacinandana-maharaja/15-sns-seminars-kirtan-course-harinama-cintamani-day-05-01-m.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 16-sns-seminars-kirtan-course-harinama-cintamani-day-05-02-m
+    title: 16 SNS Seminars Kirtan Course Harinama Cintamani Day 05 02 Morning Session
+      ISKCON Radhadesh
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Seminars/Harinama_Cintamani/02/16_-_SNS_Seminars_-_Kirtan_Course_Harinama_Cintamani_Day_05_02_Morning_Session_ISKCON_Radhadesh.mp3
+    status: transcribed
+    sha256: 2a9398371cac31fc1732ed7ff7b4bc0bbcca446713654e339df2e2e59ba44247
+    duration_seconds: 7140
+    language: en
+    topic_tags:
+    - harinam
+    - nama
+    transcript_path: corpus/transcripts/sacinandana-maharaja/16-sns-seminars-kirtan-course-harinama-cintamani-day-05-02-m.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 17-sns-seminars-kirtan-course-harinama-cintamani-day-05-03-e
+    title: 17 SNS Seminars Kirtan Course Harinama Cintamani Day 05 03 Evening Session
+      ISKCON Radhadesh
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Seminars/Harinama_Cintamani/02/17_-_SNS_Seminars_-_Kirtan_Course_Harinama_Cintamani_Day_05_03_Evening_Session_ISKCON_Radhadesh.mp3
+    status: transcribed
+    sha256: dee23c0b35a5a40c8ae914dd2978f62af0377abce57f67f47845b02008a1483a
+    duration_seconds: 3625
+    language: en
+    topic_tags:
+    - harinam
+    - nama
+    transcript_path: corpus/transcripts/sacinandana-maharaja/17-sns-seminars-kirtan-course-harinama-cintamani-day-05-03-e.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 18-sns-seminars-kirtan-course-harinama-cintamani-day-05-04-c
+    title: 18 SNS Seminars Kirtan Course Harinama Cintamani Day 05 04 Closing Kirtan
+      ISKCON Radhadesh
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Seminars/Harinama_Cintamani/02/18_-_SNS_Seminars_-_Kirtan_Course_Harinama_Cintamani_Day_05_04_Closing_Kirtan_ISKCON_Radhadesh.mp3
+    status: transcribed
+    sha256: 8382caee780dae7e8bbfe9542067eec6e277e414c0d7e9f2ad9ad19f72e2afaa
+    duration_seconds: 1308
+    language: en
+    topic_tags:
+    - harinam
+    - nama
+    transcript_path: corpus/transcripts/sacinandana-maharaja/18-sns-seminars-kirtan-course-harinama-cintamani-day-05-04-c.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 19-sns-seminars-kirtan-course-harinama-cintamani-day-06-guru
+    title: 19 SNS Seminars Kirtan Course Harinama Cintamani Day 06 Guru Puja ISKCON
+      Radhadesh
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Seminars/Harinama_Cintamani/02/19_-_SNS_Seminars_-_Kirtan_Course_Harinama_Cintamani_Day_06_Guru_Puja_ISKCON_Radhadesh.mp3
+    status: transcribed
+    sha256: 9787fdeed63582a77f159ed41fcfb2b458dce3b2db3ef9f13626bbb529aba8ea
+    duration_seconds: 1418
+    language: en
+    topic_tags:
+    - harinam
+    - nama
+    transcript_path: corpus/transcripts/sacinandana-maharaja/19-sns-seminars-kirtan-course-harinama-cintamani-day-06-guru.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 20-sns-seminars-kirtan-course-harinama-cintamani-day-06-01-m
+    title: 20 SNS Seminars Kirtan Course Harinama Cintamani Day 06 01 Morning Lecture
+      ISKCON Radhadesh
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Seminars/Harinama_Cintamani/02/20_-_SNS_Seminars_-_Kirtan_Course_Harinama_Cintamani_Day_06_01_Morning_Lecture_ISKCON_Radhadesh.mp3
+    status: transcribed
+    sha256: b8477e177dbf81d4dc9c1c6460c80f7b22b7a08df50adce96e11f08d43badfef
+    duration_seconds: 3437
+    language: en
+    topic_tags:
+    - harinam
+    - nama
+    transcript_path: corpus/transcripts/sacinandana-maharaja/20-sns-seminars-kirtan-course-harinama-cintamani-day-06-01-m.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 21-sns-seminars-kirtan-course-harinama-cintamani-day-06-02-m
+    title: 21 SNS Seminars Kirtan Course Harinama Cintamani Day 06 02 Morning Session
+      ISKCON Radhadesh
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Sacinandana_Swami/English_Lectures/Seminars/Harinama_Cintamani/02/21_-_SNS_Seminars_-_Kirtan_Course_Harinama_Cintamani_Day_06_02_Morning_Session_ISKCON_Radhadesh.mp3
+    status: transcribed
+    sha256: fd28548f9e799b4ce497db8b724be27bb2209765e253c2d760cf76d10ff8f641
+    duration_seconds: 6514
+    language: en
+    topic_tags:
+    - harinam
+    - nama
+    transcript_path: corpus/transcripts/sacinandana-maharaja/21-sns-seminars-kirtan-course-harinama-cintamani-day-06-02-m.md
+    whisper_model: ggml-large-v3-turbo
 - id: mahatma-prabhu
   speaker: Mahātmā Prabhu
   kind: speaker
-  lectures: []
+  lectures:
+  - id: mahatama-pr-japa-workshop-01-alachua
+    title: Mahatama Pr Japa Workshop 01 Alachua
+    urls:
+    - https://audio.iskcondesiretree.com/03_-_ISKCON_Prabhujis/ISKCON_Prabhujis_-_K_to_R/His_Grace_Mahatama_Prabhu/Japa_Workshop/Mahatama_Pr_Japa_Workshop-01_-_Alachua.mp3
+    status: transcribed
+    sha256: 8e5aa38e25b3b3994da985b6a0ce322b31656b158a12bd75cc2c5d3484fbfa51
+    duration_seconds: 2542
+    language: en
+    topic_tags:
+    - japa
+    transcript_path: corpus/transcripts/mahatma-prabhu/mahatama-pr-japa-workshop-01-alachua.md
+    whisper_model: ggml-large-v3-turbo
+  - id: mahatama-pr-japa-workshop-02-alachua
+    title: Mahatama Pr Japa Workshop 02 Alachua
+    urls:
+    - https://audio.iskcondesiretree.com/03_-_ISKCON_Prabhujis/ISKCON_Prabhujis_-_K_to_R/His_Grace_Mahatama_Prabhu/Japa_Workshop/Mahatama_Pr_Japa_Workshop-02_-_Alachua.mp3
+    status: transcribed
+    sha256: bf387f45aa2418f5456ce30c161ca6518fcecc14a9699a4bf49a8e8111d4ab5c
+    duration_seconds: 3950
+    language: en
+    topic_tags:
+    - japa
+    transcript_path: corpus/transcripts/mahatma-prabhu/mahatama-pr-japa-workshop-02-alachua.md
+    whisper_model: ggml-large-v3-turbo
+  - id: mahatama-pr-japa-workshop-03-alachua
+    title: Mahatama Pr Japa Workshop 03 Alachua
+    urls:
+    - https://audio.iskcondesiretree.com/03_-_ISKCON_Prabhujis/ISKCON_Prabhujis_-_K_to_R/His_Grace_Mahatama_Prabhu/Japa_Workshop/Mahatama_Pr_Japa_Workshop-03_-_Alachua.mp3
+    status: transcribed
+    sha256: e4d59a6eb352d858657a5dcb4ea8da60044270fe2dd27eb0d39cb4462efd7788
+    duration_seconds: 5464
+    language: en
+    topic_tags:
+    - japa
+    transcript_path: corpus/transcripts/mahatma-prabhu/mahatama-pr-japa-workshop-03-alachua.md
+    whisper_model: ggml-large-v3-turbo
+  - id: mahatama-pr-japa-workshop-04-alachua
+    title: Mahatama Pr Japa Workshop 04 Alachua
+    urls:
+    - https://audio.iskcondesiretree.com/03_-_ISKCON_Prabhujis/ISKCON_Prabhujis_-_K_to_R/His_Grace_Mahatama_Prabhu/Japa_Workshop/Mahatama_Pr_Japa_Workshop-04_-_Alachua.mp3
+    status: transcribed
+    sha256: 1fab8df6323d8a76917eefab9511b48b75339a76ed139c1a16eb856a1fd56fde
+    duration_seconds: 750
+    language: en
+    topic_tags:
+    - japa
+    transcript_path: corpus/transcripts/mahatma-prabhu/mahatama-pr-japa-workshop-04-alachua.md
+    whisper_model: ggml-large-v3-turbo
+  - id: mahatama-pr-japa-workshop-05-alachua
+    title: Mahatama Pr Japa Workshop 05 Alachua
+    urls:
+    - https://audio.iskcondesiretree.com/03_-_ISKCON_Prabhujis/ISKCON_Prabhujis_-_K_to_R/His_Grace_Mahatama_Prabhu/Japa_Workshop/Mahatama_Pr_Japa_Workshop-05_-_Alachua.mp3
+    status: transcribed
+    sha256: 0da925780fa33ddbce56b506670ea4363754853b7579268f07cc7dfb2b9d8a04
+    duration_seconds: 2192
+    language: en
+    topic_tags:
+    - japa
+    transcript_path: corpus/transcripts/mahatma-prabhu/mahatama-pr-japa-workshop-05-alachua.md
+    whisper_model: ggml-large-v3-turbo
+  - id: mahatama-pr-japa-workshop-06-alachua
+    title: Mahatama Pr Japa Workshop 06 Alachua
+    urls:
+    - https://audio.iskcondesiretree.com/03_-_ISKCON_Prabhujis/ISKCON_Prabhujis_-_K_to_R/His_Grace_Mahatama_Prabhu/Japa_Workshop/Mahatama_Pr_Japa_Workshop-06_-_Alachua.mp3
+    status: transcribed
+    sha256: 0fb26e8a5fd922cfedc5fd8410cd1422c8b5b1e3224f84542415b60e9cd047b1
+    duration_seconds: 5118
+    language: en
+    topic_tags:
+    - japa
+    transcript_path: corpus/transcripts/mahatma-prabhu/mahatama-pr-japa-workshop-06-alachua.md
+    whisper_model: ggml-large-v3-turbo
 - id: radhanath-swami
   speaker: HH Rādhānāth Swami
   kind: speaker
-  lectures: []
+  lectures:
+  - id: 1990-013-the-story-of-ajamila-lecture-radhanath-swami-mumbai-1990-01-28
+    title: 1990 013 The Story Of Ajamila Lecture Radhanath Swami Mumbai 1990 01 28
+      IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1990-013_The_Story_Of_Ajamila_Lecture_-_Radhanath_Swami_Mumbai_1990-01-28_IDesireTree.mp3
+    date: '1990-01-28'
+    status: transcribed
+    sha256: 48d99685d302153832c244825049963dcdf0590a91eeb1ef03325b9cf9acd7c7
+    duration_seconds: 4146
+    language: en
+    transcript_path: corpus/transcripts/radhanath-swami/1990-013-the-story-of-ajamila-lecture-radhanath-swami-mumbai-1990-01-28.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 1990-020-the-secret-of-proper-chanting-smskm-2-radhanath-swa-1990-02-11
+    title: 1990 020 The Secret Of Proper Chanting SMSKM 2 Radhanath Swami Mumbai 1990
+      02 11 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1990-020_The_Secret_Of_Proper_Chanting_SMSKM-2_-_Radhanath_Swami_Mumbai_1990-02-11_IDesireTree.mp3
+    date: '1990-02-11'
+    status: transcribed
+    sha256: 26b5e9ecab19fa3426b0040bb5afa1066e2f7a1152b80ba008ef4bdbf11d8658
+    duration_seconds: 2701
+    language: en
+    topic_tags:
+    - chant
+    transcript_path: corpus/transcripts/radhanath-swami/1990-020-the-secret-of-proper-chanting-smskm-2-radhanath-swa-1990-02-11.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 1991-075-refuge-in-holy-vibration-lecture-radhanath-swami-mu-1991-10-12
+    title: 1991 075 Refuge In Holy Vibration Lecture Radhanath Swami Mumbai 1991 10
+      12 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1991-075_Refuge_In_Holy_Vibration_Lecture_-_Radhanath_Swami_Mumbai_1991-10-12_IDesireTree.mp3
+    date: '1991-10-12'
+    status: transcribed
+    sha256: 8a75026c171c5c31cb4ce977cdc9bb2970638b5777bc861bb84d3aef56716eac
+    duration_seconds: 2756
+    language: en
+    transcript_path: corpus/transcripts/radhanath-swami/1991-075-refuge-in-holy-vibration-lecture-radhanath-swami-mu-1991-10-12.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 1991-082-story-of-ajamila-sb-06-03-22-23-radhanath-swami-mum-1991-10-18
+    title: 1991 082 Story Of Ajamila SB 06 03 22 23 Radhanath Swami Mumbai 1991 10
+      18 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1991-082_Story_Of_Ajamila_SB_06-03-22-23_-_Radhanath_Swami_Mumbai_1991-10-18_IDesireTree.mp3
+    date: '1991-10-18'
+    status: transcribed
+    sha256: 4fcd2638e0ba476902dc239a19bee3d58c505d891b3b13d8f77bc73b6451ee34
+    duration_seconds: 2720
+    language: en
+    transcript_path: corpus/transcripts/radhanath-swami/1991-082-story-of-ajamila-sb-06-03-22-23-radhanath-swami-mum-1991-10-18.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 1991-161-name-ultimate-purification-bg-02-44-radhanath-swami-1991-12-30
+    title: 1991 161 Name Ultimate purification BG 02 44 Radhanath Swami Mumbai 1991
+      12 30 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1991-161_Name_-_Ultimate_purification_BG_02-44_-_Radhanath_Swami_Mumbai_1991-12-30_IDesireTree.mp3
+    date: '1991-12-30'
+    status: transcribed
+    sha256: eeabb6bad80b00962f026f82e5fad4fe501b9c5276c16d6867c1e104866d97ac
+    duration_seconds: 4190
+    language: en
+    transcript_path: corpus/transcripts/radhanath-swami/1991-161-name-ultimate-purification-bg-02-44-radhanath-swami-1991-12-30.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 1993-030-aspiration-for-chanting-mahamantra-lecture-radhanat-1993-03-26
+    title: 1993 030 Aspiration For Chanting Mahamantra Lecture Radhanath Swami Mumbai
+      1993 03 26 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1993-030_Aspiration_For_Chanting_Mahamantra_Lecture_-_Radhanath_Swami_Mumbai_1993-03-26_IDesireTree.mp3
+    date: '1993-03-26'
+    status: transcribed
+    sha256: 5ce05695779356969336b03104c384c4422b35e4636ad6ab7aca67e0a4925b83
+    duration_seconds: 3217
+    language: en
+    topic_tags:
+    - chant
+    transcript_path: corpus/transcripts/radhanath-swami/1993-030-aspiration-for-chanting-mahamantra-lecture-radhanat-1993-03-26.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 1993-061-the-power-of-holyname-ht-bg-05-18-radhanath-swami-m-1993-04-19
+    title: 1993 061 The Power Of Holyname Ht BG 05 18 Radhanath Swami Mumbai 1993
+      04 19 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1993-061_The_Power_Of_Holyname_Ht_-_BG_05-18_-_Radhanath_Swami_Mumbai_1993-04-19_IDesireTree.mp3
+    date: '1993-04-19'
+    status: transcribed
+    sha256: 419336f173b185be0bcab244ae8486ecc7413300e9684b276a2f9dd84f874794
+    duration_seconds: 1812
+    language: en
+    topic_tags:
+    - holyname
+    transcript_path: corpus/transcripts/radhanath-swami/1993-061-the-power-of-holyname-ht-bg-05-18-radhanath-swami-m-1993-04-19.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 1993-104-the-holy-name-is-all-auspicious-lecture-radhanath-s-1993-06-04
+    title: 1993 104 The Holy Name Is all auspicious Lecture Radhanath Swami 1993 06
+      04 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1993-104_The_Holy_Name_Is_all_auspicious_Lecture_-_Radhanath_Swami_1993-06-04_IDesireTree.mp3
+    date: '1993-06-04'
+    status: transcribed
+    sha256: 2736b862c91efb9e9bc08eb489a356657959cb6572fb8a64c457ceaa0ef97780
+    duration_seconds: 2847
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/radhanath-swami/1993-104-the-holy-name-is-all-auspicious-lecture-radhanath-s-1993-06-04.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 1993-177-chanting-outweighs-everything-lecture-radhanath-swa-1993-12-11
+    title: 1993 177 Chanting Outweighs Everything Lecture Radhanath Swami Mumbai 1993
+      12 11 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1993-177_Chanting_Outweighs_Everything_Lecture_-_Radhanath_Swami_Mumbai_1993-12-11_IDesireTree.mp3
+    date: '1993-12-11'
+    status: transcribed
+    sha256: 071f23230529d3906ae4c51fcb553f10d125cb6ede950dccdce937d0f3f637c4
+    duration_seconds: 3337
+    language: en
+    topic_tags:
+    - chant
+    transcript_path: corpus/transcripts/radhanath-swami/1993-177-chanting-outweighs-everything-lecture-radhanath-swa-1993-12-11.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 1993-183-the-supreme-yajna-bg-03-14-radhanath-swami-mumbai-1-1993-12-15
+    title: 1993 183 The Supreme Yajna BG 03 14 Radhanath Swami Mumbai 1993 12 15 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1993-183_The_Supreme_Yajna_BG_03_14_-_Radhanath_Swami_Mumbai_1993-12-15_IDesireTree.mp3
+    date: '1993-12-15'
+    status: transcribed
+    sha256: 26d1c8bea1ec0e88befd093b1c748924c5895ad9b876a4eb2c246da1f1cb33b8
+    duration_seconds: 2790
+    language: en
+    transcript_path: corpus/transcripts/radhanath-swami/1993-183-the-supreme-yajna-bg-03-14-radhanath-swami-mumbai-1-1993-12-15.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 1993-188-fire-of-harinaam-bg-03-10-radhanath-swami-mumbai-19-1993-12-19
+    title: 1993 188 Fire Of Harinaam BG 03 10 Radhanath Swami Mumbai 1993 12 19 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1993-188_Fire_Of_Harinaam_BG_03-10_-_Radhanath_Swami_Mumbai_1993-12-19_IDesireTree.mp3
+    date: '1993-12-19'
+    status: transcribed
+    sha256: 68d8222bfa6efdbb8be414a43f4f2b429e5c58eed21b2b5308a6816127602dc3
+    duration_seconds: 2787
+    language: en
+    topic_tags:
+    - naam
+    transcript_path: corpus/transcripts/radhanath-swami/1993-188-fire-of-harinaam-bg-03-10-radhanath-swami-mumbai-19-1993-12-19.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 1994-008-value-of-the-holy-name-lecture-radhanath-swami-mumb
+    title: 1994 008 Value Of the Holy Name Lecture Radhanath Swami Mumbai 199 01 15
+      IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1994-008_Value_Of_the_Holy_Name_Lecture_-_Radhanath_Swami_Mumbai_199-01-15_IDesireTree.mp3
+    status: transcribed
+    sha256: 61364f15c16cdce1713015fafb9f6ed848f9a0ab900eee8648e3250eb67a937e
+    duration_seconds: 5721
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/radhanath-swami/1994-008-value-of-the-holy-name-lecture-radhanath-swami-mumb.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 1994-023-real-touchstone-holy-name-bg-07-28-radhanath-swami-1994-02-09
+    title: 1994 023 Real touchstone Holy name BG 07 28 Radhanath Swami Mumbai 1994
+      02 09 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1994-023_Real_touchstone_Holy_name_BG_07-28_-_Radhanath_Swami_Mumbai_1994-02-09_IDesireTree.mp3
+    date: '1994-02-09'
+    status: transcribed
+    sha256: dfb592da79b3217ddf2b524379bfbd6e15dffd42197adf494f7e5bf525ad7c28
+    duration_seconds: 2802
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/radhanath-swami/1994-023-real-touchstone-holy-name-bg-07-28-radhanath-swami-1994-02-09.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 1994-100-transcendental-remedy-for-this-age-lecture-radhanat-1994-06-16
+    title: 1994 100 Transcendental Remedy for this Age Lecture Radhanath Swami NV
+      1994 06 16 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1994-100_Transcendental_Remedy_for_this_Age_Lecture_-_Radhanath_Swami_NV_1994-06-16_IDesireTree.mp3
+    date: '1994-06-16'
+    status: transcribed
+    sha256: ce6129b9639fa57499233fe16619e4887fa5cc40f0ddbfd9a283c86abc3d234c
+    duration_seconds: 1646
+    language: en
+    transcript_path: corpus/transcripts/radhanath-swami/1994-100-transcendental-remedy-for-this-age-lecture-radhanat-1994-06-16.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 1994-188-mercy-in-form-of-holy-name-ht-bg-09-20-radhanath-sw-1994-10-12
+    title: 1994 188 Mercy In Form Of Holy Name HT BG 09 20 Radhanath Swami Pune 1994
+      10 12 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1994-188_Mercy_In_Form_Of_Holy_Name_HT_-_BG_09-20_-_Radhanath_Swami_Pune_1994-10-12_IDesireTree.mp3
+    date: '1994-10-12'
+    status: transcribed
+    sha256: e9fbdea53db52f35701f1ec1805cc4b70c7b0b8d14d1dda812e8b18e4b0f1b4b
+    duration_seconds: 3169
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/radhanath-swami/1994-188-mercy-in-form-of-holy-name-ht-bg-09-20-radhanath-sw-1994-10-12.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 1994-215-glories-of-the-holy-name-lecture-radhanath-swami-19
+    title: 1994 215 Glories of the Holy Name Lecture Radhanath Swami 1994 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1994-215_Glories_of_the_Holy_Name_Lecture_-_Radhanath_Swami_1994_IDesireTree.mp3
+    status: transcribed
+    sha256: ec6d440767b3738bcad7b3841086daae926b7889dac00588741e6461b0b1e1aa
+    duration_seconds: 1832
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/radhanath-swami/1994-215-glories-of-the-holy-name-lecture-radhanath-swami-19.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 1995-004-our-aspiration-to-chant-humbly-bg-03-31-radhanath-s-1995-01-03
+    title: 1995 004 Our Aspiration To Chant Humbly BG 03 31 Radhanath Swami Mumbai
+      1995 01 03
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1995-004_Our_Aspiration_To_Chant_Humbly_BG_03-31_-_Radhanath_Swami_Mumbai_1995-01-03.mp3
+    date: '1995-01-03'
+    status: transcribed
+    sha256: 07dd7d3104556b961fe6d447f17372f1bd39ece72f0ab4d1f1ee467e3bba25ef
+    duration_seconds: 1742
+    language: en
+    topic_tags:
+    - chant
+    transcript_path: corpus/transcripts/radhanath-swami/1995-004-our-aspiration-to-chant-humbly-bg-03-31-radhanath-s-1995-01-03.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 1995-009-kunti-s-dependence-on-holy-name-sb-01-08-38-radhana-1995-01-07
+    title: 1995 009 Kunti's Dependence On Holy Name SB 01 08 38 Radhanath Swami Mumbai
+      1995 01 07
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1995-009_Kunti's_Dependence_On_Holy_Name_SB_01-08-38_-_Radhanath_Swami_Mumbai_1995-01-07.mp3
+    date: '1995-01-07'
+    status: transcribed
+    sha256: 91b90f0bdd01d7c4b3a036f1af45982893259a018d02c101fab4ecfc3e025544
+    duration_seconds: 2406
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/radhanath-swami/1995-009-kunti-s-dependence-on-holy-name-sb-01-08-38-radhana-1995-01-07.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 1995-059-hari-nama-sankirtan-cc-ml-20-34-radhanath-swami-mum-1995-03-12
+    title: 1995 059 Hari Nama Sankirtan CC ML 20 34 Radhanath Swami Mumbai 1995 03
+      12
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1995-059_Hari_Nama_Sankirtan_CC_ML_20-34_-_Radhanath_Swami_Mumbai_1995-03-12.mp3
+    date: '1995-03-12'
+    status: transcribed
+    sha256: 09f88eab9f902781efa3e7eafd48580eb6d3b311b21397c6124085e84a7f4a37
+    duration_seconds: 3293
+    language: en
+    topic_tags:
+    - nama
+    transcript_path: corpus/transcripts/radhanath-swami/1995-059-hari-nama-sankirtan-cc-ml-20-34-radhanath-swami-mum-1995-03-12.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 1996-086-king-shivaji-took-shelter-of-holy-name-mt-bg-02-48-1996-04-19
+    title: 1996 086 King Shivaji Took Shelter Of Holy Name Mt BG 02 48 Radhanath Swami
+      Mumbai 1996 04 19 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1996-086_King_Shivaji_Took_Shelter_Of_Holy_Name_Mt_-_BG_02-48_-_Radhanath_Swami_Mumbai_1996-04-19_IDesireTree.mp3
+    date: '1996-04-19'
+    status: transcribed
+    sha256: ac5efa7a69fb6ae5ed494f6edad4b3ee60766c8b3a2d3a3b296e4564ad02081f
+    duration_seconds: 1722
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/radhanath-swami/1996-086-king-shivaji-took-shelter-of-holy-name-mt-bg-02-48-1996-04-19.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 1996-132-holy-name-is-realised-with-humility-sb-02-03-25-rad-1996-09-19
+    title: 1996 132 Holy Name Is Realised With Humility SB 02 03 25 Radhanath Swami
+      Mumbai 1996 09 19 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1996-132_Holy_Name_Is_Realised_With_Humility_SB_02-03-25_-_Radhanath_Swami_Mumbai_1996-09-19_IDesireTree.mp3
+    date: '1996-09-19'
+    status: transcribed
+    sha256: 757d4bd47f145c7a3aeb48e6d336ccb3b1023dcc771b436c91f2e6d1e8695be3
+    duration_seconds: 5353
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/radhanath-swami/1996-132-holy-name-is-realised-with-humility-sb-02-03-25-rad-1996-09-19.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 1997-120-the-power-of-holy-name-lecture-radhanath-swami-pune-1997-10-08
+    title: 1997 120 The Power Of Holy Name Lecture Radhanath Swami Pune 1997 10 08
+      IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1997-120_The_Power_Of_Holy_Name_Lecture_-_Radhanath_Swami_Pune_1997-10-08_IDesireTree.mp3
+    date: '1997-10-08'
+    status: transcribed
+    sha256: a4edce60393f5ded558b279e1e22b4b435ac0f1da33c37a8a54f9246e5ec1718
+    duration_seconds: 3416
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/radhanath-swami/1997-120-the-power-of-holy-name-lecture-radhanath-swami-pune-1997-10-08.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 1998-048-attentive-hearing-chanting-sb-03-06-37-radhanath-sw-1998-03-08
+    title: 1998 048 Attentive Hearing & Chanting SB 03 06 37 Radhanath Swami Mumbai
+      1998 03 08 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1998-048_Attentive_Hearing_&_Chanting_SB_03-06-37_-_Radhanath_Swami_Mumbai_1998-03-08_IDesireTree.mp3
+    date: '1998-03-08'
+    status: transcribed
+    sha256: a181f0b5c0676c2bd46c4d5a12dfa9b9ab9dd9180c70f39afa9f20db110cd392
+    duration_seconds: 4008
+    language: en
+    topic_tags:
+    - chant
+    transcript_path: corpus/transcripts/radhanath-swami/1998-048-attentive-hearing-chanting-sb-03-06-37-radhanath-sw-1998-03-08.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 1998-064-attentively-hearing-the-sound-vibration-sb-03-08-03-1998-05-12
+    title: 1998 064 Attentively Hearing the Sound Vibration SB 03 08 03 Radhanath
+      Swami Mumbai 1998 05 12 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1998-064_Attentively_Hearing_the_Sound_Vibration_SB_03-08-03_-_Radhanath_Swami_Mumbai_1998-05-12_IDesireTree.mp3
+    date: '1998-05-12'
+    status: transcribed
+    sha256: 5324765adeb087ea6931000cd8d0828334095c8fe8c4cd2c57e448de46e4f3d8
+    duration_seconds: 4363
+    language: en
+    transcript_path: corpus/transcripts/radhanath-swami/1998-064-attentively-hearing-the-sound-vibration-sb-03-08-03-1998-05-12.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 1998-076-ganges-of-the-holy-name-sb-03-13-44-radhanath-swami-1998-07-28
+    title: 1998 076 Ganges of the Holy Name SB 03 13 44 Radhanath Swami Mumbai 1998
+      07 28 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1998-076_Ganges_of_the_Holy_Name_SB_03-13-44_-_Radhanath_Swami_Mumbai_1998-07-28_IDesireTree.mp3
+    date: '1998-07-28'
+    status: transcribed
+    sha256: 67de956601e8c0226f096fec8dfb657b9acb6c6734e8338f327f88d48c05e18a
+    duration_seconds: 4086
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/radhanath-swami/1998-076-ganges-of-the-holy-name-sb-03-13-44-radhanath-swami-1998-07-28.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 1998-112-holyname-the-most-effective-way-to-remember-krishna
+    title: 1998 112 Holyname The Most Effective Way to Remember Krishna BG 12 02 Mumbai
+      06 12 98 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1998-112_Holyname-_The_Most_Effective_Way_to_Remember_Krishna_BG-12_02_Mumbai_-_06-12-98_IDesireTree.mp3
+    status: transcribed
+    sha256: 21f87997428e6ac77b713bd5c36466d7ef6b812836a3f5a2bebe5de7a4143b24
+    duration_seconds: 3279
+    language: en
+    topic_tags:
+    - holyname
+    transcript_path: corpus/transcripts/radhanath-swami/1998-112-holyname-the-most-effective-way-to-remember-krishna.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 1999-022-touchstone-of-the-holy-name-lecture-radhanath-swami-1999-03-15
+    title: 1999 022 Touchstone of the Holy Name Lecture Radhanath Swami Mumbai 1999
+      03 15 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/1999-022_Touchstone_of_the_Holy_Name_Lecture_-_Radhanath_Swami_Mumbai_1999-03-15_IDesireTree.mp3
+    date: '1999-03-15'
+    status: transcribed
+    sha256: 183daaece2d7e2ae698e47c9a98f191ac257a4121d7e04182d62b325e70cee87
+    duration_seconds: 2551
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/radhanath-swami/1999-022-touchstone-of-the-holy-name-lecture-radhanath-swami-1999-03-15.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 2001-033-cultivate-right-spirit-for-chanting-lecture-radhana-2001-07-15
+    title: 2001 033 Cultivate Right Spirit For Chanting Lecture Radhanath Swami Mumbai
+      2001 07 15 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/2001-033_Cultivate_Right_Spirit_For_Chanting_Lecture_-_Radhanath_Swami_Mumbai_2001-07-15_IDesireTree.mp3
+    date: '2001-07-15'
+    status: transcribed
+    sha256: 7e02a2697408c6bad484543ba53dd180a518bc1d5b88357d20188637bb8fb6e6
+    duration_seconds: 3916
+    language: en
+    topic_tags:
+    - chant
+    transcript_path: corpus/transcripts/radhanath-swami/2001-033-cultivate-right-spirit-for-chanting-lecture-radhana-2001-07-15.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 2001-067-power-of-the-mercy-of-the-holy-name-sb-01-18-19-rad-2001-12-27
+    title: 2001 067 Power Of The Mercy Of The Holy Name SB 01 18 19 Radhanath Swami
+      Mumbai 2001 12 27 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/2001-067_Power_Of_The_Mercy_Of_The_Holy_Name_SB_01-18-19_-_Radhanath_Swami_Mumbai_2001-12-27_IDesireTree.mp3
+    date: '2001-12-27'
+    status: transcribed
+    sha256: 6ee64c3810c118b578a759f0321f8108e0425dd43748de356334466ef54506d6
+    duration_seconds: 1642
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/radhanath-swami/2001-067-power-of-the-mercy-of-the-holy-name-sb-01-18-19-rad-2001-12-27.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 2002-101-higher-intoxication-of-the-holy-name-sb-04-18-15-ra-2002-10-13
+    title: 2002 101 Higher Intoxication Of The Holy Name SB 04 18 15 Radhanath Swami
+      Mumbai 2002 10 13 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/2002-101_Higher_Intoxication_Of_The_Holy_Name_SB_04-18-15_-_Radhanath_Swami_Mumbai_2002-10-13_IDesireTree.mp3
+    date: '2002-10-13'
+    status: transcribed
+    sha256: 29b6050ec8b248c516be501a108724a6b6dfac0e13cefd2d3a7e669fb6768f25
+    duration_seconds: 5409
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/radhanath-swami/2002-101-higher-intoxication-of-the-holy-name-sb-04-18-15-ra-2002-10-13.md
+    whisper_model: ggml-large-v3-turbo
+  - id: 2002-124-become-conditioned-to-chant-the-holy-name-lecture-r-2002-12-29
+    title: 2002 124 Become Conditioned to Chant The Holy Name Lecture Radhanath Swami
+      Mumbai 2002 12 29 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/2002-124_Become_Conditioned_to_Chant_The_Holy_Name_Lecture_-_Radhanath_Swami_Mumbai_2002-12-29_IDesireTree.mp3
+    date: '2002-12-29'
+    status: transcribed
+    sha256: 9e3d945726d5541721e8212ae5b6b127db92255e28ea6aaf5d6227163126b09b
+    duration_seconds: 6798
+    language: en
+    topic_tags:
+    - holy name
+    - chant
+    transcript_path: corpus/transcripts/radhanath-swami/2002-124-become-conditioned-to-chant-the-holy-name-lecture-r-2002-12-29.md
+    whisper_model: ggml-large-v3-turbo
+  - id: chanting-is-our-first-responsibility-09-09-02-london-idesire
+    title: Chanting is Our First Responsibility 09 09 02 London IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/Chanting_is_Our_First_Responsibility_-_09-09-02_London_IDesireTree.mp3
+    status: transcribed
+    sha256: f8b619709ca941c45d4bcb030d1699161a47db2c39e723386736512aa411b315
+    duration_seconds: 1977
+    language: en
+    topic_tags:
+    - chant
+    transcript_path: corpus/transcripts/radhanath-swami/chanting-is-our-first-responsibility-09-09-02-london-idesire.md
+    whisper_model: ggml-large-v3-turbo
+  - id: chanting-the-holy-name-with-humility-sincerity-idesiretree
+    title: Chanting the Holy Name with Humility & Sincerity IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/Chanting_the_Holy_Name_with_Humility_&_Sincerity_IDesireTree.mp3
+    status: transcribed
+    sha256: 50ee5c4bc6f37bb35a5e1a45e51827173f6e361f8b9cac1cc6079ecfcc927085
+    duration_seconds: 5308
+    language: en
+    topic_tags:
+    - holy name
+    - chant
+    transcript_path: corpus/transcripts/radhanath-swami/chanting-the-holy-name-with-humility-sincerity-idesiretree.md
+    whisper_model: ggml-large-v3-turbo
+  - id: chanting-the-holy-name-sb-01-08-26-idesiretree
+    title: Chanting the holy name SB 01 08 26 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/Chanting_the_holy_name_SB-01-08-26_IDesireTree.MP3
+    status: transcribed
+    sha256: 30594bfd3752f9af8843b0eb6fd8d73c3ff2dc515dbe6573c4943cf4168755d6
+    duration_seconds: 2546
+    language: en
+    topic_tags:
+    - holy name
+    - chant
+    transcript_path: corpus/transcripts/radhanath-swami/chanting-the-holy-name-sb-01-08-26-idesiretree.md
+    whisper_model: ggml-large-v3-turbo
+  - id: controlling-mind-by-attentively-chanting-holy-name-sb-05-06
+    title: Controlling Mind by Attentively Chanting Holy Name SB 05 06 03 Mumbai 19
+      03 05 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/Controlling_Mind_by_Attentively_Chanting_Holy_Name_SB-05-06-03_-_Mumbai_19-03-05_IDesireTree.mp3
+    status: transcribed
+    sha256: 916a1fb4be0dffbb3a9c026b167d843d87eb1534f7b72158268a0d3c8a7a8f45
+    duration_seconds: 3035
+    language: en
+    topic_tags:
+    - holy name
+    - chant
+    transcript_path: corpus/transcripts/radhanath-swami/controlling-mind-by-attentively-chanting-holy-name-sb-05-06.md
+    whisper_model: ggml-large-v3-turbo
+  - id: crying-out-for-the-mercy-of-the-holy-name-idesiretree
+    title: Crying Out For the Mercy of the Holy Name IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/Crying_Out_For_the_Mercy_of_the_Holy_Name_IDesireTree.mp3
+    status: transcribed
+    sha256: 1f6ceb34ef3deef5cd246aa9f0aaf1975b84cf20962fe3c52e70b3a2073d79ae
+    duration_seconds: 8375
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/radhanath-swami/crying-out-for-the-mercy-of-the-holy-name-idesiretree.md
+    whisper_model: ggml-large-v3-turbo
+  - id: explaining-the-sikshastakam-verse-idesiretree
+    title: Explaining the Sikshastakam Verse IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/Explaining_the_Sikshastakam_Verse_IDesireTree.mp3
+    status: transcribed
+    sha256: bac2b6d6ac9a2035168e2ea058da78e77f6febd457daec6446213e3927686471
+    duration_seconds: 3743
+    language: en
+    transcript_path: corpus/transcripts/radhanath-swami/explaining-the-sikshastakam-verse-idesiretree.md
+    whisper_model: ggml-large-v3-turbo
+  - id: holy-name-the-weapon-of-lord-chaitanya-mumbai-31-03-05-idesi
+    title: Holy Name The Weapon of Lord Chaitanya Mumbai 31 03 05 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/Holy_Name_-_The_Weapon_of_Lord_Chaitanya_-_Mumbai_31-03-05_IDesireTree.mp3
+    status: transcribed
+    sha256: e157d7fff443758e23b2f677cb44b194b5040dea405522b0c76de9921284af16
+    duration_seconds: 3226
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/radhanath-swami/holy-name-the-weapon-of-lord-chaitanya-mumbai-31-03-05-idesi.md
+    whisper_model: ggml-large-v3-turbo
+  - id: hurricane-or-harinaam-prerana-mumbai-24-09-05-idesiretree
+    title: Hurricane or Harinaam Prerana Mumbai 24 09 05 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/Hurricane_or_Harinaam_-_Prerana_-_Mumbai_24-09-05_IDesireTree.MP3
+    status: transcribed
+    sha256: 536a8ad899c3edfaa0b88473fd1777dd551a2ffcd3eb8df39b4ceda0e40eac25
+    duration_seconds: 6721
+    language: en
+    topic_tags:
+    - naam
+    transcript_path: corpus/transcripts/radhanath-swami/hurricane-or-harinaam-prerana-mumbai-24-09-05-idesiretree.md
+    whisper_model: ggml-large-v3-turbo
+  - id: melting-the-steel-heart-by-chanting-the-holy-name-idesiretre
+    title: Melting the Steel Heart by Chanting the Holy Name IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/Melting_the_Steel_Heart_by_Chanting_the_Holy_Name_IDesireTree.mp3
+    status: transcribed
+    sha256: 3155d4456cf6da90b4a0f2f19c2808d6d3808538998f47e4ecbe18554f07cce7
+    duration_seconds: 5218
+    language: en
+    topic_tags:
+    - holy name
+    - chant
+    transcript_path: corpus/transcripts/radhanath-swami/melting-the-steel-heart-by-chanting-the-holy-name-idesiretre.md
+    whisper_model: ggml-large-v3-turbo
+  - id: protect-yourself-by-chanting-holy-name-sb-05-06-04-mumbai-20
+    title: Protect Yourself by Chanting Holy Name SB 05 06 04 Mumbai 20 03 05 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/Protect_Yourself_by_Chanting_Holy_Name_SB-05-06-04_-_Mumbai_20-03-05_IDesireTree.mp3
+    status: transcribed
+    sha256: e8171df79e2daffe231f83ccf70ee531c0b21e999105a68f8be4a0bb268b0341
+    duration_seconds: 3168
+    language: en
+    topic_tags:
+    - holy name
+    - chant
+    transcript_path: corpus/transcripts/radhanath-swami/protect-yourself-by-chanting-holy-name-sb-05-06-04-mumbai-20.md
+    whisper_model: ggml-large-v3-turbo
+  - id: removing-poison-by-chanting-the-holy-name-idesiretree
+    title: Removing Poison by Chanting the Holy Name IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/Removing_Poison_by_Chanting_the_Holy_Name_IDesireTree.mp3
+    status: transcribed
+    sha256: c70c0221cb4efe9a600d48ec360205d6bb4818e599c66e822a97dcc3e4bad3b9
+    duration_seconds: 2441
+    language: en
+    topic_tags:
+    - holy name
+    - chant
+    transcript_path: corpus/transcripts/radhanath-swami/removing-poison-by-chanting-the-holy-name-idesiretree.md
+    whisper_model: ggml-large-v3-turbo
+  - id: the-glories-of-holy-name-saranagati-temple-11-07-04-idesiret
+    title: The Glories of Holy Name Saranagati temple 11 07 04 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/The_Glories_of_Holy_Name_-_Saranagati_temple_11-07-04_IDesireTree.mp3
+    status: transcribed
+    sha256: ce51c1c10b40d79a0c1fbff5e3b1530d5a162661bffeed8a6ad0ad81e357002a
+    duration_seconds: 5082
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/radhanath-swami/the-glories-of-holy-name-saranagati-temple-11-07-04-idesiret.md
+    whisper_model: ggml-large-v3-turbo
+  - id: the-power-of-holy-name-chicago-27-04-04-idesiretree
+    title: The Power of Holy Name Chicago 27 04 04 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/The_Power_of_Holy_Name_-_Chicago_27-04-04_IDesireTree.mp3
+    status: transcribed
+    sha256: 6f888a203b7d9c4aafc9f7cdc6462a887232b5b42294cce85c56aae1f7e64687
+    duration_seconds: 2094
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/radhanath-swami/the-power-of-holy-name-chicago-27-04-04-idesiretree.md
+    whisper_model: ggml-large-v3-turbo
+  - id: the-power-of-holy-name-sb-06-08-19-new-vrindavan-30-5-04-ide
+    title: The Power of Holy Name SB 06 08 19 New Vrindavan 30 5 04 IDesireTree
+    urls:
+    - https://audio.iskcondesiretree.com/02_-_ISKCON_Swamis/ISKCON_Swamis_-_R_to_Y/His_Holiness_Radhanath_Swami/Lectures/01_-_Theme_wise/Holy_Name/The_Power_of_Holy_Name_SB-06-08-19_-_New_Vrindavan_30-5-04_IDesireTree.mp3
+    status: transcribed
+    sha256: 13bcbf067486727fed92c2f501a2ca81e32321e4fe720e8f07b254ebf24e06e7
+    duration_seconds: 5507
+    language: en
+    topic_tags:
+    - holy name
+    transcript_path: corpus/transcripts/radhanath-swami/the-power-of-holy-name-sb-06-08-19-new-vrindavan-30-5-04-ide.md
+    whisper_model: ggml-large-v3-turbo
 - id: srila-prabhupada
   speaker: A.C. Bhaktivedānta Swami Śrīla Prabhupāda
   kind: speaker
