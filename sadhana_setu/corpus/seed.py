@@ -11,7 +11,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass
 from html.parser import HTMLParser
-from urllib.parse import urljoin
+from urllib.parse import unquote, urljoin
 
 from sadhana_setu.corpus.manifest import Lecture, Manifest, SourceSet, Status
 
@@ -129,7 +129,9 @@ def _unique_slug(slug: str, taken: set[str]) -> str:
 
 
 def _title_from_url(url: str) -> str:
-    stem = url.rstrip("/").split("/")[-1]
+    # Decode percent-escapes (e.g. "Sonicate%20Your%20Life") before slugging, or the
+    # bare "%20" collapses to a stray "20" glued to the next word.
+    stem = unquote(url.rstrip("/").split("/")[-1])
     for ext in _AUDIO_EXT:
         if stem.lower().endswith(ext):
             stem = stem[: -len(ext)]

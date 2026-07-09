@@ -43,6 +43,25 @@ def test_truncated_anchor_uses_filename_for_title_and_date():
     assert {e.date for e in entries} == {"2010-02-19", "2010-02-20"}
 
 
+# Percent-encoded spaces in the href must be decoded before slugging, or "%20"
+# collapses to a stray "20" glued to the next word (sonicate-20your-20life).
+PERCENT_ENCODED = """
+<html><body><pre>
+  <a href="Vaisesika_Pr_Holy_Name_-_Sonicate%20Your%20Life_-_2017-08-13.mp3">Vaisesika_Pr_Holy..&gt;</a>
+</pre></body></html>
+"""
+
+
+def test_percent_encoded_href_decoded_in_title_and_slug():
+    entries = seed_mod.parse_listing(PERCENT_ENCODED, base_url="https://site.test/folder/")
+    title = entries[0].title
+    assert "Sonicate Your Life" in title
+    assert "%20" not in title and "20Your" not in title
+    slug = seed_mod.make_slug(title, entries[0].date)
+    assert "sonicate-your-life" in slug
+    assert "-20your" not in slug
+
+
 def test_holyname_one_word_matches_topic_filter(manifest):
     entries = seed_mod.parse_listing(AUTOINDEX, base_url="https://site.test/folder/")
     added = seed_mod.seed_set(manifest, "bhurijana-prabhu", entries)
