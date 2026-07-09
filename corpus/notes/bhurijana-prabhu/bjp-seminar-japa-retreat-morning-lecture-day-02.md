@@ -7,8 +7,11 @@ speaker: Bhūrijana Prabhu
 title: BJP Seminar Japa Retreat Morning lecture Day 02
 enrichment_version: claude-code/v1
 enriched_at: '2026-06-24T17:17:02+00:00'
-status: draft
+status: reviewed
 enrichment_engine: claude-code
+reviewer: Sree
+reviewed_at: '2026-06-25T08:36:44+00:00'
+ingested_at: '2026-06-25T08:43:15+00:00'
 ---
 
 # BJP Seminar Japa Retreat Morning lecture Day 02
