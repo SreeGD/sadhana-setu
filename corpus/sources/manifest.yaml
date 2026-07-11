@@ -2405,10 +2405,12 @@ source_sets:
     urls:
     - https://audio.iskcondesiretree.com/03_-_ISKCON_Prabhujis/ISKCON_Prabhujis_-_S_to_Y/His_Grace_Vaisesika_Prabhu/Lectures/Theme_Wise/Harinama/Vaisesika_Pr_Harinama_-_Kids_Ratha_Yatra_-_2017-09-02.mp3
     date: '2017-09-02'
-    status: fetched
+    status: transcribed
     sha256: 813676228e4401314a7b0b9991d23f2b80e8c21ca57c614789aefa5b06d11b66
     duration_seconds: 11727
     language: en
     topic_tags:
     - harinam
     - nama
+    transcript_path: corpus/transcripts/holy-name-seminar/vaisesika-pr-harinama-kids-ratha-yatra-2017-09-02-2017-09-02.md
+    whisper_model: ggml-large-v3-turbo
