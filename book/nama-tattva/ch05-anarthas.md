@@ -1,7 +1,7 @@
 # Chapter 5 · Anartha — Unwanted Things (Root)
 
-> *The unwanted things lodged in the heart (anartha) must be cleared, for they are what keep the sweetness of the name from awakening.*
-> — **Śrīla Bhaktivinoda Ṭhākura**, *Bhajana-rahasya* (paraphrased)
+> *"As soon as irrevocable loving service is established in the heart, the effects of nature's modes of passion and ignorance — lust and greed — disappear from the heart. Then the devotee is established in goodness, and he becomes happy."*
+> — **Śrīmad-Bhāgavatam 1.2.19**
 
 ---
 

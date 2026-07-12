@@ -39,6 +39,7 @@ Vedabase / Vāṇisource during a dedicated verification pass; the status column
 | 4 | *kāma eṣa krodha eṣa…* | BG 3.37 | ✅ verified |
 | 4 | *mamaivāṁśo jīva-loke…* | BG 15.7 | ✅ verified |
 | 4 | *tri-vidhaṁ narakasyedaṁ…* | BG 16.21 | ✅ verified |
+| 5 | *tadā rajas-tamo-bhāvāḥ kāma-lobhādayaś ca ye…* | SB 1.2.19 | ✅ verified |
 | 6 | *…dyūtaṁ pānaṁ striyaḥ sūnā…* | SB 1.17.38 | ✅ verified |
 | 10, 12 | *tṛṇād api sunīcena…* | Śikṣāṣṭaka 3 | ✅ verified |
 | 14 | *evaṁ vyavasito buddhyā samādhāya mano hṛdi…* | SB 8.3.1 | ✅ verified |
@@ -49,7 +50,7 @@ Vedabase / Vāṇisource during a dedicated verification pass; the status column
 | 20 | *sarva-dharmān parityajya…* | BG 18.66 | ✅ verified |
 | 21 | *kṛṣṇa-bhakti-rasa-bhāvitā matiḥ…* (laulyam) | **Rūpa Gosvāmī, Padyāvalī 14; Cc Madhya 8.70** | ⚠️ **corrected** (was "Cc Madhya 22.42" — which is in fact the *Dhruva* verse) |
 
-**Note for the final print pass:** the paraphrased ācārya-prose epigraphs (Ch 5, 8, 11, 12, 15, 18)
+**Note for the final print pass:** the remaining paraphrased ācārya-prose epigraphs (Ch 8, 11, 15, 18)
 are marked "(paraphrased)" in-text and should be replaced with exact quotations from a verified
 edition where a publisher requires verbatim sourcing; and the Sanskrit rendering of the
 Mādhurya-kādambinī principle (Ch 3, 9) should be checked against the Sanskrit prose.

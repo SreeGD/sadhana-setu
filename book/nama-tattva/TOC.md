@@ -1,6 +1,6 @@
 # नाम-तत्त्व · NĀMA-TATTVA
 ## Why My Chanting Isn't Working (and How to Fix It)
-### A Complete Guide to the Holy Name
+### A Diagnostic Guide to the Holy Name
 
 **Table of Contents** — v2.2 (flat chapter numbering 1–21; one epigraph per chapter; corpus source index)
 
@@ -27,11 +27,11 @@
 
 ---
 
-## FRONT MATTER
-- Dedication (to Śrīla Prabhupāda)
-- Invocation — *oṁ ajñāna-timirāndhasya*
-- How to Use This Book (Individual / Study Groups / Teachers)
-- Book Specifications · Verified Key Texts
+## FRONT MATTER  → `FRONT-MATTER.md`
+- Title page · **Copyright & permissions** (BBT translations © the Bhaktivedanta Book Trust, quoted with attribution; contemporary teachings provisional pending the teachers' review)
+- **A Note on Sources & Method** — the diagnostic chain is a *teaching device*, not a single named scripture; verbatim quotation vs. paraphrase always distinguished
+- Dedication (to Śrīla Prabhupāda) · Invocation — *oṁ ajñāna-timirāndhasya*
+- How to Use This Book · Transliteration note
 
 ---
 
@@ -176,6 +176,7 @@ Vaiśeṣika "Sonicate Your Life" (real life = unbroken bliss)*
 - **H** HG Mahātmā Prabhu's Techniques  · *from Mahātmā Prabhu's japa workshops (transcript sources)*
 - **I** HG Bhūrijana Prabhu's 4-Step Technique  · *drawn from the 8 Bhūrijana notes*
 - **★ J** Source Index — every enriched note mapped to its chapter (below)
+- **★ Glossary** — Sanskrit terms defined → `GLOSSARY.md`
 - **★ References & Sources** — scriptural citation-verification log + corpus (GitHub) transcript provenance → `REFERENCES.md`
 
 ---

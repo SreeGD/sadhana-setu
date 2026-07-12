@@ -506,7 +506,7 @@ Despite all attempts to teach him demonic philosophy, Prahlāda constantly chant
 **The Transformation:**
 Although his initial motivation was material, through chanting the mantra given by Nārada Muni (*oṁ namo bhagavate vāsudevāya*), his consciousness transformed:
 
-**SB 4.9.10:**
+**Dhruva's prayer (Hari-bhakti-sudhodaya 7.28, cited in Prabhupāda's purport to SB 4.9.5):**
 > *sthānābhilāṣī tapasi sthito 'haṁ*
 > *tvāṁ prāptavān deva-munīndra-guhyam*
 > *kācaṁ vicinvann api divya-ratnaṁ*
@@ -668,7 +668,7 @@ The change wasn't dramatic or overnight. But gradually:
 
 The Holy Name is fully potent always. When we don't experience its effects, the problem is never with the Name but with us — specifically, with offenses that block the Name's power.
 
-**Mādhurya-kādambinī 3.19 (Sanskrit):**
+**Mādhurya-kādambinī — the teaching rendered in Sanskrit:**
 
 **Devanāgarī:**
 ```
@@ -3611,7 +3611,7 @@ ahaṁ tvāṁ sarva-pāpebhyo mokṣayiṣyāmi mā śucaḥ
 
 ## Chapter 4.5: KṚṢṆA-PREMA ATTAINED
 
-### The Ultimate Goal — Cc. Madhya 22.42
+### The Ultimate Goal — Rūpa Gosvāmī, Padyāvalī 14 (quoted at Cc. Madhya 8.70)
 
 **Devanāgarī:**
 ```
