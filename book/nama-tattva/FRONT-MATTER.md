@@ -4,6 +4,10 @@
 
 *compiled by* **Sreenivas Gopal Dāsa** (Sreenivas Mallipeddi)
 
+> ⚠️ **DRAFT — FOR REVIEW ONLY · NOT FOR DISTRIBUTION**
+> Working manuscript · v0.9 · July 2026. Contents, citations, and Sanskrit are under review; see
+> *A Note on Sources & Method* and *References* for open items.
+
 ---
 
 ## Copyright
