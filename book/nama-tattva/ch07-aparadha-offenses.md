@@ -1,4 +1,4 @@
-# Chapter 7 · Aparādha — Offenses (Fruit)
+# Chapter 7 · Nāma-Aparādha — The Ten Offenses (Fruit)
 
 > *"The name is always present, like the sun; it is our offenses that are the clouds hiding it from us."*
 > — **HH Sacīnandana Swami Mahārāja** (as taught, Holy-Name Retreat 2014, session 08)

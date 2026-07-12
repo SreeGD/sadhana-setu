@@ -1,4 +1,4 @@
-# Chapter 14 · Practical Control of the Six Enemies
+# Chapter 14 · Damaḥ — Practical Control of the Six Enemies
 
 > *"Bring your mind back to the mantra itself."*
 > — **HG Vaiśeṣika Prabhu** (Japa Workshop)

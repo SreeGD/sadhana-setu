@@ -1,4 +1,4 @@
-# Chapter 18 · Anarthas Destroyed
+# Chapter 18 · Anartha-Nivṛtti — Anarthas Destroyed
 
 > *Clearing of the unwanted (anartha-nivṛtti) comes in four degrees — partial, fuller, nearly complete, and complete.*
 > — **Śrīla Viśvanātha Cakravartī Ṭhākura**, *Mādhurya-kādambinī* (paraphrased)

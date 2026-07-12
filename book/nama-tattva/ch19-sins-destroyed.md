@@ -1,4 +1,4 @@
-# Chapter 19 · Sins Destroyed
+# Chapter 19 · Agha-Kṣaya — Sins Destroyed
 
 > *"Ajāmila has already atoned for the sins of millions of births, because in a helpless state he chanted the holy name of Nārāyaṇa."*
 > — **Śrīmad-Bhāgavatam 6.2.7** (the Viṣṇudūtas)

@@ -1,4 +1,4 @@
-# Chapter 10 · Humility — Tṛṇād Api Sunīcena
+# Chapter 10 · Vinaya — Humility (Tṛṇād Api Sunīcena)
 
 > *"One should chant the holy name in a humble state of mind, thinking oneself lower than the straw in the street."*
 > — **Śrī Caitanya Mahāprabhu, Śikṣāṣṭaka 3**

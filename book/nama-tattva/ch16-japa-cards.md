@@ -1,4 +1,4 @@
-# Chapter 16 · Japa Quick-Reference Cards
+# Chapter 16 · Japa — Quick-Reference Cards
 
 > *"Call to Him — Kṛṣṇa, Kṛṣṇa — and hear the mantra."*
 > — **HG Bhūrijana Prabhu** (Japa Retreat)

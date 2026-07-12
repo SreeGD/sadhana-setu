@@ -1,4 +1,4 @@
-# Chapter 17 · Six Enemies Controlled
+# Chapter 17 · Jitendriya — Six Enemies Controlled
 
 > *"A person free from all attachment and aversion, able to control the senses, obtains the complete mercy of the Lord."*
 > — **Kṛṣṇa, Bhagavad-gītā 2.64**

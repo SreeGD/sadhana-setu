@@ -1,4 +1,4 @@
-# Chapter 3 · Why My Chanting Doesn't Seem to "Work"
+# Chapter 3 · Nāma-Vighna — Why My Chanting Doesn't Seem to "Work"
 
 > *"The holy name is fully alive — Kṛṣṇa present as a person — yet our chanting is so often lifeless, done from habit rather than from a living, tasted experience."*
 > — **HH Sacīnandana Swami Mahārāja** (as taught in "The Living Name" retreat)

@@ -1,4 +1,4 @@
-# Chapter 5 · Anarthas — Unwanted Things (Root)
+# Chapter 5 · Anartha — Unwanted Things (Root)
 
 > *The unwanted things lodged in the heart (anartha) must be cleared, for they are what keep the sweetness of the name from awakening.*
 > — **Śrīla Bhaktivinoda Ṭhākura**, *Bhajana-rahasya* (paraphrased)

@@ -1,4 +1,4 @@
-# Chapter 4 · The Six Enemies: Why They Arise and What They Are
+# Chapter 4 · Ṣaḍ-Ripu — The Six Enemies: Why They Arise and What They Are
 
 > *"It is lust only, Arjuna, which is born of contact with the material mode of passion and later transformed into anger — the all-devouring, sinful enemy of this world."*
 > — **Kṛṣṇa, Bhagavad-gītā 3.37**

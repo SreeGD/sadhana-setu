@@ -1,4 +1,4 @@
-# Chapter 2 · Lives Transformed by the Holy Name
+# Chapter 2 · Nāma-Uddhāra — Lives Transformed by the Holy Name
 
 > *"Chanting the name of the Lord — even to indicate something else, jokingly, for music, or neglectfully — frees one from unlimited sins."*
 > — **Śrīmad-Bhāgavatam 6.2.14** (Śukadeva Gosvāmī)

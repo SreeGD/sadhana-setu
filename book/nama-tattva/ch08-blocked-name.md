@@ -1,4 +1,4 @@
-# Chapter 8 · The Blocked Holy Name (Result)
+# Chapter 8 · Nāmābhāsa — The Blocked Holy Name (Result)
 
 > *Chanting matures through three stages — the offensive name, the shadow of the name (nāmābhāsa), and at last the pure name.*
 > — the teaching of **Śrīla Haridāsa Ṭhākura**, *Harināma Cintāmaṇi* (paraphrased)

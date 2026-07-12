@@ -37,20 +37,20 @@
 
 ## PART ONE — GLORIES OF THE HOLY NAME  *(why we chant · chapters 1–3)*
 
-**Ch 1 — The Transcendental Power of the Holy Name**
+**Ch 1 · Nāma-Prabhāva — The Transcendental Power of the Holy Name**
 > *"In these transcendental names You have invested all Your transcendental energies, and there is no hard and fast rule for chanting them."* — **Śrī Caitanya Mahāprabhu, Śikṣāṣṭaka 2**
 Padma Purāṇa *nāma cintāmaṇiḥ*; abhinnatva; SB 6.2.14; seven glories.
 · *SNS HNR-2014 02 & 03 (name identical with the named); SNS Retreat 2018 "The Living Name" (06, 11);
 Vaiśeṣika "Holy Name" (2017-06-02), "Fully Potent," "Kevalāṣṭakam," "Krishna's Name is Eternal"*
 
-**Ch 2 — Lives Transformed by the Holy Name**
+**Ch 2 · Nāma-Uddhāra — Lives Transformed by the Holy Name**
 > *"Even a joking, musical, or neglectful chanting of the Lord's name frees one from unlimited sins."* — **Śrīmad-Bhāgavatam 6.2.14** (Śukadeva Gosvāmī)
 Ajāmila · Gajendra · Prahlāda · Dhruva · Mṛgāri · Jagāi-Mādhāi.
 · *Bhūrijana "Ajāmila" (Japa Retreat, Morning Day 02); SNS Kirtan Course 06 (Haridāsa Ṭhākura),
 09 (Caitanya's saṅkīrtana), 13 (exemplary devotees), 17 (Kholāvecā Śrīdhara); SNS Evening Kṛṣṇa-kathās
 (Nārada); SNS HNR-2014 10 (Caitanya's life); Vaiśeṣika "Stay Close to the Name" (Vālmīki)*
 
-**Ch 3 — Why My Chanting Doesn't Seem to "Work"** *(the narrative case study — Kṛṣṇa Dāsa)*
+**Ch 3 · Nāma-Vighna — Why My Chanting Doesn't Seem to "Work"** *(the narrative case study — Kṛṣṇa Dāsa)*
 > *"The holy name is fully alive — Kṛṣṇa present as a person — yet our chanting is so often lifeless, done from habit rather than from a living, tasted experience."* — **HH Sacīnandana Swami Mahārāja** (as taught in "The Living Name" retreat)
 Mādhurya-kādambinī — offenses hide the Name's potency.
 · *SNS HNR-2014 07 ("steel heart" diagnostic); Vaiśeṣika "Don't Fade Away" (japa-fade)*
@@ -59,28 +59,28 @@ Mādhurya-kādambinī — offenses hide the Name's potency.
 
 ## PART TWO — THE PROBLEM: THE CHAIN OF BONDAGE  *(what blocks the Name · chapters 4–9)*
 
-**Ch 4 — The Six Enemies: Why They Arise and What They Are** *(the taṭasthā soul, false ego & guṇa-saṅga → the ṣaḍ-ripu)*
+**Ch 4 · Ṣaḍ-Ripu — The Six Enemies: Why They Arise and What They Are** *(the taṭasthā soul, false ego & guṇa-saṅga → the ṣaḍ-ripu)*
 > *"It is lust only, Arjuna, which is born of contact with the material mode of passion and later transformed into anger — the all-devouring, sinful enemy of this world."* — **Kṛṣṇa, Bhagavad-gītā 3.37**
 Taṭasthā, ahaṅkāra, guṇa-saṅga (BG 7.4–5, 13.22, 3.27, 15.7); kāma, krodha, lobha, moha, mada, mātsarya (BG 16.21).
 · *SNS Kirtan Course 20 (I am the soul, ahaṁ-mama); SNS HNR-2014 12 (from "I & mine" to sambandha);
 Bhūrijana "Holyname 01" (2010-02-20) & Japa Seminar Day 01 (constitutional position); SNS Harinaam Cintamani 04 (false ego); Vaiśeṣika "Purify the Mind"*
 
-**Ch 5 — Anarthas — Unwanted Things (Root)** — four types (Bhajana-rahasya).
+**Ch 5 · Anartha — Unwanted Things (Root)** — four types (Bhajana-rahasya).
 > *The unwanted things lodged in the heart (anartha) must be cleared, for they are what keep the sweetness of the name from awakening.* — **Śrīla Bhaktivinoda Ṭhākura**, *Bhajana-rahasya* (paraphrased)
 · *SNS Kirtan Course 11 (pramāda offense); SNS Harinaam Cintamani 03 (inattention / pramāda)*
 
-**Ch 6 — Pāpa — Sins (Branch)** — the four regulative principles (SB 1.17.38); each sin destroys a pillar of dharma.
+**Ch 6 · Pāpa — Sins (Branch)** — the four regulative principles (SB 1.17.38); each sin destroys a pillar of dharma.
 > *"…he gave him permission to reside in four places — where gambling, drinking, prostitution and slaughter of animals were performed."* — **Śrīmad-Bhāgavatam 1.17.38** (Sūta Gosvāmī)
 
-**Ch 7 — Aparādha — Offenses (Fruit)** — the ten nāma-aparādhas (Padma Purāṇa).
+**Ch 7 · Nāma-Aparādha — The Ten Offenses (Fruit)** — the ten nāma-aparādhas (Padma Purāṇa).
 > *"The name is always present, like the sun; it is our offenses that are the clouds hiding it from us."* — **HH Sacīnandana Swami Mahārāja** (as taught, HNR-2014-08)
 · *SNS HNR-2014 08 (Name is the sun, offenses the clouds); SNS Kirtan Course 14 & 16 (studying/overcoming the offenses); SNS Kirtan Course 21 (the tenth offense — "I & mine")*
 
-**Ch 8 — The Blocked Holy Name (Result)** — nāmāparādha → nāmābhāsa → śuddha-nāma (Hari-nāma-cintāmaṇi).
+**Ch 8 · Nāmābhāsa — The Blocked Holy Name (Result)** — nāmāparādha → nāmābhāsa → śuddha-nāma (Hari-nāma-cintāmaṇi).
 > *Chanting matures through three stages — the offensive name, the shadow of the name (nāmābhāsa), and at last the pure name.* — the teaching of **Śrīla Haridāsa Ṭhākura**, *Harināma Cintāmaṇi* (paraphrased)
 · *SNS Kirtan Course 07 & 10 (shadow chanting → pure chanting → prema)*
 
-**★ Ch 9 — `Nāma-Roga-Nirṇaya` — Diagnosing *My* Personal Blockage**  *(NEW — the bridge from Problem to Cure)*
+**★ Ch 9 · Nāma-Roga-Nirṇaya — Diagnosing *My* Personal Blockage**  *(NEW — the bridge from Problem to Cure)*
 > *"Be determined to hear one mantra. Just one mantra."* — **HG Bhūrijana Prabhu** (Japa Seminar, Day 03)
 The Name never fails; when I feel no effect, a *specific* link is active in *me*. This chapter turns
 the reader from sufferer into diagnostician. **Contents:**
@@ -100,38 +100,38 @@ Q&A" (radically simplify — you can only hear the one mantra you are hearing no
 
 ## PART THREE — THE SOLUTION: PRACTICAL METHODS  *(the cure · chapters 10–16)*
 
-**Ch 10 — Humility — Tṛṇād Api Sunīcena** (Śikṣāṣṭaka 3) — counteracts *mada*.
+**Ch 10 · Vinaya — Humility (Tṛṇād Api Sunīcena)** (Śikṣāṣṭaka 3) — counteracts *mada*.
 > *"One should chant the holy name in a humble state of mind, thinking oneself lower than the straw in the street."* — **Śrī Caitanya Mahāprabhu, Śikṣāṣṭaka 3**
 · *SNS Retreat "Chanting with Humility" (07-2022), "Chanting Prayerfully" (08-2022)*
 
-**Ch 11 — Tolerance — Taror Api Sahiṣṇunā** — counteracts *krodha*; Prahlāda's example (SB 7.9.43); P.A.U.S.E.
+**Ch 11 · Sahiṣṇutā — Tolerance (Taror Api Sahiṣṇunā)** — counteracts *krodha*; Prahlāda's example (SB 7.9.43); P.A.U.S.E.
 > *A devotee should be more tolerant than a tree — which never protests even when cut down, and offers its shade to everyone.* — **Śrīla Prabhupāda** (gloss on Śikṣāṣṭaka 3, paraphrased)
 
-**Ch 12 — Respect — Amāninā Mānadena** — counteracts *mātsarya*; the Vaiṣṇava vision (SB 3.29).
+**Ch 12 · Māna-Dāna — Respect (Amāninā Mānadena)** — counteracts *mātsarya*; the Vaiṣṇava vision (SB 3.29).
 > *"amāninā mānadena" — "expecting no honor for oneself, yet ready to offer all respect to others."* — **Śrī Caitanya Mahāprabhu, Śikṣāṣṭaka 3**
 
-**Ch 13 — Offense-Free Chanting** — the ten remedies; three stages of chanting.
+**Ch 13 · Niraparādha — Offense-Free Chanting** — the ten remedies; three stages of chanting.
 > *"Chant attentively, chant with quality, and pray for mercy — each grows out of the last."* — **HH Sacīnandana Swami Mahārāja** (as taught, Kirtan Course, Day 03)
 · *SNS Harinaam Cintamani 01 (faith as the entry) & 05 (attentive chanting as fountainhead); SNS Kirtan Course 03
 (heart-purification) & 08 (attentive · quality · pray for mercy); SNS HNR-2014 15 (Prabhupāda's formula; the art of prayer);
 SNS Retreat "Discovery" lectures (02 & 05, conviction → experience; graded teaching); SNS Retreat "Closing" (07-2024, chant as address);
 Bhūrijana "Japa Retreat afternoon" (offenseless attentive chanting is supreme)*
 
-**Ch 14 — Practical Control of the Six Enemies** — the samādhāya method (SB 8.3.1); enemy-specific japa strategies; emergency protocol.
+**Ch 14 · Damaḥ — Practical Control of the Six Enemies** — the samādhāya method (SB 8.3.1); enemy-specific japa strategies; emergency protocol.
 > *"Bring your mind back to the mantra itself."* — **HG Vaiśeṣika Prabhu** (Japa Workshop)
 · *Vaiśeṣika Japa Workshops (Japa 2009; 2013; 2014; Part-01 2014 & 2017; Part-02 2014); SNS Retreat "Chanting with
 Absorption" (03-2022); SNS Kirtan Course 12 & Harinaam Cintamani 02 (chanting from within relationship / sambandha);
 SNS HNR-2014 04 & 09 (japa as attentive skill, not vocal self-expression); SNS Retreat "Kirtan Introduction" (02 & 04-2022),
 "Evening Kṛṣṇa-kathā" (04-2023, kīrtana + smaraṇa together); SNS Retreat "Kirtan" (12-2023)*
 
-**Ch 15 — Guṇa-Tattva — Lifestyle & Nāma-Ruci** — food, sleep, association, brāhma-muhūrta; guṇa→ṣaḍ-ripu; transcending the modes (BG 14.26).
+**Ch 15 · Guṇa-Tattva — Lifestyle & Nāma-Ruci** — food, sleep, association, brāhma-muhūrta; guṇa→ṣaḍ-ripu; transcending the modes (BG 14.26).
 > *One who cannot rise early in the morning is not yet very serious about spiritual life — the brāhma-muhūrta is the time for chanting.* — **Śrīla Prabhupāda** (paraphrased)
 · *Vaiśeṣika "Get the Taste," "Keep Your Vow," "Catch the Holy Name," "Cheat Death," "Keep Hearing and Chanting,"
 "Chant Holy Name Read Gita"; SNS Retreat "64 Rounds Inspiration" (05-2024), "Inspiration" (08-2018); SNS "Taking the
 Retreat Home" (08-SB-2023) & "Conclusion" (11-2022); SNS HNR-2014 14 (transient → lasting change);
 Bhūrijana "Japa Retreat — Monday Special" (consolidation, keeping the fruit)*
 
-**Ch 16 — Japa Quick-Reference Cards (17)** — incl. Sacīnandana Two-Doors / Three-Step / Diamond-Throne, Bhūrijana 4-Step, Govardhana Pañca-Bhūta.
+**Ch 16 · Japa — Quick-Reference Cards (17)** — incl. Sacīnandana Two-Doors / Three-Step / Diamond-Throne, Bhūrijana 4-Step, Govardhana Pañca-Bhūta.
 > *"Call to Him — Kṛṣṇa, Kṛṣṇa — and hear the mantra."* — **HG Bhūrijana Prabhu** (Japa Retreat)
 · *SNS Guided Japa Sessions (01–05, 2023 — intention/saṅkalpa is the heart); SNS "Entering / Opening / Welcome /
 Presentation of Classes" & "Tuning In" (2018 02–04); SNS "Learning to Chant with Devotion" (03,04,06-2024, three stages);
@@ -144,19 +144,19 @@ Bhūrijana "Holyname 01" (2010-02-19, one mantra at a time)*
 
 ## PART FOUR — THE RESULT: COMPLETE FREEDOM  *(the goal · chapters 17–21)*
 
-**Ch 17 — Six Enemies Controlled** (BG 2.64)
+**Ch 17 · Jitendriya — Six Enemies Controlled** (BG 2.64)
 > *"A person free from all attachment and aversion, able to control the senses, obtains the complete mercy of the Lord."* — **Kṛṣṇa, Bhagavad-gītā 2.64**
 
-**Ch 18 — Anarthas Destroyed** (Mādhurya-kādambinī — four stages)
+**Ch 18 · Anartha-Nivṛtti — Anarthas Destroyed** (Mādhurya-kādambinī — four stages)
 > *Clearing of the unwanted (anartha-nivṛtti) comes in four degrees — partial, fuller, nearly complete, and complete.* — **Śrīla Viśvanātha Cakravartī Ṭhākura**, *Mādhurya-kādambinī* (paraphrased)
 
-**Ch 19 — Sins Destroyed** (SB 6.2.7)
+**Ch 19 · Agha-Kṣaya — Sins Destroyed** (SB 6.2.7)
 > *"Ajāmila has already atoned for the sins of millions of births, because in a helpless state he chanted the holy name of Nārāyaṇa."* — **Śrīmad-Bhāgavatam 6.2.7** (the Viṣṇudūtas)
 
-**Ch 20 — Offenses Forgiven** (BG 18.66; seven steps)
+**Ch 20 · Kṣamā — Offenses Forgiven** (BG 18.66; seven steps)
 > *"Abandon all varieties of religion and just surrender unto Me. I shall deliver you from all sinful reactions. Do not fear."* — **Kṛṣṇa, Bhagavad-gītā 18.66**
 
-**Ch 21 — Kṛṣṇa-Prema Attained** (Rūpa Gosvāmī, *Padyāvalī* 14 / Cc. Madhya 8.70; nine-stage bhakti-latā)
+**Ch 21 · Kṛṣṇa-Prema Attained** (Rūpa Gosvāmī, *Padyāvalī* 14 / Cc. Madhya 8.70; nine-stage bhakti-latā)
 > *"Kṛṣṇa consciousness… can be attained only by paying one price — intense greed (laulyam) to obtain it."* — **Śrīla Rūpa Gosvāmī** (*Padyāvalī* 14; quoted at Cc. Madhya 8.70)
 
 · *SNS Retreat "Guided Japa 05" (prayojana — awaken love for Rādhā-Kṛṣṇa); "Ter Kadamba Conclusion" (09-2022, chanting ripens into prema);

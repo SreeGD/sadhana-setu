@@ -1,4 +1,4 @@
-# Chapter 11 · Tolerance — Taror Api Sahiṣṇunā
+# Chapter 11 · Sahiṣṇutā — Tolerance (Taror Api Sahiṣṇunā)
 
 > *A devotee should be more tolerant than a tree — which never protests even when cut down, and offers its shade to everyone.*
 > — **Śrīla Prabhupāda** (gloss on Śikṣāṣṭaka 3, paraphrased)

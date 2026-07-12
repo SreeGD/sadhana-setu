@@ -1,4 +1,4 @@
-# Chapter 12 · Respect — Amāninā Mānadena
+# Chapter 12 · Māna-Dāna — Respect (Amāninā Mānadena)
 
 > *"amāninā mānadena" — "expecting no honor for oneself, yet ready to offer all respect to others."*
 > — **Śrī Caitanya Mahāprabhu, Śikṣāṣṭaka 3**

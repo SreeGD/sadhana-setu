@@ -1,4 +1,4 @@
-# Chapter 13 · Offense-Free Chanting
+# Chapter 13 · Niraparādha — Offense-Free Chanting
 
 > *"Chant attentively, chant with quality, and pray for mercy — each grows out of the last."*
 > — **HH Sacīnandana Swami Mahārāja** (as taught, Kirtan Course, Day 03)

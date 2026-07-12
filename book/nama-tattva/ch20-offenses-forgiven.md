@@ -1,4 +1,4 @@
-# Chapter 20 · Offenses Forgiven
+# Chapter 20 · Kṣamā — Offenses Forgiven
 
 > *"Abandon all varieties of religion and just surrender unto Me. I shall deliver you from all sinful reactions. Do not fear."*
 > — **Kṛṣṇa, Bhagavad-gītā 18.66**

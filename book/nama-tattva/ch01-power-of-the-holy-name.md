@@ -1,4 +1,4 @@
-# Chapter 1 · The Transcendental Power of the Holy Name
+# Chapter 1 · Nāma-Prabhāva — The Transcendental Power of the Holy Name
 
 > *"In these transcendental names You have invested all Your transcendental energies, and there is no hard and fast rule for chanting them."*
 > — **Śrī Caitanya Mahāprabhu, Śikṣāṣṭaka 2**
