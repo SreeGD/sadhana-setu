@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1800" viewBox="0 0 1200 1800" role="img" aria-label="Back cover — Nāma-Tattva">
+  <defs>
+    <linearGradient id="bgb" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b2144"/>
+      <stop offset="0.55" stop-color="#081733"/>
+      <stop offset="1" stop-color="#03080f"/>
+    </linearGradient>
+    <style>
+      .deva  { font-family: "Noto Serif Devanagari","Nirmala UI","Kohinoor Devanagari",serif; }
+      .serif { font-family: Georgia,"Times New Roman",serif; }
+      .title { fill:#eccf7e; }
+      .cream { fill:#f4ecd8; }
+      .muted { fill:#9db4d0; }
+      .body  { fill:#e7ddc8; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="1800" fill="url(#bgb)"/>
+  <rect x="46" y="46" width="1108" height="1708" fill="none" stroke="#d4af37" stroke-opacity="0.55" stroke-width="2"/>
+  <rect x="60" y="60" width="1080" height="1680" fill="none" stroke="#d4af37" stroke-opacity="0.25" stroke-width="1"/>
+
+  <!-- header -->
+  <text x="600" y="150" text-anchor="middle" class="deva title" font-size="44" letter-spacing="3">नाम-तत्त्व</text>
+  <text x="600" y="205" text-anchor="middle" class="serif title" font-size="34" letter-spacing="4">NĀMA-TATTVA</text>
+  <line x1="430" y1="240" x2="770" y2="240" stroke="#d4af37" stroke-opacity="0.5"/>
+
+  <!-- blurb -->
+  <g class="serif body" font-size="33">
+    <text x="120" y="330">For every devotee who has chanted for years and</text>
+    <text x="120" y="378">quietly wondered: <tspan font-style="italic" class="cream">why do I feel nothing?</tspan></text>
+    <text x="120" y="452">The holy name is the sun — it never fails. When we</text>
+    <text x="120" y="500">feel no warmth, a specific cloud stands in the way.</text>
+    <text x="120" y="548">This book <tspan class="title">names the clouds</tspan> — the six enemies, the</text>
+    <text x="120" y="596">anarthas, the ten offenses — hands you the instruments</text>
+    <text x="120" y="644">to find <tspan font-style="italic">your own</tspan>, and prescribes the exact cure, from</text>
+    <text x="120" y="692">humility to taste to pure love of God.</text>
+    <text x="120" y="766">Drawn only from śāstra and the ācāryas, and grounded</text>
+    <text x="120" y="814">in the recorded teachings of Holy-Name teachers.</text>
+  </g>
+
+  <!-- framework strip -->
+  <g transform="translate(0,910)">
+    <line x1="120" y1="0" x2="1080" y2="0" stroke="#d4af37" stroke-opacity="0.35"/>
+    <text x="600" y="58" text-anchor="middle" class="serif title" font-size="27" letter-spacing="3">GLORIES · THE PROBLEM · DIAGNOSE YOURSELF · THE CURE · KṚṢṆA-PREMA</text>
+    <line x1="120" y1="92" x2="1080" y2="92" stroke="#d4af37" stroke-opacity="0.35"/>
+  </g>
+
+  <!-- pull quote -->
+  <g transform="translate(600,1150)">
+    <text x="0" y="0" text-anchor="middle" class="serif title" font-size="52" font-style="italic">“The name didn't change.</text>
+    <text x="0" y="70" text-anchor="middle" class="serif title" font-size="52" font-style="italic">You changed.”</text>
+    <text x="0" y="128" text-anchor="middle" class="serif muted" font-size="26">— from Chapter 21</text>
+  </g>
+
+  <!-- 21 chapters tag -->
+  <text x="600" y="1400" text-anchor="middle" class="serif cream" font-size="30" letter-spacing="2">21 chapters · a diagnostic guide to effective chanting</text>
+
+  <!-- provenance -->
+  <g class="serif muted" font-size="23">
+    <text x="120" y="1500">Transcripts &amp; sources (open repository):</text>
+    <text x="120" y="1536" class="cream">github.com/SreeGD/sadhana-setu</text>
+  </g>
+
+  <!-- ISBN / barcode placeholder -->
+  <g transform="translate(820,1470)">
+    <rect x="0" y="0" width="260" height="150" rx="6" fill="#f4ecd8"/>
+    <g fill="#03080f">
+      <rect x="22" y="26" width="4" height="86"/><rect x="30" y="26" width="2" height="86"/>
+      <rect x="38" y="26" width="6" height="86"/><rect x="50" y="26" width="3" height="86"/>
+      <rect x="58" y="26" width="5" height="86"/><rect x="70" y="26" width="2" height="86"/>
+      <rect x="76" y="26" width="6" height="86"/><rect x="88" y="26" width="4" height="86"/>
+      <rect x="98" y="26" width="2" height="86"/><rect x="106" y="26" width="6" height="86"/>
+      <rect x="118" y="26" width="3" height="86"/><rect x="126" y="26" width="5" height="86"/>
+      <rect x="138" y="26" width="2" height="86"/><rect x="144" y="26" width="6" height="86"/>
+      <rect x="156" y="26" width="4" height="86"/><rect x="166" y="26" width="3" height="86"/>
+      <rect x="174" y="26" width="6" height="86"/><rect x="186" y="26" width="2" height="86"/>
+      <rect x="192" y="26" width="5" height="86"/><rect x="202" y="26" width="4" height="86"/>
+      <rect x="212" y="26" width="6" height="86"/><rect x="224" y="26" width="3" height="86"/>
+    </g>
+    <text x="130" y="138" text-anchor="middle" class="serif" font-size="18" fill="#03080f">ISBN — to be assigned</text>
+  </g>
+
+  <!-- foot -->
+  <text x="600" y="1690" text-anchor="middle" class="serif muted" font-size="24" letter-spacing="2">All glories to Śrī Guru and Gaurāṅga</text>
+</svg>
