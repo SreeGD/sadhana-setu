@@ -40,7 +40,7 @@ His guru answered with questions:
 The name had not failed him for fifteen years. **Offenses had curtained it.**
 
 ```
-bhagavan-nāmni saṁprāpte 'parādhe sati tat-prabhāvaṁ na darśayati   (Mādhurya-kādambinī 3.19)
+bhagavan-nāmni saṁprāpte 'parādhe sati tat-prabhāvaṁ na darśayati   (rendering the teaching of the Mādhurya-kādambinī)
 ```
 "When an offense is present, the holy name does not reveal its full potency to the offender."
 

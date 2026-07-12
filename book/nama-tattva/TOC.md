@@ -52,7 +52,7 @@ Ajāmila · Gajendra · Prahlāda · Dhruva · Mṛgāri · Jagāi-Mādhāi.
 
 **Ch 3 — Why My Chanting Doesn't Seem to "Work"** *(the narrative case study — Kṛṣṇa Dāsa)*
 > *"The holy name is fully alive — Kṛṣṇa present as a person — yet our chanting is so often lifeless, done from habit rather than from a living, tasted experience."* — **HH Sacīnandana Swami Mahārāja** (as taught in "The Living Name" retreat)
-Mādhurya-kādambinī 3.19 — offenses hide the Name's potency.
+Mādhurya-kādambinī — offenses hide the Name's potency.
 · *SNS HNR-2014 07 ("steel heart" diagnostic); Vaiśeṣika "Don't Fade Away" (japa-fade)*
 
 ---
@@ -156,8 +156,8 @@ Bhūrijana "Holyname 01" (2010-02-19, one mantra at a time)*
 **Ch 20 — Offenses Forgiven** (BG 18.66; seven steps)
 > *"Abandon all varieties of religion and just surrender unto Me. I shall deliver you from all sinful reactions. Do not fear."* — **Kṛṣṇa, Bhagavad-gītā 18.66**
 
-**Ch 21 — Kṛṣṇa-Prema Attained** (Cc. Madhya 22.42; nine-stage bhakti-latā)
-> *"Kṛṣṇa consciousness… can be attained only by paying one price — intense greed (laulyam) to obtain it."* — **Śrīla Rūpa Gosvāmī, Cc. Madhya 22.42**
+**Ch 21 — Kṛṣṇa-Prema Attained** (Rūpa Gosvāmī, *Padyāvalī* 14 / Cc. Madhya 8.70; nine-stage bhakti-latā)
+> *"Kṛṣṇa consciousness… can be attained only by paying one price — intense greed (laulyam) to obtain it."* — **Śrīla Rūpa Gosvāmī** (*Padyāvalī* 14; quoted at Cc. Madhya 8.70)
 
 · *SNS Retreat "Guided Japa 05" (prayojana — awaken love for Rādhā-Kṛṣṇa); "Ter Kadamba Conclusion" (09-2022, chanting ripens into prema);
 "Inspiration — Rādhārāṇī" (10-2018); SNS HNR-2014 05 (worship as reciprocal exchange); SNS Retreat "Surabhi Kuṇḍa" (12-2018 — forgiveness of offenses, feeds Ch 20);
@@ -176,6 +176,7 @@ Vaiśeṣika "Sonicate Your Life" (real life = unbroken bliss)*
 - **H** HG Mahātmā Prabhu's Techniques  · *from Mahātmā Prabhu's japa workshops (transcript sources)*
 - **I** HG Bhūrijana Prabhu's 4-Step Technique  · *drawn from the 8 Bhūrijana notes*
 - **★ J** Source Index — every enriched note mapped to its chapter (below)
+- **★ References & Sources** — scriptural citation-verification log + corpus (GitHub) transcript provenance → `REFERENCES.md`
 
 ---
 

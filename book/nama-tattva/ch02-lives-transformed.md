@@ -42,7 +42,7 @@ pure chanting is an impenetrable shelter.
 
 A five-year-old sought a kingdom through austerity, chanting the mantra Nārada gave him. When the
 Lord appeared, Dhruva said, *"I was searching for broken glass and You have given me a priceless jewel
-— I want no benediction"* (SB 4.9.10). **Teaching:** the name purifies desire itself — even a material
+— I want no benediction"* (Dhruva's prayer, *Hari-bhakti-sudhodaya* 7.28, cited in Prabhupāda's purport to SB 4.9.5). **Teaching:** the name purifies desire itself — even a material
 motive matures into prema.
 
 ## 2.5 Mṛgāri — the hunter (Cc. Madhya 24)

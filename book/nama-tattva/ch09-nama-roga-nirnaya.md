@@ -22,7 +22,7 @@ sun right now?"**
 recognize myself in it. This chapter hands me the instruments to examine *myself* — a self-diagnosis
 I run on my own japa, not a narrative I read about someone else.
 
-Mādhurya-kādambinī (3.19) gives the clinical basis:
+The Mādhurya-kādambinī gives the clinical basis (the teaching rendered in Sanskrit):
 
 > *bhagavan-nāmni saṁprāpte 'parādhe sati tat-prabhāvaṁ na darśayati* —
 > "When an offense is present, the holy name does not reveal its full potency to the offender."

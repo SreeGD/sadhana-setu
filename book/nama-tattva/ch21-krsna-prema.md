@@ -1,7 +1,7 @@
 # Chapter 21 · Kṛṣṇa-Prema Attained
 
 > *"Kṛṣṇa consciousness… can be attained only by paying one price — intense greed (laulyam) to obtain it."*
-> — **Śrīla Rūpa Gosvāmī, Cc. Madhya 22.42**
+> — **Śrīla Rūpa Gosvāmī** (*Padyāvalī* 14; quoted at Cc. Madhya 8.70)
 
 ---
 
@@ -16,7 +16,7 @@ the entire book has been the road.
 kṛṣṇa-bhakti-rasa-bhāvitā matiḥ
 krīyatāṁ yadi kuto 'pi labhyate
 tatra laulyam api mūlyam ekalaṁ
-janma-koṭi-sukṛtair na labhyate   (Cc. Madhya 22.42)
+janma-koṭi-sukṛtair na labhyate   (Rūpa Gosvāmī, Padyāvalī 14; Cc. Madhya 8.70)
 ```
 
 Prema cannot be bought by pious deeds of even millions of births. It has exactly one price: *laulyam*
