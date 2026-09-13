@@ -6,6 +6,7 @@
 
 import { todayISO, el, formatDate, toast } from "../util.js";
 import * as store from "../store.js";
+import { t } from "../i18n.js";
 
 const WINDOWS = [
   { id: "before_8am",  label: "Before 8 AM",  sub: "brāhma-muhūrta window" },
@@ -44,8 +45,8 @@ export async function render(root) {
     class: "completion-btn completion-clear" + (selected === null ? " selected" : ""),
   },
     el("div", { class: "completion-tick" }, selected === null ? "✓" : ""),
-    el("div", { class: "completion-label" }, "Not yet"),
-    el("div", { class: "completion-sub" }, "japa still ahead"),
+    el("div", { class: "completion-label" }, t("today.not_yet")),
+    el("div", { class: "completion-sub" }, t("today.japa_ahead")),
   );
   clearBtn.addEventListener("click", () => {
     if (current) store.clearRoundsForDate(date);
@@ -54,12 +55,12 @@ export async function render(root) {
   grid.appendChild(clearBtn);
 
   root.appendChild(el("div", { class: "view-card" },
-    el("h3", {}, "16 rounds today"),
+    el("h3", {}, t("today.sixteen_rounds")),
     el("p", { style: "color:var(--muted); font-size:0.9rem; margin: 0 0 0.6rem;" },
-      "When were the rounds completed? Tap the window that fits."),
+      t("today.when_completed")),
     grid,
     selected ? el("div", { class: "meta-line", style: "margin-top:0.6rem;" },
-      el("em", {}, `vow complete · `, el("strong", {}, WINDOWS.find(w=>w.id===selected)?.label || ""))
+      el("em", {}, t("today.vow_complete"), el("strong", {}, WINDOWS.find(w=>w.id===selected)?.label || ""))
     ) : null,
   ));
 
@@ -83,12 +84,12 @@ export async function render(root) {
   }
 
   root.appendChild(el("div", { class: "view-card" },
-    el("h3", {}, "Today's hearing"),
+    el("h3", {}, t("today.hearing")),
     el("p", { style: "color:var(--muted); font-size:0.9rem; margin: 0 0 0.6rem;" },
-      "Optional. Tap once when you've heard SB or BG today."),
+      t("today.hearing_hint")),
     el("div", { class: "hearing-pills" },
-      pill("sb", "SB heard", flags.sb),
-      pill("bg", "BG heard", flags.bg),
+      pill("sb", t("today.sb_heard"), flags.sb),
+      pill("bg", t("today.bg_heard"), flags.bg),
     ),
   ));
 }

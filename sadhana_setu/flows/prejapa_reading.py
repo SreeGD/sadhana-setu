@@ -60,10 +60,12 @@ class PrejapaReading:
 
 
 def localize_item(library: str, all_list: list, item, field: str, english: str, locale: str) -> str:
-    """Machine-Telugu (etc.) text for a picked content item, by its position in its library.
+    """Localized text for a picked content item, by its position in its library.
 
     Used by both the reading and the view so the whole pre-japa surface localizes consistently.
-    Returns ``english`` for the English locale or when no translation exists.
+    Reviewed translations only (Constitution V) unless `show_machine_drafts` is on — see
+    `i18n.localize_content_machine`. Returns ``english`` for the English locale or when no
+    translation may be shown.
     """
     if item is None or locale == "en":
         return english
@@ -81,7 +83,8 @@ def build_reading(d: date | None = None, *, querier=None, checkin_loader=None,
 
     ``state`` is the shared per-day corpus-retrieval state (spec 003); when the app passes the
     same state to other surfaces, the pre-japa teaching participates in cross-surface dedup.
-    ``locale`` localizes the curated content (machine drafts shown for non-English — spec 005/004).
+    ``locale`` localizes the curated content (reviewed translations; machine drafts only under the
+    explicit opt-in — spec 004 T021).
     """
     d = d or date.today()
     loc = locale or i18n.get_locale()
@@ -114,7 +117,7 @@ def _orient(d: date, loc: str) -> ReadingStage:
         summary = localize_item("faith_verses", faith_mod.all_faith_verses(),
                                 faith, "summary", faith.summary, loc)
         lines.append(i18n.t("prejapa.name_promises", summary=summary))
-    body = "  ".join(lines) or "Take shelter of the Holy Name with attention and humility."
+    body = "  ".join(lines) or i18n.t("prejapa.orient_fallback")
     citation = (aff.source if aff else None) or (faith.verse_ref if faith else None)
     return ReadingStage(label="Orient", body=body, citation=citation, source_kind="curated")
 
@@ -143,7 +146,7 @@ def _deepen(d: date, theme: str, querier, state, loc: str) -> tuple[ReadingStage
         return ReadingStage(label=i18n.t("prejapa.deepen_default"), body=teaching,
                             citation=nt.source, source_kind="curated"), False
     return ReadingStage(label=i18n.t("prejapa.deepen_default"),
-                        body="Chant to hear: attention is the soul of japa.",
+                        body=i18n.t("prejapa.deepen_fallback"),
                         citation=None, source_kind="curated"), False
 
 
@@ -161,7 +164,7 @@ def _sankalpa_echo(d: date, checkin_loader) -> str | None:
     if not checkin:
         return None
     bits = [b for b in (getattr(checkin, "tone", ""), getattr(checkin, "mood_bhava", "")) if b]
-    return "This week's sankalpa: " + " · ".join(bits) if bits else None
+    return i18n.t("prejapa.sankalpa_echo", bits=" · ".join(bits)) if bits else None
 
 
 def _default_checkin_loader(d: date):

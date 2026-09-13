@@ -1,6 +1,7 @@
 """Build static/ from the YAML content libraries.
 
-Run once after editing any data/*.yaml. Output is static/content/*.json,
+Run once after editing any data/*.yaml or data/i18n/**. Output is static/content/*.json
+(content) and static/i18n/** (localization catalogs, spec 004 FR-012 — reviewed-only),
 ready to be fetched by the browser. ekadasi.json is copied as-is.
 """
 from __future__ import annotations
@@ -17,6 +18,10 @@ ROOT = Path(__file__).parent
 SRC = ROOT / "data"
 DEST = ROOT / "static" / "content"
 STATIC = ROOT / "static"
+I18N_SRC = ROOT / "data" / "i18n"
+I18N_DEST = STATIC / "i18n"
+LOCALES = ("en", "te", "kn", "ta")
+I18N_LIBRARIES = ("affirmations", "faith_verses", "nama_tattva", "contemplations")
 
 # Map: yaml file stem -> (key in the YAML to extract, key in the output JSON).
 LIBRARIES = {
@@ -78,7 +83,37 @@ def main() -> None:
         shutil.copyfile(src_ek, DEST / "ekadasi.json")
         print(f"  ekadasi.json (copied through)")
 
+    build_i18n()
     build_service_worker()
+
+
+def build_i18n() -> None:
+    """Emit per-locale catalogs for the static runtime (FR-012), mirroring the review gate in
+    sadhana_setu/i18n.py (Constitution V): an unreviewed UI catalog becomes `{}` (⇒ English
+    fallback in JS) and only `reviewed: true` content rows are emitted. Drafts (`*.draft.yaml`)
+    are never read — the static site is published, so there is no machine-draft opt-in."""
+    ui_dest = I18N_DEST / "ui"
+    ui_dest.mkdir(parents=True, exist_ok=True)
+    for loc in LOCALES:
+        src = I18N_SRC / "ui" / f"{loc}.yaml"
+        cat = yaml.safe_load(src.read_text(encoding="utf-8")) if src.exists() else None
+        cat = cat if isinstance(cat, dict) else {}
+        meta = cat.pop("_meta", None)
+        reviewed = loc == "en" or (isinstance(meta, dict) and meta.get("reviewed") is True)
+        out = cat if reviewed else {}
+        (ui_dest / f"{loc}.json").write_text(json.dumps(out, ensure_ascii=False, indent=2))
+        print(f"  i18n/ui/{loc}.yaml{'':<14} -> static/i18n/ui/{loc}.json "
+              f"({len(out)} keys{'' if reviewed else ', UNREVIEWED → English fallback'})")
+        if loc == "en":
+            continue
+        cdest = I18N_DEST / "content" / loc
+        cdest.mkdir(parents=True, exist_ok=True)
+        for lib in I18N_LIBRARIES:
+            csrc = I18N_SRC / "content" / loc / f"{lib}.yaml"
+            rows = yaml.safe_load(csrc.read_text(encoding="utf-8")) if csrc.exists() else None
+            rows = [r for r in (rows or []) if isinstance(r, dict) and r.get("reviewed") is True]
+            (cdest / f"{lib}.json").write_text(json.dumps(rows, ensure_ascii=False, indent=2))
+            print(f"  i18n/content/{loc}/{lib:<14} -> static/i18n/content/{loc}/{lib}.json ({len(rows)} reviewed)")
 
 
 def cache_version() -> str:
@@ -99,7 +134,7 @@ def precache_list() -> list[str]:
     served root (which on GitHub Pages is /sadhana-setu/static/... → we
     register the SW from /sadhana-setu/ so root-relative './' paths work)."""
     urls: list[str] = ["./", "./index.html", "./manifest.webmanifest"]
-    for sub in ("css", "js", "content", "icons"):
+    for sub in ("css", "js", "content", "icons", "fonts", "i18n"):
         base = STATIC / sub
         if not base.exists():
             continue

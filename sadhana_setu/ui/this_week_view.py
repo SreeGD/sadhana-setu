@@ -11,6 +11,7 @@ from datetime import date, timedelta
 
 import streamlit as st
 
+from sadhana_setu import i18n
 from sadhana_setu.content.japa_methods import pick_for_week as pick_method
 from sadhana_setu.content.weekly_readings import pick_for_week as pick_reading
 from sadhana_setu.content.weekly_stories import pick_for_week as pick_story
@@ -91,10 +92,9 @@ def render() -> None:
 
     st.markdown(
         f"<h2 style='color:#6B3410; font-family:Garamond,Georgia,serif; "
-        f"margin-bottom:0.2rem;'>📖 This Week</h2>"
+        f"margin-bottom:0.2rem;'>{i18n.t('this_week.heading')}</h2>"
         f"<div style='color:#8B7355; font-style:italic;'>"
-        f"Week {iso_week} · {week_start.strftime('%B %d')} – "
-        f"{week_end.strftime('%B %d, %Y')}</div>",
+        f"{i18n.t('this_week.week_range', week=iso_week, start=week_start.strftime('%B %d'), end=week_end.strftime('%B %d, %Y'))}</div>",
         unsafe_allow_html=True,
     )
 
@@ -103,14 +103,14 @@ def render() -> None:
     story = pick_story(today)
 
     # Reading
-    st.markdown("<h3 class='tw-section-title'>Reading</h3>", unsafe_allow_html=True)
+    st.markdown(f"<h3 class='tw-section-title'>{i18n.t('this_week.reading')}</h3>", unsafe_allow_html=True)
     if reading is None:
-        st.info("Reading library empty.")
+        st.info(i18n.t("this_week.reading_empty"))
     else:
         st.markdown(
             f"<div class='tw-subtitle'>{reading.theme}</div>"
             f"<h4 style='margin-top:0; color:#6B3410;'>{reading.title}</h4>"
-            f"<div class='tw-meta'>{reading.subtitle}  ·  ~{reading.reading_minutes} min</div>"
+            f"<div class='tw-meta'>{reading.subtitle}  ·  {i18n.t('this_week.minutes', n=reading.reading_minutes)}</div>"
             f"<div class='tw-reading-body'>",
             unsafe_allow_html=True,
         )
@@ -122,19 +122,19 @@ def render() -> None:
         )
 
     # Method
-    st.markdown("<h3 class='tw-section-title'>Method of the Week</h3>", unsafe_allow_html=True)
+    st.markdown(f"<h3 class='tw-section-title'>{i18n.t('this_week.method')}</h3>", unsafe_allow_html=True)
     if method is None:
-        st.info("Method library empty.")
+        st.info(i18n.t("this_week.method_empty"))
     else:
         st.markdown(
             f"<h4 style='margin-top:0; color:#6B3410;'>{method.name}</h4>"
-            f"<div class='tw-subtitle'>{method.teacher}  ·  ~{method.duration_minutes} min</div>"
+            f"<div class='tw-subtitle'>{method.teacher}  ·  {i18n.t('this_week.minutes', n=method.duration_minutes)}</div>"
             f"<div style='color:#4d3520; font-style:italic; margin:0.6rem 0;'>"
             f"{method.one_line}</div>"
             f"<div class='tw-reading-body'>{method.overview}</div>",
             unsafe_allow_html=True,
         )
-        with st.expander("See the full protocol", expanded=False):
+        with st.expander(i18n.t("this_week.full_protocol"), expanded=False):
             for step in method.steps:
                 st.markdown(
                     f"<div class='tw-method-step'>"
@@ -156,13 +156,13 @@ def render() -> None:
 
     # Story
     is_sunday = today.weekday() == 6
-    story_header = "Story of the Week" + ("  ·  ☀️ Sunday read" if is_sunday else "")
+    story_header = i18n.t("this_week.story") + (f"  ·  {i18n.t('this_week.sunday_read')}" if is_sunday else "")
     st.markdown(
         f"<h3 class='tw-section-title'>{story_header}</h3>",
         unsafe_allow_html=True,
     )
     if story is None:
-        st.info("Story library empty.")
+        st.info(i18n.t("this_week.story_empty"))
     else:
         st.markdown(
             f"<h4 style='margin-top:0; color:#6B3410;'>{story.title}</h4>"
@@ -178,12 +178,12 @@ def render() -> None:
                 unsafe_allow_html=True,
             )
         else:
-            with st.expander("Read the full pastime", expanded=False):
+            with st.expander(i18n.t("this_week.read_pastime"), expanded=False):
                 st.markdown(story.text)
 
         st.markdown(
-            f"<div class='tw-teaching'><strong>Teaching:</strong> {story.teaching}</div>"
-            f"<div class='tw-cite'>— {story.scripture}  ·  Key verse: {story.key_verse}</div>",
+            f"<div class='tw-teaching'><strong>{i18n.t('this_week.teaching')}</strong> {story.teaching}</div>"
+            f"<div class='tw-cite'>— {story.scripture}  ·  {i18n.t('this_week.key_verse')} {story.key_verse}</div>",
             unsafe_allow_html=True,
         )
 

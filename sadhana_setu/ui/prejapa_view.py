@@ -2,8 +2,9 @@
 
 A single contemplative movement that reads in under two minutes and ends pointing into japa:
   (verse·optional) → orient → tip → deepen → story·optional → apply → saṅkalpa → enter japa.
-UI labels come from the i18n catalog; curated content is localized (machine drafts shown for a
-non-English locale, by the user's opt-in) and Sanskrit verses are transliterated into the script.
+UI labels come from the i18n catalog; curated content shows REVIEWED translations only, unless the
+practitioner has opted in (`show_machine_drafts: true` in data/i18n/settings.yaml — a banner then
+marks the machine drafts); Sanskrit verses are transliterated into the script (spec 004 T021).
 All sattvic-medium constraints honored: no streaks, no scoring, no push.
 """
 from __future__ import annotations
@@ -64,10 +65,10 @@ def render() -> None:
     reading = build_reading(today, state=state, locale=loc)
 
     _render_meta(today)
-    if loc != "en":
+    if loc != "en" and i18n.show_machine_drafts():
         st.markdown(f"<div class='pj-banner'>{i18n.t('prejapa.machine_banner')}</div>",
                     unsafe_allow_html=True)
-    elif not reading.corpus_online:
+    if not reading.corpus_online:
         st.markdown(f"<div class='pj-offline'>{i18n.t('prejapa.corpus_offline')}</div>",
                     unsafe_allow_html=True)
 

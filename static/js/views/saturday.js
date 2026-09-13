@@ -5,6 +5,7 @@ import { weekQuestions, weeklyFormOptions } from "../content.js";
 import { upcomingSaturday, addDays, el, formatDate, toast, collapse } from "../util.js";
 import { weekDots, summaryLine } from "../week_summary.js";
 import * as store from "../store.js";
+import { t } from "../i18n.js";
 
 const OTHER = "__OTHER__";
 
@@ -13,14 +14,14 @@ const OTHER = "__OTHER__";
 function singleSelect(name, options, current, otherText) {
   // Returns { wrapper, get() } for a single-select dropdown + Other text.
   const opts = [
-    el("option", { value: "" }, "— choose —"),
+    el("option", { value: "" }, t("saturday.choose")),
     ...options.map(o => el("option", { value: o }, o)),
-    el("option", { value: OTHER }, "Other (enter your own) →"),
+    el("option", { value: OTHER }, t("saturday.other")),
   ];
   const sel = el("select", { id: name }, ...opts);
   const otherInp = el("input", {
     type: "text",
-    placeholder: "Type your own…",
+    placeholder: t("saturday.other_placeholder"),
     style: "margin-top: 0.5rem;",
   });
   // Initialize selection from current value
@@ -66,14 +67,14 @@ function multiSelect(name, options, current) {
   const customs = (current || []).filter(v => !options.includes(v));
   const otherTa = el("textarea", {
     rows: 2,
-    placeholder: "Other — one per line",
+    placeholder: t("saturday.other_lines"),
     style: "margin-top: 0.4rem;",
   });
   if (customs.length) otherTa.value = customs.join("\n");
   const wrap = el("div", { class: "field-wrap checkbox-grid" },
     ...boxes.map(b => b.label),
     el("div", { class: "checkbox-other" },
-      el("label", { class: "field-sub" }, "Other (free text)"),
+      el("label", { class: "field-sub" }, t("saturday.other_free")),
       otherTa,
     ),
   );
@@ -101,20 +102,20 @@ export async function render(root) {
 
   root.innerHTML = "";
   root.appendChild(el("div", { class: "meta-line" },
-    "Week of ", formatDate(weekStart), " — ", formatDate(sat)
+    t("saturday.week_of", { start: formatDate(weekStart), end: formatDate(sat) })
   ));
 
   if (!isSaturday) {
     root.appendChild(el("div", { class: "view-card", style: "background:#FFF5E0;" },
       el("p", { style: "margin:0; color:var(--ink-soft);" },
-        `Today is ${today.toLocaleDateString(undefined, { weekday: "long" })}. The check-in is meant for Saturday. You can preview / edit any time.`),
+        t("saturday.not_saturday_short", { weekday: today.toLocaleDateString(undefined, { weekday: "long" }) })),
     ));
   }
 
   // Week japa review (above Half 1)
   const sLine = summaryLine(sat);
   root.appendChild(el("div", { class: "view-card week-review-card" },
-    el("h3", {}, "This week's japa review"),
+    el("h3", {}, t("saturday.japa_review")),
     weekDots(sat),
     el("p", { style: "margin: 0.6rem 0 0.2rem; color: var(--ink-soft); font-weight: 600;" },
       sLine.primary),
@@ -126,19 +127,19 @@ export async function render(root) {
   const qBlocks = questions.map((q, i) => el("div", { style: "margin-bottom:0.9rem;" },
     el("p", { style: "color:var(--ink-soft); font-weight:600; margin:0.4rem 0 0.2rem;" }, `Q${i + 1}.`),
     el("p", { style: "margin:0 0 0.3rem;" }, q.question),
-    q.routes_through ? el("p", { style: "color:var(--muted); font-style:italic; font-size:0.85rem; margin:0 0 0.3rem;" }, `routes through ${q.routes_through}`) : null,
+    q.routes_through ? el("p", { style: "color:var(--muted); font-style:italic; font-size:0.85rem; margin:0 0 0.3rem;" }, t("saturday.routes_through", { route: q.routes_through })) : null,
     el("textarea", {
       id: `q${i}`,
-      placeholder: "(short response, or leave empty)",
+      placeholder: t("saturday.answer_placeholder"),
       rows: 2,
     }, (existing?.answers || [])[i] || ""),
   ));
 
   root.appendChild(collapse("sat_half1",
     el("summary", { class: "view-card-summary" },
-      el("h3", {}, "Half 1 — Observe (the week past)"),
+      el("h3", {}, t("saturday.half1")),
     ),
-    el("h4", {}, "This week's questions"),
+    el("h4", {}, t("saturday.questions")),
     ...qBlocks,
   ));
 
@@ -151,21 +152,21 @@ export async function render(root) {
 
   root.appendChild(collapse("sat_half2",
     el("summary", { class: "view-card-summary" },
-      el("h3", {}, "Half 2 — Set the coming week"),
+      el("h3", {}, t("saturday.half2")),
     ),
-    el("label", { class: "field" }, "Tone — the orientation"),
+    el("label", { class: "field" }, t("saturday.tone_short")),
     tone.wrapper,
-    el("label", { class: "field" }, "Mood (bhava)"),
+    el("label", { class: "field" }, t("saturday.bhava_short")),
     bhava.wrapper,
-    el("label", { class: "field" }, "Practices (pick any)"),
+    el("label", { class: "field" }, t("saturday.practices_short")),
     practices.wrapper,
-    el("label", { class: "field" }, "Tools needed (pick any)"),
+    el("label", { class: "field" }, t("saturday.tools_short")),
     tools.wrapper,
-    el("label", { class: "field" }, "Priorities (pick any; top first)"),
+    el("label", { class: "field" }, t("saturday.priorities_short")),
     priorities.wrapper,
   ));
 
-  const saveBtn = el("button", { class: "primary" }, existing ? "Update check-in" : "Save check-in");
+  const saveBtn = el("button", { class: "primary" }, existing ? t("saturday.update") : t("saturday.save"));
   saveBtn.addEventListener("click", () => {
     const answers = questions.map((_, i) => document.getElementById(`q${i}`).value.trim());
     const payload = {
@@ -178,7 +179,7 @@ export async function render(root) {
       questions: questions.map(q => q.question),
     };
     store.saveCheckin(satISO, payload);
-    toast(`Check-in saved for week ending ${satISO}`);
+    toast(t("saturday.saved", { date: satISO }));
   });
   root.appendChild(el("div", { style: "text-align:center; margin: 1rem 0;" }, saveBtn));
 

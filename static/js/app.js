@@ -7,6 +7,7 @@ import * as saturday from "./views/saturday.js";
 import * as backup from "./views/backup.js";
 import { storageSummary } from "./store.js";
 import { toast, todayISO } from "./util.js";
+import * as i18n from "./i18n.js";
 
 // ---------- font size ----------
 const FONT_SIZE_KEY = "sadhana_setu_font_size";
@@ -93,5 +94,20 @@ document.addEventListener("visibilitychange", () => {
 });
 window.addEventListener("focus", checkDayRollover);
 
+// ---------- language (spec 004, FR-012) ----------
+const langSel = document.getElementById("lang-select");
+async function applyLanguage(locale) {
+  await i18n.init(locale);
+  if (langSel) langSel.value = i18n.getLocale();
+  i18n.applyStatic(document);
+}
+langSel?.addEventListener("change", async () => {
+  await applyLanguage(langSel.value);
+  show(currentView, { preserveScroll: true });
+});
+
 // Boot
-window.addEventListener("load", () => show("prejapa"));
+window.addEventListener("load", async () => {
+  await applyLanguage();
+  show("prejapa");
+});

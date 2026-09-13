@@ -27,3 +27,6 @@ corpus/**/*.m4a
 corpus/**/*.wav
 corpus/**/*.ogg
 corpus/**/*.opus
+
+# Localization (spec 004): per-user locale choice, written by the app on every run.
+data/i18n/settings.yaml

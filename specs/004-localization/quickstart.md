@@ -3,7 +3,8 @@
 Validation guide for `004`. Contracts + data model in [`contracts/`](./contracts/) and
 [`data-model.md`](./data-model.md).
 
-> Status: **specified + planned, not yet implemented.** Rollout is Telugu first.
+> Status: **implemented (Telugu machinery + drafts); native review pending (T019).** Rollout is
+> Telugu first.
 
 ## Prerequisites
 
@@ -32,14 +33,30 @@ preserved; a transliteration failure for a rare token falls back to IAST. Run `m
 
 ## Scenario 4 — Review gate (FR-011, Constitution V)
 
+Drafts and live catalogs are **separate files**. The drafting script writes machine drafts to
+`*.draft.yaml`, which the app never reads on the reviewed path; the reviewer *promotes* approved
+entries into the live catalog.
+
 ```bash
-python scripts/draft_translations.py --locale te --library affirmations   # writes reviewed: false
+python scripts/draft_translations.py --locale te --kind content --library affirmations
+#   → data/i18n/content/te/affirmations.draft.yaml   (every row: reviewed: false)
 make run   # in Telugu: affirmations still show ENGLISH (drafts withheld)
-# native devotee edits data/i18n/content/te/affirmations.yaml, sets reviewed: true
+# Native devotee reviews the draft, then promotes approved rows into the LIVE catalog:
+#   data/i18n/content/te/affirmations.yaml   — copy the row, set reviewed: true
 make run   # now the reviewed Telugu affirmations render
 ```
 
+UI strings work the same way at catalog level: `python scripts/draft_translations.py --locale te
+--kind ui` writes `data/i18n/ui/te.draft.yaml`; the reviewer promotes keys into
+`data/i18n/ui/te.yaml` and flips its `_meta.reviewed: true` (with `reviewer` + `date`). Until then
+the live catalog is withheld and the UI falls back to English.
+
 **Expect**: nothing translated is shown until `reviewed: true`.
+
+**Practitioner opt-in (T021)** — to preview *unreviewed* machine drafts locally (UI + content), set
+`show_machine_drafts: true` in `data/i18n/settings.yaml` (git-ignored, default off). The pre-japa
+view then shows a "machine-translated — pending devotee review" banner. The static build ignores
+this flag: a published site only ever carries reviewed translations.
 
 ## Scenario 5 — Static build parity (FR-012)
 
@@ -47,8 +64,10 @@ make run   # now the reviewed Telugu affirmations render
 python build_static.py
 ```
 
-**Expect**: the static build carries the per-locale catalogs; the static app offers the same
-language switch and renders the reviewed Telugu content.
+**Expect**: `static/i18n/ui/<locale>.json` + `static/i18n/content/<locale>/<library>.json` are
+emitted (reviewed-only; an unreviewed UI catalog becomes `{}` ⇒ English fallback); the static app
+offers the same language switch (top bar), persists it in `localStorage`, and renders the reviewed
+Telugu content. Noto Sans Telugu/Kannada/Tamil are bundled under `static/fonts/` (no network).
 
 ## Acceptance ↔ scenario map
 

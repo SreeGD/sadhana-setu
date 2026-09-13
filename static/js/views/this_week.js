@@ -9,11 +9,12 @@ import {
   upcomingSaturday, addDays, el, formatDate, collapse
 } from "../util.js";
 import { weekDots, summaryLine } from "../week_summary.js";
+import { t } from "../i18n.js";
 
 function verseCard(v) {
   const det = collapse("weekly_verse",
     el("summary", { class: "view-card-summary" },
-      el("div", { class: "card-label" }, `WEEKLY VERSE · ${v.source_label}`),
+      el("div", { class: "card-label" }, `${t("this_week.weekly_verse")} · ${v.source_label}`),
       el("h3", {}, v.verse_ref),
     ),
     v.iast ? el("div", { class: "verse-iast", html: v.iast.replace(/\n/g, "<br>") }) : null,
@@ -84,9 +85,9 @@ function bhajanCard(b) {
 
   const det = collapse("weekly_bhajan",
     el("summary", { class: "view-card-summary" },
-      el("div", { class: "card-label" }, "WEEKLY BHAJAN"),
+      el("div", { class: "card-label" }, t("this_week.weekly_bhajan")),
       el("h3", {}, b.title),
-      el("p", { class: "summary-byline", style: "color:var(--muted);" }, "by " + (b.author || "")),
+      el("p", { class: "summary-byline", style: "color:var(--muted);" }, t("this_week.by", { who: b.author || "" })),
     ),
     b.chanting_mood ? el("p", { style: "font-style:italic; color:var(--ink-soft);" },
       el("strong", {}, "Mood: "), b.chanting_mood) : null,
@@ -118,10 +119,10 @@ function lectureCard(l) {
 
   const det = collapse("weekly_lecture",
     el("summary", { class: "view-card-summary" },
-      el("div", { class: "card-label" }, "WEEKLY LECTURE · audio.iskcondesiretree.com"),
+      el("div", { class: "card-label" }, t("this_week.weekly_lecture") + " · audio.iskcondesiretree.com"),
       el("h3", {}, l.title),
       el("p", { class: "summary-byline", style: "color:var(--muted);" },
-        "by " + (l.speaker || ""),
+        t("this_week.by", { who: l.speaker || "" }),
         l.duration ? "  ·  " + l.duration : "",
       ),
     ),
@@ -150,13 +151,13 @@ export async function render(root) {
 
   root.innerHTML = "";
   root.appendChild(el("div", { class: "meta-line" },
-    "Week of ", formatDate(weekStart), " — ", formatDate(sat)
+    t("this_week.week_of", { start: formatDate(weekStart), end: formatDate(sat) })
   ));
 
   // 1. Week at a glance + summary
   const sLine = summaryLine(sat);
   root.appendChild(el("div", { class: "view-card" },
-    el("h3", {}, "Week at a glance"),
+    el("h3", {}, t("this_week.at_a_glance")),
     weekDots(sat),
     el("p", { style: "margin: 0.6rem 0 0.2rem; color: var(--ink-soft); font-weight: 600;" },
       sLine.primary),
@@ -170,7 +171,7 @@ export async function render(root) {
   // 3. Weekly reading (longer essay)
   root.appendChild(collapse("weekly_reading",
     el("summary", { class: "view-card-summary" },
-      el("div", { class: "card-label" }, "WEEKLY READING · " + (reading.reading_minutes || "?") + " min"),
+      el("div", { class: "card-label" }, t("this_week.weekly_reading") + " · " + t("this_week.minutes", { n: reading.reading_minutes || "?" })),
       el("h3", {}, reading.title),
       reading.subtitle ? el("p", { class: "summary-byline", style: "color:var(--muted);" }, reading.subtitle) : null,
     ),
@@ -184,9 +185,9 @@ export async function render(root) {
   // 5. Japa method
   root.appendChild(collapse("japa_method",
     el("summary", { class: "view-card-summary" },
-      el("div", { class: "card-label" }, "JAPA METHOD · " + (method.duration_minutes || "?") + " min"),
+      el("div", { class: "card-label" }, t("this_week.japa_method") + " · " + t("this_week.minutes", { n: method.duration_minutes || "?" })),
       el("h3", {}, method.name),
-      el("p", { class: "summary-byline", style: "color:var(--muted);" }, "by " + method.teacher),
+      el("p", { class: "summary-byline", style: "color:var(--muted);" }, t("this_week.by", { who: method.teacher })),
     ),
     el("p", { style: "font-style: italic;" }, method.one_line),
     el("p", {}, method.overview),
@@ -210,7 +211,7 @@ export async function render(root) {
   // 7. Weekly story
   root.appendChild(collapse("weekly_story",
     el("summary", { class: "view-card-summary" },
-      el("div", { class: "card-label" }, "WEEKLY STORY"),
+      el("div", { class: "card-label" }, t("this_week.weekly_story")),
       el("h3", {}, story.title),
       el("p", { class: "summary-byline", style: "color:var(--muted);" }, story.devotee + " — " + story.one_line),
     ),
