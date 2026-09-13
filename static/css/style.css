@@ -13,6 +13,16 @@
   --shadow: 0 1px 2px rgba(184, 134, 11, 0.07);
 }
 
+/* Indic-script fonts (spec 004 / FR-005, T024) — bundled Noto subsets, no network needed.
+   They sit after the Latin serif stack so the browser falls through to them only for the
+   Telugu / Kannada / Tamil ranges. */
+@font-face { font-family: "Noto Sans Telugu";  font-style: normal; font-weight: 400; font-display: swap;
+             src: url("../fonts/NotoSansTelugu.woff2") format("woff2"); }
+@font-face { font-family: "Noto Sans Kannada"; font-style: normal; font-weight: 400; font-display: swap;
+             src: url("../fonts/NotoSansKannada.woff2") format("woff2"); }
+@font-face { font-family: "Noto Sans Tamil";   font-style: normal; font-weight: 400; font-display: swap;
+             src: url("../fonts/NotoSansTamil.woff2") format("woff2"); }
+
 * { box-sizing: border-box; }
 
 html, body {
@@ -20,7 +30,8 @@ html, body {
   padding: 0;
   background: var(--bg);
   color: var(--ink);
-  font-family: Garamond, Georgia, "Times New Roman", serif;
+  font-family: Garamond, Georgia, "Times New Roman",
+               "Noto Sans Telugu", "Noto Sans Kannada", "Noto Sans Tamil", serif;
   font-size: 16px;
   line-height: 1.45;
   -webkit-text-size-adjust: 100%;
@@ -795,3 +806,19 @@ select { cursor: pointer; }
   transition: opacity 0.2s ease;
 }
 #toast.show { opacity: 1; }
+
+/* Pre-japa v3 blend — tip line + ekadasi badge + orient sub-line + story collapsible */
+.pj-tip { color: var(--ink-soft); font-size: 0.9rem; margin: -0.2rem 0 0.8rem; padding: 0 0.3rem; }
+.pj-tip-label { color: var(--gold, #B8860B); font-size: 0.7rem; letter-spacing: 0.12em;
+  font-weight: 600; text-transform: uppercase; margin-right: 0.4rem; }
+.eka-badge { color: #B8860B; font-weight: 600; background: #FFF5DA;
+  padding: 0.05rem 0.4rem; border-radius: 4px; margin-left: 0.4rem; }
+.orient-faith { display: block; color: var(--ink-soft); font-style: italic; margin-top: 0.35rem; }
+
+/* Language selector (spec 004, FR-012) */
+.lang-controls { margin-left: auto; }
+.lang-controls select {
+  font: inherit; font-size: 0.85rem; color: var(--ink-soft); background: var(--surface);
+  border: 1px solid var(--rule); border-radius: 4px; padding: 0.15rem 0.4rem;
+}
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }

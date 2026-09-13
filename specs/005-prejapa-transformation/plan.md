@@ -118,4 +118,6 @@ and the UI declarative.
 
 ## Complexity Tracking
 
-No constitution violations; no entries required.
+| Deviation | Why | Mitigation / status |
+|---|---|---|
+| The pre-japa surface can show **unreviewed machine translations** of the curated libraries (Constitution V; 004 FR-003/004, US2/AC2) via `i18n.localize_content_machine`. | Single-practitioner round (founder-as-user, see Assumptions): a fully Telugu pre-japa reading was wanted before the native-devotee review (004 T019) completes. | Recorded by `/speckit-converge` (004 T021, 2026-09-13). The bypass is now **off by default** and requires an explicit, git-ignored opt-in (`show_machine_drafts: true` in `data/i18n/settings.yaml`); while on, a banner marks the drafts as machine-translated. The default path and the static (published) build honour the review gate. The deviation ends when T019 flips the catalogs to `reviewed: true`. |

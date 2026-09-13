@@ -44,9 +44,11 @@ def render() -> None:
             st.info(i18n.t("nama_tattva.empty"))
             return
         # Curated content: show the reviewed translation for the locale, else English (FR-003/004).
-        idx = today.timetuple().tm_yday % max(1, len(nt_mod.all_teachings()))
+        # The overlay id is the item's position in its library (data-model), derived from the item
+        # itself so it cannot drift from pick_for_today's formula (T031).
+        idx = nt_mod.all_teachings().index(nt)
         body = i18n.localize_content("nama_tattva", idx, "teaching", nt.teaching)
-        cite = i18n.maybe_transliterate(nt.source) if nt.source else nt.source
+        cite = nt.source  # citations are preserved verbatim, never transliterated (FR-006, T026)
 
     st.markdown(
         f"<div class='nt-card'><div class='nt-label'>{i18n.t('nama_tattva.heading')}</div>"

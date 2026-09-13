@@ -6,7 +6,7 @@
 //   - Same-origin content/JSON, icons, manifest → cache-first, refresh in background
 //   - Cross-origin (audio.iskcondesiretree.com, etc.) → bypass entirely
 
-const CACHE_VERSION = "3b082e2";
+const CACHE_VERSION = "3966c89";
 const CACHE_NAME = `sadhana-setu-cache-${CACHE_VERSION}`;
 const PRECACHE_LIST = [
   "./",
@@ -15,6 +15,7 @@ const PRECACHE_LIST = [
   "./css/style.css",
   "./js/app.js",
   "./js/content.js",
+  "./js/i18n.js",
   "./js/store.js",
   "./js/util.js",
   "./js/views/backup.js",
@@ -45,7 +46,26 @@ const PRECACHE_LIST = [
   "./icons/favicon-32.png",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
-  "./icons/icon-maskable-512.png"
+  "./icons/icon-maskable-512.png",
+  "./fonts/NotoSansKannada.woff2",
+  "./fonts/NotoSansTamil.woff2",
+  "./fonts/NotoSansTelugu.woff2",
+  "./i18n/content/kn/affirmations.json",
+  "./i18n/content/kn/contemplations.json",
+  "./i18n/content/kn/faith_verses.json",
+  "./i18n/content/kn/nama_tattva.json",
+  "./i18n/content/ta/affirmations.json",
+  "./i18n/content/ta/contemplations.json",
+  "./i18n/content/ta/faith_verses.json",
+  "./i18n/content/ta/nama_tattva.json",
+  "./i18n/content/te/affirmations.json",
+  "./i18n/content/te/contemplations.json",
+  "./i18n/content/te/faith_verses.json",
+  "./i18n/content/te/nama_tattva.json",
+  "./i18n/ui/en.json",
+  "./i18n/ui/kn.json",
+  "./i18n/ui/ta.json",
+  "./i18n/ui/te.json"
 ];
 
 self.addEventListener("install", (event) => {

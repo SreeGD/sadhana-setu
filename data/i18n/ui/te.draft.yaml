@@ -1,11 +1,29 @@
-nama_tattva.heading: Nāma-Tattva — నామం గురించి ఒక బోధన
-notes.caption: సేకరించిన పవిత్ర నామ ప్రవచనాల నుండి సమీక్షించిన తరగతి గమనికలు.
+nama_tattva.heading: Nāma-Tattva — నామంపై ఒక బోధన
+notes.caption: సేకరించిన హరి-నామ ప్రవచనాల నుండి సమీక్షించిన తరగతి గమనికలు.
 notes.empty: ఇంకా సమీక్షించిన గమనికలు లేవు. ఒక భక్తుడు ఆమోదించిన తర్వాత సుసంపన్నమైన
   గమనికలు ఇక్కడ కనిపిస్తాయి.
-notes.heading: Hari-Nāma గమనికలు
+notes.heading: హరి-నామ గమనికలు
 notes.open: ఒక గమనికను తెరవండి
+prejapa.apply: దీనితో కాసేపు కూర్చోండి — జపానికి ముందు ఒకసారి
 prejapa.corpus_offline: కార్పస్ ఆఫ్‌లైన్ — నేటి బోధన ఎంపిక చేసిన గ్రంథాలయం నుండి.
-prejapa.footer: సిద్ధమైనప్పుడు ఈ విండోను మూసివేయండి. జపం సమయంలో తెర నిశ్శబ్దంగా ఉంటుంది.
+prejapa.deepen_default: హరి-నామంపై ఒక బోధన
+prejapa.enter: జపంలోకి ప్రవేశించండి
+prejapa.enter_body: 'ఇప్పుడు మీ జపంలోకి ప్రవేశించండి — ప్రతి నామాన్ని వినడానికి జపించండి,
+  ఆశ్రయం పొందుతూ, గడ్డిపోచ కంటే వినయంగా. నేటి దృష్టిని లోనికి తీసుకెళ్లండి: {orient}'
+prejapa.footer: సిద్ధమైనప్పుడు ఈ విండోను మూసివేయండి. జప సమయంలో తెర నిశ్శబ్దంగా ఉంటుంది.
+prejapa.machine_banner: ఇక్కడి తెలుగు యంత్ర-అనువాదం — భక్తుల సమీక్ష కోసం వేచి ఉంది.
+prejapa.make_vow: నేటి సంకల్పం చేయండి
+prejapa.name_promises: 'నామం వాగ్దానం చేస్తుంది: {summary}'
+prejapa.orient: దిశానిర్దేశం
+prejapa.sankalpa_anchor: Saṅkalpa · ఆధారం
+prejapa.sankalpa_before: Saṅkalpa · జపానికి ముందు
+prejapa.sankalpa_made: Saṅkalpa · ✓ చేయబడింది
+prejapa.story_to_carry: లోనికి తీసుకెళ్లడానికి ఒక కథ
+prejapa.tap_to_read: చదవడానికి నొక్కండి (ఐచ్ఛికం)
+prejapa.tip_label: నేటి చిట్కా
+prejapa.undo: రద్దు చేయి
+prejapa.verse_for_mood: భావం కోసం శ్లోకం
+prejapa.vow_made: 'సంకల్పం పూర్తయింది. ఇప్పుడు: కేవలం ఈ మంత్రం.'
 sidebar.language: భాష
 sidebar.view: చూడండి
 view.history: చరిత్ర
@@ -15,3 +33,120 @@ view.pre_japa: జపానికి ముందు
 view.saturday: శనివారం చెక్-ఇన్
 view.this_week: ఈ వారం
 view.today: ఈ రోజు
+
+# --- Phase 7 convergence (T023/T025): Claude Code machine drafts — UNREVIEWED (Constitution V) ---
+app.tagline: "· సంకల్పానికి ఆచరణకు మధ్య ఒక వంతెన"
+prejapa.orient_fallback: "శ్రద్ధతో, వినయంతో హరినామాన్ని ఆశ్రయించండి."
+prejapa.deepen_fallback: "వినడానికి జపించండి: శ్రద్ధయే జపానికి ప్రాణం."
+prejapa.sankalpa_echo: "ఈ వారపు సంకల్పం: {bits}"
+prejapa.close_static: "సిద్ధమైనప్పుడు ఈ విండోను మూసివేయండి. నామం వేచి ఉంది."
+prejapa.value: "విలువ:"
+prejapa.default_vow: "నేను ఈ మంత్రాన్ని వినడానికి ప్రయత్నిస్తాను."
+prejapa.vow_cleared: "సంకల్పం తొలగించబడింది"
+prejapa.vow_made_toast: "సంకల్పం చేయబడింది 🪷"
+
+today.heading: "నేడు — {date}"
+today.rounds_completed: "**నేడు పూర్తయిన మాలలు**"
+today.count: "సంఖ్య"
+today.count_help: "నియమిత వ్రతం 16. సవరించి మళ్ళీ భద్రపరచవచ్చు."
+today.save: "భద్రపరచు"
+today.saved_rounds: "భద్రపరచబడింది: {date} నాటికి {count} మాలలు"
+today.last_saved: "చివరిగా భద్రపరచినది: {when}  •  పైన సవరించి మళ్ళీ భద్రపరచవచ్చు."
+today.hearing_prompt: "**నేటి శ్రవణం నుండి ఏదైనా?** (ఐచ్ఛికం)"
+today.source: "మూలం"
+today.source_other: "మూలం (ఉదా., HG రాధే శ్యామ్ ప్రవచనం, నిర్దిష్ట శ్లోకం, ...)"
+today.source_other_placeholder: "HG రాధే శ్యామ్ ప్రవచనం"
+today.line: "గుర్తుంచుకోదగిన ఒక వాక్యం"
+today.line_placeholder: "మీరు మరచిపోకూడదనుకున్నది ఏమి విన్నారు?"
+today.save_note: "గమనికను భద్రపరచు"
+today.note_empty: "గమనిక ఖాళీగా ఉంది — ఏమీ భద్రపరచలేదు."
+today.note_saved: "గమనిక భద్రపరచబడింది."
+today.notes_heading: "**నేటి గమనికలు ({n})**"
+today.remove_note: "ఈ గమనికను తొలగించు"
+today.sixteen_rounds: "నేడు 16 మాలలు"
+today.when_completed: "మాలలు ఎప్పుడు పూర్తయ్యాయి? సరిపోయే సమయాన్ని నొక్కండి."
+today.not_yet: "ఇంకా లేదు"
+today.japa_ahead: "జపం ఇంకా ముందుంది"
+today.vow_complete: "వ్రతం పూర్తి · "
+today.hearing: "నేటి శ్రవణం"
+today.hearing_hint: "ఐచ్ఛికం. నేడు SB లేదా BG విన్నప్పుడు ఒకసారి నొక్కండి."
+today.sb_heard: "SB విన్నాను"
+today.bg_heard: "BG విన్నాను"
+
+this_week.heading: "📖 ఈ వారం"
+this_week.week_range: "వారం {week} · {start} – {end}"
+this_week.week_of: "{start} — {end} వారం"
+this_week.reading: "పఠనం"
+this_week.reading_empty: "పఠన గ్రంథాలయం ఖాళీగా ఉంది."
+this_week.minutes: "~{n} నిమి"
+this_week.method: "ఈ వారపు పద్ధతి"
+this_week.method_empty: "పద్ధతుల గ్రంథాలయం ఖాళీగా ఉంది."
+this_week.full_protocol: "పూర్తి విధానాన్ని చూడండి"
+this_week.story: "ఈ వారపు కథ"
+this_week.sunday_read: "☀️ ఆదివారం పఠనం"
+this_week.story_empty: "కథల గ్రంథాలయం ఖాళీగా ఉంది."
+this_week.read_pastime: "పూర్తి లీలను చదవండి"
+this_week.teaching: "బోధ:"
+this_week.key_verse: "ముఖ్య శ్లోకం:"
+this_week.at_a_glance: "వారం ఒక్క చూపులో"
+this_week.weekly_verse: "వారపు శ్లోకం"
+this_week.weekly_reading: "వారపు పఠనం"
+this_week.weekly_bhajan: "వారపు భజన"
+this_week.japa_method: "జప పద్ధతి"
+this_week.weekly_lecture: "వారపు ప్రవచనం"
+this_week.weekly_story: "వారపు కథ"
+this_week.by: "{who} ద్వారా"
+
+saturday.heading: "శనివారం సమీక్ష"
+saturday.week_of: "{start} — {end} వారం"
+saturday.not_saturday: "నేడు {weekday}. ఈ సమీక్ష శనివారం కోసం (తదుపరి: {next}). ఎప్పుడైనా ముందుగా చూడవచ్చు / సవరించవచ్చు."
+saturday.not_saturday_short: "నేడు {weekday}. ఈ సమీక్ష శనివారం కోసం. ఎప్పుడైనా ముందుగా చూడవచ్చు / సవరించవచ్చు."
+saturday.half1: "భాగం 1 — పరిశీలన (గడిచిన వారం)"
+saturday.week_summary: "{at_vow}/7 రోజులు వ్రతం మేరకు (≥16); మొత్తం {total} మాలలు; {notes} శ్రవణ గమనికలు."
+saturday.corpus_teaching: "ఈ వారం మననం చేయదగిన ఒక బోధ"
+saturday.pattern: "**ఈ వారపు ధోరణి**"
+saturday.bhava_expander: "శాస్త్రం నుండి భావ సూచనలు (క్రింది భావ క్షేత్రం కోసం)"
+saturday.questions: "ఈ వారపు ప్రశ్నలు"
+saturday.routes_through: "{route} ద్వారా సాగుతుంది"
+saturday.answer: "సమాధానం"
+saturday.answer_placeholder: "(చిన్న సమాధానం, లేదా ఖాళీగా వదలండి)"
+saturday.half2: "భాగం 2 — రాబోయే వారాన్ని నిర్ణయించండి"
+saturday.tone: "**స్వరం** — రాబోయే వారపు దిశ"
+saturday.tone_placeholder: "ఉదా., తెల్లవారుజామున లేవడానికి తిరిగి రావడం"
+saturday.bhava: "**భావం** — భక్తి మనోభావం"
+saturday.bhava_placeholder: "ఉదా., తృణాదపి సునీచేన, లేదా మీ స్వంతం"
+saturday.practices: "**సాధనలు** (ఒక్కో పంక్తికి ఒకటి) — రాబోయే వారానికి నిర్దిష్ట కార్యాలు"
+saturday.tools: "**అవసరమైన సాధనాలు** (ఒక్కో పంక్తికి ఒకటి) — భౌతిక లేదా డిజిటల్"
+saturday.priorities: "**ప్రాధాన్యతలు** (ఒక్కో పంక్తికి ఒకటి; ముఖ్యమైనది మొదట) — అన్నీ సరిపోనప్పుడు"
+saturday.save: "సమీక్షను భద్రపరచు"
+saturday.update: "సమీక్షను నవీకరించు"
+saturday.saved: "{date} తో ముగిసే వారపు సమీక్ష భద్రపరచబడింది."
+saturday.saved_synced: "{date} తో ముగిసే వారపు సమీక్ష భద్రపరచబడింది · Google Drive కు సమకాలీకరించబడింది."
+saturday.sync_skipped: "సమకాలీకరణ దాటవేయబడింది: {error}"
+saturday.last_saved: "చివరిగా భద్రపరచినది: {when}. నవీకరించడానికి మళ్ళీ భద్రపరచండి."
+saturday.japa_review: "ఈ వారపు జప సమీక్ష"
+saturday.tone_short: "స్వరం — దిశ"
+saturday.bhava_short: "భావం"
+saturday.practices_short: "సాధనలు (ఏవైనా ఎంచుకోండి)"
+saturday.tools_short: "అవసరమైన సాధనాలు (ఏవైనా ఎంచుకోండి)"
+saturday.priorities_short: "ప్రాధాన్యతలు (ఏవైనా; ముఖ్యమైనది మొదట)"
+saturday.choose: "— ఎంచుకోండి —"
+saturday.other: "ఇతరం (మీ స్వంతం రాయండి) →"
+saturday.other_placeholder: "మీ స్వంతం రాయండి…"
+saturday.other_lines: "ఇతరం — ఒక్కో పంక్తికి ఒకటి"
+saturday.other_free: "ఇతరం (స్వేచ్ఛా పాఠ్యం)"
+
+history.heading: "చరిత్ర"
+history.placeholder: "ప్లేస్‌హోల్డర్. గత శనివారం సమీక్షలు మరియు శ్రవణ గమనికలను చూడనిస్తుంది. M7లో అమలు."
+
+nav.backup: "బ్యాకప్"
+backup.heading: "బ్యాకప్"
+backup.intro: "మీ ట్రాకర్ డేటాను బ్యాకప్ చేయండి, పునరుద్ధరించండి. మీరు ఫైల్‌ను ఎక్కడ భద్రపరచాలో ఎంచుకోకపోతే మీ డేటా మీ పరికరాన్ని విడిచిపెట్టదు."
+backup.current: "ఈ పరికరంలో ప్రస్తుత డేటా"
+backup.export: "ఎగుమతి — బ్యాకప్ డౌన్‌లోడ్"
+backup.download: "బ్యాకప్ డౌన్‌లోడ్ చేయండి"
+backup.import: "దిగుమతి — బ్యాకప్ నుండి పునరుద్ధరణ"
+backup.restore: "బ్యాకప్ నుండి పునరుద్ధరించండి"
+backup.clear: "స్థానిక డేటాను తొలగించు"
+backup.clear_button: "అన్ని స్థానిక డేటాను తొలగించు"
+footer.local_first: "స్థానికం-ముందు. ఖాతాలు లేవు. మీ డేటా ఈ పరికరంలోనే ఉంటుంది."

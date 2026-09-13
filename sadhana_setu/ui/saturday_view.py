@@ -7,6 +7,7 @@ from datetime import date, datetime, timedelta
 
 import streamlit as st
 
+from sadhana_setu import i18n
 from sadhana_setu.content.questions import (
     all_questions,
     mark_asked,
@@ -55,7 +56,7 @@ def _render_corpus_teaching(existing) -> None:
     t = corpus_teaching.get_for_surface(theme, "saturday", date=date.today(), state=state)
     if t is None:
         return
-    st.markdown(f"> **A teaching to sit with this week** — {t.body}\n>\n> — *{t.citation}*")
+    st.markdown(f"> **{i18n.t('saturday.corpus_teaching')}** — {t.body}\n>\n> — *{t.citation}*")
 
 
 def _render_week(summary: WeekSummary) -> None:
@@ -76,11 +77,8 @@ def _render_week(summary: WeekSummary) -> None:
                 f"<strong style='color:{color}; font-size:1.4em;'>{badge}</strong></div>",
                 unsafe_allow_html=True,
             )
-    st.caption(
-        f"{summary.rounds_completed_days}/7 days at vow (≥16); "
-        f"{summary.total_rounds} rounds total; "
-        f"{summary.hearing_note_count} hearing notes."
-    )
+    st.caption(i18n.t("saturday.week_summary", at_vow=summary.rounds_completed_days,
+                      total=summary.total_rounds, notes=summary.hearing_note_count))
 
 
 def render() -> None:
@@ -89,27 +87,24 @@ def render() -> None:
     saturday = most_recent_saturday(today)
     week_start = saturday - timedelta(days=6)
 
-    st.header("Saturday Check-in")
-    st.caption(
-        f"Week of {week_start.strftime('%B %d')} — {saturday.strftime('%B %d, %Y')}"
-    )
+    st.header(i18n.t("saturday.heading"))
+    st.caption(i18n.t("saturday.week_of", start=week_start.strftime('%B %d'),
+                      end=saturday.strftime('%B %d, %Y')))
 
     if today.weekday() != 5:
         days_to_sat = (5 - today.weekday()) % 7 or 7
         next_sat = today + timedelta(days=days_to_sat)
-        st.info(
-            f"Today is {today.strftime('%A')}. The check-in is meant for Saturday "
-            f"(next: {next_sat.strftime('%a %b %d')}). You can preview / edit any time."
-        )
+        st.info(i18n.t("saturday.not_saturday", weekday=today.strftime('%A'),
+                       next=next_sat.strftime('%a %b %d')))
 
     summary = week_at_a_glance(saturday)
     existing = get_checkin(saturday)
 
-    st.markdown("### Half 1 — Observe (the week past)")
+    st.markdown(f"### {i18n.t('saturday.half1')}")
     _render_week(summary)
     _render_corpus_teaching(existing)
 
-    st.markdown("**Pattern this week**")
+    st.markdown(i18n.t("saturday.pattern"))
     pattern = surface_for_saturday(saturday)
     if pattern.fired:
         st.success(pattern.headline)
@@ -139,16 +134,16 @@ def render() -> None:
         for a in (existing.survey_answers if existing else [])
     }
 
-    with st.expander("Bhava suggestions from sastra (for the Mood field below)"):
+    with st.expander(i18n.t("saturday.bhava_expander")):
         for s in BHAVA_SUGGESTIONS:
             st.markdown(f"- {s}")
 
     with st.form("saturday_form"):
-        st.markdown("**This week's questions**")
+        st.markdown(f"**{i18n.t('saturday.questions')}**")
         answers: dict[int, tuple[str, str]] = {}
         for q in questions:
             route = (
-                f"  •  *routes through {q.routes_through}*"
+                f"  •  *{i18n.t('saturday.routes_through', route=q.routes_through)}*"
                 if q.routes_through
                 else ""
             )
@@ -157,46 +152,46 @@ def render() -> None:
             answers[q.id] = (
                 q.question,
                 st.text_area(
-                    "Answer",
+                    i18n.t("saturday.answer"),
                     value=prior_answers.get(q.id, ""),
                     key=f"qa-{saturday.isoformat()}-{q.id}",
                     height=80,
                     label_visibility="collapsed",
-                    placeholder="(short response, or leave empty)",
+                    placeholder=i18n.t("saturday.answer_placeholder"),
                 ),
             )
 
         st.divider()
-        st.markdown("### Half 2 — Set the coming week")
+        st.markdown(f"### {i18n.t('saturday.half2')}")
 
         tone = st.text_input(
-            "**Tone** — the orientation of the coming week",
+            i18n.t("saturday.tone"),
             value=existing.tone if existing else "",
-            placeholder="e.g., Returning to early rising",
+            placeholder=i18n.t("saturday.tone_placeholder"),
         )
         bhava = st.text_input(
-            "**Mood (bhava)** — the devotional disposition",
+            i18n.t("saturday.bhava"),
             value=existing.mood_bhava if existing else "",
-            placeholder="e.g., trnad api sunicena, or your own",
+            placeholder=i18n.t("saturday.bhava_placeholder"),
         )
         practices_text = st.text_area(
-            "**Practices** (one per line) — concrete acts for the coming week",
+            i18n.t("saturday.practices"),
             value="\n".join(existing.practices) if existing else "",
             height=100,
         )
         tools_text = st.text_area(
-            "**Tools needed** (one per line) — physical or digital",
+            i18n.t("saturday.tools"),
             value="\n".join(existing.tools_needed) if existing else "",
             height=80,
         )
         priorities_text = st.text_area(
-            "**Priorities** (one per line; top first) — when not everything fits",
+            i18n.t("saturday.priorities"),
             value="\n".join(existing.priorities) if existing else "",
             height=80,
         )
 
         submitted = st.form_submit_button(
-            "Save check-in", type="primary", use_container_width=True
+            i18n.t("saturday.save"), type="primary", use_container_width=True
         )
 
     if submitted:
@@ -236,16 +231,13 @@ def render() -> None:
         if creds is not None:
             try:
                 _sync.push(creds)
-                st.success(
-                    f"Check-in saved for week ending {saturday.isoformat()} · "
-                    "synced to Google Drive."
-                )
+                st.success(i18n.t("saturday.saved_synced", date=saturday.isoformat()))
             except Exception as e:  # noqa: BLE001
-                st.success(f"Check-in saved for week ending {saturday.isoformat()}.")
-                st.warning(f"Sync skipped: {e}")
+                st.success(i18n.t("saturday.saved", date=saturday.isoformat()))
+                st.warning(i18n.t("saturday.sync_skipped", error=e))
         else:
-            st.success(f"Check-in saved for week ending {saturday.isoformat()}.")
+            st.success(i18n.t("saturday.saved", date=saturday.isoformat()))
         st.rerun()
 
     if existing:
-        st.caption(f"Last saved: {existing.submitted_at}. Save again to update.")
+        st.caption(i18n.t("saturday.last_saved", when=existing.submitted_at))

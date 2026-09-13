@@ -9,12 +9,17 @@ from __future__ import annotations
 import json
 import re
 import subprocess
+import time
 from abc import ABC, abstractmethod
 
 from sadhana_setu.corpus.config import CorpusConfig
 
 _TS_RE = re.compile(r"^\d{2}:\d{2}:\d{2}\.\d{3}$")
 _FENCE_RE = re.compile(r"^```(?:json)?\s*|\s*```$", re.MULTILINE)
+# `claude -p` exits non-zero on transient API overloads; retry with backoff before giving up
+# so one blip during a long batch doesn't lose a whole lecture's enrichment.
+_MAX_TRIES = 3
+_RETRY_SLEEP = 5.0  # seconds; grows per attempt
 
 
 class EnrichmentError(RuntimeError):
@@ -34,11 +39,22 @@ class ClaudeCodeProvider(Provider):
         self.cfg = cfg
 
     def complete(self, prompt: str) -> str:
-        proc = subprocess.run(
-            [self.cfg.claude_cli(), *self.cfg.claude_flags],
-            input=prompt, capture_output=True, text=True, check=True,
+        cmd = [self.cfg.claude_cli(), *self.cfg.claude_flags]
+        reason = "no attempt"
+        for attempt in range(1, _MAX_TRIES + 1):
+            proc = subprocess.run(cmd, input=prompt, capture_output=True, text=True)
+            if proc.returncode == 0:
+                result = _extract_result(proc.stdout)
+                if result and result.strip():
+                    return result
+                reason = "exit 0 but empty result (throttle/is_error)"  # retry transient empties
+            else:
+                reason = f"exit {proc.returncode}: " + (proc.stderr or proc.stdout or "").strip()[:300]
+            if attempt < _MAX_TRIES:
+                time.sleep(_RETRY_SLEEP * attempt)
+        raise EnrichmentError(
+            f"`claude -p` failed after {_MAX_TRIES} attempts — {reason}".replace("\n", " ")
         )
-        return _extract_result(proc.stdout)
 
 
 def _extract_result(stdout: str) -> str:
@@ -53,11 +69,18 @@ def _extract_result(stdout: str) -> str:
 
 
 def _parse_json(raw: str) -> dict:
+    # The model sometimes wraps the JSON in fences or appends explanatory prose after the object
+    # ("This window contains only kīrtana…"). Decode just the first JSON object and ignore any
+    # trailing text instead of failing on "Extra data".
     text = _FENCE_RE.sub("", raw).strip()
-    try:
-        return json.loads(text)
-    except json.JSONDecodeError as exc:
-        raise EnrichmentError(f"enrichment output is not valid JSON: {exc}") from exc
+    start = text.find("{")
+    if start != -1:
+        try:
+            obj, _ = json.JSONDecoder().raw_decode(text[start:])
+            return obj
+        except json.JSONDecodeError:
+            pass
+    raise EnrichmentError(f"enrichment output is not valid JSON: {text[:80]!r}")
 
 
 def parse_enrichment(raw: str) -> dict:

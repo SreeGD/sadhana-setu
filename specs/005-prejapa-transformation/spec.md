@@ -180,3 +180,11 @@ requires no input, tracking, or scoring, and does not delay the start of japa.
 - Honors all v1 sacred constraints; transformation is pursued through depth and disposition, not
   features, metrics, or length.
 - Single-practitioner audience (the founder-as-user) for this round; multi-user is out of scope.
+
+## Localization scope note (spec 004 T032)
+
+The pre-japa blend surfaces four libraries beyond spec 004's FR-009 scope — `daily_verses`, `tips`,
+`inspirations`, `sankalpas` — so 004's drafting pipeline (`scripts/draft_translations.py`) also
+drafts overlays for them (`data/i18n/content/te/*.draft.yaml`). They follow the same rules as the
+four in-scope libraries: reviewed rows only, English otherwise, machine drafts visible only under
+the explicit local opt-in (004 T021). Their native review rides on 004 T019.

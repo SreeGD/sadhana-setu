@@ -13,6 +13,12 @@ async function load(name) {
   return _cache[name];
 }
 
+// The raw item list of a library (for i18n overlay ids = item position; spec 004).
+export async function libraryItems(name) {
+  const { items } = await load(name);
+  return items;
+}
+
 function pick(list, n) {
   return list[((n % list.length) + list.length) % list.length];
 }

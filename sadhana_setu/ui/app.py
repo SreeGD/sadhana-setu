@@ -5,8 +5,10 @@ Run with:
 """
 import streamlit as st
 
+from sadhana_setu import i18n
 from sadhana_setu.db.connection import ensure_initialized
 from sadhana_setu.guards import protected_label
+from sadhana_setu.ui.fonts import indic_font_faces_css
 
 st.set_page_config(
     page_title="Sadhana Setu",
@@ -20,10 +22,14 @@ ensure_initialized()
 st.markdown(
     """
     <style>
-    /* Indic-script fonts (spec 004 / FR-005) — ensure Telugu/Kannada/Tamil render (no tofu). */
-    @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu&family=Noto+Sans+Kannada&family=Noto+Sans+Tamil&display=swap');
-    html, body, [class*="css"] {
-        font-family: 'Noto Sans Telugu', 'Noto Sans Kannada', 'Noto Sans Tamil', inherit;
+    /* Indic-script fonts (spec 004 / FR-005, T024): Noto Sans Telugu/Kannada/Tamil are BUNDLED
+       (static/fonts/*.woff2, embedded below as data URIs) — no network, no system-font reliance.
+       The Indic faces sit after the Latin serif stack; the browser falls through to them for the
+       Telugu/Kannada/Tamil ranges only, so English keeps its serif look. */
+    """ + indic_font_faces_css() + """
+    html, body, [class*="css"], [data-testid="stMarkdownContainer"] {
+        font-family: Georgia, 'Times New Roman', 'Noto Sans Telugu', 'Noto Sans Kannada',
+                     'Noto Sans Tamil', serif;
     }
     h4 {
         color: #6B3410 !important;
@@ -76,14 +82,12 @@ st.markdown(
     "<span style='color: #B8860B; font-family: \"Adobe Devanagari\", \"Sanskrit Text\", serif; font-size: 1.1rem;'>"
     "साधना सेतुः</span>&nbsp;&nbsp;"
     "<span style='color: #8B7355; font-style: italic; font-size: 0.92rem;'>"
-    "· a bridge between aspiration and act</span>"
+    f"{i18n.t('app.tagline')}</span>"
     "</div>",
     unsafe_allow_html=True,
 )
 
 VIEWS = ["Pre-japa", "Nama-Tattva", "Today", "This Week", "Saturday Check-in", "Notes", "History"]
-
-from sadhana_setu import i18n
 
 _LANGS = {"English": "en", "తెలుగు": "te", "ಕನ್ನಡ": "kn", "தமிழ்": "ta"}
 _VIEW_KEYS = {

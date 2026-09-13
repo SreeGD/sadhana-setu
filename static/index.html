@@ -16,7 +16,16 @@
     <span class="symbol">❦</span>
     <span class="title">Sadhana Setu</span>
     <span class="devanagari">साधना सेतुः</span>
-    <span class="tagline">· a bridge between aspiration and act</span>
+    <span class="tagline" data-i18n="app.tagline">· a bridge between aspiration and act</span>
+    <span class="lang-controls">
+      <label for="lang-select" class="visually-hidden" data-i18n="sidebar.language">Language</label>
+      <select id="lang-select" aria-label="Language">
+        <option value="en">English</option>
+        <option value="te">తెలుగు</option>
+        <option value="kn">ಕನ್ನಡ</option>
+        <option value="ta">தமிழ்</option>
+      </select>
+    </span>
     <span class="font-controls" aria-label="Text size">
       <button id="font-smaller" title="Smaller text">A−</button>
       <button id="font-reset" title="Default text size">A</button>
@@ -25,17 +34,17 @@
   </header>
 
   <nav class="tabs">
-    <button data-view="prejapa" class="active">Pre-japa</button>
-    <button data-view="today">Today</button>
-    <button data-view="this_week">This Week</button>
-    <button data-view="saturday">Saturday</button>
-    <button data-view="backup" class="tab-secondary">Backup</button>
+    <button data-view="prejapa" class="active" data-i18n="view.pre_japa">Pre-japa</button>
+    <button data-view="today" data-i18n="view.today">Today</button>
+    <button data-view="this_week" data-i18n="view.this_week">This Week</button>
+    <button data-view="saturday" data-i18n="view.saturday">Saturday</button>
+    <button data-view="backup" class="tab-secondary" data-i18n="nav.backup">Backup</button>
   </nav>
 
   <main id="root"></main>
 
   <footer class="footer">
-    <span>Local-first. No accounts. Your data stays on this device.</span>
+    <span data-i18n="footer.local_first">Local-first. No accounts. Your data stays on this device.</span>
     <span class="footer-sep">·</span>
     <span id="storage-summary">…</span>
   </footer>

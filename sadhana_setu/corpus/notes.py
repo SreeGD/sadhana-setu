@@ -118,7 +118,11 @@ def render_body(content: NoteContent) -> str:
               if c.verified and c.kind == "verse" and c.iast]
     if verses:
         lines.append("## Verses cited\n")
+        seen: set[str] = set()  # the same verse is cited by many teachings — list it once here
         for c in verses:
+            if c.source in seen:
+                continue
+            seen.add(c.source)
             lines.append(f"- **{c.source}** — *{c.iast}*\n  {c.translation}")
         lines.append("")
 
